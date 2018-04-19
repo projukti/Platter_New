@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "424060989840",
+    "firebase_url": "https://platter-376aa.firebaseio.com",
+    "project_id": "platter-376aa",
+    "storage_bucket": "platter-376aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424060989840:android:f13bea503b78d5ad",
+        "android_client_info": {
+          "package_name": "com.platterexoticfood.userapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424060989840-e3a4v4f40gdshcqtkfubcl7qto6v7ppj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkLvfT4f6M0RbJCLfkyWGZWuvWJj_8HUc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
