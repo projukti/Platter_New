@@ -264,60 +264,12 @@
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnRegister" data-popup="#otp-popup">Send OTP</a>
+                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnLogin" data-popup="#otp-popup">Send OTP</a>
                                         </div>
                                     </div>
                         
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="popup" id="otp-popup">
-            <div class="view">
-                <div class="page">
-                    <div class="page-content">
-                        <div class="block-strong" align="center">
-                            <strong style="color:#ef3837;font-size: 20px;">Waiting to automatically detect an SMS sent to your number</strong>
-                            <p style="font-size: 14px;">Please enter the OTP to verify the mobile number</a>
-                            </p>
-                        </div>
-                        <!-- page-content has additional login-screen content -->
-                        <div class="page-content login-screen-content" style="padding-top:0px;">
-                            <!-- Login form -->
-                            <form>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">OTP</div>
-                                                <div class="item-input-wrap">
-                                                    <input type="number" id="txtOTP" name="otp" placeholder="Enter 4-digit code" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
-                                                    <span class="input-clear-button"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-input-wrap">
-                                                    <a href="javascript:void(0);" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Verify OTP</a>
-                                                </div>
-                                            </div>
-        
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="block">
-                                    <a href="#" class="link icon" disabled><i class="icon material-icons md-only">navigation</i>Resend</a>
-                                    <div class="right"> Time Remaining 0.15</div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -372,6 +324,54 @@
         
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup" id="otp-popup">
+            <div class="view">
+                <div class="page">
+                    <div class="page-content">
+                        <div class="block-strong" align="center">
+                            <strong style="color:#ef3837;font-size: 20px;">Waiting to automatically detect an SMS sent to your number</strong>
+                            <p style="font-size: 14px;">Please enter the OTP to verify the mobile number</a>
+                            </p>
+                        </div>
+                        <!-- page-content has additional login-screen content -->
+                        <div class="page-content login-screen-content" style="padding-top:0px;">
+                            <!-- Login form -->
+                            <form>
+                                <div class="list">
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">OTP</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="number" id="txtOTP" name="otp" placeholder="Enter 4-digit code" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list">
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-input-wrap">
+                                                    <a href="javascript:void(0);" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Verify OTP</a>
+                                                </div>
+                                            </div>
+        
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="block">
+                                    <a href="#" class="link icon" disabled><i class="icon material-icons md-only">navigation</i>Resend</a>
+                                    <div class="right"> Time Remaining 0.15</div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
