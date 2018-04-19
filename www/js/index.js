@@ -44,17 +44,17 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        //document.querySelector('.wait').classList.remove('wait');
-       // document.querySelector('.wait').classList.remove('wait');
-        // FCMPlugin.onNotification(function(data) {
-        //     if (data.wasTapped) {
-        //         //localStorage.setItem('order_id', data.noti_id);
-        //         app.openPageOrderListing;
-        //     } else {
-        //         //Notification was received in foreground. Maybe the user needs to be notified.
-        //         app.openPageOrderListing;
-        //     }
-        // });
+        document.querySelector('.wait').classList.remove('wait');
+       document.querySelector('.wait').classList.remove('wait');
+        FCMPlugin.onNotification(function(data) {
+            if (data.wasTapped) {
+                //localStorage.setItem('order_id', data.noti_id);
+                app.openPageOrderListing;
+            } else {
+                //Notification was received in foreground. Maybe the user needs to be notified.
+                app.openPageOrderListing;
+            }
+        });
         var user = localStorage.getItem('platuser');
         if (user != '') {
             $.ajax({
