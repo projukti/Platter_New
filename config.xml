@@ -30,7 +30,6 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.5" />
     <plugin name="cordova-plugin-whitelist" />
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
-    <plugin name="cordova-plugin-fcm" />
     <plugin name="cordova-plugin-x-socialsharing" />
     <plugin name="cordova-plugin-device" />
     <plugin name="cordova-plugin-device-motion" />
