@@ -130,7 +130,7 @@
                         <div class="block" align="center">
                             <div class="row">
                                 <div class="col-100">
-                                    <a href="#" class="link" style="border-color: #00749e;color: #00749e;text-transform: capitalize;"> Set Your Location </a>
+                                    <a href="#" class="link login-screen-open" style="border-color: #00749e;color: #00749e;text-transform: capitalize;" data-login-screen="#my-login-screen"> Set Your Location </a>
                                 </div>
                             </div>
                         </div>
@@ -198,14 +198,49 @@
                                 <i class="icon material-icons md-only">close</i>
                             </a>
                         </div>
-                        <div class="login-screen-title">Login</div>
+                        <div class="login-screen-title">Location</div>
                         <div class="list">
                             <ul>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
-                                        <div class="item-title item-label">Phone Number</div>
                                         <div class="item-input-wrap">
-                                            <input type="text" name="phone" id="phone" placeholder="Enter Your Phone">
+                                            <input type="text" name="address" id="address" placeholder="Address">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="house_no" id="house_no" placeholder="House No.">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="land_mark" id="land_mark" placeholder="Enter Land Mark">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="pin" id="pin" placeholder="Enter Pin code">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="pin" id="pin" placeholder="Enter Pin code">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-input-wrap">
+                                            <input type="radio" name="type" id="type"> Work
+                                            <input type="radio" name="type" id="type"> Home
                                         </div>
                                     </div>
                                 </li>
@@ -216,7 +251,7 @@
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnLogin" data-popup="#otp-popup">Send OTP</a>
+                                            <a href="#" class="col button button-raised button-fill" id="btnConfirm" >Confirm</a>
                                         </div>
                                     </div>
 
