@@ -37,24 +37,25 @@
             padding: 5px;
             transform: translate3d(0, -60%, 0);
         }
-        
+
         .logoBox img {
             display: block;
             width: 100%;
             height: auto
         }
+
         ul {
             padding: 0;
             margin: 0;
             display: block
         }
-        
+
         ul li {
             display: block;
             padding: 0;
             margin: 0 0 10px 0
         }
-        
+
         ul li img {
             display: block;
             float: left;
@@ -102,7 +103,7 @@
         <!-- Views/Tabs container -->
         <div class="views tabs ios-edges">
             <!-- Tabbar for switching views-tabs -->
-            
+
             <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
             <div id="view-home" class="view view-main tab tab-active">
                 <!-- Page, data-name contains page name which can be used in page callbacks -->
@@ -112,74 +113,40 @@
                     <!-- Scrollable page content-->
                     <div class="page-content">
                         <div class="block" style="margin:0px;padding:0px;">
-                            <img src="img/login.jpg" style="width: 100%;">
+                            <img src="img/location.gif" style="width: 100%;">
                         </div>
-
                         <div class="block">
-                            <ul>
-                                <li>
-                                    <img src="img/003-dish.png" alt="">Love Food ? Now get rewarded for ordering food online as well</li>
-                                <li>
-                                    <img src="img/002-motorcycle.png" alt="">From famous street shops to 5 star restaurants order anything , anywhere !</li>
-                                <li>
-                                    <img src="img/001-guests.png" alt="">Now do more than just ordering food , Introducing India's First foodies network .</li>
-                                <li>
-                                    <img src="img/racewin.png" alt="">Sick of ordering from nearby restaurants ? Now, break the limits with Platter</li>
-                            </ul>
+                            <div class="row">
+                                <div class="col-100">
+                                    <button class="button button-outline" style="border-color: #00749e;color: #00749e;"><i class="icon material-icons md-only" >navigation</i> USE CURRENT LOCATION</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="row">
+                                <div class="col-100">
+                                    <a href="#" class="button  button-outline" style="border-color: #00749e;color: #00749e;"><i class="icon material-icons md-only">home</i> SET LOCATION </a>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- <div class="block-title">Navigation</div> -->
-                        <!-- <div class="list">
+                        <!-- <div class="block-title searchbar-hide-on-search">Page Loaders & Router</div>
+                        <div class="list links-list searchbar-hide-on-search">
                             <ul>
                                 <li>
-                                    <a href="/about/" class="item-content item-link">
-                                        <div class="item-inner">
-                                            <div class="item-title">About</div>
-                                        </div>
-                                    </a>
+                                    <a href="/page-loader-template7/vladimir/123/about-me/1/?start=0&end=30#top">Template7 Page</a>
+                                </li>
+                                <li>
+                                    <a href="/page-loader-component/vladimir/123/about-me/1/?start=0&end=30#top">Component Page</a>
+                                </li>
+                                <li>
+                                    <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
+                                </li>
+                                <li>
+                                    <a href="/request-and-load/user/123456/">Request Data & Load</a>
                                 </li>
                             </ul>
                         </div> -->
-
-                        <!-- <div class="block-title">Modals</div>
-                        <div class="block block-strong">
-                            <div class="row">
-                                <div class="col-50">
-                                    <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
-                                </div>
-                                <div class="col-50">
-                                    <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="block-title">Panels</div> -->
-                        <div class="block" style="margin: 12px 0;">
-                            <div class="row">
-                                <div class="col-50">
-                                    <!-- <a href="#" class="button button-raised button-fill popup-open" data-login-screen="#my-popup">SIGN UP</a> -->
-                                    <a href="#" class="button button-outline login-screen-open" data-login-screen="#my-register-screen">SIGN UP</a>
-                                </div>
-                                <div class="col-50">
-                                    <a href="#" class="button button-outline login-screen-open" data-login-screen="#my-login-screen"> LOGIN</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block" style="margin: 12px 0;">
-                            <div class="row">
-                                <div class="col-100">
-                                    <button class="button button-outline" style="border-color: #46629e;color:#46629e; ">LOGIN WITH FACEBOOK </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block" style="margin: 12px 0;">
-                            <div class="row">
-                                <div class="col-100">
-                                    <button class="button button-outline" style="border-color: #d14836;color:#d14836;">LOGIN WITH GOOGLE </button>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
@@ -247,7 +214,7 @@
                                             <a href="#" class="col button button-raised button-fill popup-open" id="btnLogin" data-popup="#otp-popup">Send OTP</a>
                                         </div>
                                     </div>
-                        
+
                                 </li>
                             </ul>
                         </div>
@@ -301,7 +268,7 @@
                                             <a href="#" class="col button button-raised button-fill popup-open" id="btnRegister" data-popup="#otp-popup">Register</a>
                                         </div>
                                     </div>
-        
+
                                 </li>
                             </ul>
                         </div>
@@ -340,15 +307,16 @@
                                         <li class="item-content item-input">
                                             <div class="item-inner">
                                                 <div class="item-input-wrap">
-                                                    <a href="getlocation.html" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Verify OTP</a>
+                                                    <a href="javascript:void(0);" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Verify OTP</a>
                                                 </div>
                                             </div>
-        
+
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="block">
-                                    <a href="#" class="link icon" disabled><i class="icon material-icons md-only">redo</i>Resend</a>
+                                    <a href="#" class="link icon" disabled>
+                                        <i class="icon material-icons md-only">redo</i>Resend</a>
                                     <div class="right"> Time Remaining 0.15</div>
                                 </div>
                             </form>
@@ -371,7 +339,7 @@
 
     <!-- Your custom app scripts -->
     <script src="js/app.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/location.js"></script>
     <script src="js/jquery.js"></script>
     <script src="cordova.js"></script>
     <script>
