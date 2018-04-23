@@ -114,8 +114,6 @@
     <plugin name="cordova-plugin-customurlscheme" spec="~4.3.0">
         <variable name="URL_SCHEME" value="platter" />
     </plugin>
-    <plugin name="cordova-plugin-file-transfer" />
-    <plugin name="cordova-plugin-media" />
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-statusbar" />
     <plugin name="cordova-plugin-fcm" />
