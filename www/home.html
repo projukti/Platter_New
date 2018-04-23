@@ -35,6 +35,35 @@
     height: 0px;
     pointer-events: none;
     }
+    /* A bit of demo styles */;
+.demo-swiper .swiper-slide {
+  font-size: 25px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #000;
+}
+.demo-swiper .swiper-slide {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.demo-swiper {
+  margin: 0px 0 35px;
+  font-size: 18px;
+  height: 120px;
+}
+.demo-swiper.demo-swiper-auto .swiper-slide {
+  width: 85%;
+}
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+  width: 70%;
+}
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+  width: 30%;
+}
   </style>
 </head>
 <body style="font-family: 'Montserrat', sans-serif;">
@@ -125,7 +154,40 @@
 
           <!-- Scrollable page content-->
           <div class="page-content">
-            
+            <div class="block-title" style="color:#ef3837;">Top 10 Restaurent</div>
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="2" class="swiper-container swiper-init demo-swiper">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120"></div>
+              </div>
+            </div>
+
+            <div class="block-title" style="color:#ef3837;">Amazing Offer</div>
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="auto" data-centered-slides="true"
+              class="swiper-container swiper-init demo-swiper demo-swiper-auto">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+                <div class="swiper-slide">Slide 10</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
