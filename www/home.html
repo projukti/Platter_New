@@ -6,8 +6,8 @@
   Customize this policy to fit your own app's needs. For more guidance, see:
       https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
   Some notes:
-      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * gap: is requi#ef3837 only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is requi#ef3837 only on Android and is needed for TalkBack to function properly
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
   -->
@@ -23,13 +23,14 @@
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
-<body>
+<body style="font-family: 'Montserrat', sans-serif;">
   <div id="app">
     <!-- Status bar overlay for fullscreen mode-->
-    <div class="statusbar"></div>
+    <div class="statusbar color-white"></div>
     <!-- Left panel with cover effect-->
-    <div class="panel panel-left panel-cover theme-dark">
+    <!-- <div class="panel panel-left panel-cover theme-dark">
       <div class="view">
         <div class="page">
           <div class="navbar">
@@ -42,9 +43,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Right panel with reveal effect-->
-    <div class="panel panel-right panel-reveal theme-dark">
+    <!-- <div class="panel panel-right panel-reveal theme-dark">
       <div class="view">
         <div class="page">
           <div class="navbar">
@@ -57,30 +58,35 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Views/Tabs container -->
     <div class="views tabs ios-edges">
       <!-- Tabbar for switching views-tabs -->
-      <div class="toolbar tabbar-labels toolbar-bottom-md">
+      <div class="toolbar tabbar-labels toolbar-bottom-md color-white">
         <div class="toolbar-inner">
-          <a href="#view-home" class="tab-link tab-link-active">
-            <i class="icon f7-icons ios-only">home</i>
-            <i class="icon f7-icons ios-only icon-ios-fill">home_fill</i>
-            <i class="icon material-icons md-only">home</i>
-            <span class="tabbar-label">Home</span>
+          <a href="#view-home" class="tab-link tab-link-active color-black">
+            <i class="icon material-icons md-only" style="color: #ef3837;">home</i>
+            <span class="tabbar-label" style="color: #ef3837;">Platter</span>
           </a>
-          <a href="#view-catalog" class="tab-link">
-            <i class="icon f7-icons ios-only">list</i>
-            <i class="icon f7-icons ios-only icon-ios-fill">list_fill</i>
-            <i class="icon material-icons md-only">view_list</i>
-            <span class="tabbar-label">Catalog</span>
+          <a href="#view-catalog" class="tab-link color-black">
+            <i class="icon material-icons md-only" style="color: #ef3837;">person</i>
+            <span class="tabbar-label" style="color: #ef3837;">Account</span>
           </a>
-          <a href="#view-settings" class="tab-link">
-            <i class="icon f7-icons ios-only">settings</i>
-            <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
-            <i class="icon material-icons md-only">settings</i>
-            <span class="tabbar-label">Settings</span>
+          <a href="#view-settings" class="tab-link color-black">
+            <!-- <i class="icon material-icons md-only">box</i> -->
+            <img src="img/iconset/cart-empty.png" style="height: 62%;">
+            <span class="tabbar-label" style="color: #ef3837;">Cart</span>
+          </a>
+
+          <a href="#view-settings" class="tab-link color-black">
+            <i class="icon material-icons md-only" style="color: #ef3837;">search</i>
+            <span class="tabbar-label" style="color: #ef3837;">Explore</span>
+          </a>
+
+          <a href="#view-settings" class="tab-link color-black">
+            <i class="icon material-icons md-only" style="color: #ef3837;">chat</i>
+            <span class="tabbar-label" style="color: #ef3837;">Chat</span>
           </a>
         </div>
       </div>
@@ -89,19 +95,17 @@
         <!-- Page, data-name contains page name which can be used in page callbacks -->
         <div class="page" data-name="home">
           <!-- Top Navbar -->
-          <div class="navbar">
+          <div class="navbar color-white">
             <div class="navbar-inner">
               <div class="left">
                 <a href="#" class="link icon-only panel-open" data-panel="left">
-                  <i class="icon f7-icons ios-only">menu</i>
-                  <i class="icon material-icons md-only">menu</i>
+                  <img src="img/icon.png" style="height: 55%;">
                 </a>
               </div>
-              <div class="title sliding">Home</div>
+              <div class="title sliding" style="color: #ef3837;">Garia</div>
               <div class="right">
                 <a href="#" class="link icon-only panel-open" data-panel="right">
-                  <i class="icon f7-icons ios-only">menu</i>
-                  <i class="icon material-icons md-only">menu</i>
+                  <i class="icon material-icons md-only" style="color: #ef3837;">list</i>
                 </a>
               </div>
             </div>
