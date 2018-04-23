@@ -104,7 +104,7 @@
               </div>
               <div class="title sliding" style="color: #ef3837;">Garia</div>
               <div class="right">
-                <a href="#" class="link icon-only panel-open" data-panel="right">
+                <a href="#" class="link icon-only popup-open" data-panel="right"   data-popup="#my-popup">
                   <i class="icon material-icons md-only" style="color: #ef3837;">list</i>
                 </a>
               </div>
@@ -113,65 +113,7 @@
 
           <!-- Scrollable page content-->
           <div class="page-content">
-            <div class="block block-strong">
-              <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
-              <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
-            </div>
-
-            <div class="block-title">Navigation</div>
-            <div class="list">
-              <ul>
-                <li>
-                  <a href="/about/" class="item-content item-link">
-                    <div class="item-inner">
-                      <div class="item-title">About</div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="block-title">Modals</div>
-            <div class="block block-strong">
-              <div class="row">
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
-                </div>
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="block-title">Panels</div>
-            <div class="block block-strong">
-              <div class="row">
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill panel-open" data-panel="left">Left Panel</a>
-                </div>
-                <div class="col-50">
-                  <a href="#" class="button button-raised button-fill panel-open" data-panel="right">Right Panel</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="block-title searchbar-hide-on-search">Page Loaders & Router</div>
-            <div class="list links-list searchbar-hide-on-search">
-              <ul>
-                <li>
-                  <a href="/page-loader-template7/vladimir/123/about-me/1/?start=0&end=30#top">Template7 Page</a>
-                </li>
-                <li>
-                  <a href="/page-loader-component/vladimir/123/about-me/1/?start=0&end=30#top">Component Page</a>
-                </li>
-                <li>
-                  <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
-                </li>
-                <li>
-                  <a href="/request-and-load/user/123456/">Request Data & Load</a>
-                </li>
-              </ul>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -187,21 +129,50 @@
       </div>
     </div>
 
-    <!-- Popup -->
+    <!-- Filter Popup -->
     <div class="popup" id="my-popup">
       <div class="view">
         <div class="page">
-          <div class="navbar">
+          <div class="navbar color-white">
             <div class="navbar-inner">
-              <div class="title">Popup</div>
+              <div class="title" style="color: #ef3837;">Filter</div>
               <div class="right">
-                <a href="#" class="link popup-close">Close</a>
+                <a href="#" class="link popup-close icon">
+                  <i class="icon material-icons md-only" style="color: #ef3837;">close</i>
+                </a>
               </div>
             </div>
           </div>
           <div class="page-content">
             <div class="block">
-              <p>Popup content goes here.</p>
+            <div class="list">
+              <ul>
+                <!-- Single checkbox item -->
+                <li>
+                  <label class="item-checkbox item-content">
+                    <!-- Checkbox input -->
+                    <input type="checkbox" />
+                    <!-- Checkbox icon -->
+                    <i class="icon icon-checkbox"></i>
+                    <div class="item-inner">
+                      <!-- Checkbox Title -->
+                      <div class="item-title">Books</div>
+                    </div>
+                  </label>
+                </li>
+                <!-- Another checkbox item -->
+                <li>
+                  <label class="item-checkbox item-content">
+                    <!-- Checked by default -->
+                    <input type="checkbox" checked/>
+                    <i class="icon icon-checkbox"></i>
+                    <div class="item-inner">
+                      <div class="item-title">Music</div>
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
             </div>
           </div>
         </div>
