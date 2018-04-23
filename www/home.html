@@ -24,6 +24,18 @@
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <style>
+    .md .navbar:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 100%;
+    top: 100%;
+    bottom: auto;
+    height: 0px;
+    pointer-events: none;
+    }
+  </style>
 </head>
 <body style="font-family: 'Montserrat', sans-serif;">
   <div id="app">
@@ -66,27 +78,27 @@
       <div class="toolbar tabbar-labels toolbar-bottom-md color-white">
         <div class="toolbar-inner">
           <a href="#view-home" class="tab-link tab-link-active color-black">
-            <i class="icon material-icons md-only" style="color: #ef3837;">home</i>
-            <span class="tabbar-label" style="color: #ef3837;">Platter</span>
+            <img src="img/iconset/shop.png" style="height: 62%;">
+            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Platter</span>
           </a>
           <a href="#view-catalog" class="tab-link color-black">
-            <i class="icon material-icons md-only" style="color: #ef3837;">person</i>
-            <span class="tabbar-label" style="color: #ef3837;">Account</span>
+            <img src="img/iconset/user.png" style="height: 62%;">
+            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Account</span>
           </a>
           <a href="#view-settings" class="tab-link color-black">
             <!-- <i class="icon material-icons md-only">box</i> -->
             <img src="img/iconset/cart-empty.png" style="height: 62%;">
-            <span class="tabbar-label" style="color: #ef3837;">Cart</span>
+            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Cart</span>
           </a>
 
           <a href="#view-settings" class="tab-link color-black">
-            <i class="icon material-icons md-only" style="color: #ef3837;">search</i>
-            <span class="tabbar-label" style="color: #ef3837;">Explore</span>
+            <img src="img/iconset/search.png" style="height: 62%;">
+            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Explore</span>
           </a>
 
           <a href="#view-settings" class="tab-link color-black">
-            <i class="icon material-icons md-only" style="color: #ef3837;">chat</i>
-            <span class="tabbar-label" style="color: #ef3837;">Chat</span>
+            <img src="img/iconset/chat.png" style="height: 62%;">
+            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Chat</span>
           </a>
         </div>
       </div>
@@ -95,7 +107,7 @@
         <!-- Page, data-name contains page name which can be used in page callbacks -->
         <div class="page" data-name="home">
           <!-- Top Navbar -->
-          <div class="navbar color-white">
+          <div class="navbar color-white" >
             <div class="navbar-inner">
               <div class="left">
                 <a href="#" class="link icon-only panel-open" data-panel="left">
@@ -105,7 +117,7 @@
               <div class="title sliding" style="color: #ef3837;">Garia</div>
               <div class="right">
                 <a href="#" class="link icon-only popup-open" data-panel="right"   data-popup="#my-popup">
-                  <i class="icon material-icons md-only" style="color: #ef3837;">list</i>
+                  <img src="img/iconset/filter.png" >
                 </a>
               </div>
             </div>
