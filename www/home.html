@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <!--
@@ -26,46 +27,55 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <style>
     .md .navbar:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 100%;
-    top: 100%;
-    bottom: auto;
-    height: 0px;
-    pointer-events: none;
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 100%;
+      top: 100%;
+      bottom: auto;
+      height: 0px;
+      pointer-events: none;
     }
-    /* A bit of demo styles */;
-.demo-swiper .swiper-slide {
-  font-size: 25px;
-  font-weight: 300;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  color: #000;
-}
-.demo-swiper .swiper-slide {
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  background: #fff;
-}
-.demo-swiper {
-  margin: 0px 0 35px;
-  font-size: 18px;
-  height: 120px;
-}
-.demo-swiper.demo-swiper-auto .swiper-slide {
-  width: 85%;
-}
-.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
-  width: 70%;
-}
-.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
-  width: 30%;
-}
+
+    /* A bit of demo styles */
+
+    ;
+    .demo-swiper .swiper-slide {
+      font-size: 25px;
+      font-weight: 300;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      color: #000;
+    }
+
+    .demo-swiper .swiper-slide {
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      background: #fff;
+    }
+
+    .demo-swiper {
+      margin: 0px 0 35px;
+      font-size: 18px;
+      height: 120px;
+    }
+
+    .demo-swiper.demo-swiper-auto .swiper-slide {
+      width: 85%;
+    }
+
+    .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+      width: 70%;
+    }
+
+    .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+      width: 30%;
+    }
   </style>
 </head>
+
 <body style="font-family: 'Montserrat', sans-serif;">
   <div id="app">
     <!-- Status bar overlay for fullscreen mode-->
@@ -136,7 +146,7 @@
         <!-- Page, data-name contains page name which can be used in page callbacks -->
         <div class="page" data-name="home">
           <!-- Top Navbar -->
-          <div class="navbar color-white" >
+          <div class="navbar color-white">
             <div class="navbar-inner">
               <div class="left">
                 <a href="#" class="link icon-only panel-open" data-panel="left">
@@ -145,8 +155,8 @@
               </div>
               <div class="title sliding" style="color: #ef3837;margin: 0px;font-size:16px;">Garia</div>
               <div class="right">
-                <a href="#" class="link icon-only popup-open" data-panel="right"   data-popup="#my-popup">
-                  <img src="img/iconset/filter.png" style="height: 20px;" >
+                <a href="#" class="link icon-only popup-open" data-panel="right" data-popup="#my-popup">
+                  <img src="img/iconset/filter.png" style="height: 20px;">
                 </a>
               </div>
             </div>
@@ -154,22 +164,28 @@
 
           <!-- Scrollable page content-->
           <div class="page-content">
-            <div class="block-title" style="color:#ef3837;">Top 10 Restaurent</div>
-            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="2" class="swiper-container swiper-init demo-swiper">
-              <div class="swiper-pagination"></div>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
-                <div class="swiper-slide"><img src="http://via.placeholder.com/170x120" style="width: 100%;"></div>
+            <div class="block-title" style="color:#ef3837;">Top Restaurents</div>
+            <div class="block">
+              <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="2" class="swiper-container swiper-init demo-swiper">
+                <!-- <div class="swiper-pagination"></div> -->
+                <div class="swiper-wrapper" style="height: 86%;">
+                  <div class="swiper-slide">
+                    <img src="img/chopsticks.png" style="width: 100%;">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="img/kosekosha.png" style="width: 100%;">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="img/arsalan.png" style="width: 100%;">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="img/zeeshan.png" style="width: 100%;">
+                  </div>
+
+                </div>
               </div>
             </div>
+
 
             <div class="block-title" style="color:#ef3837;">Amazing Offer</div>
             <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="auto" data-centered-slides="true"
@@ -188,6 +204,34 @@
                 <div class="swiper-slide">Slide 10</div>
               </div>
             </div>
+
+            <div class="block-title" style="color:#ef3837;">Offers</div>
+            <div class="list">
+              <ul>
+                <li class="accordion-item" style="background-color: #125e97; color: white;">
+                  <a href="#" class="item-content item-link">
+                    <div class="item-inner">
+                      <div class="item-title">
+                        <div class="row no-gap">
+                          <div class="col-20">
+                            <img src="img/002-motorcycle.png" style="width: 62%;">
+                          </div>
+                          <div class="col-80" style="padding-top: 3%;">Get free deliveryon your order</div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="accordion-item-content">
+                    <div class="block">
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia non deserunt totam, maxime natus ut
+                        ratione quae corrupti debitis dolore quisquam expedita quibusdam necessitatibus obcaecati. Debitis
+                        tenetur molestiae pariatur corporis.</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
@@ -223,167 +267,167 @@
 
           <div class="page-content">
             <div class="block">
-            <div class="list">
-              <ul>
-                <!-- Single checkbox item -->
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <!-- Another checkbox item -->
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checked by default -->
-                    <input type="checkbox" checked/>
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <div class="item-title">Music</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-                <li>
-                  <label class="item-checkbox item-content color-red">
-                    <!-- Checkbox input -->
-                    <input type="checkbox" />
-                    <!-- Checkbox icon -->
-                    <i class="icon icon-checkbox"></i>
-                    <div class="item-inner">
-                      <!-- Checkbox Title -->
-                      <div class="item-title">Books</div>
-                    </div>
-                  </label>
-                </li>
-              </ul>
-            </div>
-            
+              <div class="list">
+                <ul>
+                  <!-- Single checkbox item -->
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <!-- Another checkbox item -->
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checked by default -->
+                      <input type="checkbox" checked/>
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <div class="item-title">Music</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content color-red">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Books</div>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
             </div>
             <!-- <div class="tabbar-labels toolbar-bottom-md color-white">
               <div class="toolbar-inner">
@@ -391,16 +435,17 @@
               </div>
             </div> -->
           </div>
-          <br/><br/>
+          <br/>
+          <br/>
           <div class="toolbar tabbar-labels toolbar-bottom-md color-white" style="height:6%;">
-              <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Apply Filter</a>
+            <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Apply Filter</a>
           </div>
-         
+
         </div>
       </div>
     </div>
 
-    
+
   </div>
   <!-- Cordova -->
   <!--
@@ -422,4 +467,5 @@
     app.initialize();
   </script>
 </body>
+
 </html>
