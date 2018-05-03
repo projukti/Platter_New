@@ -5,3 +5,65 @@
 .ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
   display: none;
 }
+.md .navbar:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 100%;
+      top: 100%;
+      bottom: auto;
+      height: 1px;
+      pointer-events: none;
+    }
+
+    /* A bit of demo styles */
+
+    ;
+    .demo-swiper .swiper-slide {
+      font-size: 25px;
+      font-weight: 300;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      color: #000;
+    }
+
+    .demo-swiper .swiper-slide {
+      box-sizing: border-box;
+      background: #fff;
+    }
+
+    .demo-swiper {
+      margin: 0px !important;
+      font-size: 18px;
+      height: 120px;
+    }
+
+    .demo-swiper.demo-swiper-auto .swiper-slide {
+      width: 85%;
+    }
+
+    .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+      width: 70%;
+    }
+
+    .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+      width: 30%;
+    }
+
+    .md .list .item-inner:after {
+    content: '';
+    position: absolute;
+    background-color: rgba(0,0,0,.12);
+    display: block;
+    z-index: 15;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    height: 0px !important;
+    width: 100%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
