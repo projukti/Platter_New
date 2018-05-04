@@ -47,3 +47,28 @@ var app = {
         // console.log('Received Event: ' + id);
     }
 };
+function swipperminus() {
+    let curretn_value = $('.stepper-value').html();
+    if (curretn_value!=0)
+    {
+        curretn_value = parseInt(curretn_value)-1;
+    }
+    else{
+        curretn_value =0;
+    }
+    $('.stepper-value').html(curretn_value);
+    // console.log(curretn_value);
+}
+
+function swipperadd() {
+    let curretn_value = $('.stepper-value').html();
+    curretn_value = parseInt(curretn_value)+1;
+    // if (curretn_value != 0) {
+    //     curretn_value = curretn_value - 1;
+    // }
+    // else {
+    //     curretn_value = 0;
+    // }
+    $('.stepper-value').html(curretn_value);
+    // console.log(curretn_value);
+}
