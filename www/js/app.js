@@ -6,8 +6,8 @@ var app  = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Framework7', // App name
-  theme: 'auto', // Automatic theme detection
-  // App root data
+  theme: 'auto',
+  pushState: true,
   data: function () {
     return {
       user: {
@@ -33,6 +33,9 @@ var app  = new Framework7({
         },
       ]
     };
+    // { domCache: true, pushState: true };
+
+
   },
   // App root methods
   methods: {
@@ -67,6 +70,8 @@ $$('#my-login-screen .login-button').on('click', function () {
   // Alert username and password
   app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 });
+
+
 
 
 

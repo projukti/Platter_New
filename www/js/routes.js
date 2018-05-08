@@ -12,6 +12,10 @@ routes = [
     url: './pages/restaurent_details.html',
   },
   {
+    path: '/menu-details/',
+    url: './pages/menu_details.html',
+  },
+  {
     path: '/catalog/',
     componentUrl: './pages/catalog.html',
   },
