@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        // app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -47,8 +47,8 @@ var app = {
         // console.log('Received Event: ' + id);
     }
 };
-function swipperminus() {
-    let curretn_value = $('.stepper-value').html();
+function swipperminus(value) {
+    let curretn_value = $('#' + value).html();
     if (curretn_value!=0)
     {
         curretn_value = parseInt(curretn_value)-1;
@@ -56,12 +56,12 @@ function swipperminus() {
     else{
         curretn_value =0;
     }
-    $('.stepper-value').html(curretn_value);
+    $('#' + value).html(curretn_value);
     // console.log(curretn_value);
 }
 
-function swipperadd() {
-    let curretn_value = $('.stepper-value').html();
+function swipperadd(value) {
+    let curretn_value = $('#' + value).html();
     curretn_value = parseInt(curretn_value)+1;
     // if (curretn_value != 0) {
     //     curretn_value = curretn_value - 1;
@@ -69,6 +69,6 @@ function swipperadd() {
     // else {
     //     curretn_value = 0;
     // }
-    $('.stepper-value').html(curretn_value);
+    $('#' + value).html(curretn_value);
     // console.log(curretn_value);
 }
