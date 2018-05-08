@@ -8,6 +8,7 @@ var app  = new Framework7({
   name: 'Framework7', // App name
   theme: 'auto',
   pushState: true,
+  pushStateSeparator: '#/',
   data: function () {
     return {
       user: {
