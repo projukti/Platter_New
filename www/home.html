@@ -32,36 +32,6 @@
   <div id="app">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar color-white"></div>
-    <!-- Left panel with cover effect-->
-    <!-- <div class="panel panel-left panel-cover theme-dark">
-      <div class="view">
-        <div class="page">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="title">Left Panel</div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="block">Left panel content goes here</div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Right panel with reveal effect-->
-    <!-- <div class="panel panel-right panel-reveal theme-dark">
-      <div class="view">
-        <div class="page">
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="title">Right Panel</div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="block">Right panel content goes here</div>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <!-- Views/Tabs container -->
     <div class="views tabs ios-edges">
@@ -76,13 +46,13 @@
             <img src="img/iconset/user.png" style="height: 58%;">
             <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Account</span>
           </a>
-          <a href="#view-settings" class="tab-link color-#676767">
+          <a href="#view-cart" class="tab-link color-#676767">
             <!-- <i class="icon material-icons md-only">home             </span></i> -->
             <img src="img/iconset/cart-empty.png" style="height: 62%;">
             <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Cart 
           </a>
 
-          <a href="#view-settings" class="tab-link color-#676767">
+          <a href="#view-search" class="tab-link color-#676767">
             <img src="img/iconset/search.png" style="height: 58%;">
             <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Explore</span>
           </a>
@@ -512,7 +482,12 @@
       </div>
 
       <!-- Settings View -->
-      <div id="view-settings" class="view tab">
+      <div id="view-cart" class="view tab">
+        <!-- Settings page will be loaded here dynamically from /settings/ route -->
+      </div>
+
+      <!-- Search View -->
+      <div id="view-search" class="view tab">
         <!-- Settings page will be loaded here dynamically from /settings/ route -->
       </div>
     </div>

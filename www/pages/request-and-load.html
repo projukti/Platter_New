@@ -1,26 +1,118 @@
 <template>
   <div class="page">
-    <div class="navbar">
+    <div class="navbar color-white">
       <div class="navbar-inner sliding">
-        <div class="left">
-          <a href="#" class="back link">
-            <i class="icon icon-back"></i>
-            <span class="ios-only">Back</span>
-          </a>
+        <div class="title" style="color: #ef3837;">Search</div>
+        <div class="subnavbar">
+          <!-- Searchbar with auto init -->
+          <form class="searchbar">
+            <div class="searchbar-inner">
+              <div class="searchbar-input-wrap">
+                <input type="search" placeholder="Search">
+                <i class="searchbar-icon"></i>
+                <span class="input-clear-button"></span>
+              </div>
+              <span class="searchbar-disable-button">Cancel</span>
+            </div>
+          </form>
         </div>
-        <div class="title">{{user.firstName}} {{user.lastName}}</div>
       </div>
     </div>
     <div class="page-content">
-      <div class="block block-strong">
-        {{user.about}}
+      <div class="searchbar-backdrop"></div>
+      <div class="block-title searchbar-hide-on-search" style="color:#ef3837;">
+        <div class="row">
+          <div class="col-80" align="left">
+            12 Restaurents Found
+          </div>
+          <div class="col-20" align="right">
+            <a class="link" style="color: #ef3837;" href="/restaurent_list/">View all</a>
+          </div>
+        </div>
       </div>
-      <div class="list links-list">
-        <ul>
-          {{#each user.links}}
-            <li><a class="external" target="_blank" href="{{url}}">{{title}}</a></li>
-          {{/each}}
-        </ul>
+      <div class="block">
+        <div class="list media-list">
+          <ul>
+            <li>
+              <a href="/restaurent-details/" class="item-content" style="color:#676767;">
+                <div class="item-media">
+                  <img src="img/nms.png" width="80" />
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title" style="font-size: 14px; font-weight: bold;">New Om Sakti</div>
+                  </div>
+                  <div class="item-subtitle" style="font-size: 12px;">South Indian</div>
+                  <hr style="height: 0px; color: #fff;">
+                  <div class="item-subtitle">
+                    <div class="row">
+                      <div class="col-40" style="font-size: 12px;">
+                        <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
+                      </div>
+      
+                      <div class="col-60" style="font-size: 12px;text-align: right;">
+                        <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">
+                        <span>900 FOR TWO</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="/restaurent-details/" class="item-content" style="color:#676767;">
+                <div class="item-media">
+                  <img src="img/sweet.png" width="80" />
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title" style="font-size: 14px; font-weight: bold;">Hindusthan Sweets</div>
+                  </div>
+                  <div class="item-subtitle" style="font-size: 12px;">Snaks, Sweets</div>
+                  <hr style="height: 0px; color: #fff;">
+                  <div class="item-subtitle">
+                    <div class="row">
+                      <div class="col-40" style="font-size: 12px;">
+                        <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
+                      </div>
+      
+                      <div class="col-60" style="font-size: 12px;text-align: right;">
+                        <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="/restaurent-details/" class="item-content" style="color:#676767;">
+                <div class="item-media">
+                  <img src="img/mioamore.png" width="80" />
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title" style="font-size: 14px; font-weight: bold;">Mio Amore Restaurents</div>
+                  </div>
+                  <div class="item-subtitle" style="font-size: 12px;">Bakery</div>
+                  <hr style="height: 0px; color: #fff;">
+                  <div class="item-subtitle">
+                    <div class="row">
+                      <div class="col-40" style="font-size: 12px;">
+                        <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
+                      </div>
+      
+                      <div class="col-60" style="font-size: 12px;text-align: right;">
+                        <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

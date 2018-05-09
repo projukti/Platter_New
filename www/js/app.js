@@ -55,8 +55,24 @@ var homeView = app.views.create('#view-home', {
 var catalogView = app.views.create('#view-catalog', {
   url: '/catalog/'
 });
-var settingsView = app.views.create('#view-settings', {
-  url: '/settings/'
+var cartView = app.views.create('#view-cart', {
+  url: '/cart/'
+});
+var searchView = app.views.create('#view-search', {
+  url: '/request-and-load/user/123456/'
+});
+var searchbar = app.searchbar.create({
+  el: '.searchbar',
+  searchContainer: '.list',
+  searchIn: '.item-title',
+  on: {
+    search(sb, query, previousQuery) {
+      console.log(query, previousQuery);
+    },
+    enable: function () {
+      console.log('Searchbar enabled')
+    }
+  }
 });
 
 

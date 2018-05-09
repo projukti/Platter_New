@@ -28,8 +28,12 @@ routes = [
     componentUrl: './pages/product.html',
   },
   {
-    path: '/settings/',
-    url: './pages/settings.html',
+    path: '/cart/',
+    url: './pages/cart.html',
+  },
+  {
+    path: '/checkout-address/',
+    url: './pages/checkout-address.html',
   },
   // Page Loaders & Router
   {
