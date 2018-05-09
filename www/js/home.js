@@ -58,6 +58,7 @@ function swipperminus(value) {
     }
     $('#' + value).html(curretn_value);
     // console.log(curretn_value);
+
 }
 
 function swipperadd(value) {
@@ -72,3 +73,4 @@ function swipperadd(value) {
     $('#' + value).html(curretn_value);
     // console.log(curretn_value);
 }
+
