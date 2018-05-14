@@ -58,6 +58,9 @@ var catalogView = app.views.create('#view-catalog', {
 var cartView = app.views.create('#view-cart', {
   url: '/cart/'
 });
+var accountView = app.views.create('#view-account', {
+  url: '/account-user/'
+});
 var searchView = app.views.create('#view-search', {
   url: '/request-and-load/user/123456/'
 });

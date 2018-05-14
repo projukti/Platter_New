@@ -45,8 +45,8 @@ routes = [
     componentUrl: './pages/page-loader-component.html',
   },
   {
-    path:'/payment/',
-    componentUrl: './pages/payment.html',
+    path:'/account-user/',
+    componentUrl: './pages/account.html',
   },
   {
     path: '/request-and-load/user/:userId/',
