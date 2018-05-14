@@ -45,6 +45,10 @@ routes = [
     componentUrl: './pages/page-loader-component.html',
   },
   {
+    path:'/payment/',
+    componentUrl: './pages/payment.html',
+  },
+  {
     path: '/request-and-load/user/:userId/',
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance

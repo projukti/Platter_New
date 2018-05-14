@@ -1,17 +1,131 @@
 <template>
   <div class="page" data-name="catalog">
-    <div class="navbar">
+    <div class="navbar color-white">
       <div class="navbar-inner sliding">
-        <div class="title">Catalog</div>
+        <div class="left">
+          <a href="/home/" class="link back">
+            <i class="icon icon-back color-red"></i>
+          </a>
+        </div>
+        <div class="title color-white" style="color:#ef3837;">Payment<br><small style="font-size: 14px;">3 items, To pay:82</small></div>
       </div>
     </div>
     <div class="page-content">
+      <div class="block">
+        <strong>PREDERRED PAYMENT MODE FOR THIS OFFER</strong><br>
+        COUPON: PLATTER69
+      </div>
+      <div class="block-title">
+        WALLET
+      </div>
       <div class="list links-list">
         <ul>
-          {{#each products}}
-            <li><a href="/product/{{id}}/">{{title}}</a></li>
-          {{/each}}
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <img src="img/paytm.png" width="33" />
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Paytm</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <img src="img/freecharge.png" width="33" />
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Freecharge</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <img src="img/phonepe.png" width="33" />
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">PhonePe</div>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
+      </div>
+
+      <div class="block-title">
+        ONLINE PAYMENT
+      </div>
+      <div class="list links-list">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <img src="img/paytm.png" width="33" />
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Paytm</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <img src="img/freecharge.png" width="33" />
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Freecharge</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <img src="img/phonepe.png" width="33" />
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">PhonePe</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="block-title">
+        PAY ON DELIVERY
+      </div>
+      <div class="list media-list inset">
+        <ul>
+          <li>
+            <div class="item-content">
+              <label class="item-checkbox item-content">
+                <input type="checkbox" name="demo-media-checkbox" value="1" />
+                <i class="icon icon-checkbox"></i>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Cash</i></div>
+                </div>
+                <div class="item-subtitle" style="white-space:unset;">Please keep exact change handy to help us serve you better</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <button class="button button-fill color-green">ORDER NOW</button>
       </div>
     </div>
   </div>
