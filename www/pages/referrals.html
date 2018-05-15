@@ -1,0 +1,105 @@
+<template>
+  <div class="page">
+    <div class="navbar  color-white">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back color-red"></i>
+            <span class="ios-only color-red">Back</span>
+          </a>
+        </div>
+        <div class="title" style="color: #ef3837;margin: 0px;font-size:16px;">
+          Referrals
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block" style="margin:0;padding: 0;">
+        <img src="" alt="">
+      </div>
+      <div class="block">
+        <div class="list media-list">
+          <ul>
+            <li>
+              <div class="item-content" style="color:#676767;">
+                <div class="item-media">
+                  <img src="img/menupng.png" style="height: 50px; width: 50px;">
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <a href="/menu-details/">
+                      <div class="item-title" style="font-size: 14px; font-weight: bold;">
+                        Chicken Kosha
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item-subtitle" style="font-size: 12px;">
+                    <div class="row">
+                      <span>Aami Bangali</span>
+                    </div>
+                  </div>
+      
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content" style="color:#676767;">
+                <div class="item-media">
+                  <img src="img/chowman.png" style="height: 50px; width: 50px;" class="link">
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <a href="/menu-details/">
+                      <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
+                    </a>
+                  </div>
+                  <div class="item-subtitle" style="font-size: 12px;">
+                    <div class="row">
+                      <span>Aami Bangali</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content" style="color:#676767;">
+                <div class="item-media">
+                  <img src="img/golden.png" style="height: 50px; width: 50px;">
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <a href="/menu-details/">
+                      <div class="item-title" style="font-size: 14px; font-weight: bold;">Chowmin</div>
+                    </a>
+                  </div>
+                  <div class="item-subtitle" style="font-size: 12px;">
+                    <div class="row">
+                      <span>Aami Bangali</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      var productId = this.$route.params.id;
+      var currentProduct;
+      this.$root.products.forEach(function (product) {
+        if (product.id === productId) {
+          currentProduct = product;
+        }
+      });
+      return {
+        product: currentProduct,
+      };
+    }
+  };
+</script>
