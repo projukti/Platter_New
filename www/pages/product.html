@@ -1,20 +1,198 @@
 <template>
-  <div class="page" data-name="catalog">
-    <div class="navbar">
+  <div class="page">
+    <div class="navbar color-white">
       <div class="navbar-inner sliding">
         <div class="left">
-          <a href="#" class="link back">
-            <i class="icon icon-back"></i>
-            <span class="ios-only">Back</span>
+          <a href="#" class="link back" >
+            <i class="icon icon-back color-red"></i>
+            <span class="ios-only color-red">Back</span>
           </a>
         </div>
-        <div class="title">{{product.title}}</div>
+        <div class="title" style="color: #ef3837;">Orders</div>
       </div>
     </div>
-    <div class="page-content">
-      <div class="block-title">About {{product.title}}</div>
-      <div class="block block-strong">
-        {{product.description}}
+    <div class="toolbar tabbar color-white">
+      <div class="toolbar-inner" >
+        <a href="#tab-1" class="tab-link tab-link-active" style="color: #ef3837;">Open Orders</a>
+        <a href="#tab-2" class="tab-link" style="color: #ef3837;">Order History</a>
+      </div>
+    </div>
+    <div class="tabs-animated-wrap">
+      <div class="tabs">
+        <div id="tab-1" class="page-content tab tab-active">
+          <div class="block">
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="/order_details/1/" class="item-link item-content">
+                    <div class="item-inner item-cell">
+                      <div class="item-row">
+                        <div class="item-cell"><strong>Order No 5157460516</strong></div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell">09.02 AM, 14 May 2018</div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell" style="width: unset;"><img src="img/open_order.png" width="44"></div>
+                        <div class="item-cell"  style="width: unset;" >
+                          <div class="item-row">
+                            Amenia Restaurent , Goalpark
+                          </div>
+                          <div class="item-row">
+                            287.00
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/order_details/1/" class="item-link item-content">
+                    <div class="item-inner item-cell">
+                      <div class="item-row">
+                        <div class="item-cell">
+                          <strong>Order No 5157460516</strong>
+                        </div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell">09.02 AM, 14 May 2018</div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell" style="width: unset;">
+                          <img src="img/open_order.png" width="44">
+                        </div>
+                        <div class="item-cell" style="width: unset;">
+                          <div class="item-row">
+                            Amenia Restaurent , Goalpark
+                          </div>
+                          <div class="item-row">
+                            287.00
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/order_details/1/" class="item-link item-content">
+                    <div class="item-inner item-cell">
+                      <div class="item-row">
+                        <div class="item-cell">
+                          <strong>Order No 5157460516</strong>
+                        </div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell">09.02 AM, 14 May 2018</div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell" style="width: unset;">
+                          <img src="img/open_order.png" width="44">
+                        </div>
+                        <div class="item-cell" style="width: unset;">
+                          <div class="item-row">
+                            Amenia Restaurent , Goalpark
+                          </div>
+                          <div class="item-row">
+                            287.00
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="tab-2" class="page-content tab">
+          <div class="block">
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="/order_details/1/" class="item-link item-content">
+                    <div class="item-inner item-cell">
+                      <div class="item-row">
+                        <div class="item-cell">
+                          <strong>Order No 5157460516</strong>
+                        </div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell">09.02 AM, 14 May 2018</div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell" style="width: unset;">
+                          <img src="img/order_complete.png" width="44">
+                        </div>
+                        <div class="item-cell" style="width: unset;">
+                          <div class="item-row">
+                            Amenia Restaurent , Goalpark
+                          </div>
+                          <div class="item-row">
+                            287.00
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/order_details/1/" class="item-link item-content">
+                    <div class="item-inner item-cell">
+                      <div class="item-row">
+                        <div class="item-cell">
+                          <strong>Order No 5157460516</strong>
+                        </div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell">09.02 AM, 14 May 2018</div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell" style="width: unset;">
+                          <img src="img/order_complete.png" width="44">
+                        </div>
+                        <div class="item-cell" style="width: unset;">
+                          <div class="item-row">
+                            Amenia Restaurent , Goalpark
+                          </div>
+                          <div class="item-row">
+                            287.00
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/order_details/1/" class="item-link item-content">
+                    <div class="item-inner item-cell">
+                      <div class="item-row">
+                        <div class="item-cell">
+                          <strong>Order No 5157460516</strong>
+                        </div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell">09.02 AM, 14 May 2018</div>
+                      </div>
+                      <div class="item-row">
+                        <div class="item-cell" style="width: unset;">
+                          <img src="img/order_complete.png" width="44">
+                        </div>
+                        <div class="item-cell" style="width: unset;">
+                          <div class="item-row">
+                            Amenia Restaurent , Goalpark
+                          </div>
+                          <div class="item-row">
+                            287.00
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

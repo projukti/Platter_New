@@ -1,0 +1,104 @@
+<template>
+  <div class="page">
+    <div class="navbar  color-white">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back color-red"></i>
+            <span class="ios-only color-red">Back</span>
+          </a>
+        </div>
+        <div class="title" style="color: #ef3837;margin: 0px;font-size:16px;">Order No. 364738292
+          <br>
+          <small>Delivered | 2 Items, Rs. 312.00</small>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block" style="margin: 0; padding: 0 ;">
+        <img src="img/map.jpg" style="width:100%">
+      </div>
+      <div class="block">
+        <div class="row">
+          <div class="col-10">
+            <img src="img/placeholder.png"><br>
+          </div>
+          <div class="col-90">
+            <strong>Aami Bangali</strong><br>
+            <small style="font-size: 9px;">185/9A Santoshpur Avenue, Near Santoshpur Jora Bridge,Kolkata-58</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <img src="img/flag.png">
+          </div>
+          <div class="col-90">
+            <strong>Work</strong><br>
+            <small style="font-size: 9px;">185/9A Santoshpur Avenue, Near Santoshpur Jora Bridge,Kolkata-58</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-title">Menu Details</div>
+      <div class="block">
+        <div class="item-inner item-cell">
+          <div class="row">
+            <div class="col" style="text-align: left;">Roasted Chili Pork (Dry) x 1</div>
+            <div class="col" style="text-align: right;">100.00</div>
+          </div>
+          <div class="row">
+            <div class="col" style="text-align: left;">Roasted Chili Pork (Dry) x 1</div>
+            <div class="col" style="text-align: right;">100.00</div>
+          </div>
+          <div class="row">
+            <div class="col" style="text-align: left;">Roasted Chili Pork (Dry) x 1</div>
+            <div class="col" style="text-align: right;">100.00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-title">Bill Details</div>
+      <div class="block">
+        <div class="item-inner item-cell">
+          <div class="row">
+            <div class="col-80" style="text-align: left;">Item Total</div>
+            <div class="col-20" style="text-align: right;">100.00</div>
+          </div>
+          <div class="row">
+            <div class="col-80" style="color:green; text-align: left;">Delivery Charge</div>
+            <div class="col-20" style="color:green; text-align: right;">Free</div>
+          </div>
+          <div class="row">
+            <div class="col-80" style="color:green; text-align: left;">Coupon Discount</div>
+            <div class="col-20" style="color:green; text-align: right;">-33.00</div>
+          </div>
+          <div class="row">
+            <div class="col-80" style="text-align: left;">
+              <strong>To Pay</strong>
+            </div>
+            <div class="col-20" style="text-align: right;">
+              <strong>67.00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      var productId = this.$route.params.id;
+      var currentProduct;
+      this.$root.products.forEach(function (product) {
+        if (product.id === productId) {
+          currentProduct = product;
+        }
+      });
+      return {
+        product: currentProduct,
+      };
+    }
+  };
+</script>

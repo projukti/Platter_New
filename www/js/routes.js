@@ -28,6 +28,10 @@ routes = [
     componentUrl: './pages/product.html',
   },
   {
+    path: '/order_details/:id/',
+    componentUrl: './pages/order_details.html',
+  },
+  {
     path: '/cart/',
     url: './pages/cart.html',
   },

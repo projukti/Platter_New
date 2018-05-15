@@ -1480,3 +1480,9 @@
 .md .stepper.color-black.stepper-fill .stepper-button-minus:after,.md .stepper.color-black.stepper-fill .stepper-button-minus:before,.md .stepper.color-black.stepper-fill .stepper-button-plus:after,.md .stepper.color-black.stepper-fill .stepper-button-plus:before,.md .stepper.color-black.stepper-fill .stepper-button:after,.md .stepper.color-black.stepper-fill .stepper-button:before,.md .stepper.color-black.stepper-fill-md .stepper-button-minus:after,.md .stepper.color-black.stepper-fill-md .stepper-button-minus:before,.md .stepper.color-black.stepper-fill-md .stepper-button-plus:after,.md .stepper.color-black.stepper-fill-md .stepper-button-plus:before,.md .stepper.color-black.stepper-fill-md .stepper-button:after,.md .stepper.color-black.stepper-fill-md .stepper-button:before{
     background:#fff
 }
+
+.list .item-cell {
+    /*width: 0; */
+    /* min-width: 0; */
+    margin-left: 16px;
+}
