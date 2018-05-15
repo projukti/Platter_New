@@ -32,6 +32,10 @@ routes = [
     componentUrl: './pages/order_details.html',
   },
   {
+    path: '/favourites_user/:id/',
+    componentUrl: './pages/favourites.html',
+  },
+  {
     path: '/cart/',
     url: './pages/cart.html',
   },
