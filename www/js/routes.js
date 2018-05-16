@@ -40,6 +40,10 @@ routes = [
     componentUrl: './pages/order_details.html',
   },
   {
+    path: '/friends_profile/:id/',
+    componentUrl: './pages/profile.html',
+  },
+  {
     path: '/favourites_user/:id/',
     componentUrl: './pages/favourites.html',
   },
