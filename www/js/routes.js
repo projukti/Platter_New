@@ -36,6 +36,10 @@ routes = [
     componentUrl: './pages/favourites.html',
   },
   {
+    path: '/referrals/',
+    componentUrl: './pages/referrals.html',
+  },
+  {
     path: '/cart/',
     url: './pages/cart.html',
   },
