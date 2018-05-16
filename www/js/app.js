@@ -94,6 +94,15 @@ $$('#my-login-screen .login-button').on('click', function () {
   app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 });
 
+// app.onPageInit(function (page) {
+//   if (page.name == "chat_details") {
+//     page.view.hideToolbar();
+//   }
+//   else {
+//     page.view.showToolbar();
+//   }
+// });
+
 
 
 

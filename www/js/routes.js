@@ -32,6 +32,10 @@ routes = [
     componentUrl: './pages/product.html',
   },
   {
+    path: '/chat_details/:id/',
+    componentUrl: './pages/chat_details.html',
+  },
+  {
     path: '/order_details/:id/',
     componentUrl: './pages/order_details.html',
   },
