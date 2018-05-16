@@ -61,6 +61,9 @@ var cartView = app.views.create('#view-cart', {
 var accountView = app.views.create('#view-account', {
   url: '/account-user/'
 });
+var chatView = app.views.create('#view-chat',{
+  url: '/chat/'
+});
 var searchView = app.views.create('#view-search', {
   url: '/request-and-load/user/123456/'
 });

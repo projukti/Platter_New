@@ -24,6 +24,10 @@ routes = [
     componentUrl: './pages/catalog.html',
   },
   {
+    path: '/chat/',
+    componentUrl: './pages/chat.html',
+  },
+  {
     path: '/product/:id/',
     componentUrl: './pages/product.html',
   },
