@@ -56,6 +56,10 @@ routes = [
     componentUrl: './pages/friend.html',
   },
   {
+    path: '/customized-meal/',
+    componentUrl: './pages/customize_meal.html',
+  },
+  {
     path: '/cart/',
     url: './pages/cart.html',
   },
