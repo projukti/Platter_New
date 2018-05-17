@@ -1,0 +1,97 @@
+<template>
+    <div class="page">
+        <div class="navbar  color-white">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back color-red"></i>
+                        <span class="ios-only color-red">Back</span>
+                    </a>
+                </div>
+                <div class="title" style="color: #ef3837;margin: 0px;font-size:16px;">Search Friends</div>
+            </div>
+            <div class="subnavbar">
+                <!-- Searchbar with auto init -->
+                <form class="searchbar">
+                    <div class="searchbar-inner">
+                        <div class="searchbar-input-wrap">
+                            <input type="search" placeholder="Search">
+                            <i class="searchbar-icon"></i>
+                            <span class="input-clear-button"></span>
+                        </div>
+                        <span class="searchbar-disable-button">Cancel</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="list media-list inset">
+                <ul>
+                    <li>
+                        <a href="/friends_profile/1/" class="item-link item-content">
+                            <div class="item-media">
+                                <img src="img/user.png" width="44" />
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">John
+                                        <span class="badge color-green">5</span>
+                                    </div>
+                                </div>
+                                <div class="item-subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit fugit a vel eum! Ducimus, saepe. Ratione
+                                    ut quisquam, aut laborum doloribus ea, quos eveniet quam suscipit atque explicabo obcaecati incidunt?</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/friends_profile/1/" class="item-link item-content">
+                            <div class="item-media">
+                                <img src="img/user.png" width="44" />
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Queen
+                                        <span class="badge color-green">2</span>
+                                    </div>
+                                </div>
+                                <div class="item-subtitle">Hye Buddy</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/friends_profile/1/" class="item-link item-content">
+                            <div class="item-media">
+                                <img src="img/user.png" width="44" />
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Billie Jean
+                                        <span class="badge color-green">1</span>
+                                    </div>
+                                </div>
+                                <div class="item-subtitle">Hello, How are you man?</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            var productId = this.$route.params.id;
+            var currentProduct;
+            this.$root.products.forEach(function (product) {
+                if (product.id === productId) {
+                    currentProduct = product;
+                }
+            });
+            return {
+                product: currentProduct,
+            };
+        }
+    };
+</script>

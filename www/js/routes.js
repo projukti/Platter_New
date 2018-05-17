@@ -52,6 +52,10 @@ routes = [
     componentUrl: './pages/referrals.html',
   },
   {
+    path: '/friend/',
+    componentUrl: './pages/friend.html',
+  },
+  {
     path: '/cart/',
     url: './pages/cart.html',
   },
