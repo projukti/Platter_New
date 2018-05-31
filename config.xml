@@ -21,7 +21,7 @@
     <preference name="Orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarStyle" value="lightcontent" />
-    <preference name="StatusBarBackgroundColor" value="#125e97" />
+    <preference name="StatusBarBackgroundColor" value="#80477b" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
