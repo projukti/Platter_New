@@ -4,17 +4,17 @@
       <div class="navbar-inner">
         <div class="title" style="color: #fff;">Account</div>
         <div class="right">
-          <a href="#" class="link icon popup-open" style="color: #fff; font-size:15px;" data-popup="#accoount-update">
+          <a href="/edit-profile/" class="link" style="color: #fff; font-size:15px;">
             <img src="img/edit.png" style="height: 24px;">
           </a>
         </div>
       </div>
     </div>
     <div class="page-content">
-      <div class="block" align="center">
-        <img src="img/user.png" style="border-radius:50%;"><br>
-          <strong>SAIKAT BHADURY</strong>
-          <br>9547763998 . saikat.projukti@gmail.com
+      <div class="block" align="center" id="user_details">
+        <!-- <img src="img/user.png" style="border-radius:50%;"><br>
+          <strong id="user_name">SAIKAT BHADURY</strong>
+          <br>9547763998 . saikat.projukti@gmail.com -->
       </div>
       
       
@@ -78,12 +78,6 @@
           <li>
             <a href="#">Logout</a>
           </li>
-          <li>
-            <a href="home.html" class="link external">Home 1</a>
-          </li>
-          <li>
-            <a href="home2.html" class="link external">Home 2</a>
-          </li>
         </ul>
 
       </div>
@@ -93,10 +87,26 @@
 </template>
 <script>
   return {
-    data: function () {
-      return {
-        products: this.$root.products,
-      };
+    on:{
+      pageBeforeIn: function (e, page) {
+        var user_details='';
+        $.ajax({
+          type: "post",
+          url: "http://platterexoticfood.com/pladmin/manage_api/cust_profile/",
+          data: { user: localStorage.getItem('platuser') },
+          dataType: "JSON"
+        }).done(function (reply) {
+          // console.log(reply);
+          // $('#user_details').html();
+          localStorage.setItem('user_image', reply.custProfile.customer_image);
+          localStorage.setItem('user_name', reply.custProfile.customer_name);
+          localStorage.setItem('user_email', reply.custProfile.profEmail);
+          user_details +='<img src="http://platterexoticfood.com/pladmin/uploads/customer/'+ reply.custProfile.customer_image +'" style="border-radius:50%;width: 25%;"><br>';
+          user_details +='<strong>' + reply.custProfile.customer_name +'</strong>';
+          user_details += '<br>'+ reply.custProfile.customer_mobile +' . ' + reply.custProfile.profEmail +'';
+          $('#user_details').html(user_details);
+        });
+      }
     }
   };
 </script>

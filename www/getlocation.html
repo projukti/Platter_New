@@ -122,7 +122,8 @@
                         <div class="block">
                             <div class="row">
                                 <div class="col-100">
-                                    <a href="story.html" class="col button button-raised button-fill popup-open color-red" style="text-transform: capitalize;"> Use My Current Location</a>
+                                    <a href="#" class="col button button-raised button-fill popup-open color-red" style="text-transform: capitalize;" onclick="return chkloc();">
+                                    Use My Current Location</a>
                                 </div>
                             </div>
                         </div>
@@ -130,28 +131,13 @@
                         <div class="block" align="center">
                             <div class="row">
                                 <div class="col-100">
-                                    <a href="#" class="link login-screen-open" style="border-color: #00749e;color: #00749e;text-transform: capitalize;" data-login-screen="#my-login-screen"> Set Your Location </a>
+                                    <a href="#" class="link login-screen-open" style="border-color: #00749e;color: #00749e;text-transform: capitalize;" data-login-screen="#my-login-screen">
+                                    Set Your Location </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- <div class="block-title searchbar-hide-on-search">Page Loaders & Router</div>
-                        <div class="list links-list searchbar-hide-on-search">
-                            <ul>
-                                <li>
-                                    <a href="/page-loader-template7/vladimir/123/about-me/1/?start=0&end=30#top">Template7 Page</a>
-                                </li>
-                                <li>
-                                    <a href="/page-loader-component/vladimir/123/about-me/1/?start=0&end=30#top">Component Page</a>
-                                </li>
-                                <li>
-                                    <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
-                                </li>
-                                <li>
-                                    <a href="/request-and-load/user/123456/">Request Data & Load</a>
-                                </li>
-                            </ul>
-                        </div> -->
+
                     </div>
                 </div>
             </div>
@@ -167,26 +153,7 @@
             </div>
         </div>
 
-        <!-- Popup -->
-        <div class="popup" id="my-popup">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar color-white">
-                        <div class="navbar-inner">
-                            <div class="title">SIGN UP</div>
-                            <div class="right">
-                                <a href="#" class="link popup-close">Close</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-content">
-                        <div class="block">
-                            <p>Popup content goes here.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Login Screen -->
         <div class="popup" id="my-login-screen">
@@ -204,43 +171,28 @@
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <input type="text" name="address" id="address" placeholder="Address">
+                                            <input type="text" id="delivAddress" placeholder="Address" onFocus="geolocate()">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <input type="text" name="house_no" id="house_no" placeholder="House No.">
+                                            <input type="text" id="house_no" placeholder="House No.">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <input type="text" name="land_mark" id="land_mark" placeholder="Enter Land Mark">
+                                            <input type="text" id="land_mark" placeholder="Enter Land Mark">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <input type="text" name="pin" id="pin" placeholder="Enter Pin code">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item-content item-input">
-                                    <div class="item-inner">
-                                        <div class="item-input-wrap">
-                                            <input type="text" name="pin" id="pin" placeholder="Enter Pin code">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item-content item-input">
-                                    <div class="item-inner">
-                                        <div class="item-input-wrap">
-                                            <input type="radio" name="type" id="type"> Work
-                                            <input type="radio" name="type" id="type"> Home
+                                            <input type="text" id="pin" placeholder="Enter Pin code">
                                         </div>
                                     </div>
                                 </li>
@@ -251,7 +203,7 @@
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <a href="home.html" class="col button button-raised button-fill" id="btnConfirm" >Confirm</a>
+                                            <a href="#" class="col button button-raised button-fill" id="btnConfirm" onclick="return customAddress()">Confirm</a>
                                         </div>
                                     </div>
 
@@ -262,110 +214,9 @@
                 </div>
             </div>
         </div>
-        <div class="popup" id="my-register-screen">
-            <div class="view">
-                <div class="page">
-                    <div class="page-content login-screen-content">
-                        <div class="block">
-                            <a href="#" class="link popup-close icon">
-                                <i class="icon material-icons md-only">close</i>
-                            </a>
-                        </div>
-                        <div class="login-screen-title">SIGN UP</div>
-                        <div class="list">
-                            <ul>
-                                <li class="item-content item-input">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label">Name</div>
-                                        <div class="item-input-wrap">
-                                            <input type="text" name="name" id="name" placeholder="Enter Name">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item-content item-input">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label">Email</div>
-                                        <div class="item-input-wrap">
-                                            <input type="email" name="email" id="email" placeholder="Enter Name">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item-content item-input">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label">Phone Number</div>
-                                        <div class="item-input-wrap">
-                                            <input type="text" name="phone" id="phone" placeholder="Enter Your Phone">
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="list">
-                            <ul>
-                                <li class="item-content item-input">
-                                    <div class="item-inner">
-                                        <div class="item-input-wrap">
-                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnRegister" data-popup="#otp-popup">Register</a>
-                                        </div>
-                                    </div>
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="popup" id="otp-popup">
-            <div class="view">
-                <div class="page">
-                    <div class="page-content">
-                        <div class="block-strong" align="center">
-                            <strong style="color:#ef3837;font-size: 20px;">Waiting to automatically detect a SMS sent to your number</strong>
-                            <p style="font-size: 14px;">Please enter the OTP to verify the mobile number</a>
-                            </p>
-                        </div>
-                        <!-- page-content has additional login-screen content -->
-                        <div class="page-content login-screen-content" style="padding-top:0px;">
-                            <!-- Login form -->
-                            <form>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">OTP</div>
-                                                <div class="item-input-wrap">
-                                                    <input type="number" id="txtOTP" name="otp" placeholder="Enter 4-digit code" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
-                                                    <span class="input-clear-button"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-input-wrap">
-                                                    <a href="javascript:void(0);" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Verify OTP</a>
-                                                </div>
-                                            </div>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="block">
-                                    <a href="#" class="link icon" disabled>
-                                        <i class="icon material-icons md-only">redo</i>Resend</a>
-                                    <div class="right"> Time Remaining 0.15</div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+    <div id="map"></div>
     <!-- Cordova -->
     <!--
   <script src="cordova.js"></script>
@@ -385,6 +236,161 @@
     <script>
         app.initialize();
     </script>
+    <script>
+        var serverUrl = 'http://platterexoticfood.com/pladmin/';
+        ///// For Geolocationn Detection /////
+        function initgl(enableHighAccuracyMode) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                lat = position.coords.latitude;
+                lng = position.coords.longitude;
+                localStorage.setItem('lat', lat);
+                localStorage.setItem('lang', lng);
+                customerLocation = {
+                    lat: lat,
+                    lng: lng
+                };
+                /* For Map in delivery section */
+                var latLong = new google.maps.LatLng(lat, lng);
+                var mapOptions = {
+                    center: latLong,
+                    zoom: 16,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: latLong,
+                    map: map,
+                    title: 'my location'
+                });
+                /* Map Ends */
+                /* Address Autocomplete */
+                var placeSearch, autocomplete;
+                var componentForm = {
+                    street_number: 'short_name',
+                    route: 'long_name',
+                    locality: 'long_name',
+                    administrative_area_level_1: 'short_name',
+                    country: 'long_name',
+                    postal_code: 'short_name'
+                };
+                autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('delivAddress')), {
+                        types: ['geocode']
+                    });
+                autocomplete.addListener('place_changed', fillInAddress);
+                /* Address Autocomplete Ends */
+                var geocoder = new google.maps.Geocoder;
+                geocoder.geocode({
+                    'location': {
+                        lat: lat,
+                        lng: lng
+                    }
+                }, function (results, status) {
+                    if (status === 'OK') {
+                        if (results) {
+                            console.log(results[0].formatted_address);
+                            localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
+                            $('#delivAddress').val(results[0].formatted_address);
+                            $.ajax({
+                                url: serverUrl + 'manage_api/pin_verify',
+                                method: 'post',
+                                dataType: 'JSON',
+                                data: {
+                                    pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
+                                }
+                            })
+                                .done(function (repl) {
+                                    console.log(repl);
+                                    if (repl.status) {
+                                        localStorage.setItem('area', repl.locality);
+                                    } else {
+                                        window.location.href = "no_service.html";
+                                        localStorage.setItem('area', 'Unidentified');
+                                    }
+                                });
+                        } else {
+                            window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+                        }
+                    } else {
+                        window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+                    }
+                });
+            },
+                function (err) {
+                    initgl(true);
+                }, {
+                    enableHighAccuracy: enableHighAccuracyMode
+                });
+        }
+        function initglone() {
+            initgl(false);
+        }
+        function fillInAddress() {
+            // Get the place details from the autocomplete object.
+            var place = autocomplete.getPlace();
+            for (var component in componentForm) {
+                document.getElementById(component).value = '';
+                document.getElementById(component).disabled = false;
+            }
+            // Get each component of the address from the place details
+            // and fill the corresponding field on the form.
+            for (var i = 0; i < place.address_components.length; i++) {
+                var addressType = place.address_components[i].types[0];
+                if (componentForm[addressType]) {
+                    var val = place.address_components[i][componentForm[addressType]];
+                    document.getElementById(addressType).value = val;
+                }
+            }
+        }
+        function geolocate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var circle = new google.maps.Circle({
+                        center: geolocation,
+                        radius: position.coords.accuracy
+                    });
+                    autocomplete.setBounds(circle.getBounds());
+                });
+            }
+        }
+    </script>
+    <script>
+        function chkloc() {
+            var userlat = localStorage.getItem('lat');
+            var userlang = localStorage.getItem('lang');
+            var userpin = localStorage.getItem('curr_pin');
+            if (userlat == '' && userlang == '' && userpin == '') {
+                var toast = app.toast.create({
+                    title: 'Error Fetching Location',
+                    text: 'Dear User Make Sure Your Device Location Is On',
+                    on: {
+                        opened: function () {
+                            console.log('Toast opened')
+                        }
+                    }
+                })
+            } else {
+                if(!localStorage.getItem('story_done'))
+                {
+                    localStorage.setItem('story_done', 1);
+                    window.location.href = "story.html";
+                }
+                else{
+                    window.location.href = "home2.html";
+                }
+            }
+        }
+    </script>
+    <script>
+        function customAddress() {
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL8nIWVqwG_k-r3HbAdfK9sHv03VS6UQ4&libraries=places&callback=initglone"></script>
 </body>
 
 </html>

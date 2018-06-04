@@ -81,6 +81,10 @@ routes = [
     componentUrl: './pages/account.html',
   },
   {
+    path: '/edit-profile/',
+    componentUrl: './pages/edit_profile.html',
+  },
+  {
     path: '/request-and-load/user/:userId/',
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance

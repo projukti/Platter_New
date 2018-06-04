@@ -83,16 +83,18 @@ var searchbar = app.searchbar.create({
 
 
 // Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
+$$('.login-screen .login-button').on('click', function () {
+  console.log('Here');
+  // var username = $$('#login-screen [name="username"]').val();
+  // var password = $$('#login-screen [name="password"]').val();
 
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
+  // // Close login screen
+  // app.loginScreen.close('login-screen');
 
-  // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+  // // Alert username and password
+  // app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 });
+
 
 // app.onPageInit(function (page) {
 //   if (page.name == "chat_details") {

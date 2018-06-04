@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="framework7/css/framework7.min.css">
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.countdownTimer.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <style>
         .logoBox {
@@ -38,24 +39,25 @@
             padding: 5px;
             transform: translate3d(0, -60%, 0);
         }
-        
+
         .logoBox img {
             display: block;
             width: 100%;
             height: auto
         }
+
         ul {
             padding: 0;
             margin: 0;
             display: block
         }
-        
+
         ul li {
             display: block;
             padding: 0;
             margin: 0 0 10px 0
         }
-        
+
         ul li img {
             display: block;
             float: left;
@@ -69,41 +71,12 @@
     <div id="app">
         <!-- Status bar overlay for fullscreen mode-->
         <div class="statusbar color-white"></div>
-        <!-- Left panel with cover effect-->
-        <!-- <div class="panel panel-left panel-cover theme-dark">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="title">Left Panel</div>
-                        </div>
-                    </div>
-                    <div class="page-content">
-                        <div class="block">Left panel content goes here</div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Right panel with reveal effect-->
-        <!-- <div class="panel panel-right panel-reveal theme-dark">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="title">Right Panel</div>
-                        </div>
-                    </div>
-                    <div class="page-content">
-                        <div class="block">Right panel content goes here</div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
 
         <!-- Views/Tabs container -->
         <div class="views tabs ios-edges">
             <!-- Tabbar for switching views-tabs -->
-            
+
             <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
             <div id="view-home" class="view view-main tab tab-active">
                 <!-- Page, data-name contains page name which can be used in page callbacks -->
@@ -127,32 +100,7 @@
                             </ul>
                         </div>
 
-                        <!-- <div class="block-title">Navigation</div> -->
-                        <!-- <div class="list">
-                            <ul>
-                                <li>
-                                    <a href="/about/" class="item-content item-link">
-                                        <div class="item-inner">
-                                            <div class="item-title">About</div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> -->
 
-                        <!-- <div class="block-title">Modals</div>
-                        <div class="block block-strong">
-                            <div class="row">
-                                <div class="col-50">
-                                    <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
-                                </div>
-                                <div class="col-50">
-                                    <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="block-title">Panels</div> -->
                         <div class="block" style="margin: 12px 0;">
                             <div class="row">
                                 <div class="col-50">
@@ -166,24 +114,21 @@
                         </div>
                         <div class="block" style="margin: 12px 0;">
                             <div class="row">
-                                <!-- <div class="col-5">
-                                    <button class="button button-fill" style="background-color: #46629e;color:#46629e; ">
-                                        
-                                    </button>
-                                </div> -->
+
                                 <div class="col-100">
-                                    <button class="button button-fill" style="background-color: #46629e;text-transform: none;">Login with Facebook </button>
+                                    <button class="button button-fill" style="background-color: #46629e;text-transform: none;" onclick="fbLogin()" id="fbLink">Login with Facebook </button>
                                 </div>
                             </div>
                         </div>
                         <div class="block" style="margin: 12px 0;">
                             <div class="row">
                                 <div class="col-100">
-                                    <button class="button button-fill" style="background-color: #d14836;text-transform: none;">Login with Google </button>
+                                    <button class="button button-fill" style="background-color: #d14836;text-transform: none;" id="login">Login with Google </button>
+                                    <p id="loginstatus"></p>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -199,26 +144,7 @@
             </div>
         </div>
 
-        <!-- Popup -->
-        <div class="popup" id="my-popup">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar color-white">
-                        <div class="navbar-inner">
-                            <div class="title">SIGN UP</div>
-                            <div class="right">
-                                <a href="#" class="link popup-close">Close</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-content">
-                        <div class="block">
-                            <p>Popup content goes here.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Login Screen -->
         <div class="popup" id="my-login-screen">
@@ -230,34 +156,89 @@
                                 <i class="icon material-icons md-only">close</i>
                             </a>
                         </div>
-                        <div class="login-screen-title">Login</div>
-                        <div class="list">
+                        <div class="login-screen-title" id="login_title">Login</div>
+                        <div class="list" id="loginscrn">
                             <ul>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-title item-label">Phone Number</div>
                                         <div class="item-input-wrap">
-                                            <input type="text" name="phone" id="phone" placeholder="Enter Your Phone">
+                                            <input type="text" name="phone" id="phone" placeholder="Enter Your Phone No">
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="list">
+                        <div class="list" id="loginscrn2">
                             <ul>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnLogin" data-popup="#otp-popup">Send OTP</a>
+                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnLoginotp" onclick="return requestOTP()">Send OTP</a>
                                         </div>
                                     </div>
-                        
+
                                 </li>
                             </ul>
                         </div>
+
+                        <!-- For OTP-->
+                        <div class="view" id="logingotp" style="display: none;">
+                            <div class="page">
+                                <div class="page-content">
+                                    <div class="block-strong" align="center">
+                                        <strong style="color:#ef3837;font-size: 20px;">Waiting to automatically detect a SMS sent to your number</strong>
+                                        <p style="font-size: 14px;">Please enter the OTP to verify the mobile number</a>
+                                        </p>
+                                    </div>
+                                    <!-- page-content has additional login-screen content -->
+                                    <div class="page-content login-screen-content" style="padding-top:0px;">
+                                        <!-- Login form -->
+                                        <form>
+                                            <div class="list">
+                                                <ul>
+                                                    <li class="item-content item-input">
+                                                        <div class="item-inner">
+                                                            <div class="item-title item-label">OTP</div>
+                                                            <div class="item-input-wrap">
+                                                                <input type="number" id="txtloginOTP" name="otp" placeholder="Enter 4-digit code" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
+                                                                <span class="input-clear-button"></span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="list">
+                                                <ul>
+                                                    <li class="item-content item-input">
+                                                        <div class="item-inner">
+                                                            <div class="item-input-wrap">
+                                                                <a href="#" class="col button button-raised button-fill popup-open color-red" id="btnLoginverify" data-popup="#" onclick="return verifyloginOTP()">Verify OTP</a>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="block">
+                                                <a href="#" class="link icon" disabled>
+                                                    <i class="icon material-icons md-only">redo</i>Resend</a>
+                                                <div class="right"> Time Remaining
+                                                    <span id="ms_timer_login"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OTP Ends-->
+
                     </div>
                 </div>
             </div>
+
+
         </div>
         <div class="popup" id="my-register-screen">
             <div class="view">
@@ -268,119 +249,194 @@
                                 <i class="icon material-icons md-only">close</i>
                             </a>
                         </div>
-                        <div class="login-screen-title">SIGN UP</div>
-                        <div class="list">
+                        <div class="login-screen-title" id="signtitle">SIGN UP</div>
+                        <div class="list" id="signgen">
                             <ul>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
-                                        
+
                                         <div class="item-input-wrap">
-                                            <input type="text" name="name" id="name" placeholder="Enter Name">
+                                            <input type="text" id="name" placeholder="Enter Name">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
-                                        
+
                                         <div class="item-input-wrap">
-                                            <input type="email" name="email" id="email" placeholder="Enter Email">
+                                            <input type="email" id="email" placeholder="Enter Email">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
-                                        
+
                                         <div class="item-input-wrap">
-                                            <input type="text" name="phone" id="phone" placeholder="Enter Your Phone">
+                                            <input type="text" id="phone2" placeholder="Enter Your Phone">
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="list">
+                        <div class="list" id="signbtn">
                             <ul>
                                 <li class="item-content item-input">
                                     <div class="item-inner">
                                         <div class="item-input-wrap">
-                                            <a href="#" class="col button button-raised button-fill popup-open" id="btnRegister" data-popup="#otp-popup">Register</a>
+                                            <a href="#" class="col button button-raised button-fill" id="btnRegister" onclick="return register()">Register</a>
+
                                         </div>
                                     </div>
-        
+
                                 </li>
                             </ul>
                         </div>
+                        <!-- For OTP-->
+                        <div class="view" id="signotp" style="display: none;">
+                            <div class="page">
+                                <div class="page-content">
+                                    <div class="block-strong" align="center">
+                                        <strong style="color:#ef3837;font-size: 20px;">Waiting to automatically detect a SMS sent to your number</strong>
+                                        <p style="font-size: 14px;">Please enter the OTP to verify the mobile number</a>
+                                        </p>
+                                    </div>
+                                    <!-- page-content has additional login-screen content -->
+                                    <div class="page-content login-screen-content" style="padding-top:0px;">
+                                        <!-- Login form -->
+                                        <form>
+                                            <div class="list">
+                                                <ul>
+                                                    <li class="item-content item-input">
+                                                        <div class="item-inner">
+                                                            <div class="item-title item-label">OTP</div>
+                                                            <div class="item-input-wrap">
+                                                                <input type="number" id="txtOTP" name="otp" placeholder="Enter 4-digit code" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
+                                                                <span class="input-clear-button"></span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="list">
+                                                <ul>
+                                                    <li class="item-content item-input">
+                                                        <div class="item-inner">
+                                                            <div class="item-input-wrap">
+                                                                <a href="#" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#" onclick="return verifyOTP()">Verify OTP</a>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="block">
+                                                <a href="#" class="link icon" disabled>
+                                                    <i class="icon material-icons md-only">redo</i>Resend</a>
+                                                <div class="right"> Time Remaining
+                                                    <span id="ms_timer"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OTP Ends-->
                     </div>
                 </div>
             </div>
         </div>
-        <div class="popup" id="otp-popup">
-            <div class="view">
-                <div class="page">
-                    <div class="page-content">
-                        <div class="block-strong" align="center">
-                            <strong style="color:#ef3837;font-size: 20px;">Waiting to automatically detect a SMS sent to your number</strong>
-                            <p style="font-size: 14px;">Please enter the OTP to verify the mobile number</a>
-                            </p>
-                        </div>
-                        <!-- page-content has additional login-screen content -->
-                        <div class="page-content login-screen-content" style="padding-top:0px;">
-                            <!-- Login form -->
-                            <form>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-title item-label">OTP</div>
-                                                <div class="item-input-wrap">
-                                                    <input type="number" id="txtOTP" name="otp" placeholder="Enter 4-digit code" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
-                                                    <span class="input-clear-button"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="list">
-                                    <ul>
-                                        <li class="item-content item-input">
-                                            <div class="item-inner">
-                                                <div class="item-input-wrap">
-                                                    <a href="getlocation.html" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Verify OTP</a>
-                                                </div>
-                                            </div>
-        
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="block">
-                                    <a href="#" class="link icon" disabled><i class="icon material-icons md-only">redo</i>Resend</a>
-                                    <div class="right"> Time Remaining 0.15</div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Cordova -->
-    <!--
+
+        <!-- Cordova -->
+        <!--
   <script src="cordova.js"></script>
   -->
 
-    <!-- Framework7 library -->
-    <script src="framework7/js/framework7.min.js"></script>
+        <!-- Framework7 library -->
+        <script src="framework7/js/framework7.min.js"></script>
 
-    <!-- App routes -->
-    <script src="js/routes.js"></script>
+        <!-- App routes -->
+        <script src="js/routes.js"></script>
 
-    <!-- Your custom app scripts -->
-    <script src="js/app.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="cordova.js"></script>
-    <script>
-        app.initialize();
-    </script>
+        <!-- Your custom app scripts -->
+        <script src="js/app.js"></script>
+        <script src="cordova.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.countdownTimer.js"></script>
+        <script src="js/login.js"></script>
+        <script>
+            app.initialize();
+        </script>
+        <script>
+            var googleapi = {
+                authorize: function (options) {
+                    var deferred = $.Deferred();
+                    //Build the OAuth consent page URL
+                    var authUrl = 'https://accounts.google.com/o/oauth2/auth?' + $.param({
+                        client_id: options.client_id,
+                        redirect_uri: options.redirect_uri,
+                        response_type: 'code',
+                        scope: options.scope
+                    });
+                    //Open the OAuth consent page in the InAppBrowser
+                    var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+                    //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
+                    //which sets the authorization code in the browser's title. However, we can't
+                    //access the title of the InAppBrowser.
+                    //
+                    //Instead, we pass a bogus redirect_uri of "http://localhost", which means the
+                    //authorization code will get set in the url. We can access the url in the
+                    //loadstart and loadstop events. So if we bind the loadstart event, we can
+                    //find the authorization code and close the InAppBrowser after the user
+                    //has granted us access to their data.
+                    $(authWindow).on('loadstart', function (e) {
+                        var url = e.originalEvent.url;
+                        var code = /\?code=(.+)$/.exec(url);
+                        var error = /\?error=(.+)$/.exec(url);
+                        if (code || error) {
+                            //Always close the browser when match is found
+                            authWindow.close();
+                        }
+                        if (code) {
+                            //Exchange the authorization code for an access token
+                            $.post('https://accounts.google.com/o/oauth2/token', {
+                                code: code[1],
+                                client_id: options.client_id,
+                                client_secret: options.client_secret,
+                                redirect_uri: options.redirect_uri,
+                                grant_type: 'authorization_code'
+                            }).done(function (data) {
+                                deferred.resolve(data);
+                            }).fail(function (response) {
+                                deferred.reject(response.responseJSON);
+                            });
+                        } else if (error) {
+                            //The user denied access to the app
+                            deferred.reject({
+                                error: error[1]
+                            });
+                        }
+                    });
+                    return deferred.promise();
+                }
+            };
+            $(document).on('deviceready', function () {
+                var $loginButton = $('#login');
+                var $loginStatus = $('#loginstatus');
+                $loginButton.on('click', function () {
+                    googleapi.authorize({
+                        client_id: '1055451421991-87j7hdsk3qru4bc8rvon0mf88r9dijts.apps.googleusercontent.com',
+                        client_secret: 'AJMI9xknZ7oxR4CV3rZOd6tS',
+                        redirect_uri: 'http://localhost/login_success.php',
+                        scope: 'https://www.googleapis.com/auth/analytics.readonly'
+                    }).done(function (data) {
+                        $loginStatus.html('Access Token: ' + data.access_token);
+                    }).fail(function (data) {
+                        $loginStatus.html(data.error);
+                    });
+                });
+            });
+        </script>
 </body>
 
 </html>
