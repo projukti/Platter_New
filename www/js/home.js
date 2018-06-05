@@ -85,7 +85,7 @@ var app = {
             quality: 70,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.DATA_URL,
             targetWidth: 640,
             targetHeight: 640,
             cameraDirection: 1
