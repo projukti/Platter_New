@@ -62,7 +62,7 @@ var app = {
         function onSuccess(imageData){
             imageData = "data:image/png;base64," + imageData;
             user = localStorage.getItem('platuser');
-            // $("#profile_image").attr("src", imageData);
+            $("#profile_image").attr("src", imageData);
 
             $.ajax({
                 url: 'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
