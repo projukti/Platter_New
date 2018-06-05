@@ -73,10 +73,10 @@ var app = {
                                 data: { mobile: user, token: token }
                             }).done(function(res) {
                                 localStorage.setItem('newtoken', token);
-                                app.fadeTo('home.html', 3000);
+                                app.fadeTo('home2.html', 3000);
                             })
                         } else {
-                            app.fadeTo('home.html', 3000);
+                            app.fadeTo('home2.html', 3000);
                         }
                     });
 
