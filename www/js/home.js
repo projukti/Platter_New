@@ -82,10 +82,13 @@ var app = {
     },
     openGellery : function() {
         navigator.camera.getPicture(onSuccess, onFail, {
-            quality: 50,
+            quality: 70,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             allowEdit: true,
-            destinationType: Camera.DestinationType.FILE_URI
+            destinationType: Camera.DestinationType.FILE_URI,
+            targetWidth: 640,
+            targetHeight: 640,
+            cameraDirection: 1
         });
         function onSuccess(imageData) {
             imageData = "data:image/png;base64," + imageData;
