@@ -23,6 +23,7 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="StatusBarBackgroundColor" value="#0d4067" />
     <preference name="phonegap-version" value="cli-8.0.0" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -117,4 +118,5 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-statusbar" />
     <plugin name="cordova-plugin-fcm" />
+    <plugin name="cordova-plugin-file-transfer" spec="1" />
 </widget>
