@@ -48,7 +48,7 @@ var app = {
 
         // console.log('Received Event: ' + id);
     },
-    openGellery : function(){
+    openCamera : function(){
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 20,
             destinationType: Camera.DestinationType.FILE_URL
@@ -74,7 +74,7 @@ var app = {
             window.plugins.toast.showLongBottom('Failed because: ' + message);
         }
     },
-    openCamera : function() {
+    openGellery : function() {
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 50,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
