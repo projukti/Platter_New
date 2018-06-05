@@ -49,20 +49,6 @@
             </div>
         </div>
     </div>
-    <div class="popover popover-links">
-        <div class="popover-inner">
-            <div class="list">
-                <ul>
-                    <li>
-                        <a class="list-button item-link" href="#" @click="openCamera">Camera</a>
-                    </li>
-                    <li>
-                        <a class="list-button item-link" href="#" @click="openGellery">Gallery</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </template>
 <script>
     return {
@@ -106,13 +92,10 @@
             },
             onSuccess: function (imageURI) {
                 imageData = "data:image/png;base64," + imageData;
-                var image = document.getElementById('profimg');
-                var imagebg = document.getElementById('profbg');
                 user = localStorage.getItem('platuser');
 
                 $("#profile_image").attr("src", imageData);
-                // image.src = imageData;
-                // imagebg.src = imageData;
+                
                 $.ajax({
                     url:'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
                     method: 'post',

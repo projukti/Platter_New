@@ -34,6 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         // app.receivedEvent('deviceready');
+        // app.openGellery();
+        // app.openCamera();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -45,7 +47,62 @@ var app = {
         // receivedElement.setAttribute('style', 'display:block;');
 
         // console.log('Received Event: ' + id);
+    },
+    openGellery : function(){
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 20,
+            destinationType: Camera.DestinationType.FILE_URL
+        });
+        function onSuccess(imageData){
+            imageData = "data:image/png;base64," + imageData;
+            user = localStorage.getItem('platuser');
+            $("#profile_image").attr("src", imageData);
+
+            $.ajax({
+                url: 'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
+                method: 'post',
+                dataType: 'JSON',
+                data: { user: user, image: imageData }
+            }).done(function (res) {
+                if (!res.success) {
+                    window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+                }
+            }).fail();
+        }
+
+        function onFail(message){
+            window.plugins.toast.showLongBottom('Failed because: ' + message);
+        }
+    },
+    openCamera : function() {
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 50,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            destinationType: Camera.DestinationType.FILE_URI
+        });
+        function onSuccess(imageData) {
+            imageData = "data:image/png;base64," + imageData;
+            user = localStorage.getItem('platuser');
+            $("#profile_image").attr("src", imageData);
+
+            $.ajax({
+                url: 'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
+                method: 'post',
+                dataType: 'JSON',
+                data: { user: user, image: imageData }
+            }).done(function (res) {
+                if (!res.success) {
+                    window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+                }
+            }).fail();
+        }
+
+        function onFail(message) {
+            window.plugins.toast.showLongBottom('Failed because: ' + message);
+        }
     }
+    
 };
 function swipperminus(value) {
     let curretn_value = $('#' + value).html();
