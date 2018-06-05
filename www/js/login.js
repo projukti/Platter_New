@@ -122,10 +122,10 @@ function verifyOTP() {
                         dataType: "JSON",
                         data: { mobile: mobile, token: token }
                     }).done(function (res) {
-                        window.location.href = "geolocation.html";
+                        window.location.href = "getlocation.html";
                     })
                 } else {
-                    window.location.href = "geolocation.html";
+                    window.location.href = "getlocation.html";
                 }
             });
         }).fail(function (err) {
