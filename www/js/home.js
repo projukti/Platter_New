@@ -36,6 +36,7 @@ var app = {
         // app.receivedEvent('deviceready');
         // app.openGellery();
         // app.openCamera();
+        $('#lblLocality').html(localStorage.getItem('area'));
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
