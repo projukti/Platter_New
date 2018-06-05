@@ -54,10 +54,10 @@
             <div class="list">
                 <ul>
                     <li>
-                        <a class="list-button item-link" href="#">Camera</a>
+                        <a class="list-button item-link" href="#" @click="openCamera">Camera</a>
                     </li>
                     <li>
-                        <a class="list-button item-link" href="#">Gallery</a>
+                        <a class="list-button item-link" href="#" @click="openGellery">Gallery</a>
                     </li>
                 </ul>
             </div>
@@ -87,9 +87,45 @@
                 });
             },
 
-            //This Function  For Select Image Fom Gallery
-            selectGallery: function () {
+            //This Function  For Select Image Fom Camera
+            openCamera: function () {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 20,
+                    destinationType: Camera.DestinationType.FILE_URL
+                });
+            },
 
+            // This Function For Open Gallery
+            openGellery: function () {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 50,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    allowEdit: true,
+                    destinationType: Camera.DestinationType.FILE_URI
+                });
+            },
+            onSuccess: function (imageURI) {
+                imageData = "data:image/png;base64," + imageData;
+                var image = document.getElementById('profimg');
+                var imagebg = document.getElementById('profbg');
+                user = localStorage.getItem('platuser');
+
+                $("#profile_image").attr("src", imageData);
+                // image.src = imageData;
+                // imagebg.src = imageData;
+                $.ajax({
+                    url:'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
+                    method: 'post',
+                    dataType: 'JSON',
+                    data: { user: user, image: imageData }
+                }).done(function (res) {
+                    if (!res.success) {
+                        window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+                    }
+                }).fail();
+            },
+            onFail: function (message) {
+                window.plugins.toast.showLongBottom('Failed because: ' + message);
             }
         }
     };
