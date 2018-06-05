@@ -10,7 +10,7 @@
                 <div class="title" style="color: #fff; margin: 0px;">Edit Profile</div>
             </div>
         </div>
-    
+
         <div class="page-content">
             <div class="block">
                 <div class="list">
@@ -48,7 +48,20 @@
                 </div>
             </div>
         </div>
-    
+    </div>
+    <div class="popover popover-links">
+        <div class="popover-inner">
+            <div class="list">
+                <ul>
+                    <li>
+                        <a class="list-button item-link" href="#">Camera</a>
+                    </li>
+                    <li>
+                        <a class="list-button item-link" href="#">Gallery</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -60,18 +73,24 @@
             }
         },
         methods: {
+            // This Function For Name Update
             updateProfile: function () {
                 let userFullName = $('#txtUserFullName').val();
                 $.ajax({
                     type: "post",
                     url: "http://platterexoticfood.com/pladmin/manage_api/cust_profile_update/",
-                    data: { user : localStorage.getItem("platuser") , field : 'profName' , fieldvalue : userFullName},
+                    data: { user: localStorage.getItem("platuser"), field: 'profName', fieldvalue: userFullName },
                     dataType: "JSON"
-                }).done(function (replay){
+                }).done(function (replay) {
                     localStorage.setItem('user_name', userFullName);
                     window.plugins.toast.showLongBottom('Name Update Successfully');
                 });
             },
+
+            //This Function  For Select Image Fom Gallery
+            selectGallery: function () {
+
+            }
         }
     };
 </script>
