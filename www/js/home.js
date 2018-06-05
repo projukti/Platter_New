@@ -73,6 +73,9 @@ var app = {
                 if (!res.success) {
                     window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
                 }
+                else {
+                    window.plugins.toast.showLongBottom('Profile image update successfully');
+                }
             }).fail();
         }
 
@@ -103,6 +106,9 @@ var app = {
             }).done(function (res) {
                 if (!res.success) {
                     window.plugins.toast.show('Failed because: ' + res.message, 'long', 'bottom', function (a) { }, function (b) { });
+                }
+                else{
+                    window.plugins.toast.showLongBottom('Profile image update successfully');
                 }
             }).fail();
         }
