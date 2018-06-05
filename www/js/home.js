@@ -50,13 +50,19 @@ var app = {
     },
     openCamera : function(){
         navigator.camera.getPicture(onSuccess, onFail, {
-            quality: 20,
-            destinationType: Camera.DestinationType.FILE_URL
+            quality: 70,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: 0,
+            destinationType: Camera.DestinationType.DATA_URL,
+            targetWidth: 640,
+            targetHeight: 640,
+            cameraDirection: 1
         });
         function onSuccess(imageData){
             imageData = "data:image/png;base64," + imageData;
             user = localStorage.getItem('platuser');
-            $("#profile_image").attr("src", imageData);
+            // $("#profile_image").attr("src", imageData);
 
             $.ajax({
                 url: 'http://platterexoticfood.com/pladmin/manage_api/cust_profile_image',
