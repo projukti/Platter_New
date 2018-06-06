@@ -33,15 +33,21 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("offline", this.checkConnection, false);
         document.addEventListener("online", this.onDeviceReady, true);
+        document.addEventListener("backbutton", this.onBackKeyDown, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-
         app.receivedEvent('deviceready');
     },
+    
+    // Back Button Off 
+    onBackKeyDown: function () {
+        return false;
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function (id) {
     },

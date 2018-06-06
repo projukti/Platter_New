@@ -6,11 +6,17 @@ var app = {
     
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("backbutton", this.onBackKeyDown, false);
     },
     
     onDeviceReady: function() {
         // Set Default Text And Value
         $('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
+    },
+
+    // Back Button Off 
+    onBackKeyDown : function(){
+        return false;
     },
     
     // Open Camera Using this section
@@ -85,6 +91,8 @@ var app = {
             window.plugins.toast.showLongBottom('Failed because: ' + message);
         }
     }
+
+    // This Section For Get 
     
 };
 
