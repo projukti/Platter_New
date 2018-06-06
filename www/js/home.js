@@ -102,9 +102,9 @@ var app = {
             url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_five_list/",
             dataType: "JSON"
         }).done(function (rply){
-            for (list in rply) {
+            for (list in rply.restaurant) {
                 topFiveRestaurantData += '<div class="card" class="card" style="margin-bottom: 10px;">'
-                topFiveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply[list].restaurant.restaurant_image + '" style="width:100%;">'
+                topFiveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" style="width:100%;">'
                 topFiveRestaurantData += '</div>'
                 $('#lblTopFiveRestaurents').html(topFiveRestaurantData)
             }
