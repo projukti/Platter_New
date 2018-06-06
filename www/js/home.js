@@ -122,7 +122,6 @@ var app = {
             url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_twelve_list/",
             dataType: "JSON"
         }).done(function (rply) {
-            console.log(rply);
             for (list in rply.restaurant) {
                 topTwelveRestaurantData += '<li>'
                 if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open")
@@ -132,7 +131,8 @@ var app = {
                     topTwelveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
                 }
                 else{
-                    topTwelveRestaurantData += '<a href="javascript:void(0);" onclick="' + app.custToastMessage(\'Restaurent Close Now\') +'" class="item-content" style="color:#676767;">'
+                    let cloaseMessage = "Restaurest will open at : " + rply.restaurant[list].opening_time
+                    topTwelveRestaurantData += '<a href="javascript:void(0);" onclick="' + app.custToastMessage(cloaseMessage) +'" class="item-content" style="color:#676767;">'
                     topTwelveRestaurantData += '<div class="item-media">'
                     topTwelveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>'
                 }
@@ -171,8 +171,8 @@ var app = {
             url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_general_list/",
             dataType: "JSON"
         }).done(function (rply) {
-            console.log(rply);
             for (list in rply.restaurant) {
+                
                 generalRestaurents += '<li>'
                 if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open") {
                     generalRestaurents += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '" class="item-content" style="color:#676767;">'
@@ -180,6 +180,7 @@ var app = {
                     generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
                 }
                 else {
+                    let cloaseMessage = "Restaurest will open at : " + rply.restaurant[list].opening_time
                     generalRestaurents += '<a href="javascript:void(0);" onclick="' + app.custToastMessage("Rasturant will open at : " + rply.restaurant[list].opening_time) +'" class="item-content" style="color:#676767;">'
                     generalRestaurents += '<div class="item-media">'
                     generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>'
