@@ -101,7 +101,13 @@
           localStorage.setItem('user_image', reply.custProfile.customer_image);
           localStorage.setItem('user_name', reply.custProfile.customer_name);
           localStorage.setItem('user_email', reply.custProfile.profEmail);
-          user_details +='<img src="http://platterexoticfood.com/pladmin/uploads/customer/'+ reply.custProfile.customer_image +'" style="border-radius:50%;width: 100px;height:100px;"><br>';
+          if(reply.custProfile.customer_image!="")
+          {
+            user_details += '<img src="http://platterexoticfood.com/pladmin/uploads/customer/' + reply.custProfile.customer_image + '" style="border-radius:50%;width: 100px;height:100px;"><br>';
+          }
+          else{
+            user_details += '<img src="http://platterexoticfood.com/pladmin/uploads/customer/noImage.jpg" style="border-radius:50%;width: 100px;height:100px;"><br>';
+          }
           user_details +='<strong>' + reply.custProfile.customer_name +'</strong>';
           user_details += '<br>'+ reply.custProfile.customer_mobile +' . ' + reply.custProfile.profEmail +'';
           $('#user_details').html(user_details);
