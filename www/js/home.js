@@ -132,7 +132,7 @@ var app = {
                     topTwelveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
                 }
                 else{
-                    topTwelveRestaurantData += '<a href="javascript:void(0);" class="item-content" style="color:#676767;">'
+                    topTwelveRestaurantData += '<a href="javascript:void(0);" onclick="' + app.custToastMessage("Rasturant will open at : " + rply.restaurant[list].opening_time) +'" class="item-content" style="color:#676767;">'
                     topTwelveRestaurantData += '<div class="item-media">'
                     topTwelveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>'
                 }
