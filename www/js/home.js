@@ -11,14 +11,8 @@ var app = {
 
     onDeviceReady: function() {
         // Set Default Text And Value
-        //$('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
-        $.ajax({
-            type: "POST",
-            url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_five_list/",
-            dataType: "JSON"
-        }).done(function (rply){
-            console.log(rply);
-        }).fail();
+        $('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
+        app.topFiveRestaurants();
     },
 
     // Back Button Off 
@@ -101,14 +95,18 @@ var app = {
 
     // This Section For Get Top 5 Restaurents
     topFiveRestaurants : function(){
-        console.log('here');
-        // $.ajax({
-        //     type: "POST",
-        //     url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_five_list/",
-        //     dataType: "JSON"
-        // }).done(function (rply){
-        //     console.log(rply);
-        // }).fail();
+        // console.log('here');
+        let topFiveRestaurantData =''
+        $.ajax({
+            type: "POST",
+            url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_five_list/",
+            dataType: "JSON"
+        }).done(function (rply){
+            topFiveRestaurantData += '<div class="card" class="card" style="margin-bottom: 10px;">'
+            topFiveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant.restaurant_image+'" style="width:100%;">'
+            topFiveRestaurantData += '</div>'
+            $('#lblTopFiveRestaurents').html(topFiveRestaurantData)
+        }).fail();
     },
     
 };
