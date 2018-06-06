@@ -8,10 +8,17 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("backbutton", this.onBackKeyDown, false);
     },
-    
+
     onDeviceReady: function() {
         // Set Default Text And Value
-        $('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
+        //$('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
+        $.ajax({
+            type: "POST",
+            url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_five_list/",
+            dataType: "JSON"
+        }).done(function (rply){
+            console.log(rply);
+        }).fail();
     },
 
     // Back Button Off 
@@ -90,9 +97,19 @@ var app = {
         function onFail(message) {
             window.plugins.toast.showLongBottom('Failed because: ' + message);
         }
-    }
+    },
 
-    // This Section For Get 
+    // This Section For Get Top 5 Restaurents
+    topFiveRestaurants : function(){
+        console.log('here');
+        // $.ajax({
+        //     type: "POST",
+        //     url: "http://platterexoticfood.com/pladmin/manage_api/restaurant_top_five_list/",
+        //     dataType: "JSON"
+        // }).done(function (rply){
+        //     console.log(rply);
+        // }).fail();
+    },
     
 };
 
@@ -116,4 +133,6 @@ function swipperadd(value) {
     $('#' + value).html(curretn_value);
     
 }
+
+
 
