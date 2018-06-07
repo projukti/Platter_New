@@ -265,6 +265,9 @@ var app = {
 
     // This Function For Get Rastuent Menu List
     restaurentMenus : function(resid){
+        let popularDish = ''
+        let vegDish = ''
+        let nonVegDish = ''
         $.ajax({
             type: "post",
             url: serverUrl +'menu_list/',
@@ -272,6 +275,107 @@ var app = {
             dataType: "JSON"
         }).done(function(rply){
             console.log(rply);
+
+            // This is for popular dishes
+            for (list in rply.popular) {
+                popularDish += '<li>'
+                popularDish += '<div class="item-content" style="color:#676767;">'
+                popularDish += '<div class="item-media">'
+                popularDish += '<img src="http://platterexoticfood.com/pladmin/uploads/menu/' + rply.popular[list].menuimg + '" style="height: 50px; width: 50px;">'
+                popularDish += '</div>'
+                popularDish += '<div class="item-inner">'
+                popularDish += '<div class="item-title-row">'
+                popularDish += '<a href="/menu-details/">'
+                popularDish += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.popular[list].menuname + '</div>'
+                popularDish += '</a>'
+                popularDish += '</div>'
+                popularDish += '<div class="item-subtitle" style="font-size: 12px;">'
+                popularDish += '<div class="row">'
+                popularDish += '<div class="col-20" style="font-size: 20px;">'
+                popularDish += '<img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">'
+                popularDish += '<span>' + rply.popular[list].menuprice + '</span>'
+                popularDish += '</div>'
+                popularDish += '<div class="col-80" style="font-size: 12px;text-align: right;">'
+                popularDish += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75" >'
+                popularDish += '<div class="stepper-button-minus" onclick="swipperminus(\'value7\')"></div>'
+                popularDish += '<div class="stepper-value" id="value7">0</div>'
+                popularDish += '<div class="stepper-button-plus" onclick="swipperadd(\'value7\')"></div>'
+                popularDish += '</div>'
+                popularDish += '</div>'
+                popularDish += '</div>'
+                popularDish += '</div>'
+                popularDish += '</div>'
+                popularDish += '</div>'
+                popularDish += '</li>'
+            }
+            $('#lblPopularDish').html(popularDish);
+
+            // This Section For Veg Items
+            for (list in rply.veg){
+                vegDish += '<li>'
+                vegDish += '<div class="item-content" style="color:#676767;">'
+                vegDish += '<div class="item-media">'
+                vegDish += '<img src="http://platterexoticfood.com/pladmin/uploads/menu/' + rply.veg[list].menuimg + '" style="height: 50px; width: 50px;">'
+                vegDish += '</div>'
+                vegDish += '<div class="item-inner">'
+                vegDish += '<div class="item-title-row">'
+                vegDish += '<a href="/menu-details/">'
+                vegDish += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.veg[list].menuname + '</div>'
+                vegDish += '</a>'
+                vegDish += '</div>'
+                vegDish += '<div class="item-subtitle" style="font-size: 12px;">'
+                vegDish += '<div class="row">'
+                vegDish += '<div class="col-20" style="font-size: 20px;">'
+                vegDish += '<img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">'
+                vegDish += '<span>' + rply.veg[list].menuprice + '</span>'
+                vegDish += '</div>'
+                vegDish += '<div class="col-80" style="font-size: 12px;text-align: right;">'
+                vegDish += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75">'
+                vegDish += '<div class="stepper-button-minus" onclick="swipperminus(\'value7\')"></div>'
+                vegDish += '<div class="stepper-value" id="value7">0</div>'
+                vegDish += '<div class="stepper-button-plus" onclick="swipperadd(\'value7\')"></div>'
+                vegDish += '</div>'
+                vegDish += '</div>'
+                vegDish += '</div>'
+                vegDish += '</div>'
+                vegDish += '</div>'
+                vegDish += '</div>'
+                vegDish += '</li>'
+            }
+            $('#lblVegDish').html(vegDish);
+
+            // This Section For Non Veg Items
+            for (list in rply.nonveg) {
+                nonVegDish += '<li>'
+                nonVegDish += '<div class="item-content" style="color:#676767;">'
+                nonVegDish += '<div class="item-media">'
+                nonVegDish += '<img src="http://platterexoticfood.com/pladmin/uploads/menu/' + rply.nonveg[list].menuimg + '" style="height: 50px; width: 50px;">'
+                nonVegDish += '</div>'
+                nonVegDish += '<div class="item-inner">'
+                nonVegDish += '<div class="item-title-row">'
+                nonVegDish += '<a href="/menu-details/">'
+                nonVegDish += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.nonveg[list].menuname + '</div>'
+                nonVegDish += '</a>'
+                nonVegDish += '</div>'
+                nonVegDish += '<div class="item-subtitle" style="font-size: 12px;">'
+                nonVegDish += '<div class="row">'
+                nonVegDish += '<div class="col-20" style="font-size: 20px;">'
+                nonVegDish += '<img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">'
+                nonVegDish += '<span>' + rply.nonveg[list].menuprice + '</span>'
+                nonVegDish += '</div>'
+                nonVegDish += '<div class="col-80" style="font-size: 12px;text-align: right;">'
+                nonVegDish += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75">'
+                nonVegDish += '<div class="stepper-button-minus" onclick="swipperminus(\'value7\')"></div>'
+                nonVegDish += '<div class="stepper-value" id="value7">0</div>'
+                nonVegDish += '<div class="stepper-button-plus" onclick="swipperadd(\'value7\')"></div>'
+                nonVegDish += '</div>'
+                nonVegDish += '</div>'
+                nonVegDish += '</div>'
+                nonVegDish += '</div>'
+                nonVegDish += '</div>'
+                nonVegDish += '</li>'
+            }
+            $('#lblNonVeg').html(nonVegDish);
         }).fail(function(rply){
             console.log(rply);
         });
