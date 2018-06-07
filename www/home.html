@@ -7,7 +7,7 @@
   Customize this policy to fit your own app's needs. For more guidance, see:
       https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
   Some notes:
-      * gap: is requi#ef3837 only on iOS (when using UIWebView) and is needed for JS->native communi  tion
+      * gap: is requi#ef3837 only on iOS (when using UIWebView) and is needed for JS->native communication
       * https://ssl.gstatic.com is requi#ef3837 only on Android and is needed for TalkBack to function properly
       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
           * Enable inline JS: add 'unsafe-inline' to default-src
@@ -36,30 +36,30 @@
     <!-- Views/Tabs container -->
     <div class="views tabs ios-edges">
       <!-- Tabbar for switching views-tabs -->
-      <div class="toolbar tabbar-labels toolbar-bottom-md color-white" id="main_toolbar">
+      <div class="toolbar tabbar-labels toolbar-bottom-md" style="background: #125e97;">
         <div class="toolbar-inner">
           <a href="#view-home" class="tab-link tab-link-active color-#676767">
-            <img src="img/iconset/shop.png" style="height: 58%;">
-            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Platter</span>
+            <img src="img/iconset/white/shop.png" style="height: 58%;">
+            <span class="tabbar-label" style="color: #fff; font-size: 13px;">Platter</span>
           </a>
           <a href="#view-account" class="tab-link color-#676767">
-            <img src="img/iconset/user.png" style="height: 58%;">
-            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Account</span>
+            <img src="img/iconset/white/user.png" style="height: 58%;">
+            <span class="tabbar-label" style="color: #fff; font-size: 13px;">Account</span>
           </a>
           <a href="#view-cart" class="tab-link color-#676767">
             <!-- <i class="icon material-icons md-only">home             </span></i> -->
-            <img src="img/iconset/cart-empty.png" style="height: 62%;">
-            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Cart
+            <img src="img/iconset/white/cart-empty.png" style="height: 62%;">
+            <span class="tabbar-label" style="color: #fff; font-size: 13px;">Cart
           </a>
 
           <a href="#view-search" class="tab-link color-#676767">
-            <img src="img/iconset/search.png" style="height: 58%;">
-            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Explore</span>
+            <img src="img/iconset/white/search.png" style="height: 58%;">
+            <span class="tabbar-label" style="color: #fff; font-size: 13px;">Explore</span>
           </a>
 
           <a href="#view-chat" class="tab-link color-#676767">
-            <img src="img/iconset/chat.png" style="height: 58%;">
-            <span class="tabbar-label" style="color: #ef3837; font-size: 13px;">Chat</span>
+            <img src="img/iconset/white/chat.png" style="height: 58%;">
+            <span class="tabbar-label" style="color: #fff; font-size: 13px;">Chat</span>
           </a>
         </div>
       </div>
@@ -68,171 +68,41 @@
         <!-- Page, data-name contains page name which can be used in page callbacks -->
         <div class="page" data-name="home">
           <!-- Top Navbar -->
-          <div class="navbar color-white">
+          <div class="navbar " style="background: #125e97;">
             <div class="navbar-inner">
-              <div class="left">
-                <a href="#" class="link icon-only panel-open" data-panel="left">
-                  <img src="img/icon.png" style="height: 55%;">
-                </a>
-              </div>
-              <div class="title sliding" style="color: #ef3837;margin: 0px;font-size:16px;">Garia</div>
+              <div class="title sliding" style="color: #fff;font-size:16px;" id="lblLocality">Garia</div>
               <div class="right">
                 <a href="#" class="link icon-only popup-open" data-panel="right" data-popup="#my-popup">
-                  <img src="img/iconset/filter.png" style="height: 20px;">
+                  <img src="img/control1.png" style="height: 24px;">
                 </a>
               </div>
             </div>
-          </div>
-          <div class="fab fab-right-bottom fab-morph color-red">
-            <a href="/customized-meal/" class="button button-raidse button-fil" data-popup="#my-popup">
-              <img src="img/breakfast.png" style="height: 60%;" >
-            </a>
           </div>
 
           <!-- Scrollable page content-->
-          <div class="page-content">
-            <div class="block-title" style="color:#ef3837;margin-top: 16px;">Top Restaurents</div>
-            <div class="block" style="margin-top: 16px;margin-bottom: 4px;">
-              <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="2" class="swiper-container swiper-init demo-swiper">
-                <!-- <div class="swiper-pagination"></div> -->
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="img/chopsticks.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/kosekosha.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/arsalan.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/zeeshan.png" style="width: 100%;">
-                  </div>
+          <div class="page-content" style="background: #fff">
 
-                </div>
-              </div>
-            </div>
+            <!-- <div class="block-title" style="margin-top:5px; background:#2196f3; margin-bottom: 3px;color: #fff;;margin-left: 0;margin-right: 0;padding: 5px;margin-bottom:5px">
+              <strong style="font-size: 12px;">Top Restaurent</strong>
+            </div> -->
 
-
-            <div class="block-title" style="color:#ef3837;margin-top: 0px;">Amazing Offer</div>
-            <div class="block" style="margin-top: 16px;margin-bottom: 4px;">
-
-              <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="2" class="swiper-container swiper-init demo-swiper">
-                <!-- <div class="swiper-pagination"></div> -->
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="img/1503574177offer2.jpg" alt="" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/1503574167offer3.jpg" alt="" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/1503574414offer1.jpg" alt="" style="width: 100%;">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="block-title" style="margin-top: 0px;margin-bottom:-16px;color:#ef3837;">
+            <div class="block-title" style="margin-top: 14px;font-weight: 900;">
               <div class="row">
-                <div class="col-80" align="left">
-                  36 Restaurents Found
-                </div>
-                <div class="col-20" align="right">
-                  <a class="link" style="color: #ef3837;" href="/chat_list/">View all</a>
+                <div class="col-100" align="left" style="color: #d90022; text-align: center;">
+                  <!-- <img src="img/top.png" style="    width: 16%;"><br>TOP RESTAURANTS -->
+                  <img src="img/card-images/top5.png" style="width: 33%;">
                 </div>
               </div>
             </div>
+            <!-- <div class="card" class="card" style="margin-bottom: 10px;" class="card" style="margin-bottom: 10px;">
+              <img src="img/card-images/top5.png" style="width:100%;">
+            </div> -->
+            <div id="lblTopFiveRestaurents"></div>
+
             <div class="block">
-              <div class="list media-list">
-                <ul>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/menupng.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Amenia</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Street Food, North Indian, Chainees</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">
-                              <span>900 FOR TWO</span>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/chowman.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Chowman</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Street Food, North Indian, Chainees</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/golden.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Street Food, North Indian, Chainees</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- <div class="block-title" style="color:#ef3837;margin-top: 0px;">Offers</div> -->
-            <div class="block" style="margin-top: 16px;margin-bottom: 4px;">
               <div class="list">
                 <ul>
-                  <li class="accordion-item" style="background-color: #97128d; color: white;">
+                  <li class="accordion-item" style="background-color: #125e97; color: white;">
                     <a href="#" class="item-content item-link">
                       <div class="item-inner">
                         <div class="item-title">
@@ -257,230 +127,67 @@
               </div>
             </div>
 
-            <div class="block-title" style="margin-top: -11px;margin-bottom:-16px;color:#ef3837;">
+            <div class="block-title">
               <div class="row">
-                <div class="col-80" align="left">
-                  12 Restaurents Found
-                </div>
-                <div class="col-20" align="right">
-                  <a class="link" style="color: #ef3837;" href="/restaurent_list/">View all</a>
-                </div>
+              <div class="col-80" align="left" style="color: #125e97;">
+                12 Restaurants Found
+              </div>
+              <div class="col-20" align="right">
+                <a class="link" style="color: #125e97;" href="/restaurent_list/">View all</a>
               </div>
             </div>
-            <div class="block">
+            </div>
+            
+
+            <div class="block" style="margin-top: -11px;">
               <div class="list media-list">
+                <ul id="lblTopTwelveRestaurents">
+                </ul>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="list">
                 <ul>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/nms.png" width="80" />
-                      </div>
+                  <li class="accordion-item" style="background-color: #125e97; color: white;">
+                    <a href="#" class="item-content item-link">
                       <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">New Om Sakti</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">South Indian</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
+                        <div class="item-title">
+                          <div class="row no-gap">
+                            <div class="col-20">
+                              <img src="img/002-motorcycle.png" style="width: 75%;">
                             </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">
-                              <span>900 FOR TWO</span>
-                            </div>
+                            <div class="col-80" style="padding-top: 4.5%;text-overflow: inherit;white-space: normal;">20% Off for first time user ! </div>
                           </div>
                         </div>
                       </div>
                     </a>
-                  </li>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/sweet.png" width="80" />
+                    <div class="accordion-item-content">
+                      <div class="block" style="padding-bottom: 14px;">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia non deserunt totam, maxime natus ut
+                        </p>
+                        <a class="button button-raised button-fill popup-open color-orange">GRAB IT</a>
                       </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Hindusthan Sweets</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Snaks, Sweets</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/mioamore.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Mio Amore Restaurents</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Bakery</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
+                    </div>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div class="block-title" style="margin-top: -11px;margin-bottom:-6px;color:#ef3837;">
+            <div class="block-title">
               <div class="row">
-                <div class="col-100" align="left">
-                  Top Bands
+                <div class="col-80" align="left" style="color: #125e97;">
+                  More Restaurants
                 </div>
-              </div>
-            </div>
-            <div class="block" style="margin-top: 16px;margin-bottom: 4px;">
-              <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="4" class="swiper-container swiper-init demo-swiper"
-                style="height: auto;">
-                <!-- <div class="swiper-pagination"></div> -->
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <img src="img/arminia.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/vogohorimanna.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/wowmomo.png" style="width:100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/soloana.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/pizzahut.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/dominos.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/chowmanlogo.png" style="width: 100%;">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="img/ccd.png" style="width: 100%;">
-                  </div>
+                <div class="col-20" align="right">
+                  <a class="link" style="color: #125e97;" href="/restaurent_list/">View all</a>
                 </div>
               </div>
             </div>
 
-            <div class="block-title" style="margin-top: 14px;margin-bottom:-16px;color:#ef3837;">
-              <div class="row">
-                <div class="col-100" align="left">
-                  More Restaurents
-                </div>
-              </div>
-            </div>
-            <div class="block">
+            <div class="block" style="margin-top: -11px;">
               <div class="list media-list">
-                <ul>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/amibangali.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Ami Bangali</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Bangladesi, Bengali</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">
-                              <span>900 FOR TWO</span>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/aminia.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Arsalan</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">North Indian, Chainese, Biriyani</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/restaurent-details/" class="item-content" style="color:#676767;">
-                      <div class="item-media">
-                        <img src="img/bhooterraja.png" width="80" />
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="font-size: 14px; font-weight: bold;">Bhooter Raja Dilo Bor</div>
-                        </div>
-                        <div class="item-subtitle" style="font-size: 12px;">Bengali</div>
-                        <hr style="height: 0px; color: #fff;">
-                        <div class="item-subtitle">
-                          <div class="row">
-                            <div class="col-40" style="font-size: 12px;">
-                              <i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>4.5
-                            </div>
-
-                            <div class="col-60" style="font-size: 12px;text-align: right;">
-                              <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;"> 900 FOR TWO
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
+                <ul id="lblGeneralRestaurents">
                 </ul>
               </div>
             </div>
@@ -493,22 +200,22 @@
       <div id="view-catalog" class="view tab">
         <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
       </div>
-
+      
       <!-- Settings View -->
       <div id="view-cart" class="view tab">
         <!-- Settings page will be loaded here dynamically from /settings/ route -->
       </div>
-
+      
       <!-- Search View -->
       <div id="view-search" class="view tab">
         <!-- Settings page will be loaded here dynamically from /settings/ route -->
       </div>
-
+      
       <!-- Account View -->
       <div id="view-account" class="view tab">
-
+      
       </div>
-
+      
       <!-- Chatting Lsit View -->
       <div id="view-chat" class="view tab">
       </div>
@@ -518,14 +225,14 @@
     <div class="popup" id="my-popup">
       <div class="view">
         <div class="page">
-          <div class="navbar color-white">
+          <div class="navbar" style="background: #125e97;">
             <div class="navbar-inner">
               <a href="#" class="link popup-close icon">
-                <i class="icon material-icons md-only" style="color: #ef3837;">close</i>
+                <i class="icon material-icons md-only" style="color: #fff;">close</i>
               </a>
-              <div class="title" style="color: #ef3837; margin: 0px;">Filter</div>
+              <div class="title" style="color: #fff; margin: 0px;">Filter</div>
               <div class="right">
-                <a href="#" class="link popup-close icon" style="color: #ef3837; font-size:15px;">
+                <a href="#" class="link popup-close icon" style="color: #fff; font-size:15px;">
                   Reset
                 </a>
               </div>
@@ -533,179 +240,194 @@
           </div>
 
           <div class="page-content">
+
+            <div class="block-title" style="font-weight: 900;color: #125e97;">Select Type</div>
             <div class="block">
               <div class="list">
                 <ul>
                   <!-- Single checkbox item -->
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Veg</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="item-checkbox item-content">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Non-Veg</div>
+                      </div>
+                    </label>
+                  </li>
+                  <!-- Another checkbox item -->
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="block-title" style="font-weight: 900;color: #125e97;">
+              Cuisines Type
+            </div>
+            <div class="block">
+              <div class="list">
+                <ul>
+                  <!-- Single checkbox item -->
+                  <li>
+                    <label class="item-checkbox item-content">
+                      <!-- Checkbox input -->
+                      <input type="checkbox" />
+                      <!-- Checkbox icon -->
+                      <i class="icon icon-checkbox"></i>
+                      <div class="item-inner">
+                        <!-- Checkbox Title -->
+                        <div class="item-title">Kashmiri</div>
                       </div>
                     </label>
                   </li>
                   <!-- Another checkbox item -->
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checked by default -->
                       <input type="checkbox" checked/>
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
-                        <div class="item-title">Music</div>
+                        <div class="item-title">Punjabi</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Uttar Pradesh</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Mughalai</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Rajasthani</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Gujarati</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Bengali</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Andhra</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Andhra</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Tamilian</div>
                       </div>
                     </label>
                   </li>
                   <li>
-                    <label class="item-checkbox item-content color-red">
+                    <label class="item-checkbox item-content">
                       <!-- Checkbox input -->
                       <input type="checkbox" />
                       <!-- Checkbox icon -->
                       <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
                         <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="item-checkbox item-content color-red">
-                      <!-- Checkbox input -->
-                      <input type="checkbox" />
-                      <!-- Checkbox icon -->
-                      <i class="icon icon-checkbox"></i>
-                      <div class="item-inner">
-                        <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
-                      </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="item-checkbox item-content color-red">
-                      <!-- Checkbox input -->
-                      <input type="checkbox" />
-                      <!-- Checkbox icon -->
-                      <i class="icon icon-checkbox"></i>
-                      <div class="item-inner">
-                        <!-- Checkbox Title -->
-                        <div class="item-title">Books</div>
+                        <div class="item-title">Kerala</div>
                       </div>
                     </label>
                   </li>
                 </ul>
               </div>
-
             </div>
+
             <!-- <div class="tabbar-labels toolbar-bottom-md color-white">
               <div class="toolbar-inner">
-                <a href="javascript:void(0);" class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Apply Filter</a>
+                <a href="javascript:void(0);" class="col button button-raised button-fill popup-open " id="btnLogin" data-popup="#">Apply Filter</a>
               </div>
             </div> -->
           </div>
           <br/>
           <br/>
           <div class="toolbar tabbar-labels toolbar-bottom-md color-white" style="height:6%;">
-            <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Apply Filter</a>
+            <a href="javascript:void(0);" disabled class="col button button-raised button-fill" style="background: #125e97;">Apply Filter</a>
           </div>
 
         </div>
@@ -716,12 +438,12 @@
     <div class="popup" id="accoount-update">
       <div class="view">
         <div class="page">
-          <div class="navbar color-white">
+          <div class="navbar" style="background: #125e97;">
             <div class="navbar-inner">
               <a href="#" class="link popup-close icon">
-                <i class="icon material-icons md-only" style="color: #ef3837;">close</i>
+                <i class="icon material-icons md-only" style="color: #fff;">close</i>
               </a>
-              <div class="title" style="color: #ef3837; margin: 0px;">Edit Profile</div>
+              <div class="title" style="color: #fff; margin: 0px;">Edit Profile</div>
             </div>
           </div>
 
@@ -732,11 +454,11 @@
                   <li>
                     <div class="item-content" style="color:#676767;">
                       <div class="item-media">
-                        <img src="img/user.png" id="profile_image" style="height: 50px; width: 50px;border-radius: 50%;">
+                        <img src="img/user.png" style="height: 50px; width: 50px;border-radius: 50%;">
                       </div>
                       <div class="item-inner">
                         <div class="item-title-row">
-                          <a class="link popover-open color-red" href="#" data-popover=".popover-links">
+                          <a class="link popover-open " href="#" data-popover=".popover-links">
                             <div class="item-title" style="font-size: 14px; font-weight: bold;">Edit Photo</div>
                           </a>
                         </div>
@@ -746,7 +468,7 @@
                   <li class="item-content item-input">
                     <div class="item-inner">
                       <div class="item-input-wrap">
-                        <input type="text" name="name" id="txtUserFullName" placeholder="Enter Name" value="">
+                        <input type="text" name="name" id="name" placeholder="Enter Name" value="Saikat Bhadury">
                       </div>
                     </div>
                   </li>
@@ -757,96 +479,29 @@
           <br/>
           <br/>
           <div class="toolbar tabbar-labels toolbar-bottom-md color-white" style="height:6%;">
-            <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open color-red" id="btnLogin" data-popup="#">Update Profile</a>
+            <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open " id="btnLogin" data-popup="#">Update Profile</a>
           </div>
 
         </div>
       </div>
     </div>
 
-    <!-- Friend Search Popup -->
-    <div class="popup" id="search-friend">
-      <div class="view">
-        <div class="page">
-          <div class="navbar color-white">
-            <div class="navbar-inner">
-              <a href="#" class="link popup-close icon">
-                <i class="icon material-icons md-only" style="color: #ef3837;">close</i>
-              </a>
-              <div class="title" style="color: #ef3837; margin: 0px;">Search Friend</div>
-            </div>
-            <div class="subnavbar">
-              <!-- Searchbar with auto init -->
-              <form class="searchbar">
-                <div class="searchbar-inner">
-                  <div class="searchbar-input-wrap">
-                    <input type="search" placeholder="Search">
-                    <i class="searchbar-icon"></i>
-                    <span class="input-clear-button"></span>
-                  </div>
-                  <span class="searchbar-disable-button">Cancel</span>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="page-content" style="margin-top: 28px;">
-            <div class="list media-list inset">
-              <ul>
-                <li>
-                  <a href="/friends_profile/1/" class="item-link item-content">
-                    <div class="item-media">
-                      <img src="img/user.png" width="44" />
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title">John
-                          <span class="badge color-green">5</span>
-                        </div>
-                      </div>
-                      <div class="item-subtitle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit fugit a vel eum! Ducimus, saepe. Ratione
-                        ut quisquam, aut laborum doloribus ea, quos eveniet quam suscipit atque explicabo obcaecati incidunt?</div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/friends_profile/1/" class="item-link item-content">
-                    <div class="item-media">
-                      <img src="img/user.png" width="44" />
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title">Queen
-                          <span class="badge color-green">2</span>
-                        </div>
-                      </div>
-                      <div class="item-subtitle">Hye Buddy</div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/friends_profile/1/" class="item-link item-content">
-                    <div class="item-media">
-                      <img src="img/user.png" width="44" />
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title">Billie Jean
-                          <span class="badge color-green">1</span>
-                        </div>
-                      </div>
-                      <div class="item-subtitle">Hello, How are you man?</div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
- 
+  <div class="popover popover-links">
+    <div class="popover-inner">
+      <div class="list">
+        <ul>
+          <li>
+            <a class="list-button item-link popover-close" href="#" onclick="app.openCamera()">Camera</a>
+          </li>
+          <li>
+            <a class="list-button item-link popover-close" href="#" onclick="app.openGellery()">Gallery</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <!-- Cordova -->
   <!--
   <script src="cordova.js"></script>
