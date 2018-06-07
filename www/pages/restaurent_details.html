@@ -616,6 +616,12 @@
                 }).done(function (rply) {
                     $('#lblRestaurentNameLocation').html(rply.restaurant.restaurant_name + ' - ' + rply.restaurant.locality);
                     $('#lblRestaurentCuisine').html(rply.restaurant.cuisine_tags);
+                    if(app.isRestaurantOpen(rply.restaurant.opening_time, rply.restaurant.closing_time) == "open"){
+                        $('#lblRestaurentCuisine').append('&nbsp;<img src="img/open.png">');
+                    }
+                    else{
+                        $('#lblRestaurentCuisine').append('&nbsp;<img src="img/close.png">');
+                    }
                     $('#lblRateingReview').html('<i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; ' + rply.restaurant.avg_rating + '<br> '+ rply.countRestaurantRating +' ratings');
                     $('#lblTwoCost').html(rply.restaurant.two_person_cost + '<br>for two');
                 });
