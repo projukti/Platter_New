@@ -107,9 +107,11 @@ var app = {
             dataType: "JSON"
         }).done(function (rply){
             for (list in rply.restaurant) {
+                topFiveRestaurantData += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '/' + rply.restaurant[list].restaurant_name + '/">'
                 topFiveRestaurantData += '<div class="card" class="card" style="margin-bottom: 10px;">'
                 topFiveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" style="width:100%;">'
                 topFiveRestaurantData += '</div>'
+                topFiveRestaurantData += '</a>'
                 $('#lblTopFiveRestaurents').html(topFiveRestaurantData)
             }
             
