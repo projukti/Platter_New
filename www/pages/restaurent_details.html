@@ -8,7 +8,7 @@
                         <span class="ios-only color-white">Back</span>
                     </a>
                 </div>
-                <div class="title" style="color: #fff;margin: 0px;font-size:16px;">{{$route.params.name}}</div>
+                <div class="title" style="color: #fff;margin: 0px;font-size:16px;" id="lblNavHeading">{{$route.params.name}}</div>
                 <div id="lblRestaurentID" style="display:none;">{{$route.params.id}}</div>
             </div>
         </div>
@@ -617,10 +617,10 @@
                     $('#lblRestaurentNameLocation').html(rply.restaurant.restaurant_name + ' - ' + rply.restaurant.locality);
                     $('#lblRestaurentCuisine').html(rply.restaurant.cuisine_tags);
                     if(app.isRestaurantOpen(rply.restaurant.opening_time, rply.restaurant.closing_time) == "open"){
-                        $('#lblRestaurentCuisine').append('&nbsp;<img src="img/open.png">');
+                        $('#lblNavHeading').append('&nbsp;<img src="img/open.png">');
                     }
                     else{
-                        $('#lblRestaurentCuisine').append('&nbsp;<img src="img/close.png">');
+                        $('#lblNavHeading').append('&nbsp;<img src="img/close.png">');
                     }
                     $('#lblRateingReview').html('<i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; ' + rply.restaurant.avg_rating + '<br> '+ rply.countRestaurantRating +' ratings');
                     $('#lblTwoCost').html(rply.restaurant.two_person_cost + '<br>for two');
