@@ -1,580 +1,629 @@
-<div class="page" data-name="restaurent_details">
-    <div class="navbar" style="background: #125e97;">
-        <div class="navbar-inner sliding">
-            <div class="left">
-                <a href="/home/" class="link back">
-                    <i class="icon icon-back color-white"></i>
-                    <span class="ios-only color-white">Back</span>
-                </a>
-            </div>
-            <div class="title" style="color: #fff;margin: 0px;font-size:16px;">AAMI BANGALI-SANTOSHPUR</div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="block-title" style="margin-top: 16px;">
-            <strong>AAMI BANGALI-SANTOSHPUR</strong>
-            <br>
-            <span style="font-size: 12px;">Bangladeshi,Bengali</span>
-        </div>
-        <div class="block" style="margin-top: -10px;">
-            <hr style="border-top: dotted 1px;">
-            <div class="row">
-                <div class="col-40" style="font-size: 12px; text-align: center;">
-                    <i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; 4.5
-                    <br> 8565 ratings
+<template>
+    <div class="page">
+        <div class="navbar" style="background: #125e97;">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="/home/" class="link back">
+                        <i class="icon icon-back color-white"></i>
+                        <span class="ios-only color-white">Back</span>
+                    </a>
                 </div>
-                <div class="col-50" style="font-size: 12px;text-align: center;">
-                    <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">
-                    <span>900
-                        <br> for two</span>
-                </div>
+                <div class="title" style="color: #fff;margin: 0px;font-size:16px;">{{$route.params.name}}</div>
+                <div id="lblRestaurentID" style="display:none;">{{$route.params.id}}</div>
             </div>
         </div>
-
-        <div class="block">
-             <div class="block-title" style="margin-top: 16px;">
-                <strong>Recomended</strong>
-            </div>
-            <div class="list media-list">
-                <ul>
-                    <li>
-                        <div class="item-content" style="color:#676767;">
-                            <div class="item-media">
-                                <img src="img/menupng.png" style="height: 50px; width: 50px;">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title-row">
-                                    <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div></a>
-                                </div>
-                                <div class="item-subtitle" style="font-size: 12px;">
-                                    <div class="row">
-                                        <div class="col-20" style="font-size: 20px;">
-                                            <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                            <span>900</span>
-                                        </div>
-            
-                                        <div class="col-80" style="font-size: 12px;text-align: right;">
-                                            <!-- parameters set via data- attributes -->
-                                            <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                data-step="25" data-value="75">
-                                                <div class="stepper-button-minus" onclick="swipperminus('value7')"></div>
-                                                <div class="stepper-value" id="value7">0</div>
-                                                <div class="stepper-button-plus" onclick="swipperadd('value7')"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content" style="color:#676767;">
-                            <div class="item-media">
-                                <img src="img/chowman.png" style="height: 50px; width: 50px;"  class="link">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title-row">
-                                    <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div></a>
-                                </div>
-                                <div class="item-subtitle" style="font-size: 12px;">
-                                    <div class="row">
-                                        <div class="col-20" style="font-size: 20px;">
-                                            <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                            <span>900</span>
-                                        </div>
-            
-                                        <div class="col-80" style="font-size: 12px;text-align: right;">
-                                            <!-- parameters set via data- attributes -->
-                                            <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                data-step="25" data-value="75">
-                                                <div class="stepper-button-minus" onclick="swipperminus('value8')"></div>
-                                                <div class="stepper-value" id='value8'>0</div>
-                                                <div class="stepper-button-plus" onclick="swipperadd('value8')"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content" style="color:#676767;">
-                            <div class="item-media">
-                                <img src="img/golden.png" style="height: 50px; width: 50px;">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title-row">
-                                    <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div></a>
-                                </div>
-                                <div class="item-subtitle" style="font-size: 12px;">
-                                    <div class="row">
-                                        <div class="col-20" style="font-size: 20px;">
-                                            <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                            <span>900</span>
-                                        </div>
-            
-                                        <div class="col-80" style="font-size: 12px;text-align: right;">
-                                            <!-- parameters set via data- attributes -->
-                                            <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                data-step="25" data-value="75">
-                                                <div class="stepper-button-minus" onclick="swipperminus('value9')"></div>
-                                                <div class="stepper-value" id='value9'>0</div>
-                                                <div class="stepper-button-plus" onclick="swipperadd('value9')"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>   
-
-        <div class="block" style="margin-top: 16px;">
-            <div class="list">
-                <ul>
-                    <li class="accordion-item">
-                        <a href="#" class="item-content item-link">
-                            <div class="item-inner">
-                                <div class="item-title">Veg</div>
-                            </div>
-                        </a>
-                        <div class="accordion-item-content">
-                            <div class="block">
-                                <div class="list media-list">
-                                    <ul>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/menupng.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value7')"></div>
-                                                                    <div class="stepper-value" id="value7">0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value7')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/chowman.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value8')"></div>
-                                                                    <div class="stepper-value" id='value8'>0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value8')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/golden.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value9')"></div>
-                                                                    <div class="stepper-value" id='value9'>0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value9')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="accordion-item">
-                        <a href="#" class="item-content item-link">
-                            <div class="item-inner">
-                                <div class="item-title">Non-Veg</div>
-                            </div>
-                        </a>
-                        <div class="accordion-item-content">
-                            <div class="block">
-                                <div class="list media-list">
-                                    <ul>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/menupng.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value10')"></div>
-                                                                    <div class="stepper-value" id='value10'>0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value10')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/chowman.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value11')"></div>
-                                                                    <div class="stepper-value" id='value11'>0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value11')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/golden.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value12')"></div>
-                                                                    <div class="stepper-value" id='value12'>0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value12')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="block" style="margin-top: 16px;">
+        <div class="page-content">
             <div class="block-title" style="margin-top: 16px;">
-                <strong>Soups</strong>
+                <strong id="lblRestaurentNameLocation">Loading...</strong>
+                <br>
+                <span style="font-size: 12px;" id="lblRestaurentCuisine">Loading...</span>
             </div>
-            <div class="list">
-                <ul>
-                    <li class="accordion-item">
-                        <a href="#" class="item-content item-link">
-                            <div class="item-inner">
-                                <div class="item-title">Veg</div>
-                            </div>
-                        </a>
-                        <div class="accordion-item-content">
-                            <div class="block">
-                                <div class="list media-list">
-                                    <ul>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/menupng.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-        
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value1')"></div>
-                                                                    <div class="stepper-value" id="value1">0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value1')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-        
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/chowman.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-        
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value2')"></div>
-                                                                    <div class="stepper-value" id="value2">0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value2')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/golden.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <a href="/menu-details/"><div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div></a>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-        
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value3')"></div>
-                                                                    <div class="stepper-value" id="value3">0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value3')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="accordion-item">
-                        <a href="#" class="item-content item-link">
-                            <div class="item-inner">
-                                <div class="item-title">Non-Veg</div>
-                            </div>
-                        </a>
-                        <div class="accordion-item-content">
-                            <div class="block">
-                                <div class="list media-list">
-                                    <ul>
-                                        <li>
-                                            <a href="#" class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/menupng.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-        
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value4')"></div>
-                                                                    <div class="stepper-value" id="value4">0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value4')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-        
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/chowman.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-        
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value5')"></div>
-                                                                    <div class="stepper-value" id="value5">0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value5')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="item-content" style="color:#676767;">
-                                                <div class="item-media">
-                                                    <img src="img/golden.png" style="height: 50px; width: 50px;">
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
-                                                    </div>
-                                                    <div class="item-subtitle" style="font-size: 12px;">
-                                                        <div class="row">
-                                                            <div class="col-20" style="font-size: 20px;">
-                                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                                                                <span>900</span>
-                                                            </div>
-        
-                                                            <div class="col-80" style="font-size: 12px;text-align: right;">
-                                                                <!-- parameters set via data- attributes -->
-                                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                                                                    data-step="25" data-value="75">
-                                                                    <div class="stepper-button-minus" onclick="swipperminus('value6')"></div>
-                                                                    <div class="stepper-value" id='value6'>0</div>
-                                                                    <div class="stepper-button-plus" onclick="swipperadd('value6')"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div class="block" style="margin-top: -10px;">
+                <hr style="border-top: dotted 1px;">
+                <div class="row">
+                    <div class="col-40" style="font-size: 12px; text-align: center;" id="lblRateingReview">
+                        loading....
+                    </div>
+                    <div class="col-50" style="font-size: 12px;text-align: center;">
+                        <img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">
+                        <span id="lblTwoCost">loading...</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        
+            <div class="block">
+                <div class="block-title" style="margin-top: 16px;">
+                    <strong style="color: #125e97;">Recomended</strong>
+                </div>
+                <div class="list media-list">
+                    <ul>
+                        <li>
+                            <div class="item-content" style="color:#676767;">
+                                <div class="item-media">
+                                    <img src="img/menupng.png" style="height: 50px; width: 50px;">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <a href="/menu-details/">
+                                            <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
+                                        </a>
+                                    </div>
+                                    <div class="item-subtitle" style="font-size: 12px;">
+                                        <div class="row">
+                                            <div class="col-20" style="font-size: 20px;">
+                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                <span>900</span>
+                                            </div>
+
+                                            <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                <!-- parameters set via data- attributes -->
+                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                    data-step="25" data-value="75">
+                                                    <div class="stepper-button-minus" onclick="swipperminus('value7')"></div>
+                                                    <div class="stepper-value" id="value7">0</div>
+                                                    <div class="stepper-button-plus" onclick="swipperadd('value7')"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content" style="color:#676767;">
+                                <div class="item-media">
+                                    <img src="img/chowman.png" style="height: 50px; width: 50px;" class="link">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <a href="/menu-details/">
+                                            <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
+                                        </a>
+                                    </div>
+                                    <div class="item-subtitle" style="font-size: 12px;">
+                                        <div class="row">
+                                            <div class="col-20" style="font-size: 20px;">
+                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                <span>900</span>
+                                            </div>
+
+                                            <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                <!-- parameters set via data- attributes -->
+                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                    data-step="25" data-value="75">
+                                                    <div class="stepper-button-minus" onclick="swipperminus('value8')"></div>
+                                                    <div class="stepper-value" id='value8'>0</div>
+                                                    <div class="stepper-button-plus" onclick="swipperadd('value8')"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content" style="color:#676767;">
+                                <div class="item-media">
+                                    <img src="img/golden.png" style="height: 50px; width: 50px;">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <a href="/menu-details/">
+                                            <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
+                                        </a>
+                                    </div>
+                                    <div class="item-subtitle" style="font-size: 12px;">
+                                        <div class="row">
+                                            <div class="col-20" style="font-size: 20px;">
+                                                <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                <span>900</span>
+                                            </div>
+
+                                            <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                <!-- parameters set via data- attributes -->
+                                                <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                    data-step="25" data-value="75">
+                                                    <div class="stepper-button-minus" onclick="swipperminus('value9')"></div>
+                                                    <div class="stepper-value" id='value9'>0</div>
+                                                    <div class="stepper-button-plus" onclick="swipperadd('value9')"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="block" style="margin-top: 16px;">
+                <div class="list">
+                    <ul>
+                        <li class="accordion-item">
+                            <a href="#" class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">Veg</div>
+                                </div>
+                            </a>
+                            <div class="accordion-item-content">
+                                <div class="block">
+                                    <div class="list media-list">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/menupng.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value7')"></div>
+                                                                        <div class="stepper-value" id="value7">0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value7')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/chowman.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value8')"></div>
+                                                                        <div class="stepper-value" id='value8'>0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value8')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/golden.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value9')"></div>
+                                                                        <div class="stepper-value" id='value9'>0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value9')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item">
+                            <a href="#" class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">Non-Veg</div>
+                                </div>
+                            </a>
+                            <div class="accordion-item-content">
+                                <div class="block">
+                                    <div class="list media-list">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/menupng.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value10')"></div>
+                                                                        <div class="stepper-value" id='value10'>0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value10')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/chowman.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value11')"></div>
+                                                                        <div class="stepper-value" id='value11'>0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value11')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/golden.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value12')"></div>
+                                                                        <div class="stepper-value" id='value12'>0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value12')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block" style="margin-top: 16px;">
+                <div class="block-title" style="margin-top: 16px;">
+                    <strong>Soups</strong>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li class="accordion-item">
+                            <a href="#" class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">Veg</div>
+                                </div>
+                            </a>
+                            <div class="accordion-item-content">
+                                <div class="block">
+                                    <div class="list media-list">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/menupng.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value1')"></div>
+                                                                        <div class="stepper-value" id="value1">0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value1')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/chowman.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value2')"></div>
+                                                                        <div class="stepper-value" id="value2">0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value2')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/golden.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <a href="/menu-details/">
+                                                                <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value3')"></div>
+                                                                        <div class="stepper-value" id="value3">0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value3')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item">
+                            <a href="#" class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">Non-Veg</div>
+                                </div>
+                            </a>
+                            <div class="accordion-item-content">
+                                <div class="block">
+                                    <div class="list media-list">
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/menupng.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value4')"></div>
+                                                                        <div class="stepper-value" id="value4">0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value4')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/chowman.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value5')"></div>
+                                                                        <div class="stepper-value" id="value5">0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value5')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="item-content" style="color:#676767;">
+                                                    <div class="item-media">
+                                                        <img src="img/golden.png" style="height: 50px; width: 50px;">
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
+                                                        </div>
+                                                        <div class="item-subtitle" style="font-size: 12px;">
+                                                            <div class="row">
+                                                                <div class="col-20" style="font-size: 20px;">
+                                                                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
+                                                                    <span>900</span>
+                                                                </div>
+
+                                                                <div class="col-80" style="font-size: 12px;text-align: right;">
+                                                                    <!-- parameters set via data- attributes -->
+                                                                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
+                                                                        data-step="25" data-value="75">
+                                                                        <div class="stepper-button-minus" onclick="swipperminus('value6')"></div>
+                                                                        <div class="stepper-value" id='value6'>0</div>
+                                                                        <div class="stepper-button-plus" onclick="swipperadd('value6')"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-</div>
+</template>
+<script>
+    return {
+        on: {
+            pageBeforeIn: function (e, page) {
+                // console.log($('#lblRestaurentID').html());
+                // Get Restaurent Details Here 
+                $.ajax({
+                    type: "post",
+                    url: "http://platterexoticfood.com/pladmin/manage_api/getRestaurantDetails",
+                    data: { restid: $('#lblRestaurentID').html() },
+                    dataType: "JSON"
+                }).done(function (rply) {
+                    $('#lblRestaurentNameLocation').html(rply.restaurant.restaurant_name + ' - ' + rply.restaurant.locality);
+                    $('#lblRestaurentCuisine').html(rply.restaurant.cuisine_tags);
+                    $('#lblRateingReview').html('<i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; ' + rply.restaurant.avg_rating + '<br> 8565 ratings');
+                    $('#lblTwoCost').html(rply.restaurant.two_person_cost + '<br>for two');
+                });
+
+                // Menu Details
+                // app.restaurentMenus($('#lblRestaurentID').html());
+            }
+        }
+    }
+</script>

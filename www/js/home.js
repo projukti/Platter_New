@@ -1,3 +1,5 @@
+var serverUrl ='http://platterexoticfood.com/pladmin/manage_api/'
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -126,7 +128,7 @@ var app = {
                 topTwelveRestaurantData += '<li>'
                 if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open")
                 {
-                    topTwelveRestaurantData += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '" class="item-content" style="color:#676767;">'
+                    topTwelveRestaurantData += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '/' + rply.restaurant[list].restaurant_name + '/" class="item-content" style="color:#676767;">'
                     topTwelveRestaurantData += '<div class="item-media">'
                     topTwelveRestaurantData += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
                 }
@@ -175,7 +177,7 @@ var app = {
                 
                 generalRestaurents += '<li>'
                 if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open") {
-                    generalRestaurents += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '" class="item-content" style="color:#676767;">'
+                    generalRestaurents += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '/' + rply.restaurant[list].restaurant_name + '/" class="item-content" style="color:#676767;">'
                     generalRestaurents += '<div class="item-media">'
                     generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
                 }
@@ -250,6 +252,20 @@ var app = {
     custToastMessage : function(message){
         window.plugins.toast.showLongBottom(message);
     },
+
+    // This Function For Get Rastuent Menu List
+    restaurentMenus : function(resid){
+        $.ajax({
+            type: "post",
+            url: serverUrl +'menu_list/',
+            data: { id: resid, user: localStorage.getItem('platuser')}, 
+            dataType: "JSON"
+        }).done(function(rply){
+            console.log(rply);
+        }).fail(function(rply){
+            console.log(rply);
+        });
+    }
     
 };
 

@@ -12,8 +12,8 @@ routes = [
     url: './pages/restaurent_list.html',
   },
   {
-    path: '/restaurent-details/',
-    url: './pages/restaurent_details.html',
+    path: '/restaurent-details/:id/:name/',
+    componentUrl: './pages/restaurent_details.html',
   },
   {
     path: '/menu-details/',
