@@ -274,8 +274,6 @@ var app = {
             data: { id: resid, user: localStorage.getItem('platuser')}, 
             dataType: "JSON"
         }).done(function(rply){
-            console.log(rply);
-
             // This is for popular dishes
             for (list in rply.popular) {
                 popularDish += '<li>'
