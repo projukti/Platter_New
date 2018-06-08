@@ -16,8 +16,8 @@ routes = [
     componentUrl: './pages/restaurent_details.html',
   },
   {
-    path: '/menu-details/',
-    url: './pages/menu_details.html',
+    path: '/menu-details/:id/:menu_name/:restaurent_name/:restaurent_id',
+    componentUrl: './pages/menu_details.html',
   },
   {
     path: '/catalog/',

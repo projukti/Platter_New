@@ -264,7 +264,7 @@ var app = {
     },
 
     // This Function For Get Rastuent Menu List
-    restaurentMenus : function(resid){
+    restaurentMenus : function(resid,resName){
         let popularDish = ''
         let vegDish = ''
         let nonVegDish = ''
@@ -275,6 +275,7 @@ var app = {
             dataType: "JSON"
         }).done(function(rply){
             // This is for popular dishes
+            // console.log(rply)
             for (list in rply.popular) {
                 popularDish += '<li>'
                 popularDish += '<div class="item-content" style="color:#676767;">'
@@ -283,7 +284,7 @@ var app = {
                 popularDish += '</div>'
                 popularDish += '<div class="item-inner">'
                 popularDish += '<div class="item-title-row">'
-                popularDish += '<a href="/menu-details/">'
+                popularDish += '<a href="/menu-details/' + rply.popular[list].menu_id + '/' + rply.popular[list].menuname + '/' + resName + '/' + resid +'/" >'
                 popularDish += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.popular[list].menuname + '</div>'
                 popularDish += '</a>'
                 popularDish += '</div>'
@@ -317,7 +318,7 @@ var app = {
                 vegDish += '</div>'
                 vegDish += '<div class="item-inner">'
                 vegDish += '<div class="item-title-row">'
-                vegDish += '<a href="/menu-details/">'
+                vegDish += '<a href="/menu-details/' + rply.veg[list].menu_id + '/' + rply.veg[list].menuname + '/' + resName + '/' + resid +'/">'
                 vegDish += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.veg[list].menuname + '</div>'
                 vegDish += '</a>'
                 vegDish += '</div>'
@@ -351,7 +352,7 @@ var app = {
                 nonVegDish += '</div>'
                 nonVegDish += '<div class="item-inner">'
                 nonVegDish += '<div class="item-title-row">'
-                nonVegDish += '<a href="/menu-details/">'
+                nonVegDish += '<a href="/menu-details/' + rply.nonveg[list].menu_id + '/' + rply.nonveg[list].menuname + '/' + resName + '/' + resid +'/">'
                 nonVegDish += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.nonveg[list].menuname + '</div>'
                 nonVegDish += '</a>'
                 nonVegDish += '</div>'
@@ -375,7 +376,84 @@ var app = {
             }
             $('#lblNonVeg').html(nonVegDish);
         }).fail(function(rply){
-            console.log(rply);
+        });
+    },
+
+    // This Section For Menu Details 
+    menuDetails : function(menuId,resId){
+        // Set Menu Image
+        let nutritionValue = ''
+        $.ajax({
+            type: "post",
+            url: serverUrl + 'menu_details',
+            data: { id: resId, menu: menuId, user: localStorage.getItem('platuser')},
+            dataType: "JSON"
+        }).done(function (rply){
+            // Set Background Menu Image
+            $('#fileMenuImage').attr('src', 'http://platterexoticfood.com/pladmin/uploads/menu/' + rply.menu.menuimg);
+            $('#lblMenuRateing').html('<i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; ' + rply.menu.avg_rating);
+            $('#lblMenuPrice').html(rply.menu.menuprice);
+
+            nutritionValue += '<table>'
+            nutritionValue += '<tbody>'
+            nutritionValue += '<tr style="margin-right: 12%;margin-left: -50%;">'
+            for (list in rply.nutrition_value) {
+                nutritionValue += '<td>' + rply.nutrition_value[list].nutrition_name + ' : ' + rply.nutrition_value[list].nutrival +'</td>'
+            }
+            nutritionValue += '</tr>'
+            nutritionValue += '</tbody>'
+            nutritionValue += '</table>'
+            $('#tblNurition').html(nutritionValue);
+
+            $('#lblMenuDetails').html(rply.menu.menudetails);
+
+            // This Section For User Liked Or Not
+            if (rply.user_like_menu == null || rply.user_like_menu.is_like==0)
+            {
+                $('#lblLikeStatus').attr('src', 'img/like.png');
+                $('#lblLikeStatusTarget').html('');
+            }
+                
+            else
+            {
+                $('#lblLikeStatus').attr('src', 'img/like_fill.png');
+                $('#lblLikeStatusTarget').html('1');
+            }
+                
+            
+            
+        });
+    },
+
+    // this section for menu like or dislike
+    menuLikeDislike : function(){
+        // Get Current Like Status
+        let currentStatus = $('#lblLikeStatusTarget').html();
+        let changeStstus = 0
+        let menuId = $('#lblMenuId').html();
+        if (currentStatus=='1'){
+            changeStstus = 0
+        }
+        else{
+            changeStstus = 1
+        }
+         
+        $.ajax({
+            type: "POST",
+            url: serverUrl + "/user_like_menu",
+            data: { id: menuId, user: localStorage.getItem('platuser'), like: changeStstus},
+            dataType: "JSON"
+        }).done(function(rply){
+            console.log(rply) 
+            console.log(changeStstus)
+            if (changeStstus==0){
+                $('#lblLikeStatus').attr('src', 'img/like.png');
+                $('#lblLikeStatusTarget').html('');
+            }   
+            else{
+                $('#lblLikeStatus').attr('src', 'img/like_fill.png');
+                $('#lblLikeStatusTarget').html('1');
+            }
         });
     }
     
