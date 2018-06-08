@@ -444,8 +444,6 @@ var app = {
             data: { id: menuId, user: localStorage.getItem('platuser'), like: changeStstus},
             dataType: "JSON"
         }).done(function(rply){
-            console.log(rply) 
-            console.log(changeStstus)
             if (changeStstus==0){
                 $('#lblLikeStatus').attr('src', 'img/like.png');
                 $('#lblLikeStatusTarget').html('');
