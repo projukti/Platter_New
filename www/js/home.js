@@ -408,8 +408,7 @@ var app = {
             $('#lblMenuDetails').html(rply.menu.menudetails);
 
             // This Section For User Liked Or Not
-            if (rply.user_like_menu == null || rply.user_like_menu.is_like==0)
-            {
+            if (rply.user_like_menu == null || rply.user_like_menu.is_like == 0){
                 $('#lblLikeStatus').attr('src', 'img/like.png');
                 $('#lblLikeStatusTarget').html('');
             }
@@ -419,9 +418,6 @@ var app = {
                 $('#lblLikeStatus').attr('src', 'img/like_fill.png');
                 $('#lblLikeStatusTarget').html('1');
             }
-                
-            
-            
         });
     },
 
@@ -457,25 +453,21 @@ var app = {
     
 };
 
-function swipperminus(value) {
-    let curretn_value = $('#' + value).html();
-    if (curretn_value!=0)
-    {
+function swipperminus(menu_id,restaurent_id) {
+    let curretn_value = $('#' + menu_id).html();
+    if (curretn_value!=0){
         curretn_value = parseInt(curretn_value)-1;
     }
     else{
         curretn_value =0;
     }
-    $('#' + value).html(curretn_value);
-
+    $('#' + menu_id).html(curretn_value);
 }
 
-function swipperadd(value) {
-    let curretn_value = $('#' + value).html();
+function swipperadd(menu_id,resturent_id) {
+    let curretn_value = $('#' + menu_id).html();
     curretn_value = parseInt(curretn_value)+1;
-   
-    $('#' + value).html(curretn_value);
-    
+    $('#' + menu_id).html(curretn_value);
 }
 
 

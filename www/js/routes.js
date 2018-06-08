@@ -6,6 +6,13 @@ routes = [
   {
     path: '/home/',
     url: './home.html',
+    on: {
+      pageInit: function (e, page) {
+        app.topFiveRestaurants();
+        app.topTwelveRestaurants();
+        app.generalRestaurants();
+      }
+    }
   },
   {
     path: '/restaurent_list/',
