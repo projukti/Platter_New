@@ -275,7 +275,6 @@ var app = {
             dataType: "JSON"
         }).done(function(rply){
             // This is for popular dishes
-            // console.log(rply)
             for (list in rply.popular) {
                 popularDish += '<li>'
                 popularDish += '<div class="item-content" style="color:#676767;">'
@@ -296,9 +295,9 @@ var app = {
                 popularDish += '</div>'
                 popularDish += '<div class="col-80" style="font-size: 12px;text-align: right;">'
                 popularDish += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75" >'
-                popularDish += '<div class="stepper-button-minus" onclick="swipperminus(\'' + rply.popular[list].menu_id + '\')"></div>'
+                popularDish += '<div class="stepper-button-minus" onclick="swipperminus(\'' + rply.popular[list].menu_id + '\', '+ resid + ')"></div>'
                 popularDish += '<div class="stepper-value" id="' + rply.popular[list].menu_id + '">0</div>'
-                popularDish += '<div class="stepper-button-plus" onclick="swipperadd(\'' + rply.popular[list].menu_id + '\')"></div>'
+                popularDish += '<div class="stepper-button-plus" onclick="swipperadd(\'' + rply.popular[list].menu_id + '\',' + resid + ')"></div>'
                 popularDish += '</div>'
                 popularDish += '</div>'
                 popularDish += '</div>'
@@ -330,9 +329,9 @@ var app = {
                 vegDish += '</div>'
                 vegDish += '<div class="col-80" style="font-size: 12px;text-align: right;">'
                 vegDish += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75">'
-                vegDish += '<div class="stepper-button-minus" onclick="swipperminus(\''+rply.veg[list].menu_id+'\')"></div>'
+                vegDish += '<div class="stepper-button-minus" onclick="swipperminus(\'' + rply.veg[list].menu_id + '\',' + resid + ')"></div>'
                 vegDish += '<div class="stepper-value" id="'+rply.veg[list].menu_id+'">0</div>'
-                vegDish += '<div class="stepper-button-plus" onclick="swipperadd(\''+rply.veg[list].menu_id+'\')"></div>'
+                vegDish += '<div class="stepper-button-plus" onclick="swipperadd(\'' + rply.veg[list].menu_id + '\',' + resid + ')"></div>'
                 vegDish += '</div>'
                 vegDish += '</div>'
                 vegDish += '</div>'
@@ -364,9 +363,9 @@ var app = {
                 nonVegDish += '</div>'
                 nonVegDish += '<div class="col-80" style="font-size: 12px;text-align: right;">'
                 nonVegDish += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75">'
-                nonVegDish += '<div class="stepper-button-minus" onclick="swipperminus(\'' + rply.nonveg[list].menu_id + '\')"></div>'
+                nonVegDish += '<div class="stepper-button-minus" onclick="swipperminus(\'' + rply.nonveg[list].menu_id + '\',' + resid + ')"></div>'
                 nonVegDish += '<div class="stepper-value" id="' + rply.nonveg[list].menu_id + '">0</div>'
-                nonVegDish += '<div class="stepper-button-plus" onclick="swipperadd(\'' + rply.nonveg[list].menu_id + '\')"></div>'
+                nonVegDish += '<div class="stepper-button-plus" onclick="swipperadd(\'' + rply.nonveg[list].menu_id + '\',' + resid + ')"></div>'
                 nonVegDish += '</div>'
                 nonVegDish += '</div>'
                 nonVegDish += '</div>'
@@ -462,12 +461,70 @@ function swipperminus(menu_id,restaurent_id) {
         curretn_value =0;
     }
     $('#' + menu_id).html(curretn_value);
+    $.ajax({
+        type: "POST",
+        url: serverUrl +'add_to_cart/',
+        data: { user: localStorage.getItem('platuser'), restaurant: restaurent_id, menu: menu_id, qty: curretn_value},
+        dataType: "JSON"
+    }).done(function(rply){
+        console.log(rply);
+    });
 }
 
 function swipperadd(menu_id,resturent_id) {
     let curretn_value = $('#' + menu_id).html();
     curretn_value = parseInt(curretn_value)+1;
     $('#' + menu_id).html(curretn_value);
+    $.ajax({
+        type: "POST",
+        url: serverUrl + 'add_to_cart/',
+        data: { user: localStorage.getItem('platuser'), restaurant: resturent_id, menu: menu_id, qty: curretn_value },
+        dataType: "JSON"
+    }).done(function (rply) {
+        console.log(rply);
+    });
+}
+
+// This Function Add To Cart Menu Details Page
+function swipperAddMenuDetails(menu_id,restaurant_id){
+    let tempHtmlId=menu_id
+    console.log(tempHtmlId)
+    menu_id = menu_id.split("_")
+    let curretn_value = $('#' + tempHtmlId).html();
+    curretn_value = parseInt(curretn_value) + 1;
+    $('#' + tempHtmlId).html(curretn_value);
+    $.ajax({
+        type: "POST",
+        url: serverUrl + 'add_to_cart/',
+        data: { user: localStorage.getItem('platuser'), restaurant: restaurant_id, menu: menu_id[1], qty: curretn_value },
+        dataType: "JSON"
+    }).done(function (rply) {
+        console.log(rply);
+    });
+    
+}
+
+function swipperMinusMenuDetails(menu_id, restaurant_id) {
+    let tempHtmlId = menu_id
+    console.log(tempHtmlId)
+    menu_id = menu_id.split("_")
+    let curretn_value = $('#' + tempHtmlId).html();
+    if (curretn_value != 0) {
+        curretn_value = parseInt(curretn_value) - 1;
+    }
+    else {
+        curretn_value = 0;
+    }
+    $('#' + tempHtmlId).html(curretn_value);
+    $.ajax({
+        type: "POST",
+        url: serverUrl + 'add_to_cart/',
+        data: { user: localStorage.getItem('platuser'), restaurant: restaurent_id, menu: menu_id[1], qty: curretn_value },
+        dataType: "JSON"
+    }).done(function (rply) {
+        console.log(rply);
+    });
+
 }
 
 

@@ -48,9 +48,9 @@
                     <div class="col-33" style="font-size: 12px;text-align: center;">
                         <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
                             data-step="25" data-value="75">
-                            <div class="stepper-button-minus" onclick="swipperminus('menu_{{$route.params.id}}_step')"></div>
+                            <div class="stepper-button-minus" onclick="swipperMinusMenuDetails('menu_{{$route.params.id}}_step','{{$route.params.restaurent_id}}')"></div>
                             <div class="stepper-value" id="menu_{{$route.params.id}}_step">0</div>
-                            <div class="stepper-button-plus" onclick="swipperadd('menu_{{$route.params.id}}_step')"></div>
+                            <div class="stepper-button-plus" onclick="swipperAddMenuDetails('menu_{{$route.params.id}}_step','{{$route.params.restaurent_id}}')"></div>
                         </div>
                     </div>
                 </div>
