@@ -68,7 +68,7 @@ routes = [
   },
   {
     path: '/cart/',
-    url: './pages/cart.html',
+    componentUrl: './pages/cart.html',
   },
   {
     path: '/checkout-address/',

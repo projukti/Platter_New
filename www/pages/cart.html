@@ -1,114 +1,17 @@
+<template>
 <div class="page" data-name="cart">
   <div class="navbar"  style="background: #125e97;">
     <div class="navbar-inner sliding">
       <div class="title" style="color:#fff;">Cart</div>
     </div>
   </div>
-  <div class="page-content">
+  <div class="page-content" id="cartPage">
 
-    <div class="list media-list">
-      <ul>
-        <li>
-          <div class="item-content" style="color:#676767;">
-            <div class="item-media">
-              <img src="img/menupng.png" style="height: 50px; width: 50px;">
-            </div>
-            <div class="item-inner">
-              <div class="item-title-row">
-                <a href="/menu-details/">
-                  <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Kosha</div>
-                </a>
-              </div>
-              <div class="item-subtitle" style="font-size: 12px;">
-                <div class="row">
-                  <div class="col-20" style="font-size: 20px;">
-                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                    <span>900</span>
-                  </div>
-    
-                  <div class="col-80" style="font-size: 12px;text-align: right;">
-                    <!-- parameters set via data- attributes -->
-                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                      data-step="25" data-value="75">
-                      <div class="stepper-button-minus" onclick="swipperminus('value7')"></div>
-                      <div class="stepper-value" id="value7">0</div>
-                      <div class="stepper-button-plus" onclick="swipperadd('value7')"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content" style="color:#676767;">
-            <div class="item-media">
-              <img src="img/chowman.png" style="height: 50px; width: 50px;" class="link">
-            </div>
-            <div class="item-inner">
-              <div class="item-title-row">
-                <a href="/menu-details/">
-                  <div class="item-title" style="font-size: 14px; font-weight: bold;">Chicken Chowmin</div>
-                </a>
-              </div>
-              <div class="item-subtitle" style="font-size: 12px;">
-                <div class="row">
-                  <div class="col-20" style="font-size: 20px;">
-                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                    <span>900</span>
-                  </div>
-    
-                  <div class="col-80" style="font-size: 12px;text-align: right;">
-                    <!-- parameters set via data- attributes -->
-                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                      data-step="25" data-value="75">
-                      <div class="stepper-button-minus" onclick="swipperminus('value8')"></div>
-                      <div class="stepper-value" id="value8">0</div>
-                      <div class="stepper-button-plus" onclick="swipperadd('value8')"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content" style="color:#676767;">
-            <div class="item-media">
-              <img src="img/golden.png" style="height: 50px; width: 50px;">
-            </div>
-            <div class="item-inner">
-              <div class="item-title-row">
-                <a href="/menu-details/">
-                  <div class="item-title" style="font-size: 14px; font-weight: bold;">The Golden Restaurents</div>
-                </a>
-              </div>
-              <div class="item-subtitle" style="font-size: 12px;">
-                <div class="row">
-                  <div class="col-20" style="font-size: 20px;">
-                    <img src="img/iconset/rupee.png" style="height: 20px;margin-bottom: -3px;">
-                    <span>900</span>
-                  </div>
-    
-                  <div class="col-80" style="font-size: 12px;text-align: right;">
-                    <!-- parameters set via data- attributes -->
-                    <div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;"
-                      data-step="25" data-value="75">
-                      <div class="stepper-button-minus" onclick="swipperminus('value9')"></div>
-                      <div class="stepper-value" id="value9">0</div>
-                      <div class="stepper-button-plus" onclick="swipperadd('value9')"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <div class="list media-list" id="lblCartItemSection">
+      <ul id="lblCartList"></ul>
     </div>
 
-    <div class="block" style="margin-top: 16px;margin-bottom: 4px;">
+    <div class="block" style="margin-top: 16px;margin-bottom: 4px;" id="lblCouponSection">
       <div class="list">
         <ul>
           <li class="accordion-item">
@@ -127,53 +30,7 @@
             <div class="accordion-item-content">
               <div class="block" style="padding-bottom: 14px;">
                 <div class="list media-list">
-                  <ul>
-                    <li>
-                      <div class="item-content">
-                        <div class="item-media">
-                          <img src="img/coupon.png" width="44" />
-                        </div>
-                        <div class="item-inner">
-                          <div class="item-title-row">
-                            <div class="item-title">Get 25 % Discount</div>
-                          </div>
-                          <div class="item-subtitle" style="white-space: unset;">Up to 50/- cashback om two transaction done via Freecharge.
-                            <a class="button button-raised button-fill popup-open color-orange">Apply</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="item-content">
-                        <div class="item-media">
-                          <img src="img/coupon.png" width="44" />
-                        </div>
-                        <div class="item-inner">
-                          <div class="item-title-row">
-                            <div class="item-title">Get 25 % Discount</div>
-                          </div>
-                          <div class="item-subtitle" style="white-space: unset;">Up to 50/- cashback om two transaction done via Freecharge.
-                            <a class="button button-raised button-fill popup-open color-orange">Apply</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="item-content">
-                        <div class="item-media">
-                          <img src="img/coupon.png" width="44" />
-                        </div>
-                        <div class="item-inner">
-                          <div class="item-title-row">
-                            <div class="item-title">Get 25 % Discount</div>
-                          </div>
-                          <div class="item-subtitle" style="white-space: unset;">Up to 50/- cashback om two transaction done via Freecharge.
-                            <a class="button button-raised button-fill popup-open color-orange">Apply</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                  <ul id="lblCouponData"></ul>
                 </div>
               </div>
             </div>
@@ -182,7 +39,7 @@
       </div>
     </div>
 
-    <div class="block" style="margin-top: 16px;margin-bottom: 4px;">
+    <div class="block" style="margin-top: 16px;margin-bottom: 4px;" id="lblDeliverySection">
       <div class="block-title" style="margin:0px;"><strong>Restaurent Bill</strong></div>
       <div class="list">
         <ul>
@@ -210,7 +67,7 @@
       </div>
     </div>
 
-    <div class="block">
+    <div class="block"  id="lblAddressSection">
       <div class="list">
         <ul>
           <li>
@@ -245,3 +102,13 @@
 
   </div>
 </div>
+</template>
+<script>
+  return{
+    on:{
+      pageBeforeIn : function (e, page) {
+        app.currentCartItems();
+      }
+    }
+  }
+</script>
