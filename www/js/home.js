@@ -779,44 +779,44 @@ function initgl(enableHighAccuracyMode) {
             if (status === 'OK') {
                 if (results) {
                     console.log(results[0].formatted_address);
-                    document.querySelector('.postal input').value = results[0].address_components[results[0].address_components.length - 1].long_name;
-                    document.querySelector('#delivPincode').value = results[0].address_components[results[0].address_components.length - 1].long_name;
-                    document.querySelector('#delivAddress').value = results[0].formatted_address;
-                    document.querySelector('.postal').classList.remove('available');
-                    document.querySelector('.postal').classList.remove('unavailable');
-                    $(".se-pre-con").show();
-                    $.ajax({
-                        url: serverUrl + 'manage_api/pin_verify',
-                        method: 'post',
-                        dataType: 'JSON',
-                        data: {
-                            pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
-                        }
-                    })
-                        .done(function (repl) {
-                            console.log(repl);
-                            if (repl.status) {
-                                document.querySelector('.postal').classList.add('available');
-                                isServiceAvailable = true;
-                                localStorage.setItem('area', repl.locality);
-                                $('#pinarea').text('(' + repl.locality + ')');
-                                app.hideShowPage();
-                            } else {
-                                document.querySelector('.postal').classList.add('unavailable');
-                                isServiceAvailable = false;
-                                localStorage.setItem('area', 'Unidentified');
-                                $('#pinarea').text('(Unidentified)');
-                                app.hideShowPage();
-                            }
-                            $(".se-pre-con").hide();
-                        });
+                    // document.querySelector('.postal input').value = results[0].address_components[results[0].address_components.length - 1].long_name;
+                    // document.querySelector('#delivPincode').value = results[0].address_components[results[0].address_components.length - 1].long_name;
+                    // document.querySelector('#delivAddress').value = results[0].formatted_address;
+                    // document.querySelector('.postal').classList.remove('available');
+                    // document.querySelector('.postal').classList.remove('unavailable');
+                   
+                    // $.ajax({
+                    //     url: serverUrl + 'manage_api/pin_verify',
+                    //     method: 'post',
+                    //     dataType: 'JSON',
+                    //     data: {
+                    //         pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
+                    //     }
+                    // })
+                    //     .done(function (repl) {
+                    //         console.log(repl);
+                    //         if (repl.status) {
+                    //             document.querySelector('.postal').classList.add('available');
+                    //             isServiceAvailable = true;
+                    //             localStorage.setItem('area', repl.locality);
+                    //             $('#pinarea').text('(' + repl.locality + ')');
+                    //             app.hideShowPage();
+                    //         } else {
+                    //             document.querySelector('.postal').classList.add('unavailable');
+                    //             isServiceAvailable = false;
+                    //             localStorage.setItem('area', 'Unidentified');
+                    //             $('#pinarea').text('(Unidentified)');
+                    //             app.hideShowPage();
+                    //         }
+                    //         $(".se-pre-con").hide();
+                    //     });
                 } else {
                     window.plugins.toast.show('Unable to detect location automatically. Please enter your PIN Code manually.', 'long', 'bottom', function (a) {
                         console.log('toast success: ' + a)
                     }, function (b) {
                         console.log('toast error: ' + b)
                     });
-                    $('#postalCode').focus();
+                    // $('#postalCode').focus();
                 }
             } else {
                 window.plugins.toast.show('Unable to detect location automatically. Please enter your PIN Code manually.', 'long', 'bottom', function (a) {
@@ -824,7 +824,7 @@ function initgl(enableHighAccuracyMode) {
                 }, function (b) {
                     console.log('toast error: ' + b)
                 });
-                $('#postalCode').focus();
+                // $('#postalCode').focus();
             }
         });
     },
