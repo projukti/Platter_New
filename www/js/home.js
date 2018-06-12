@@ -458,8 +458,6 @@ var app = {
             dataType: "JSON"
         }).done(function (rply) {
             if (rply.success) {
-                //cartItem += '<div class="list media-list">'
-               // cartItem += '<ul>'
                 for (list in rply.data) {
                     for (listMenu in rply.data[list].menu) {
                         cartItem += '<li>'
@@ -482,7 +480,7 @@ var app = {
                         cartItem += '<div class="col-80" style="font-size: 12px;text-align: right;">'
                         cartItem += '<div class="stepper stepper-small stepper-round stepper-fill stepper-init color-red" data-min="0" data-max="500" style="width:100px;" data-step="25" data-value="75">'
                         cartItem += '<div class="stepper-button-minus" onclick="swipperminus(\'' + rply.data[list].menu[listMenu].menu_id + '\',' + rply.data[list].restaurant_id + ')"></div>'
-                        cartItem += '<div class="stepper-value" id="value7">0</div>'
+                        cartItem += '<div class="stepper-value" id=\'' + rply.data[list].menu[listMenu].menu_id + '\'">' + rply.data[list].menu[listMenu].qty + '</div>'
                         cartItem += '<div class="stepper-button-plus" onclick="swipperadd(\'' + rply.data[list].menu[listMenu].menu_id + '\',' + rply.data[list].restaurant_id + ')"></div>'
                         cartItem += '</div>'
                         cartItem += '</div>'
@@ -494,28 +492,6 @@ var app = {
                     }
                 }
                 $('#lblCartList').html(cartItem);
-               // cartItem += '</ul>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="block" style="margin-top: 16px;margin-bottom: 4px;">'
-                // cartItem += '<div class="list">'
-                // cartItem += '<ul>'
-                // cartItem += '<li class="accordion-item">'
-                // cartItem += '<a href="#" class="item-content item-link">'
-                // cartItem += '<div class="item-inner">'
-                // cartItem += '<div class="item-title">'
-                // cartItem += '<div class="row no-gap">'
-                // cartItem += '<div class="col-20">'
-                // cartItem += '<img src="img/discount.png">'
-                // cartItem += '</div>'
-                // cartItem += '<div class="col-80" style="padding-top: 4.5%;text-overflow: inherit;white-space: normal;">&nbsp; Apply Coupon </div>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '</a>'
-                // cartItem += '<div class="accordion-item-content">'
-                // cartItem += '<div class="block" style="padding-bottom: 14px;">'
-                // cartItem += '<div class="list media-list">'
-                // cartItem += '<ul>'
                 for(list in rply.data2)
                 {
                    couponItem += '<li>'
@@ -532,92 +508,6 @@ var app = {
                     couponItem += '</li>'
                 }
                 $('#lblCouponData').html(couponItem);
-                
-                // cartItem += '</ul>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '</li>'
-                // cartItem += '</ul>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-
-                // Bill
-                // cartItem += '<div class="block" style="margin-top: 16px;margin-bottom: 4px;">'
-                // cartItem += '<div class="block-title" style="margin:0px;">'
-                // cartItem += '<strong>Restaurent Bill</strong>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="list">'
-                // cartItem += '<ul>'
-                // cartItem += '<li>'
-                // cartItem += '<div class="item-inner item-cell">'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell" style="text-align: left;">Item Total</div>'
-                // cartItem += '<div class="item-cell" style="text-align: right;">100.00</div>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell" style="color:green; text-align: left;">Delivery Charge</div>'
-                // cartItem += '<div class="item-cell" style="color:green; text-align: right;">Free</div>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell" style="color:green; text-align: left;">Coupon Discount</div>'
-                // cartItem += '<div class="item-cell" style="color:green; text-align: right;">-33.00</div>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell" style="text-align: left;">'
-                // cartItem += '<strong>To Pay</strong>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-cell" style="text-align: right;">'
-                // cartItem += '<strong>67.00</strong>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '</li>'
-                // cartItem += '</ul>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-
-                // Delivery Section
-                // cartItem += '<div class="block">'
-                // cartItem += '<div class="list">'
-                // cartItem += '<ul>'
-                // cartItem += '<li>'
-                // cartItem += '<div class="item-inner item-cell">'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell" style="text-align: left;width: 25%;">'
-                // cartItem += '<img src="img/shipped.png" style="width:110%">'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-cell" style="text-align: left;">'
-                // cartItem += '<strong>Deliver to Work</strong>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell">123 demo street, Garia, Kolkata-47<a href="/checkout-address/" class="color-red">Change</a></div>'
-                // cartItem += '</div>'
-                // cartItem += '<div class="item-row">'
-                // cartItem += '<div class="item-cell">Expected Delivery Time :<span style="color:#ef3837;">30 Min</span></div>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '<li class="item-content item-input">'
-                // cartItem += '<div class="item-inner">'
-                // cartItem += '<div class="item-input-wrap">'
-                // cartItem += '<a href="/catalog/" class="button button-fill button-raised color-green">PROCEED TO PAY</a>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-                // cartItem += '</li>'
-                // cartItem += '</ul>'
-                // cartItem += '</div>'
-                // cartItem += '</div>'
-
-                // $('#lblEmptyCartSection').hide();
-                // $('#lblDeliverySection').show();
-                // $('#lblAddressSection').show();
-                // $('#lblCartItemSection').show();
-                // $('#lblCouponSection').show();
-                // $('#lblCartList').show();
-                // $('#lblCouponData').show();
-
-                
-
                 $('#lblCartList').html(cartItem);
                 $('#lblDeliverySection').show();
                 $('#lblAddressSection').show();
@@ -640,6 +530,7 @@ var app = {
                 $('#lblCartItemSection').hide();
                 $('#lblCouponSection').hide();
             }
+            window.plugins.toast.showLongBottom('Cart item update');
         });
     }
 
