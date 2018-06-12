@@ -636,7 +636,7 @@ var app = {
                 cartItem += 'Your cart is empty. Add someting from menu'
                 cartItem += '</div>'
                 cartItem += '</div>'
-                $('#cartPage').append(cartItem);
+                $('#cartPage').html(cartItem);
                 $('#lblDeliverySection').hide();
                 $('#lblAddressSection').hide();
                 $('#lblCartItemSection').hide();
