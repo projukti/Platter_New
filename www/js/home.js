@@ -515,6 +515,7 @@ var app = {
                 $('#lblCartItemSection').show();
                 $('#lblCouponSection').show();
                 $('#lblEmptyCartSection').hide();
+                $('#lblDeliveryAddress').html(localStorage.getItem('currentAddress'));
             }
             else {
                 cartItem += '<div id="lblEmptyCartSection">'
