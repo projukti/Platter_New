@@ -1,3 +1,4 @@
+<template>
 <div class="page" data-name="checkout_address">
     <div class="navbar" style="background: #125e97;">
         <div class="navbar-inner sliding">
@@ -11,8 +12,8 @@
         </div>
     </div>
     <div class="page-content color-red">
-        <div class="block" style="margin: 0; padding: 0 ;">
-            <img src="img/map.jpg" style="width:100%">
+        <div class="block" id="map" style="margin: 0; padding: 0 ;">
+            
         </div>
         <div class="block">
             <div class="block-title" style="margin-top: -23px;">
@@ -82,3 +83,13 @@
         </div>
     </div>
 </div>
+</template>
+<script>
+   return {
+       on :{
+           pageBeforeIn : function(e, page){
+               getMapLocation();
+           }
+       }
+   }
+</script>

@@ -72,7 +72,7 @@ routes = [
   },
   {
     path: '/checkout-address/',
-    url: './pages/checkout-address.html',
+    componentUrl: './pages/checkout-address.html',
   },
   // Page Loaders & Router
   {

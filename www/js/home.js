@@ -493,18 +493,17 @@ var app = {
                     }
                 }
                 $('#lblCartList').html(cartItem);
-                for(list in rply.data2)
-                {
-                   couponItem += '<li>'
-                   couponItem += '<div class="item-content">'
-                   couponItem += '<div class="item-media">'
+                for (list in rply.data2) {
+                    couponItem += '<li>'
+                    couponItem += '<div class="item-content">'
+                    couponItem += '<div class="item-media">'
                     couponItem += '<img src="img/coupon.png" width="50">'
-                   couponItem += '</div>'
-                   couponItem += '<div class="item-inner">'
-                   couponItem += '<div class="item-title-row">'
+                    couponItem += '</div>'
+                    couponItem += '<div class="item-inner">'
+                    couponItem += '<div class="item-title-row">'
                     couponItem += '<div class="item-title">' + rply.data2[list].coupon_name + '</div>'
-                   couponItem += '</div>'
-                    couponItem += '<div class="item-subtitle" style="white-space: unset;">' + rply.data2[list].description + '<a class="button button-raised button-fill color-orange" onclick="app.validateCouponCode(\''+rply.data2[list].coupon_name+'\')">Apply</a></div>'
+                    couponItem += '</div>'
+                    couponItem += '<div class="item-subtitle" style="white-space: unset;">' + rply.data2[list].description + '<a class="button button-raised button-fill color-orange" onclick="app.validateCouponCode(\'' + rply.data2[list].coupon_name + '\')">Apply</a></div>'
                     couponItem += '</div>'
                     couponItem += '</div>'
                     couponItem += '</li>'
@@ -517,7 +516,7 @@ var app = {
                 $('#lblCouponSection').show();
                 $('#lblEmptyCartSection').hide();
             }
-            else{
+            else {
                 cartItem += '<div id="lblEmptyCartSection">'
                 cartItem += '<div class="block" style="margin-left: 30%;margin-top: 30%;">'
                 cartItem += '<img src="img/fish.png">'
@@ -544,16 +543,16 @@ var app = {
     },
 
     // This Function For Validate Coupon Code
-    validateCouponCode: function(coupon){
+    validateCouponCode: function (coupon) {
         $.ajax({
             type: "post",
             url: serverUrl + "validate_coupon/",
-            data: { coupon: coupon, total: $('#lblTotalWithoutGST').html(), user: localStorage.getItem('platuser')},
+            data: { coupon: coupon, total: $('#lblTotalWithoutGST').html(), user: localStorage.getItem('platuser') },
             dataType: "json"
-        }).done(function(rply){
+        }).done(function (rply) {
             let packingCharge = $('#lblPackingCharge').html()
             let deliveryCharge = $('#lblDeliveryCharge').html()
-            let finalAmount = parseInt(rply.amount_after_discount)+parseInt(packingCharge)+parseInt(deliveryCharge)
+            let finalAmount = parseInt(rply.amount_after_discount) + parseInt(packingCharge) + parseInt(deliveryCharge)
             $('#lblCouponDiscount').html(rply.discount_amount)
             $('#lblGSTAmount').html(rply.gst_amount)
             $('#lblSubTotal').html(finalAmount)
@@ -578,7 +577,7 @@ function swipperminus(menu_id, restaurent_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: restaurent_id, menu: menu_id, qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
-        if (rply.item_count<1){
+        if (rply.item_count < 1) {
             $('#lblDeliverySection').hide();
             $('#lblAddressSection').hide();
             $('#lblCartItemSection').hide();
@@ -653,6 +652,81 @@ function swipperMinusMenuDetails(menu_id, restaurant_id) {
         window.plugins.toast.showLongBottom('Cart item update');
     });
 
+}
+
+// Get geo coordinates
+
+function getMapLocation() {
+
+    navigator.geolocation.getCurrentPosition
+        (onMapSuccess, onMapError, { enableHighAccuracy: true });
+}
+
+// Success callback for get geo coordinates
+
+var onMapSuccess = function (position) {
+
+    Latitude = position.coords.latitude;
+    Longitude = position.coords.longitude;
+
+    getMap(Latitude, Longitude);
+
+}
+
+// Get map by using coordinates
+
+function getMap(latitude, longitude) {
+
+    var mapOptions = {
+        center: new google.maps.LatLng(0, 0),
+        zoom: 1,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map
+        (document.getElementById("map"), mapOptions);
+
+
+    var latLong = new google.maps.LatLng(latitude, longitude);
+
+    var marker = new google.maps.Marker({
+        position: latLong
+    });
+
+    marker.setMap(map);
+    map.setZoom(15);
+    map.setCenter(marker.getPosition());
+}
+
+// Success callback for watching your changing position
+
+var onMapWatchSuccess = function (position) {
+
+    var updatedLatitude = position.coords.latitude;
+    var updatedLongitude = position.coords.longitude;
+
+    if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
+
+        Latitude = updatedLatitude;
+        Longitude = updatedLongitude;
+
+        getMap(updatedLatitude, updatedLongitude);
+    }
+}
+
+// Error callback
+
+function onMapError(error) {
+    console.log('code: ' + error.code + '\n' +
+        'message: ' + error.message + '\n');
+}
+
+// Watch your changing position
+
+function watchMapPosition() {
+
+    return navigator.geolocation.watchPosition
+        (onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
 }
 
 
