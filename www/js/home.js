@@ -515,7 +515,7 @@ var app = {
                 $('#lblCartItemSection').show();
                 $('#lblCouponSection').show();
                 $('#lblEmptyCartSection').hide();
-                $('#lblDeliveryAddress').html(localStorage.getItem('currentAddress'));
+                $('#lblDeliveryAddress').html(localStorage.getItem('currentAddress') +'<a href="/checkout-address/" class="color-red">Change</a>');
             }
             else {
                 cartItem += '<div id="lblEmptyCartSection">'
@@ -554,10 +554,11 @@ var app = {
             let packingCharge = $('#lblPackingCharge').html()
             let deliveryCharge = $('#lblDeliveryCharge').html()
             let finalAmount = parseInt(rply.amount_after_discount) + parseInt(packingCharge) + parseInt(deliveryCharge)
-            $('#lblCouponDiscount').html(rply.discount_amount)
-            $('#lblGSTAmount').html(rply.gst_amount)
-            $('#lblSubTotal').html(finalAmount)
+            $('#lblCouponDiscount').html(rply.discount_amount+'.00')
+            $('#lblGSTAmount').html(rply.gst_amount+'.00')
+            $('#lblSubTotal').html(finalAmount+'.00')
             window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
+            //  
         });
     }
 
@@ -729,148 +730,148 @@ function swipperMinusMenuDetails(menu_id, restaurant_id) {
 //     return navigator.geolocation.watchPosition
 //         (onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
 // }
-function initgl(enableHighAccuracyMode) {
+// function initgl(enableHighAccuracyMode) {
 
-    navigator.geolocation.getCurrentPosition(function (position) {
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
+//     navigator.geolocation.getCurrentPosition(function (position) {
+//         lat = position.coords.latitude;
+//         lng = position.coords.longitude;
 
-        customerLocation = {
-            lat: lat,
-            lng: lng
-        };
-        /* For Map in delivery section */
-        var latLong = new google.maps.LatLng(lat, lng);
-        var mapOptions = {
-            center: latLong,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        var marker = new google.maps.Marker({
-            position: latLong,
-            map: map,
-            title: 'my location'
-        });
-        /* Map Ends */
-        /* Address Autocomplete */
-        var placeSearch, autocomplete;
-        var componentForm = {
-            street_number: 'short_name',
-            route: 'long_name',
-            locality: 'long_name',
-            administrative_area_level_1: 'short_name',
-            country: 'long_name',
-            postal_code: 'short_name'
-        };
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */
-            (document.getElementById('delivAddress')), {
-                types: ['geocode']
-            });
-        autocomplete.addListener('place_changed', fillInAddress);
-        /* Address Autocomplete Ends */
-        var geocoder = new google.maps.Geocoder;
-        geocoder.geocode({
-            'location': {
-                lat: lat,
-                lng: lng
-            }
-        }, function (results, status) {
-            if (status === 'OK') {
-                if (results) {
-                    console.log(results[0].formatted_address);
-                    // document.querySelector('.postal input').value = results[0].address_components[results[0].address_components.length - 1].long_name;
-                    // document.querySelector('#delivPincode').value = results[0].address_components[results[0].address_components.length - 1].long_name;
-                    // document.querySelector('#delivAddress').value = results[0].formatted_address;
-                    // document.querySelector('.postal').classList.remove('available');
-                    // document.querySelector('.postal').classList.remove('unavailable');
+//         customerLocation = {
+//             lat: lat,
+//             lng: lng
+//         };
+//         /* For Map in delivery section */
+//         var latLong = new google.maps.LatLng(lat, lng);
+//         var mapOptions = {
+//             center: latLong,
+//             zoom: 16,
+//             mapTypeId: google.maps.MapTypeId.ROADMAP
+//         };
+//         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//         var marker = new google.maps.Marker({
+//             position: latLong,
+//             map: map,
+//             title: 'my location'
+//         });
+//         /* Map Ends */
+//         /* Address Autocomplete */
+//         var placeSearch, autocomplete;
+//         var componentForm = {
+//             street_number: 'short_name',
+//             route: 'long_name',
+//             locality: 'long_name',
+//             administrative_area_level_1: 'short_name',
+//             country: 'long_name',
+//             postal_code: 'short_name'
+//         };
+//         autocomplete = new google.maps.places.Autocomplete(
+//             /** @type {!HTMLInputElement} */
+//             (document.getElementById('delivAddress')), {
+//                 types: ['geocode']
+//             });
+//         autocomplete.addListener('place_changed', fillInAddress);
+//         /* Address Autocomplete Ends */
+//         var geocoder = new google.maps.Geocoder;
+//         geocoder.geocode({
+//             'location': {
+//                 lat: lat,
+//                 lng: lng
+//             }
+//         }, function (results, status) {
+//             if (status === 'OK') {
+//                 if (results) {
+//                     console.log(results[0].formatted_address);
+//                     // document.querySelector('.postal input').value = results[0].address_components[results[0].address_components.length - 1].long_name;
+//                     // document.querySelector('#delivPincode').value = results[0].address_components[results[0].address_components.length - 1].long_name;
+//                     // document.querySelector('#delivAddress').value = results[0].formatted_address;
+//                     // document.querySelector('.postal').classList.remove('available');
+//                     // document.querySelector('.postal').classList.remove('unavailable');
                    
-                    // $.ajax({
-                    //     url: serverUrl + 'manage_api/pin_verify',
-                    //     method: 'post',
-                    //     dataType: 'JSON',
-                    //     data: {
-                    //         pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
-                    //     }
-                    // })
-                    //     .done(function (repl) {
-                    //         console.log(repl);
-                    //         if (repl.status) {
-                    //             document.querySelector('.postal').classList.add('available');
-                    //             isServiceAvailable = true;
-                    //             localStorage.setItem('area', repl.locality);
-                    //             $('#pinarea').text('(' + repl.locality + ')');
-                    //             app.hideShowPage();
-                    //         } else {
-                    //             document.querySelector('.postal').classList.add('unavailable');
-                    //             isServiceAvailable = false;
-                    //             localStorage.setItem('area', 'Unidentified');
-                    //             $('#pinarea').text('(Unidentified)');
-                    //             app.hideShowPage();
-                    //         }
-                    //         $(".se-pre-con").hide();
-                    //     });
-                } else {
-                    window.plugins.toast.show('Unable to detect location automatically. Please enter your PIN Code manually.', 'long', 'bottom', function (a) {
-                        console.log('toast success: ' + a)
-                    }, function (b) {
-                        console.log('toast error: ' + b)
-                    });
-                    // $('#postalCode').focus();
-                }
-            } else {
-                window.plugins.toast.show('Unable to detect location automatically. Please enter your PIN Code manually.', 'long', 'bottom', function (a) {
-                    console.log('toast success: ' + a)
-                }, function (b) {
-                    console.log('toast error: ' + b)
-                });
-                // $('#postalCode').focus();
-            }
-        });
-    },
-        function (err) {
-            console.log(err);
-            initgl(true);
-        }, {
-            enableHighAccuracy: enableHighAccuracyMode
-        });
-}
-function initglone() {
-    initgl(false);
-}
-function fillInAddress() {
-    // Get the place details from the autocomplete object.
-    var place = autocomplete.getPlace();
-    for (var component in componentForm) {
-        document.getElementById(component).value = '';
-        document.getElementById(component).disabled = false;
-    }
-    // Get each component of the address from the place details
-    // and fill the corresponding field on the form.
-    for (var i = 0; i < place.address_components.length; i++) {
-        var addressType = place.address_components[i].types[0];
-        if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-        }
-    }
-}
-function geolocate() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var geolocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            var circle = new google.maps.Circle({
-                center: geolocation,
-                radius: position.coords.accuracy
-            });
-            autocomplete.setBounds(circle.getBounds());
-        });
-    }
-}
+//                     // $.ajax({
+//                     //     url: serverUrl + 'manage_api/pin_verify',
+//                     //     method: 'post',
+//                     //     dataType: 'JSON',
+//                     //     data: {
+//                     //         pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
+//                     //     }
+//                     // })
+//                     //     .done(function (repl) {
+//                     //         console.log(repl);
+//                     //         if (repl.status) {
+//                     //             document.querySelector('.postal').classList.add('available');
+//                     //             isServiceAvailable = true;
+//                     //             localStorage.setItem('area', repl.locality);
+//                     //             $('#pinarea').text('(' + repl.locality + ')');
+//                     //             app.hideShowPage();
+//                     //         } else {
+//                     //             document.querySelector('.postal').classList.add('unavailable');
+//                     //             isServiceAvailable = false;
+//                     //             localStorage.setItem('area', 'Unidentified');
+//                     //             $('#pinarea').text('(Unidentified)');
+//                     //             app.hideShowPage();
+//                     //         }
+//                     //         $(".se-pre-con").hide();
+//                     //     });
+//                 } else {
+//                     window.plugins.toast.show('Unable to detect location automatically. Please enter your PIN Code manually.', 'long', 'bottom', function (a) {
+//                         console.log('toast success: ' + a)
+//                     }, function (b) {
+//                         console.log('toast error: ' + b)
+//                     });
+//                     // $('#postalCode').focus();
+//                 }
+//             } else {
+//                 window.plugins.toast.show('Unable to detect location automatically. Please enter your PIN Code manually.', 'long', 'bottom', function (a) {
+//                     console.log('toast success: ' + a)
+//                 }, function (b) {
+//                     console.log('toast error: ' + b)
+//                 });
+//                 // $('#postalCode').focus();
+//             }
+//         });
+//     },
+//         function (err) {
+//             console.log(err);
+//             initgl(true);
+//         }, {
+//             enableHighAccuracy: enableHighAccuracyMode
+//         });
+// }
+// function initglone() {
+//     initgl(false);
+// }
+// function fillInAddress() {
+//     // Get the place details from the autocomplete object.
+//     var place = autocomplete.getPlace();
+//     for (var component in componentForm) {
+//         document.getElementById(component).value = '';
+//         document.getElementById(component).disabled = false;
+//     }
+//     // Get each component of the address from the place details
+//     // and fill the corresponding field on the form.
+//     for (var i = 0; i < place.address_components.length; i++) {
+//         var addressType = place.address_components[i].types[0];
+//         if (componentForm[addressType]) {
+//             var val = place.address_components[i][componentForm[addressType]];
+//             document.getElementById(addressType).value = val;
+//         }
+//     }
+// }
+// function geolocate() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(function (position) {
+//             var geolocation = {
+//                 lat: position.coords.latitude,
+//                 lng: position.coords.longitude
+//             };
+//             var circle = new google.maps.Circle({
+//                 center: geolocation,
+//                 radius: position.coords.accuracy
+//             });
+//             autocomplete.setBounds(circle.getBounds());
+//         });
+//     }
+// }
 
 
 

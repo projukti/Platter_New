@@ -47,22 +47,15 @@
                     <li class="item-content item-input">
                         <div class="item-inner">
                             <div class="item-input-wrap">
-                                <input type="text" name="pin" id="pin" placeholder="Enter Pin code">
+                                <input type="number" name="pin" id="pin" placeholder="Enter Pin code">
                             </div>
                         </div>
                     </li>
                     <li class="item-content item-input">
                         <div class="item-inner">
                             <div class="item-input-wrap">
-                                <input type="text" name="pin" id="pin" placeholder="Enter Pin code">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-input-wrap">
-                                <input type="radio" name="type" id="type"> Work
-                                <input type="radio" name="type" id="type"> Home
+                                <input type="radio" name="type" id="type" value="work"> Work
+                                <input type="radio" name="type" id="type" value="home"> Home
                             </div>
                         </div>
                     </li>
@@ -86,9 +79,29 @@
 </template>
 <script>
    return {
+       methods :{
+           setLocation : function(){
+            //    Get All Data
+               let address = $('#address').val();
+               let house_no = $('#house_no').val();
+               let land_mark = $('#land_mark').val();
+               let pin = $('#pin').val();
+               let type = $('input[name=type]:checked').val();
+               if(address=="" || house_no=="" || land_mark=="" || pin=="" || type==""){
+                   window.plugins.toast.showLongBottom('Validation Errors');
+               }
+               else{
+                   let currentAddress= address+', '+house_no+', '+land_mark+', '+pin;
+                   localStorage.setItem('currentAddress', currentAddress);
+                   $('.back').click();
+               }
+
+               
+           }
+       },
        on :{
            pageBeforeIn : function(e, page){
-               getMapLocation();
+            //    getMapLocation();
            }
        }
    }
