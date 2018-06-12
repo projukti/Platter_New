@@ -99,7 +99,6 @@ var app = {
 
     // This Section For Get Top 5 Restaurents
     topFiveRestaurants: function () {
-        // console.log('here');
         let topFiveRestaurantData = ''
         $.ajax({
             type: "POST",
@@ -458,7 +457,6 @@ var app = {
             data: { user: localStorage.getItem('platuser') },
             dataType: "JSON"
         }).done(function (rply) {
-            console.log(rply)
             if (rply.success) {
                 //cartItem += '<div class="list media-list">'
                // cartItem += '<ul>'
@@ -662,7 +660,6 @@ function swipperminus(menu_id, restaurent_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: restaurent_id, menu: menu_id, qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
-        console.log(rply);
         if (rply.item_count<1){
             $('#lblDeliverySection').hide();
             $('#lblAddressSection').hide();
@@ -686,7 +683,6 @@ function swipperadd(menu_id, resturent_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: resturent_id, menu: menu_id, qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
-        console.log(rply);
         app.currentCartItems();
         
     });
@@ -695,7 +691,6 @@ function swipperadd(menu_id, resturent_id) {
 // This Function Add To Cart Menu Details Page
 function swipperAddMenuDetails(menu_id, restaurant_id) {
     let tempHtmlId = menu_id
-    console.log(tempHtmlId)
     menu_id = menu_id.split("_")
     let curretn_value = $('#' + tempHtmlId).html();
     curretn_value = parseInt(curretn_value) + 1;
@@ -706,14 +701,12 @@ function swipperAddMenuDetails(menu_id, restaurant_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: restaurant_id, menu: menu_id[1], qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
-        console.log(rply);
     });
 
 }
 
 function swipperMinusMenuDetails(menu_id, restaurant_id) {
     let tempHtmlId = menu_id
-    console.log(tempHtmlId)
     menu_id = menu_id.split("_")
     let curretn_value = $('#' + tempHtmlId).html();
     if (curretn_value != 0) {
@@ -729,7 +722,6 @@ function swipperMinusMenuDetails(menu_id, restaurant_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: restaurent_id, menu: menu_id[1], qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
-        console.log(rply);
     });
 
 }
