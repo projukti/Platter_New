@@ -66,7 +66,7 @@
                     <li class="item-content item-input">
                         <div class="item-inner">
                             <div class="item-input-wrap">
-                                <a href="" class="col button button-raised button-fill color-red" id="btnConfirm" @click="setLocation">Confirm</a>
+                                <a href="" class="col button button-raised button-fill color-red" id="btnConfirm" @click="setLocation">Update</a>
                             </div>
                         </div>
             
@@ -78,6 +78,7 @@
 </div>
 </template>
 <script>
+    
    return {
        methods :{
            setLocation : function(){
@@ -93,7 +94,7 @@
                else{
                    let currentAddress= address+', '+house_no+', '+land_mark+', '+pin;
                    localStorage.setItem('currentAddress', currentAddress);
-                   router.back();
+                   cartView.router.back({ 'url': '/cart/', 'force': true });
                }
 
                
