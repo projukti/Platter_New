@@ -3,7 +3,7 @@
     <div class="navbar" style="background: #125e97;">
         <div class="navbar-inner sliding">
             <div class="left">
-                <a href="#" class="link back">
+                <a href="#" class="link back" id="btnBack">
                     <i class="icon icon-back color-white"></i>
                     <span class="ios-only color-white">Back</span>
                 </a>
@@ -93,7 +93,7 @@
                else{
                    let currentAddress= address+', '+house_no+', '+land_mark+', '+pin;
                    localStorage.setItem('currentAddress', currentAddress);
-                   $('.back').click();
+                   $('#btnBack').click();
                }
 
                
