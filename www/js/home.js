@@ -540,6 +540,11 @@ var app = {
             $('#lblPackingCharge').html(rply.packing_charge);
             $('#lblCouponDiscount').html(rply.discount);
             $('#lblSubTotal').html(rply.total_amount);
+            if (localStorage.getItem('couponCode')){
+                $('#lblGSTAmount').html(localStorage.getItem('couponGST'));
+                $('#lblCouponDiscount').html(localStorage.getItem('couponDiscountAmount'));
+                $('#lblSubTotal').html(localStorage.getItem('couponFinalAmount'));
+            }
         });
     },
 
@@ -557,6 +562,10 @@ var app = {
             $('#lblCouponDiscount').html(rply.discount_amount+'.00')
             $('#lblGSTAmount').html(rply.gst_amount+'.00')
             $('#lblSubTotal').html(finalAmount+'.00')
+            localStorage.setItem('couponCode', coupon);
+            localStorage.setItem('couponGST', rply.gst_amount + '.00');
+            localStorage.setItem('couponFinalAmount', finalAmount + '.00');
+            localStorage.setItem('couponDiscountAmount', rply.discount_amount + '.00');
             window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
             //  
         });
