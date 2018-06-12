@@ -14,6 +14,8 @@ var app = {
     onDeviceReady: function () {
         // Set Default Text And Value
         $('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
+        $('#lblAmountToPay').val('Amount to pay : ' + localStorage.getItem('couponFinalAmount'));
+        $('#lblOffer').val('COUPON:' + localStorage.getItem('couponCode'));
         app.topFiveRestaurants();
         app.topTwelveRestaurants();
         app.generalRestaurants();
@@ -568,6 +570,7 @@ var app = {
             localStorage.setItem('couponDiscountAmount', rply.discount_amount + '.00');
             window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
             //  
+            
         });
     }
 
