@@ -47,19 +47,27 @@
               <div class="item-inner item-cell">
                 <div class="item-row">
                   <div class="item-cell" style="text-align: left;">Item Total</div>
-                  <div class="item-cell" style="text-align: right;">100.00</div>
+                  <div class="item-cell" style="text-align: right;" id="lblTotalWithoutGST">loading...</div>
                 </div>
                 <div class="item-row">
-                  <div class="item-cell"  style="color:green; text-align: left;">Delivery Charge</div>
-                  <div class="item-cell" style="color:green; text-align: right;">Free</div>
+                  <div class="item-cell" style="text-align: left;">GST</div>
+                  <div class="item-cell" style="text-align: right;" id="lblGSTAmount">loading...</div>
+                </div>
+                <div class="item-row">
+                  <div class="item-cell"  style="text-align: left;">Delivery Charge</div>
+                  <div class="item-cell" style="text-align: right;" id="lblDeliveryCharge">loading...</div>
+                </div>
+                <div class="item-row">
+                  <div class="item-cell" style=" text-align: left;">Packing Charge</div>
+                  <div class="item-cell" style="text-align: right;" id="lblPackingCharge">loading...</div>
                 </div>
                 <div class="item-row">
                   <div class="item-cell" style="color:green; text-align: left;">Coupon Discount</div>
-                  <div class="item-cell"  style="color:green; text-align: right;">-33.00</div>
+                  <div class="item-cell"  style="color:green; text-align: right;" id="lblCouponDiscount">0</div>
                 </div>
                 <div class="item-row">
                   <div class="item-cell" style="text-align: left;"><strong>To Pay</strong></div>
-                  <div class="item-cell" style="text-align: right;"><strong>67.00</strong></div>
+                  <div class="item-cell" style="text-align: right;" id="lblSubTotal"><strong>loading...</strong></div>
                 </div>
               </div>
           </li>
@@ -74,14 +82,14 @@
             <div class="item-inner item-cell">
               <div class="item-row">
                 <div class="item-cell" style="text-align: left;width: 25%;"><img src="img/shipped.png" style="width:110%"></div>
-                <div class="item-cell" style="text-align: left;"><strong>Deliver to Work</strong></div>
+                <div class="item-cell" style="text-align: left;"><strong>Deliver to</strong></div>
                 
               </div>
               <div class="item-row">
                 <div class="item-cell">123 demo street, Garia, Kolkata-47 <a href="/checkout-address/" class="color-red">Change</a></div>
               </div>
               <div class="item-row">
-                <div class="item-cell">Expected Delivery Time : <span style="color:#ef3837;">30 Min</span>
+                <div class="item-cell">Expected Delivery Time : <span style="color:#ef3837;">40 Min</span>
                 </div>
               </div>
             </div>

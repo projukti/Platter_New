@@ -457,6 +457,7 @@ var app = {
             data: { user: localStorage.getItem('platuser') },
             dataType: "JSON"
         }).done(function (rply) {
+            console.log(rply)
             if (rply.success) {
                 for (list in rply.data) {
                     for (listMenu in rply.data[list].menu) {
@@ -497,12 +498,13 @@ var app = {
                    couponItem += '<li>'
                    couponItem += '<div class="item-content">'
                    couponItem += '<div class="item-media">'
+                    couponItem += '<img src="img/coupon.png" width="50">'
                    couponItem += '</div>'
                    couponItem += '<div class="item-inner">'
                    couponItem += '<div class="item-title-row">'
-                   couponItem += '<div class="item-title">Get 25 % Discount</div>'
+                    couponItem += '<div class="item-title">' + rply.data2[list].coupon_name + '</div>'
                    couponItem += '</div>'
-                   couponItem += '<div class="item-subtitle" style="white-space: unset;">Up to 50/- cashback om two transaction done via Freecharge. <a class="button button-raised button-fill popup-open color-orange">Apply</a></div>'
+                    couponItem += '<div class="item-subtitle" style="white-space: unset;">' + rply.data2[list].description + '<a class="button button-raised button-fill color-orange" onclick="app.validateCouponCode(\''+rply.data2[list].coupon_name+'\')">Apply</a></div>'
                     couponItem += '</div>'
                     couponItem += '</div>'
                     couponItem += '</li>'
@@ -530,7 +532,32 @@ var app = {
                 $('#lblCartItemSection').hide();
                 $('#lblCouponSection').hide();
             }
-            window.plugins.toast.showLongBottom('Cart item update');
+
+            // This Section For Cart Amount 
+            $('#lblTotalWithoutGST').html(rply.subtotal);
+            $('#lblGSTAmount').html(rply.gst);
+            $('#lblDeliveryCharge').html(rply.delivery_charge);
+            $('#lblPackingCharge').html(rply.packing_charge);
+            $('#lblCouponDiscount').html(rply.discount);
+            $('#lblSubTotal').html(rply.total_amount);
+        });
+    },
+
+    // This Function For Validate Coupon Code
+    validateCouponCode: function(coupon){
+        $.ajax({
+            type: "post",
+            url: serverUrl + "validate_coupon/",
+            data: { coupon: coupon, total: $('#lblTotalWithoutGST').html(), user: localStorage.getItem('platuser')},
+            dataType: "json"
+        }).done(function(rply){
+            let packingCharge = $('#lblPackingCharge').html()
+            let deliveryCharge = $('#lblDeliveryCharge').html()
+            let finalAmount = parseInt(rply.amount_after_discount)+parseInt(packingCharge)+parseInt(deliveryCharge)
+            $('#lblCouponDiscount').html(rply.discount_amount)
+            $('#lblGSTAmount').html(rply.gst_amount)
+            $('#lblSubTotal').html(finalAmount)
+            window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
         });
     }
 
@@ -558,6 +585,7 @@ function swipperminus(menu_id, restaurent_id) {
             $('#lblCouponSection').hide();
         }
         app.currentCartItems();
+        window.plugins.toast.showLongBottom('Cart item update');
     });
 }
 
@@ -575,7 +603,7 @@ function swipperadd(menu_id, resturent_id) {
         dataType: "JSON"
     }).done(function (rply) {
         app.currentCartItems();
-        
+        window.plugins.toast.showLongBottom('Cart item update');
     });
 }
 
@@ -592,6 +620,8 @@ function swipperAddMenuDetails(menu_id, restaurant_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: restaurant_id, menu: menu_id[1], qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
+        app.currentCartItems();
+        window.plugins.toast.showLongBottom('Cart item update');
     });
 
 }
@@ -613,6 +643,14 @@ function swipperMinusMenuDetails(menu_id, restaurant_id) {
         data: { user: localStorage.getItem('platuser'), restaurant: restaurent_id, menu: menu_id[1], qty: curretn_value },
         dataType: "JSON"
     }).done(function (rply) {
+        if (rply.item_count < 1) {
+            $('#lblDeliverySection').hide();
+            $('#lblAddressSection').hide();
+            $('#lblCartItemSection').hide();
+            $('#lblCouponSection').hide();
+        }
+        app.currentCartItems();
+        window.plugins.toast.showLongBottom('Cart item update');
     });
 
 }
