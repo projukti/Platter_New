@@ -22,8 +22,8 @@
         <div id="tab-1" class="page-content tab tab-active">
           <div class="block">
             <div class="list">
-              <ul>
-                <li>
+              <ul id="lblOpenOrder">
+                <!-- <li>
                   <a href="/order_details/1/" class="item-link item-content">
                     <div class="item-inner item-cell">
                       <div class="item-row">
@@ -99,7 +99,7 @@
                       </div>
                     </div>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -107,88 +107,8 @@
         <div id="tab-2" class="page-content tab">
           <div class="block">
             <div class="list">
-              <ul>
-                <li>
-                  <a href="/order_details/1/" class="item-link item-content">
-                    <div class="item-inner item-cell">
-                      <div class="item-row">
-                        <div class="item-cell">
-                          <strong>Order No 5157460516</strong>
-                        </div>
-                      </div>
-                      <div class="item-row">
-                        <div class="item-cell">09.02 AM, 14 May 2018</div>
-                      </div>
-                      <div class="item-row">
-                        <div class="item-cell" style="width: unset;">
-                          <img src="img/order_complete.png" width="44">
-                        </div>
-                        <div class="item-cell" style="width: unset;">
-                          <div class="item-row">
-                            Amenia Restaurent , Goalpark
-                          </div>
-                          <div class="item-row">
-                            287.00
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/order_details/1/" class="item-link item-content">
-                    <div class="item-inner item-cell">
-                      <div class="item-row">
-                        <div class="item-cell">
-                          <strong>Order No 5157460516</strong>
-                        </div>
-                      </div>
-                      <div class="item-row">
-                        <div class="item-cell">09.02 AM, 14 May 2018</div>
-                      </div>
-                      <div class="item-row">
-                        <div class="item-cell" style="width: unset;">
-                          <img src="img/order_complete.png" width="44">
-                        </div>
-                        <div class="item-cell" style="width: unset;">
-                          <div class="item-row">
-                            Amenia Restaurent , Goalpark
-                          </div>
-                          <div class="item-row">
-                            287.00
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/order_details/1/" class="item-link item-content">
-                    <div class="item-inner item-cell">
-                      <div class="item-row">
-                        <div class="item-cell">
-                          <strong>Order No 5157460516</strong>
-                        </div>
-                      </div>
-                      <div class="item-row">
-                        <div class="item-cell">09.02 AM, 14 May 2018</div>
-                      </div>
-                      <div class="item-row">
-                        <div class="item-cell" style="width: unset;">
-                          <img src="img/order_complete.png" width="44">
-                        </div>
-                        <div class="item-cell" style="width: unset;">
-                          <div class="item-row">
-                            Amenia Restaurent , Goalpark
-                          </div>
-                          <div class="item-row">
-                            287.00
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+              <ul id="lblCloseOrder">
+                
               </ul>
             </div>
           </div>
@@ -200,16 +120,17 @@
 <script>
   return {
     data: function () {
-      var productId = this.$route.params.id;
-      var currentProduct;
-      this.$root.products.forEach(function (product) {
-        if (product.id === productId) {
-          currentProduct = product;
-        }
-      });
-      return {
-        product: currentProduct,
-      };
+      // var productId = this.$route.params.id;
+      // var currentProduct;
+      // this.$root.products.forEach(function (product) {
+      //   if (product.id === productId) {
+      //     currentProduct = product;
+      //   }
+      // });
+      // return {
+      //   product: currentProduct,
+      // };
+      // console.log(reply)
     }
   };
 </script>

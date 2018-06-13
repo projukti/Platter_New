@@ -36,7 +36,27 @@ routes = [
   },
   {
     path: '/product/:id/',
-    componentUrl: './pages/product.html',
+    // componentUrl: './pages/product.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      unique.preloader.show();
+      var reply
+      setTimeout(function () {
+        app.orderHistory();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/product.html',
+          },
+          {
+            context: {
+              order: reply,
+            }
+          }
+        );
+      }, 1000);
+    },
   },
   {
     path: '/chat_details/:id/',

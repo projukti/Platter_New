@@ -692,6 +692,69 @@ var app = {
                     window.plugins.toast.show('Please choose a payment mode', 'long', 'bottom', function (a) { }, function (b) { });
             }
         }
+    },
+
+    // This Section For Order
+    orderHistory: function(){
+        let openOrder =''
+        let closeOrder=''
+        $.ajax({
+            type: "post",
+            url: "http://platterexoticfood.com/pladmin/manage_api/delivery_order_list/",
+            data: { mobile: localStorage.getItem('platuser') },
+            dataType: "json"
+        }).done(function (rply) {
+            console.log(rply)
+            for (list in rply.open_order){
+                openOrder += '<li>'
+                openOrder += '<a href="/order_details/' + rply.open_order[list].order_id + '/" class="item-link item-content">'
+                openOrder += '<div class="item-inner item-cell">'
+                openOrder += '<div class="item-row">'
+                openOrder += '<div class="item-cell"><strong>Order No ' + rply.open_order[list].order_no + '</strong></div>'
+                openOrder += '</div>'
+                openOrder += '<div class="item-row">'
+                openOrder += '<div class="item-cell">' + rply.open_order[list].order_time + ', ' + rply.open_order[list].order_date + '</div>'
+                openOrder += '</div>'
+                openOrder += '<div class="item-row">'
+                openOrder += '<div class="item-cell" style="width: unset;"><img src="img/open_order.png" width="44"></div>'
+                openOrder += '<div class="item-cell"  style="width: unset;">'
+                openOrder += '<div class="item-row">'
+                openOrder += rply.open_order[list].restaurant.restaurant_name + ', ' + rply.open_order[list].restaurant.locality
+                openOrder += '</div>'
+                openOrder += '<div class="item-row">' + rply.open_order[list].subtotal + '</div>'
+                openOrder += '</div>'
+                openOrder += '</div>'
+                openOrder += '</div>'
+                openOrder += '</a>'
+                openOrder += '</li>'
+            }
+            $('#lblOpenOrder').html(openOrder);
+
+            for (list in rply.close_order){
+                closeOrder += '<li>'
+                closeOrder += '<a href="/order_details/' + rply.close_order[list].order_id + '/" class="item-link item-content">'
+                closeOrder += '<div class="item-inner item-cell">'
+                closeOrder += '<div class="item-row">'
+                closeOrder += '<div class="item-cell"><strong>Order No ' + rply.close_order[list].order_no + '</strong></div>'
+                closeOrder += '</div>'
+                closeOrder += '<div class="item-row">'
+                closeOrder += '<div class="item-cell">' + rply.close_order[list].delivery_time + ', ' + rply.close_order[list].delivery_date + '</div>'
+                closeOrder += '</div>'
+                closeOrder += '<div class="item-row">'
+                closeOrder += '<div class="item-cell" style="width: unset;"><img src="img/open_order.png" width="44"></div>'
+                closeOrder += '<div class="item-cell"  style="width: unset;">'
+                closeOrder += '<div class="item-row">'
+                closeOrder += rply.close_order[list].restaurant.restaurant_name + ', ' + rply.close_order[list].restaurant.locality
+                closeOrder += '</div>'
+                closeOrder += '<div class="item-row">' + rply.close_order[list].subtotal + '</div>'
+                closeOrder += '</div>'
+                closeOrder += '</div>'
+                closeOrder += '</div>'
+                closeOrder += '</a>'
+                closeOrder += '</li>'
+            }
+            $('lblCloseOrder').html(closeOrder);
+        });
     }
 
 };
