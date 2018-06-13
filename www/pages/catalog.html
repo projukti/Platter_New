@@ -146,13 +146,7 @@
           window.plugins.toast.showLongBottom('Select Payment Option');
         }
         else{
-          let returnVal=app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '');
-          if(returnVal){
-            
-          }
-          else{
-
-          }
+          app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '');
         }
 
       },

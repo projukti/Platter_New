@@ -629,7 +629,7 @@ var app = {
                             }).done(function () {
                                
                             });
-                            return 1; //Payment Success
+                            cartView.router.navigate('/payment-success/', );
                         }
                         
                         // if (res.success < 1) {
