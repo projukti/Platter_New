@@ -627,7 +627,8 @@ var app = {
                             }).done(function () {
                                
                             });
-                            cartView.router.navigate('/payment-success/');
+                            
+                            cartView.router.navigate('/payment-success/' + orderID + '/');
                         }
                         
                         // if (res.success < 1) {

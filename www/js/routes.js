@@ -92,7 +92,7 @@ routes = [
     componentUrl: './pages/edit_profile.html',
   },
   {
-    path:'/payment-success/',
+    path:'/payment-success/:id/',
     componentUrl: './pages/payment-success.html',
   },
   {
