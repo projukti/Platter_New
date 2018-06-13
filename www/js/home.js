@@ -1,4 +1,5 @@
 var serverUrl = 'http://platterexoticfood.com/pladmin/manage_api/'
+var user = localStorage.getItem('platuser')
 
 var app = {
     // Application Constructor
@@ -14,8 +15,6 @@ var app = {
     onDeviceReady: function () {
         // Set Default Text And Value
         $('#lblLocality').html(localStorage.getItem('area')); //Display Area Here
-        $('#lblAmountToPay').val('Amount to pay : ' + localStorage.getItem('couponFinalAmount'));
-        $('#lblOffer').val('COUPON:' + localStorage.getItem('couponCode'));
         app.topFiveRestaurants();
         app.topTwelveRestaurants();
         app.generalRestaurants();
@@ -517,7 +516,7 @@ var app = {
                 $('#lblCartItemSection').show();
                 $('#lblCouponSection').show();
                 $('#lblEmptyCartSection').hide();
-                $('#lblDeliveryAddress').html(localStorage.getItem('currentAddress') +'<a href="/checkout-address/" class="color-red">Change</a>');
+                $('#lblDeliveryAddress').html(localStorage.getItem('currentAddress'));
             }
             else {
                 cartItem += '<div id="lblEmptyCartSection">'
@@ -542,7 +541,7 @@ var app = {
             $('#lblPackingCharge').html(rply.packing_charge);
             $('#lblCouponDiscount').html(rply.discount);
             $('#lblSubTotal').html(rply.total_amount);
-            if (localStorage.getItem('couponCode')){
+            if (localStorage.getItem('couponCode')) {
                 $('#lblGSTAmount').html(localStorage.getItem('couponGST'));
                 $('#lblCouponDiscount').html(localStorage.getItem('couponDiscountAmount'));
                 $('#lblSubTotal').html(localStorage.getItem('couponFinalAmount'));
@@ -561,17 +560,139 @@ var app = {
             let packingCharge = $('#lblPackingCharge').html()
             let deliveryCharge = $('#lblDeliveryCharge').html()
             let finalAmount = parseInt(rply.amount_after_discount) + parseInt(packingCharge) + parseInt(deliveryCharge)
-            $('#lblCouponDiscount').html(rply.discount_amount+'.00')
-            $('#lblGSTAmount').html(rply.gst_amount+'.00')
-            $('#lblSubTotal').html(finalAmount+'.00')
+            $('#lblCouponDiscount').html(rply.discount_amount + '.00')
+            $('#lblGSTAmount').html(rply.gst_amount + '.00')
+            $('#lblSubTotal').html(finalAmount + '.00')
             localStorage.setItem('couponCode', coupon);
             localStorage.setItem('couponGST', rply.gst_amount + '.00');
             localStorage.setItem('couponFinalAmount', finalAmount + '.00');
             localStorage.setItem('couponDiscountAmount', rply.discount_amount + '.00');
             window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
             //  
-            
+
         });
+    },
+
+    // This Section For Pay Now
+    payNow: function (delivery_address, delivery_pincode, delivery_flat, delivery_landmark, payment_method, couponCode, refcode) {
+        //user = localStorage.getItem('platuser');
+        let order_amount = 1;
+        // var order_amount = $('#cartSummery span').text();
+        let order_no;
+        // $('#delivAddress').prop('readonly', true);
+        $('#btnPayOnDelivery').prop('disabled', true).text('Please wait. . .');
+        if (delivery_address.length < 10) {
+            $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
+            window.plugins.toast.show('Please enter a valid delivery address', 'long', 'bottom', function (a) { }, function (b) { });
+        } else {
+            switch (payment_method) {
+                case 'cod':
+                    $.ajax({
+                        url: serverUrl + 'checkout',
+                        method: 'post',
+                        dataType: 'JSON',
+                        data: {
+                            user: localStorage.getItem('platuser'),
+                            delivery_address: delivery_address,
+                            delivery_pincode: delivery_pincode,
+                            delivery_flat: delivery_flat,
+                            delivery_landmark: delivery_landmark,
+                            payment_method: payment_method,
+                            payment_success: 0,
+                            couponCode: couponCode,
+                            refcode: refcode
+                        }
+                    }).done(function (res) {
+                        localStorage.setItem('couponFinalAmount', '');
+                        localStorage.setItem('couponDiscountAmount', '');
+                        localStorage.setItem('couponCode', '');
+                        localStorage.setItem('couponGST', '');
+                        localStorage.setItem('couponapplied', 'no');
+
+                        console.log(res)
+                        
+                        if(res.success < 1){
+                            window.plugins.toast.show('Failed because: ' + res.message, 'long', 'middle', function (a) { }, function (b) { });
+                            $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
+                            return 0; //Payment Not Done
+                        }
+                        else{
+                            let orderID =  res.data
+                            let tkn = localStorage.getItem('newtoken');
+                            let title = 'Order Placed Successfully';
+                            let msg = 'Your order ' + orderID + ' is placed successfully. Now relax and we will handle rest of the things.';
+                            $.ajax({
+                                url: serverUrl+"sendGCM/",
+                                method: "POST",
+                                dataType: "JSON",
+                                data: { title: title, message: msg, user: user }
+                            }).done(function () {
+                               
+                            });
+                            return 1; //Payment Success
+                        }
+                        
+                        // if (res.success < 1) {
+                        //     window.plugins.toast.show('Failed because: ' + res.message, 'long', 'middle', function (a) { }, function (b) { });
+                        //     $('#delivAddress').prop('readonly', false);
+                        //     
+                        //     window.plugins.toast.show('Please enter a valid delivery address', 'long', 'bottom', function (a) { }, function (b) { });
+                        // } else {
+                        //     $('.cartItemCount').text(0);
+                        //     var odtxt = res.data;
+
+                        //     localStorage.setItem('lastorders', odtxt);
+
+                        //     $('#delivAddress').prop('readonly', false);
+                        //     $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
+                        //     pageHistory.push('payNow');
+                        //     tkn = localStorage.getItem('newtoken');
+                        //     title = 'Order Placed Successfully';
+                        //     msg = 'Your order ' + odtxt + ' is placed successfully. Now relax and we will handle rest of the things.';
+                        //     $.ajax({
+                        //         url: "http://platterexoticfood.com/pladmin/manage_api/sendGCM",
+                        //         method: "POST",
+                        //         dataType: "JSON",
+                        //         data: { title: title, message: msg, user: user }
+                        //     }).done(function (res) {
+                        //         //app.openPaymentSuccess();
+                        //     });
+                        //     app.openPaymentSuccess();
+                        // }
+                    }).fail();
+                    break;
+                case 'online':
+                    // $.ajax({
+                    //     url: serverUrl + 'manage_api/checkout',
+                    //     method: 'post',
+                    //     dataType: 'JSON',
+                    //     data: {
+                    //         user: user,
+                    //         delivery_address: delivery_address,
+                    //         delivery_pincode: delivery_pincode,
+                    //         payment_method: payment_method,
+                    //         payment_success: 0,
+                    //         transaction_info: []
+                    //     }
+                    // }).done(function (res) {
+                    //     if (res.success < 1) {
+
+                    //         $('#delivAddress').prop('readonly', false);
+                    //         $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
+                    //         window.plugins.toast.show('Please enter a valid delivery address', 'long', 'middle', function (a) { }, function (b) { });
+                    //     } else {
+                    //         // Online code implementation area
+                    //         $('#delivAddress').prop('readonly', false);
+                    //         $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
+                    //     }
+                    // });
+                    break;
+                default:
+                    // $('#delivAddress').prop('readonly', false);
+                    $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
+                    window.plugins.toast.show('Please choose a payment mode', 'long', 'bottom', function (a) { }, function (b) { });
+            }
+        }
     }
 
 };
@@ -798,7 +919,7 @@ function swipperMinusMenuDetails(menu_id, restaurant_id) {
 //                     // document.querySelector('#delivAddress').value = results[0].formatted_address;
 //                     // document.querySelector('.postal').classList.remove('available');
 //                     // document.querySelector('.postal').classList.remove('unavailable');
-                   
+
 //                     // $.ajax({
 //                     //     url: serverUrl + 'manage_api/pin_verify',
 //                     //     method: 'post',

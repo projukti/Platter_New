@@ -86,7 +86,7 @@
                 
               </div>
               <div class="item-row">
-                <div class="item-cell" id="lblDeliveryAddress">123 demo street, Garia, Kolkata-47 <a href="/checkout-address/" class="color-red">Change</a></div>
+                <div class="item-cell" id="lblDeliveryAddress">loading... </div><a href="/checkout-address/" class="color-blue">Change</a>
               </div>
               <div class="item-row">
                 <div class="item-cell">Expected Delivery Time : <span style="color:#ef3837;">40 Min</span>
@@ -97,7 +97,7 @@
           <li class="item-content item-input">
             <div class="item-inner">
               <div class="item-input-wrap">
-                <a href="/catalog/" class="button button-fill button-raised color-green">PROCEED TO PAY</a>
+                <a @click="payment" class="button button-fill button-raised color-green">PROCEED TO PAY</a>
                 <!-- <a href="/sample-data/" class="button button-fill button-raised color-orange">sample-data</a> -->
               </div>
             </div>
@@ -113,6 +113,15 @@
 </template>
 <script>
   return{
+    methods: {
+      payment : function(){
+        // Get Payment Information Here
+        let finalAmount = $('#lblSubTotal').html()
+        let couponCode = localStorage.getItem('couponCode')
+        let routeURL = '/catalog/'+finalAmount+'/'+couponCode+'/'
+        cartView.router.navigate(routeURL);
+      },
+    },
     on:{
       pageBeforeIn : function (e, page) {
         app.currentCartItems();

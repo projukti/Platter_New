@@ -27,7 +27,7 @@ routes = [
     componentUrl: './pages/menu_details.html',
   },
   {
-    path: '/catalog/',
+    path: '/catalog/:finalamount/:coupon/',
     componentUrl: './pages/catalog.html',
   },
   {
@@ -90,6 +90,10 @@ routes = [
   {
     path: '/edit-profile/',
     componentUrl: './pages/edit_profile.html',
+  },
+  {
+    path:'/payment-success/',
+    componentUrl: './pages/payment-success.html',
   },
   {
     path: '/request-and-load/user/:userId/',

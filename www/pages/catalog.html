@@ -7,13 +7,15 @@
             <i class="icon icon-back color-white"></i>
           </a>
         </div>
-        <div class="title color-white" style="color:#fff;">Payment<br><small style="font-size: 14px;" id="lblAmountToPay">loading...</small></div>
+        <div class="title color-white" style="color:#fff;">Payment<br><small style="font-size: 14px;">Amount to pay : <span id="lblFinalAmount">{{$route.params.finalamount}}</span></small></div>
       </div>
     </div>
     <div class="page-content">
       <div class="block">
-        <strong>PREDERRED PAYMENT MODE FOR THIS OFFER</strong><br>
-        <span id="lblOffer"></span>
+        {{#if $route.params.coupon}}
+          <strong>PREDERRED PAYMENT MODE FOR THIS OFFER</strong><br>
+          <span id="lblOffer">{{$route.params.coupon}}</span>
+        {{/if}}
       </div>
       <div class="block-title">
         WALLET
@@ -111,7 +113,7 @@
           <li>
             <div class="item-content">
               <label class="item-checkbox item-content">
-                <input type="checkbox" name="demo-media-checkbox" value="1" />
+                <input type="checkbox" name="demo-media-checkbox" id="chkCOD" value="1" />
                 <i class="icon icon-checkbox"></i>
               <div class="item-inner">
                 <div class="item-title-row">
@@ -125,17 +127,40 @@
       </div>
 
       <div class="block">
-        <button class="button button-fill color-green">ORDER NOW</button>
+        <button class="button button-fill color-green" id="btnPayOnDelivery" @click="payOrder">PAY ON DELIVERY</button>
       </div>
     </div>
   </div>
 </template>
 <script>
   return {
-    data: function () {
-      return {
-        products: this.$root.products,
-      };
+    methods: {
+      payOrder: function(){
+
+        let deliveryAddress = $('#lblDeliveryAddress').html()
+        let splitAddress = deliveryAddress.split(",")
+        let finalAmount =  $('#lblFinalAmount').html()
+        console.log(deliveryAddress)
+
+        if($('#chkCOD').not(':checked').length) {
+          window.plugins.toast.showLongBottom('Select Payment Option');
+        }
+        else{
+          let returnVal=app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '');
+          if(returnVal){
+            
+          }
+          else{
+
+          }
+        }
+
+      },
+    },
+    on:{
+      pageInit: function (e, page) {
+        
+      },
     }
   };
 </script>
