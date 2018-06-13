@@ -603,20 +603,18 @@ var app = {
                             refcode: refcode
                         }
                     }).done(function (res) {
-                        localStorage.setItem('couponFinalAmount', '');
-                        localStorage.setItem('couponDiscountAmount', '');
-                        localStorage.setItem('couponCode', '');
-                        localStorage.setItem('couponGST', '');
-                        localStorage.setItem('couponapplied', 'no');
-
-                        console.log(res)
-                        
                         if(res.success < 1){
                             window.plugins.toast.show('Failed because: ' + res.message, 'long', 'middle', function (a) { }, function (b) { });
                             $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
-                            return 0; //Payment Not Done
+                            cartView.router.navigate('/payment-error/');
                         }
                         else{
+                            localStorage.setItem('couponFinalAmount', '');
+                            localStorage.setItem('couponDiscountAmount', '');
+                            localStorage.setItem('couponCode', '');
+                            localStorage.setItem('couponGST', '');
+                            localStorage.setItem('couponapplied', 'no');
+
                             let orderID =  res.data
                             let tkn = localStorage.getItem('newtoken');
                             let title = 'Order Placed Successfully';
@@ -629,7 +627,7 @@ var app = {
                             }).done(function () {
                                
                             });
-                            cartView.router.navigate('/payment-success/', );
+                            cartView.router.navigate('/payment-success/');
                         }
                         
                         // if (res.success < 1) {

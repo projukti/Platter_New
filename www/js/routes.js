@@ -96,6 +96,10 @@ routes = [
     componentUrl: './pages/payment-success.html',
   },
   {
+    path: '/payment-error/',
+    componentUrl: './pages/payment-error.html',
+  },
+  {
     path: '/request-and-load/user/:userId/',
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance
