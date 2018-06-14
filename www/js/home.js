@@ -309,6 +309,7 @@ var app = {
 
             // This Section For Veg Items
             for (list in rply.veg) {
+                console.log(rply.veg.length)
                 vegDish += '<li>'
                 vegDish += '<div class="item-content" style="color:#676767;">'
                 vegDish += '<div class="item-media">'
@@ -338,6 +339,9 @@ var app = {
                 vegDish += '</div>'
                 vegDish += '</div>'
                 vegDish += '</li>'
+            }
+            if (vegDish == ""){
+                vegDish +="<li> NO Item Found</li>"
             }
             $('#lblVegDish').html(vegDish);
 
@@ -371,6 +375,9 @@ var app = {
                 nonVegDish += '</div>'
                 nonVegDish += '</div>'
                 nonVegDish += '</li>'
+            }
+            if (nonVegDish == "") {
+                nonVegDish += "<li> NO Item Found</li>"
             }
             $('#lblNonVeg').html(nonVegDish);
         }).fail(function (rply) {
@@ -761,52 +768,45 @@ var app = {
     orderDetails: function(orderID){
     },
 
-    resturentListByType :function(type){
-        let generalRestaurents = ''
+    // This Function For Wishist
+    userWishlist : function(){
+        let favouritesMenu=''
+        let resName =''
         $.ajax({
             type: "post",
-            url: serverUrl + 'restaurant_general_list_without_limit',
+            url: serverUrl + 'menu_liks_user',
+            data: {user : user},
             dataType: "JSON"
         }).done(function(rply){
-            for (list in rply.restaurant) {
-
-                generalRestaurents += '<li>'
-                if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open") {
-                    generalRestaurents += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '/' + rply.restaurant[list].restaurant_name + '/" class="item-content" style="color:#676767;">'
-                    generalRestaurents += '<div class="item-media">'
-                    generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
-                }
-                else {
-                    let cloaseMessage = "Restaurest will open at : " + rply.restaurant[list].opening_time
-                    generalRestaurents += '<a href="javascript:void(0);" onclick="javascript:app.custToastMessage(\'' + cloaseMessage + '\')" class="item-content" style="color:#676767;">'
-                    generalRestaurents += '<div class="item-media">'
-                    generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>'
-                }
-                generalRestaurents += '</div>'
-                generalRestaurents += '<div class="item-inner">'
-                generalRestaurents += '<div class="item-title-row">'
-                generalRestaurents += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.restaurant[list].restaurant_name + '</div>'
-                generalRestaurents += '</div>'
-                generalRestaurents += '<div class="item-subtitle" style="font-size: 12px;">' + rply.restaurant[list].cuisine_tags + '</div>'
-                generalRestaurents += '<hr style="height: 0px; color: #fff;">'
-                generalRestaurents += '<div class="item-subtitle">'
-                generalRestaurents += '<div class="row">'
-                generalRestaurents += '<div class="col-40" style="font-size: 12px;">'
-                generalRestaurents += '<i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>' + rply.restaurant[list].avg_rating
-                generalRestaurents += '</div>'
-                generalRestaurents += '<div class="col-60" style="font-size: 12px;text-align: right;">'
-                generalRestaurents += '<img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">'
-                generalRestaurents += '<span>' + rply.restaurant[list].two_person_cost + ' FOR TWO</span>'
-                generalRestaurents += '</div>'
-                generalRestaurents += '</div>'
-                generalRestaurents += '</div>'
-                generalRestaurents += '</div>'
-                generalRestaurents += '</a>'
-                generalRestaurents += '</li>'
-                $('#lblRestaurent').html(generalRestaurents)
+            console.log(rply);
+            for (list in rply.like_menus){
+                favouritesMenu += '<li>'
+                favouritesMenu += '<div class="item-content" style="color:#676767;">'
+                favouritesMenu += '<div class="item-media">'
+                favouritesMenu += '<img src="http://platterexoticfood.com/pladmin/uploads/menu/' + rply.like_menus[list].menuimg + '" style="height: 50px; width: 50px;">'
+                favouritesMenu += '</div>'
+                favouritesMenu += '<div class="item-inner">'
+                favouritesMenu += '<div class="item-title-row">'
+                favouritesMenu += '<a href="/menu-details/' + rply.like_menus[list].menu_id + '/' + rply.like_menus[list].menuname + '/' + rply.like_menus[list].restaurant_name + '/' +  rply.like_menus[list].restaurant_id + '/">'
+                favouritesMenu += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.like_menus[list].menuname+'</div>'
+                favouritesMenu += '</a>'
+                favouritesMenu += '</div>'
+                favouritesMenu += '<div class="item-subtitle" style="font-size: 12px;">'
+                favouritesMenu += '<div class="row">'
+                favouritesMenu += '<span>' + rply.like_menus[list].restaurant_name +'</span>'
+                favouritesMenu += '</div>'
+                favouritesMenu += '</div>'
+                favouritesMenu += '</div>'
+                favouritesMenu += '</div>'
+                favouritesMenu += '</li>'
             }
+            if (favouritesMenu=="")
+            {
+                favouritesMenu += '<li>No Menu Found</li>'
+            }
+            $('#lblFavourites').html(favouritesMenu);
         });
-    },
+    }
 
 };
 

@@ -85,10 +85,28 @@ routes = [
     path: '/friends_profile/:id/',
     componentUrl: './pages/profile.html',
   },
+
+
   {
-    path: '/favourites_user/:id/',
-    componentUrl: './pages/favourites.html',
+    path: '/favourites_user/',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      unique.preloader.show();
+      setTimeout(function () {
+        app.userWishlist();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/favourites.html',
+          }
+        );
+      }, 1000);
+    },
+    
   },
+
+
   {
     path: '/referrals/',
     componentUrl: './pages/referrals.html',
