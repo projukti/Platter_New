@@ -765,7 +765,62 @@ var app = {
     },
 
     // This Section For Order Details 
-    orderDetails: function(orderID){
+    orderDetails: function(orderId){
+        $.ajax({
+            type: "post",
+            url: serverUrl + 'order_details_by_id',
+            data: { orderId: orderId},
+            dataType: "JSON"
+        }).done(function(rply){
+            console.log(rply)
+        });
+    },
+
+    resturentListByType: function () {
+        let generalRestaurents = ''
+        $.ajax({
+            type: "post",
+            url: serverUrl + 'restaurant_general_list_without_limit',
+            dataType: "JSON"
+        }).done(function (rply) {
+            for (list in rply.restaurant) {
+
+                generalRestaurents += '<li>'
+                if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open") {
+                    generalRestaurents += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '/' + rply.restaurant[list].restaurant_name + '/" class="item-content" style="color:#676767;">'
+                    generalRestaurents += '<div class="item-media">'
+                    generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
+                }
+                else {
+                    let cloaseMessage = "Restaurest will open at : " + rply.restaurant[list].opening_time
+                    generalRestaurents += '<a href="javascript:void(0);" onclick="javascript:app.custToastMessage(\'' + cloaseMessage + '\')" class="item-content" style="color:#676767;">'
+                    generalRestaurents += '<div class="item-media">'
+                    generalRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>'
+                }
+                generalRestaurents += '</div>'
+                generalRestaurents += '<div class="item-inner">'
+                generalRestaurents += '<div class="item-title-row">'
+                generalRestaurents += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.restaurant[list].restaurant_name + '</div>'
+                generalRestaurents += '</div>'
+                generalRestaurents += '<div class="item-subtitle" style="font-size: 12px;">' + rply.restaurant[list].cuisine_tags + '</div>'
+                generalRestaurents += '<hr style="height: 0px; color: #fff;">'
+                generalRestaurents += '<div class="item-subtitle">'
+                generalRestaurents += '<div class="row">'
+                generalRestaurents += '<div class="col-40" style="font-size: 12px;">'
+                generalRestaurents += '<i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>' + rply.restaurant[list].avg_rating
+                generalRestaurents += '</div>'
+                generalRestaurents += '<div class="col-60" style="font-size: 12px;text-align: right;">'
+                generalRestaurents += '<img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">'
+                generalRestaurents += '<span>' + rply.restaurant[list].two_person_cost + ' FOR TWO</span>'
+                generalRestaurents += '</div>'
+                generalRestaurents += '</div>'
+                generalRestaurents += '</div>'
+                generalRestaurents += '</div>'
+                generalRestaurents += '</a>'
+                generalRestaurents += '</li>'
+                $('#lblRestaurent').html(generalRestaurents)
+            }
+        });
     },
 
     // This Function For Wishist
@@ -807,6 +862,8 @@ var app = {
             $('#lblFavourites').html(favouritesMenu);
         });
     }
+
+    // 
 
 };
 

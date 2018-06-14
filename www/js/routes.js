@@ -79,7 +79,23 @@ routes = [
   },
   {
     path: '/order_details/:id/',
-    componentUrl: './pages/order_details.html',
+    
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      let id = routeTo.params.id;
+      unique.preloader.show();
+      setTimeout(function () {
+        app.orderDetails(id);
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/order_details.html',
+          }
+        );
+      }, 1000);
+    },
+    
   },
   {
     path: '/friends_profile/:id/',
