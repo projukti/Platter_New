@@ -17,6 +17,21 @@ routes = [
   {
     path: '/restaurent_list/',
     url: './pages/restaurent_list.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      
+      unique.preloader.show();
+      setTimeout(function () {
+        app.resturentListByType();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/restaurent_list.html',
+          }
+        );
+      }, 1000);
+    },
   },
   {
     path: '/restaurent-details/:id/:name/',

@@ -458,7 +458,7 @@ var app = {
             data: { user: localStorage.getItem('platuser') },
             dataType: "JSON"
         }).done(function (rply) {
-            console.log(rply)
+            // console.log(rply)
             if (rply.success) {
                 for (list in rply.data) {
                     for (listMenu in rply.data[list].menu) {
@@ -704,7 +704,7 @@ var app = {
             data: { mobile: localStorage.getItem('platuser') },
             dataType: "json"
         }).done(function (rply) {
-            console.log(rply)
+            // console.log(rply)
             for (list in rply.open_order){
                 openOrder += '<li>'
                 openOrder += '<a href="/order_details/' + rply.open_order[list].order_id + '/" class="item-link item-content">'
@@ -755,7 +755,21 @@ var app = {
             }
             $('lblCloseOrder').html(closeOrder);
         });
-    }
+    },
+
+    // This Section For Order Details 
+    orderDetails: function(orderID){
+    },
+
+    resturentListByType :function(type){
+        $.ajax({
+            type: "post",
+            url: serverUrl + 'restaurant_general_list_without_limit',
+            dataType: "JSON"
+        }).done(function(rply){
+            console.log(rply)
+        });
+    },
 
 };
 
