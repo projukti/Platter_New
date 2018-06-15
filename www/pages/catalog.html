@@ -11,11 +11,9 @@
       </div>
     </div>
     <div class="page-content">
-      <div class="block">
-        {{#if $route.params.coupon}}
+      <div class="block" id="coupoSection" style="display: none;">
           <strong>PREDERRED PAYMENT MODE FOR THIS OFFER</strong><br>
           <span id="lblOffer">{{$route.params.coupon}}</span>
-        {{/if}}
       </div>
       <div class="block-title">
         WALLET
@@ -177,7 +175,9 @@
     },
     on:{
       pageInit: function (e, page) {
-        
+        if(localStorage.getItem('couponCode')==null || localStorage.getItem('couponCode')==""){
+          $('#coupoSection').show();
+        }
       },
     }
   };
