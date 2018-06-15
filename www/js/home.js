@@ -711,7 +711,7 @@ var app = {
             data: { mobile: localStorage.getItem('platuser') },
             dataType: "json"
         }).done(function (rply) {
-            // console.log(rply)
+            console.log(rply)
             for (list in rply.open_order){
                 openOrder += '<li>'
                 openOrder += '<a href="/order_details/' + rply.open_order[list].order_id + '/" class="item-link item-content">'
@@ -748,7 +748,7 @@ var app = {
                 closeOrder += '<div class="item-cell">' + rply.close_order[list].delivery_time + ', ' + rply.close_order[list].delivery_date + '</div>'
                 closeOrder += '</div>'
                 closeOrder += '<div class="item-row">'
-                closeOrder += '<div class="item-cell" style="width: unset;"><img src="img/open_order.png" width="44"></div>'
+                closeOrder += '<div class="item-cell" style="width: unset;"><img src="img/order_complete.png" width="44"></div>'
                 closeOrder += '<div class="item-cell"  style="width: unset;">'
                 closeOrder += '<div class="item-row">'
                 closeOrder += rply.close_order[list].restaurant.restaurant_name + ', ' + rply.close_order[list].restaurant.locality
@@ -760,12 +760,14 @@ var app = {
                 closeOrder += '</a>'
                 closeOrder += '</li>'
             }
-            $('lblCloseOrder').html(closeOrder);
+            // console.log(closeOrder);
+            $('#lblCloseOrder').html(closeOrder);
         });
     },
 
     // This Section For Order Details 
     orderDetails: function(orderId){
+        let menuDetails = ''
         $.ajax({
             type: "post",
             url: serverUrl + 'order_details_by_id',
@@ -773,6 +775,55 @@ var app = {
             dataType: "JSON"
         }).done(function(rply){
             console.log(rply)
+            let navOrderStatus=''
+            $('#lblOrderNo').html(rply.data.order_no);
+            // $('#lblOrderStatus').html(htmlString);
+            switch (rply.data.orderDetail.delivery_status) {
+                case '0':
+                    navOrderStatus += 'Order Placed'
+                    break;
+
+                case '1':
+                    navOrderStatus += 'Order Received'
+                    break;
+                
+                case '2':
+                    navOrderStatus += 'Restaurant Reached'
+                    break;
+
+                case '3':
+                    navOrderStatus += 'Food Picked '
+                    break;
+
+                case '4':
+                    navOrderStatus += 'Arrived'
+                    break;
+
+                case '5':
+                    navOrderStatus += 'Delivered'
+                    break;
+            
+                default:
+                    break;
+            }
+
+            navOrderStatus +=' | Item : '
+            navOrderStatus += rply.data.totalQuantity
+            navOrderStatus += ', Rs. '
+            navOrderStatus += rply.data.subtotal
+            $('#lblOrderStatus').html(navOrderStatus);
+            $('#lblRestaurentName').html(rply.data.restaurant.restaurant_name);
+            $('#lblRestaurentAddress').html(rply.data.restaurant.locality);
+            $('#lblCustomerAddress').html(rply.data.orderDetail.shipping_address);
+           
+            for (list in rply.data.menu){
+                menuDetails += '<div class="row">'
+                menuDetails += '<div class="col" style="text-align: left;">' + rply.data.menu[list].menuname + ' x ' + rply.data.menu[list].qty +'</div>'
+                menuDetails += '<div class="col" style="text-align: right;">' + rply.data.menu[list].menusubtotal+'</div>'
+                menuDetails += '</div>'
+            }
+
+            $('#lblOrderSummery').html(menuDetails);
         });
     },
 

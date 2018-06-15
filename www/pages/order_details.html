@@ -8,9 +8,9 @@
             <span class="ios-only color-white">Back</span>
           </a>
         </div>
-        <div class="title" style="color: #fff;margin: 0px;font-size:16px;">Order No. 364738292
+        <div class="title" style="color: #fff;margin: 0px;font-size:16px;">Order No. <span id="lblOrderNo"></span>
           <br>
-          <small>Delivered | 2 Items, Rs. 312.00</small>
+          <small id="lblOrderStatus"></small>
         </div>
       </div>
     </div>
@@ -24,8 +24,8 @@
             <img src="img/placeholder.png"><br>
           </div>
           <div class="col-90">
-            <strong>Aami Bangali</strong><br>
-            <small style="font-size: 9px;">185/9A Santoshpur Avenue, Near Santoshpur Jora Bridge,Kolkata-58</small>
+            <strong id="lblRestaurentName"></strong><br>
+            <small style="font-size: 9px;" id="lblRestaurentAddress"></small>
           </div>
         </div>
         <div class="row">
@@ -33,16 +33,16 @@
             <img src="img/flag.png">
           </div>
           <div class="col-90">
-            <strong>Work</strong><br>
-            <small style="font-size: 9px;">185/9A Santoshpur Avenue, Near Santoshpur Jora Bridge,Kolkata-58</small>
+            <strong>Your Location</strong><br>
+            <small style="font-size: 9px;" id="lblCustomerAddress"></small>
           </div>
         </div>
       </div>
 
       <div class="block-title">Menu Details</div>
       <div class="block">
-        <div class="item-inner item-cell">
-          <div class="row">
+        <div class="item-inner item-cell" id="lblOrderSummery">
+          <!-- <div class="row">
             <div class="col" style="text-align: left;">Roasted Chili Pork (Dry) x 1</div>
             <div class="col" style="text-align: right;">100.00</div>
           </div>
@@ -53,7 +53,7 @@
           <div class="row">
             <div class="col" style="text-align: left;">Roasted Chili Pork (Dry) x 1</div>
             <div class="col" style="text-align: right;">100.00</div>
-          </div>
+          </div> -->
         </div>
       </div>
 

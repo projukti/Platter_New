@@ -163,7 +163,7 @@
                                     <div class="item-inner">
                                         <div class="item-title item-label">Phone Number</div>
                                         <div class="item-input-wrap">
-                                            <input type="text" name="phone" id="phone" placeholder="Enter Your Phone No">
+                                            <input type="number" name="phone" id="phone" placeholder="Enter Your Phone No">
                                         </div>
                                     </div>
                                 </li>
@@ -221,7 +221,7 @@
                                                 </ul>
                                             </div>
                                             <div class="block">
-                                                <a href="#" class="link icon" disabled>
+                                                <a href="#" class="link icon" onclick="app.resendOTP()">
                                                     <i class="icon material-icons md-only">redo</i>Resend</a>
                                                 <div class="right"> Time Remaining
                                                     <span id="ms_timer_login"></span>
@@ -272,7 +272,7 @@
                                     <div class="item-inner">
 
                                         <div class="item-input-wrap">
-                                            <input type="text" id="phone2" placeholder="Enter Your Phone">
+                                            <input type="number" id="phone2" placeholder="Enter Your Phone">
                                         </div>
                                     </div>
                                 </li>
@@ -330,7 +330,7 @@
                                                 </ul>
                                             </div>
                                             <div class="block">
-                                                <a href="#" class="link icon" disabled>
+                                                <a href="#" class="link icon" id="btnResend" onclick="app.resendOTP()">
                                                     <i class="icon material-icons md-only">redo</i>Resend</a>
                                                 <div class="right"> Time Remaining
                                                     <span id="ms_timer"></span>

@@ -48,6 +48,27 @@ var app = {
         // receivedElement.setAttribute('style', 'display:block;');
 
         // console.log('Received Event: ' + id);
+    },
+
+    // This Function For Resend OTP
+    resendOTP: function(){
+        let mobile = localStorage.getItem('platuser');
+        $('#btnResend').prop('disabled', true).text('Resending...');
+        $.ajax({
+            type: "POST",
+            url: "http://platterexoticfood.com/pladmin/manage_api/resendOTP/",
+            data: { mobile: mobile},
+            dataType: "JSON"
+        }).done(function (rply){
+            $('#btnResend').prop('disabled', false).text('Resend');
+            if (rply.success)
+            {
+                window.plugins.toast.showLongBottom('OTP send successfully');
+            }
+            else{
+                window.plugins.toast.showLongBottom('Error!');
+            }
+        });
     }
 
 };
@@ -78,16 +99,16 @@ function register() {
                     seconds: 10,
                     size: "lg"
                 });
-                setTimeout(function () {
-                    $('#txtOTP').val(OTP);
-                }, 10000);
-                setTimeout(function () {
-                    verifyOTP();
-                }, 12000);
+                // setTimeout(function () {
+                //     $('#txtOTP').val(OTP);
+                // }, 10000);
+                // setTimeout(function () {
+                //     verifyOTP();
+                // }, 12000);
             } else {
-                $('#btnRegister').prop('disabled', false);
-                window.plugins.toast.showLongBottom('Sorry ! We could not send you SMS');
                 $('#btnRegister').prop('disabled', false).text('Register');
+                window.plugins.toast.showLongBottom('Sorry ! Mobile Number Or Email already registered with us');
+                // $('#btnRegister').prop('disabled', false).text('Register');
             }
         }).fail(function (err) {
             window.plugins.toast.showLongBottom('Please enter a valid mobile number!');
@@ -148,24 +169,31 @@ function requestOTP() {
             type: "post",
             dataType: "JSON",
             data: { mobile: mobile }
-        }).done(function (reply) {
-            OTP = reply.otp;
-            $('#login_title').text('Verify OTP');
-            $('#loginscrn').css('display', 'none');
-            $('#loginscrn2').css('display', 'none');
-            $('#logingotp').css('display', 'block');
+        }).done(function (rply) {
+            if (rply.status){
+                // OTP = reply.otp;
+                $('#login_title').text('Verify OTP');
+                $('#loginscrn').css('display', 'none');
+                $('#loginscrn2').css('display', 'none');
+                $('#logingotp').css('display', 'block');
 
-            $('#ms_timer_login').countdowntimer({
-                minutes: 0,
-                seconds: 10,
-                size: "lg"
-            });
-            setTimeout(function () {
-                $('#txtloginOTP').val(OTP);
-            }, 10000);
-            setTimeout(function () {
-                verifyloginOTP();
-            }, 12000);
+                $('#ms_timer_login').countdowntimer({
+                    minutes: 0,
+                    seconds: 10,
+                    size: "lg"
+                });
+                // setTimeout(function () {
+                //     $('#txtloginOTP').val(OTP);
+                // }, 10000);
+                // setTimeout(function () {
+                //     verifyloginOTP();
+                // }, 12000);
+            }
+            else{
+                $('#btnLoginotp').prop('disabled', false).text('Send OTP');
+                window.plugins.toast.showLongBottom('Mobile Number Not Register With Us');
+            }
+            
         }).fail(function (err) {
             window.plugins.toast.showLongBottom('Please enter a valid mobile number!');
             $('#btnLoginotp').prop('disabled', false);
@@ -179,39 +207,51 @@ function requestOTP() {
 function verifyloginOTP() {
 
     $('#btnLoginverify').prop('disabled', true).text('Verifying OTP...');
-    if ($('#txtloginOTP').val() == OTP) {
+    if ($('#txtloginOTP').val() != "") {
         mobile = localStorage.getItem('platuser');
         $('#btnLoginverify').prop('disabled', true).text('Logging in...');
         $.ajax({
             url: "http://platterexoticfood.com/pladmin/manage_api/do_login",
             type: "post",
             dataType: "JSON",
-            data: { mobile: mobile }
+            data: { mobile: mobile, otp: $('#txtloginOTP').val() }
         }).done(function (reply) {
             console.log(reply);
-            localStorage.setItem('loginstat', 'yes');
-            FCMPlugin.getToken(function (token) {
-                if (token) {
-                    console.log(token);
-                    $.ajax({
-                        url: "http://platterexoticfood.com/pladmin/manage_api/update_token",
-                        method: "POST",
-                        dataType: "JSON",
-                        data: { mobile: mobile, token: token }
-                    }).done(function (res) {
+            if (reply.success)
+            {
+                localStorage.setItem('loginstat', 'yes');
+                FCMPlugin.getToken(function (token) {
+                    if (token) {
+                        console.log(token);
+                        $.ajax({
+                            url: "http://platterexoticfood.com/pladmin/manage_api/update_token",
+                            method: "POST",
+                            dataType: "JSON",
+                            data: { mobile: mobile, token: token }
+                        }).done(function (res) {
+                            window.location.href = "getlocation.html";
+                        })
+                    } else {
                         window.location.href = "getlocation.html";
-                    })
-                } else {
-                    window.location.href = "getlocation.html";
-                }
-            });
+                    }
+                });
+                window.location.href ="getlocation.html";   
+            }
+            else{
+                window.plugins.toast.showLongBottom('OTP Mismatch. Please Verify Again ..');
+                $('#txtloginOTP').attr('placeholder', 'Enter 4-digit code').val('');
+                $('#btnLoginverify').prop('disabled', false).text('Re-Enter & Verify OTP').attr('onclick', "verifyloginOTP()");
+            }
+            
+            
         }).fail(function (err) {
             console.log(err);
         });
     } else {
-        window.plugins.toast.showLongBottom('OTP Mismatch. Please Verify Again ..');
         $('#txtloginOTP').attr('placeholder', 'Enter 4-digit code').val('');
         $('#btnLoginverify').prop('disabled', false).text('Re-Enter & Verify OTP').attr('onclick', "verifyloginOTP()");
+        window.plugins.toast.showLongBottom('Enter OTP and try again');
+        
     }
 }
 
