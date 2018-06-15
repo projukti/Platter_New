@@ -291,6 +291,7 @@
                     if (status === 'OK') {
                         if (results) {
                             console.log(results[0].formatted_address);
+                            localStorage.setItem('currentAddress', results[0].formatted_address);
                             localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
                             $('#delivAddress').val(results[0].formatted_address);
                             $.ajax({
@@ -371,21 +372,31 @@
     </script>
     <script>
         function chkloc() {
-            var userlat = localStorage.getItem('lat');
-            var userlang = localStorage.getItem('lang');
-            var userpin = localStorage.getItem('curr_pin');
-            if (userlat == '' && userlang == '' && userpin == '') {
-                var toast = app.toast.create({
-                    title: 'Error Fetching Location',
-                    text: 'Dear User Make Sure Your Device Location Is On',
-                    on: {
-                        opened: function () {
-                            console.log('Toast opened')
-                        }
-                    }
-                })
+            let userlat = localStorage.getItem('lat');
+            let userlang = localStorage.getItem('lang');
+            let userpin = localStorage.getItem('curr_pin');
+            if (userlat == '' || userlang == '' || userpin == '' || localStorage.getItem('area') == "" || localStorage.getItem('currentAddress') == "") {
+                // var toast = app.toast.create({
+                //     title: 'Error Fetching Location',
+                //     text: 'Dear User Make Sure Your Device Location Is On',
+                //     on: {
+                //         opened: function () {
+                //             console.log('Toast opened')
+                //         }
+                //     }
+                // })
+                window.plugins.toast.showLongBottom('Unable to detect location automatically.');
+                window.location.href="getlocation.html";
+                
             } else {
-                window.location.href = "home.html";
+
+                if(localStorage.getItem('story_done')=="1")
+                {
+                    window.location.href="home.html";
+                }
+                else{
+                    window.location.href = "story.html";
+                }
             }
         }
     </script>
