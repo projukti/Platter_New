@@ -119,8 +119,6 @@
         // Get Payment Information Here
         let finalAmount = $('#lblSubTotal').html()
         couponCode = localStorage.getItem('couponCode')
-        if(couponCode==null)
-          couponCode=''
         
         let routeURL = '/catalog/'+finalAmount+'/'
         cartView.router.navigate(routeURL);
