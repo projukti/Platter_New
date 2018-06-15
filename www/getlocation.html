@@ -243,6 +243,7 @@
             navigator.geolocation.getCurrentPosition(function (position) {
                 lat = position.coords.latitude;
                 lng = position.coords.longitude;
+
                 localStorage.setItem('lat', lat);
                 localStorage.setItem('lang', lng);
                 customerLocation = {
@@ -301,8 +302,10 @@
                                 }
                             })
                                 .done(function (repl) {
+
                                     console.log(repl);
                                     if (repl.status) {
+
                                         localStorage.setItem('area', repl.locality);
                                     } else {
                                         window.location.href = "no_service.html";
@@ -311,6 +314,7 @@
                                 });
                         } else {
                             window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+
                         }
                     } else {
                         window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
@@ -322,17 +326,22 @@
                 }, {
                     enableHighAccuracy: enableHighAccuracyMode
                 });
+
         }
+
         function initglone() {
             initgl(false);
         }
+
         function fillInAddress() {
             // Get the place details from the autocomplete object.
             var place = autocomplete.getPlace();
+
             for (var component in componentForm) {
                 document.getElementById(component).value = '';
                 document.getElementById(component).disabled = false;
             }
+
             // Get each component of the address from the place details
             // and fill the corresponding field on the form.
             for (var i = 0; i < place.address_components.length; i++) {
@@ -343,6 +352,7 @@
                 }
             }
         }
+
         function geolocate() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
@@ -381,8 +391,9 @@
     </script>
     <script>
         function customAddress() {
+
         }
-    </script>>
+    </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL8nIWVqwG_k-r3HbAdfK9sHv03VS6UQ4&libraries=places&callback=initglone"></script>
 </body>
 
