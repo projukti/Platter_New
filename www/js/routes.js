@@ -42,7 +42,7 @@ routes = [
     componentUrl: './pages/menu_details.html',
   },
   {
-    path: '/catalog/:finalamount/:coupon/',
+    path: '/catalog/:finalamount/',
     componentUrl: './pages/catalog.html',
   },
   {

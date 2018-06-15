@@ -120,9 +120,9 @@
         let finalAmount = $('#lblSubTotal').html()
         couponCode = localStorage.getItem('couponCode')
         if(couponCode==null)
-          couponCode=false
+          couponCode=''
         
-        let routeURL = '/catalog/'+finalAmount+'/'+couponCode+'/'
+        let routeURL = '/catalog/'+finalAmount+'/'
         cartView.router.navigate(routeURL);
       },
     },

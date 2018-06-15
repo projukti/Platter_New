@@ -175,7 +175,7 @@
     },
     on:{
       pageInit: function (e, page) {
-        if(localStorage.getItem('couponCode')==null || localStorage.getItem('couponCode')==""){
+        if(localStorage.getItem('couponCode')!=null || localStorage.getItem('couponCode')!=''){
           $('#coupoSection').show();
         }
       },
