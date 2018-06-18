@@ -7,7 +7,6 @@ var app  = new Framework7({
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Framework7', // App name
   theme: 'auto',
-  pushState: true,
   pushStateSeparator: '#/',
   data: function () {
     return {
@@ -43,6 +42,11 @@ var app  = new Framework7({
     helloWorld: function () {
       app.dialog.alert('Hello World!');
     },
+
+  view: {
+
+    pushState: true,
+  },
   },
   // App routes
   routes: routes,
