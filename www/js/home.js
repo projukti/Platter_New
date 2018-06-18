@@ -9,7 +9,7 @@ var app = {
 
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        
+        document.addEventListener("backbutton", this.onBackKeyDown, false);
     },
 
     onDeviceReady: function () {
@@ -21,6 +21,10 @@ var app = {
     },
 
     // Back Button Off 
+    onBackKeyDown: function (viewName) {
+       return false;
+        // viewName.router.back();
+    },
 
     // Open Camera Using this section
     openCamera: function () {
@@ -545,13 +549,10 @@ var app = {
             $('#lblPackingCharge').html(rply.packing_charge);
             $('#lblCouponDiscount').html(rply.discount);
             $('#lblSubTotal').html(rply.total_amount);
-            if (localStorage.getItem('couponCode')) {
-                $('#lblGSTAmount').html(localStorage.getItem('couponGST'));
-                $('#lblCouponDiscount').html(localStorage.getItem('couponDiscountAmount'));
-                let couponDiscountAmount = localStorage.getItem('couponDiscountAmount');
-                let totalAmount = parseInt(rply.total_amount) + parseInt(couponDiscountAmount);
-                $('#lblSubTotal').html(totalAmount);
-            }
+            localStorage.setItem('couponCode', '');
+            localStorage.setItem('couponGST', '');
+            localStorage.setItem('couponFinalAmount', '');
+            localStorage.setItem('couponDiscountAmount', '');
         });
     },
 
@@ -937,6 +938,10 @@ function swipperminus(menu_id, restaurent_id) {
             $('#lblAddressSection').hide();
             $('#lblCartItemSection').hide();
             $('#lblCouponSection').hide();
+            localStorage.setItem('couponCode', '');
+            localStorage.setItem('couponGST', '');
+            localStorage.setItem('couponFinalAmount', '');
+            localStorage.setItem('couponDiscountAmount', '');
         }
         app.currentCartItems();
         window.plugins.toast.showLongBottom('Cart item update');

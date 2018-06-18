@@ -155,7 +155,7 @@
   </div>
 </template>
 <script>
-  document.addEventListener("backbutton", this.onBackKeyDown, false);
+  
   return {
     methods: {
       payOrder: function(){
@@ -172,9 +172,6 @@
           app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '');
         }
 
-      },
-      onBackKeyDown: function() {
-          cartView.router.back();
       }
     },
     on:{
