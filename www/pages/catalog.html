@@ -178,6 +178,7 @@
         if(localStorage.getItem('couponCode')!=null || localStorage.getItem('couponCode')!=''){
           $('#coupoSection').hide();
         }
+        app.onBackKeyDown(cartView);
       },
     }
   };
