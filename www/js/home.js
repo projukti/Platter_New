@@ -22,12 +22,7 @@ var app = {
 
     // Back Button Off 
     onBackKeyDown: function () {
-        //let router = this;
-        //let unique = router.app;
-        // homeView.router
-       // unique.router.back();
-
-        console.log($$('.tab.active'));
+        homeView.router.back();
     },
 
     // Open Camera Using this section
