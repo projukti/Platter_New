@@ -178,7 +178,10 @@
         if(localStorage.getItem('couponCode')!=null || localStorage.getItem('couponCode')!=''){
           $('#coupoSection').hide();
         }
-        app.onBackKeyDown(cartView);
+        function onBackKeyDown () {
+          cartView.router.back();
+        }
+        // app.onBackKeyDown(cartView);
       },
     }
   };

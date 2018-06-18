@@ -21,9 +21,6 @@ var app = {
     },
 
     // Back Button Off 
-    onBackKeyDown: function (viewName) {
-        viewName.router.back();
-    },
 
     // Open Camera Using this section
     openCamera: function () {
