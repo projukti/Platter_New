@@ -22,6 +22,9 @@ var app = {
 
     // Back Button Off 
     onBackKeyDown: function (viewName) {
+        let app =  new Framework7();
+        // app.views.current();
+        console.log(app.views.current());
        return false;
         // viewName.router.back();
     },
