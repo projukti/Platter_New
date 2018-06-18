@@ -22,7 +22,10 @@ var app = {
 
     // Back Button Off 
     onBackKeyDown: function () {
-        return false;
+        let router = this;
+        let unique = router.app;
+        // homeView.router
+        unique.router.back();
     },
 
     // Open Camera Using this section
@@ -551,7 +554,9 @@ var app = {
             if (localStorage.getItem('couponCode')) {
                 $('#lblGSTAmount').html(localStorage.getItem('couponGST'));
                 $('#lblCouponDiscount').html(localStorage.getItem('couponDiscountAmount'));
-                $('#lblSubTotal').html(localStorage.getItem('couponFinalAmount'));
+                let couponDiscountAmount = localStorage.getItem('couponDiscountAmount');
+                let totalAmount = parseInt(rply.total_amount) + parseInt(couponDiscountAmount);
+                $('#lblSubTotal').html(totalAmount);
             }
         });
     },
@@ -812,7 +817,7 @@ var app = {
             navOrderStatus += ', Rs. '
             navOrderStatus += rply.data.subtotal
             $('#lblOrderStatus').html(navOrderStatus);
-            $('#lblRestaurentName').html(rply.data.restaurant.restaurant_name);
+            $('#lblRestaurentNameDelivery').html(rply.data.restaurant.restaurant_name);
             $('#lblRestaurentAddress').html(rply.data.restaurant.locality);
             $('#lblCustomerAddress').html(rply.data.orderDetail.shipping_address);
            
