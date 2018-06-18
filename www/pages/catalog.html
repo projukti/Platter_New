@@ -155,6 +155,7 @@
   </div>
 </template>
 <script>
+  document.addEventListener("backbutton", this.onBackKeyDown, false);
   return {
     methods: {
       payOrder: function(){

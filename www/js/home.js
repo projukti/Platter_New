@@ -9,7 +9,7 @@ var app = {
 
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener("backbutton", this.onBackKeyDown, false);
+        
     },
 
     onDeviceReady: function () {
