@@ -172,15 +172,16 @@
         }
 
       },
+      onBackKeyDown: function() {
+          cartView.router.back();
+      }
     },
     on:{
       pageInit: function (e, page) {
         if(localStorage.getItem('couponCode')!=null || localStorage.getItem('couponCode')!=''){
           $('#coupoSection').hide();
         }
-        function onBackKeyDown () {
-          cartView.router.back();
-        }
+        
         // app.onBackKeyDown(cartView);
       },
     }
