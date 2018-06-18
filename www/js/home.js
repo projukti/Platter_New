@@ -564,6 +564,7 @@ var app = {
             data: { coupon: coupon, total: $('#lblTotalWithoutGST').html(), user: localStorage.getItem('platuser') },
             dataType: "json"
         }).done(function (rply) {
+            
             let packingCharge = $('#lblPackingCharge').html()
             let deliveryCharge = $('#lblDeliveryCharge').html()
             let finalAmount = parseInt(rply.amount_after_discount) + parseInt(packingCharge) + parseInt(deliveryCharge)
@@ -574,7 +575,13 @@ var app = {
             localStorage.setItem('couponGST', rply.gst_amount + '.00');
             localStorage.setItem('couponFinalAmount', finalAmount + '.00');
             localStorage.setItem('couponDiscountAmount', rply.discount_amount + '.00');
-            window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
+            if (rply.discount_amount){
+                window.plugins.toast.showLongBottom('Coupon Code Applied Successfully');
+            }
+            else{
+                window.plugins.toast.showLongBottom('Coupon Code Not Applied Successfully');
+            }
+            
             //  
 
         });
