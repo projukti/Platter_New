@@ -42,11 +42,7 @@ var app  = new Framework7({
     helloWorld: function () {
       app.dialog.alert('Hello World!');
     },
-
-  view: {
-
-    pushState: true,
-  },
+ 
   },
   // App routes
   routes: routes,
