@@ -1037,7 +1037,6 @@ var app = {
             data: { resttype: $('input[name=rdoRestype]:checked').val(), cuisine: str.toString(), lat: '22.4724863', lang: '88.3785082'},
             dataType: "JSON"
         }).done(function(rply){
-            console.log(rply);
             $('#normalListing').hide();
             for (list in rply.restaurant) {
                 filterRestaurents += '<li>'
@@ -1079,7 +1078,15 @@ var app = {
             $('#lblFilterRestaurentCount').html(rply.totrescount +" Restaurants Found");
             $('#filterResult').show();
         });
-    }
+    },
+
+    // This function for reset filter
+    filterReset: function(){
+        $("input[name='chkCuisine']:checkbox").prop('checked', false);
+        $('input[name=rdoRestype]:checked').prop('checked', false);
+        $('#normalListing').show();
+        $('#filterResult').hide();
+    },
 
 };
 
