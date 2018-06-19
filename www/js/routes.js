@@ -11,6 +11,7 @@ routes = [
         app.topFiveRestaurants();
         app.topTwelveRestaurants();
         app.generalRestaurants();
+        app.getCuisine();
       }
     }
   },

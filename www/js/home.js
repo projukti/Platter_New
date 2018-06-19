@@ -18,6 +18,7 @@ var app = {
         app.topFiveRestaurants();
         app.topTwelveRestaurants();
         app.generalRestaurants();
+        app.getCuisine();
     },
 
     // Back Button Off 
@@ -592,7 +593,7 @@ var app = {
     // This Section For Pay Now
     payNow: function (delivery_address, delivery_pincode, delivery_flat, delivery_landmark, payment_method, couponCode, refcode) {
         //user = localStorage.getItem('platuser');
-        let order_amount = 1;
+        // let order_amount = 1;
         // var order_amount = $('#cartSummery span').text();
         let order_no;
         // $('#delivAddress').prop('readonly', true);
@@ -986,17 +987,99 @@ var app = {
     },
 
     // This function for Get all Cuisine 
-    // getCuisine : function(){
-    //       $.ajax({
-    //           type: "POST",
-    //           url: "url",
-    //           data: "data",
-    //           dataType: "dataType",
-    //           success: function (response) {
-                  
-    //           }
-    //       });  
-    // }
+    getCuisine : function(){
+        let cusineType = ''
+          $.ajax({
+              type: "POST",
+              url: serverUrl + "get_cuisine",
+              dataType: "JSON"
+          }).done(function(rply){
+              for (list in rply.cuisines){
+                  cusineType += '<li>'
+                  cusineType += '<label class="item-checkbox item-content">'
+                  cusineType += '<input type="checkbox" value=' + rply.cuisines[list].tag_name + ' name="chkCuisine" class="ckh" />'
+                  cusineType += '<i class="icon icon-checkbox"></i>'
+                  cusineType += '<div class="item-inner">'
+                  cusineType += '<div class="item-title">' + rply.cuisines[list].tag_name +'</div>'
+                  cusineType += '</div>'
+                  cusineType += '</label>'
+                  cusineType += '</li>'
+              }
+              $('#lblCuisinesForFilter').html(cusineType)
+          });  
+
+
+        
+    },
+
+    // This Function For Filter Result
+    filter : function(){
+        // console.log($('input[name=rdoRestype]:checked').val())
+        // console.log()
+        let str 
+        let filterRestaurents = ''
+        let checkboxes = document.getElementsByName('chkCuisine');
+        let selected = [];
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selected.push(checkboxes[i].value);
+                }
+            }
+            if (selected == '') {
+                str = 'all'
+            } else {
+                str = (selected);
+            }
+       // console.log(arr);
+        $.ajax({
+            type: "post",
+            url: serverUrl + "restaurant_listsearch",
+            data: { resttype: $('input[name=rdoRestype]:checked').val(), cuisine: str.toString(), lat: '22.4724863', lang: '88.3785082'},
+            dataType: "JSON"
+        }).done(function(rply){
+            console.log(rply);
+            $('#normalListing').hide();
+            for (list in rply.restaurant) {
+                filterRestaurents += '<li>'
+                if (app.isRestaurantOpen(rply.restaurant[list].opening_time, rply.restaurant[list].closing_time) == "open") {
+                    filterRestaurents += '<a href="/restaurent-details/' + rply.restaurant[list].restaurant_id + '/' + rply.restaurant[list].restaurant_name + '/" class="item-content" style="color:#676767;">'
+                    filterRestaurents += '<div class="item-media">'
+                    filterRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;"/>'
+                }
+                else {
+                    let cloaseMessage = "Restaurest will open at : " + rply.restaurant[list].opening_time
+                    filterRestaurents += '<a href="javascript:void(0);" onclick="javascript:app.custToastMessage(\'' + cloaseMessage + '\')" class="item-content" style="color:#676767;">'
+                    filterRestaurents += '<div class="item-media">'
+                    filterRestaurents += '<img src="http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant[list].restaurant_image + '" width="80" style="border-radius: 50%;height: 85px;width: 85px;-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>'
+                }
+                filterRestaurents += '</div>'
+                filterRestaurents += '<div class="item-inner">'
+                filterRestaurents += '<div class="item-title-row">'
+                filterRestaurents += '<div class="item-title" style="font-size: 14px; font-weight: bold;">' + rply.restaurant[list].restaurant_name + '</div>'
+                filterRestaurents += '</div>'
+                filterRestaurents += '<div class="item-subtitle" style="font-size: 12px;">' + rply.restaurant[list].cuisine_tags + '</div>'
+                filterRestaurents += '<hr style="height: 0px; color: #fff;">'
+                filterRestaurents += '<div class="item-subtitle">'
+                filterRestaurents += '<div class="row">'
+                filterRestaurents += '<div class="col-40" style="font-size: 12px;">'
+                filterRestaurents += '<i class="icon material-icons md-only" style="font-size: 18px;margin-right: -5px;">star</i>' + rply.restaurant[list].avg_rating
+                filterRestaurents += '</div>'
+                filterRestaurents += '<div class="col-60" style="font-size: 12px;text-align: right;">'
+                filterRestaurents += '<img src="img/iconset/rupee.png" style="height: 14px;margin-bottom: -3px;">'
+                filterRestaurents += '<span>' + rply.restaurant[list].two_person_cost + ' FOR TWO</span>'
+                filterRestaurents += '</div>'
+                filterRestaurents += '</div>'
+                filterRestaurents += '</div>'
+                filterRestaurents += '</div>'
+                filterRestaurents += '</a>'
+                filterRestaurents += '</li>'
+                
+            }
+            $('#lblFilterRestaurents').html(filterRestaurents)
+            $('#lblFilterRestaurentCount').html(rply.totrescount +" Restaurants Found");
+            $('#filterResult').show();
+        });
+    }
 
 };
 
