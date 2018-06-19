@@ -557,6 +557,7 @@ var app = {
             localStorage.setItem('couponFinalAmount', '');
             localStorage.setItem('couponDiscountAmount', '');
         });
+        cartView.app.accordion.toggle();
     },
 
     // This Function For Validate Coupon Code
