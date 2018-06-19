@@ -8,6 +8,8 @@ routes = [
     url: './home.html',
     on: {
       pageInit: function (e, page) {
+        $('#filterResult').hide();
+        $('#normalListing').show();
         app.topFiveRestaurants();
         app.topTwelveRestaurants();
         app.generalRestaurants();
