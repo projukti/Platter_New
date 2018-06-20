@@ -103,6 +103,11 @@
        on :{
            pageBeforeIn : function(e, page){
             app.onBackKeyDown(cartView);
+             mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fpa2F0LXByb2p1a3RpIiwiYSI6ImNqaW1uamt2cTA2MDEzcG1jYXRjMnVjbzIifQ.4qYB_4FZD40w-ahNVfkuuA';
+               var map = new mapboxgl.Map({
+                   container: 'map',
+                   style: 'mapbox://styles/mapbox/streets-v10'
+               });
            }
        }
    }
