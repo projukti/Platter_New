@@ -89,8 +89,14 @@
                 <div class="item-cell" id="lblDeliveryAddress">loading... </div><a href="/checkout-address/" class="color-blue">Change</a>
               </div>
               <div class="item-row">
-                <div class="item-cell">Expected Delivery Time : <span style="color:#ef3837;">40 Min</span>
+
+                <div class="item-cell" id="lblDeliveryTime">Expected Delivery Time : <span style="color:#ef3837;">40 Min</span>
+                  <a href="/customize-order/" class="color-blue">Customize Now</a>
                 </div>
+
+                <div display="none" id="lblCustomizeMealName"></div>
+                <div display="none" id="lblCustomizeMealDate"></div>
+                <div display="none" id="lblCustomizeMealTime"></div>
               </div>
             </div>
           </li>
@@ -123,6 +129,10 @@
         let routeURL = '/catalog/'+finalAmount+'/'
         cartView.router.navigate(routeURL);
       },
+      resetCustomize:function(){
+        console.log('Jii');
+        
+      }
     },
     on:{
       pageBeforeIn : function (e, page) {

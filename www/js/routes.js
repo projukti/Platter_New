@@ -105,7 +105,10 @@ routes = [
     componentUrl: './pages/profile.html',
   },
 
-
+  {
+    path: '/customize-order/',
+    componentUrl: './pages/customize-order.html',
+  },
   {
     path: '/favourites_user/',
     async: function (routeTo, routeFrom, resolve, reject) {

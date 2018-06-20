@@ -24,7 +24,7 @@
             <img src="img/placeholder.png"><br>
           </div>
           <div class="col-90">
-            <strong id="lblRestaurentName"></strong><br>
+            <strong id="lblRestaurentNameDelivery"></strong><br>
             <small style="font-size: 9px;" id="lblRestaurentAddress"></small>
           </div>
         </div>
@@ -62,22 +62,26 @@
         <div class="item-inner item-cell">
           <div class="row">
             <div class="col-80" style="text-align: left;">Item Total</div>
-            <div class="col-20" style="text-align: right;">100.00</div>
+            <div class="col-20" style="text-align: right;" id="showHistoryTotal">100.00</div>
           </div>
           <div class="row">
-            <div class="col-80" style="color:green; text-align: left;">Delivery Charge</div>
-            <div class="col-20" style="color:green; text-align: right;">Free</div>
+            <div class="col-80" style="text-align: left;">Delivery Charge</div>
+            <div class="col-20" style="text-align: right;" id="showHistoryDelivery">Free</div>
+          </div>
+          <div class="row">
+            <div class="col-80" style="text-align: left;">GST</div>
+            <div class="col-20" style="text-align: right;" id="showHistoryGST">-33.00</div>
           </div>
           <div class="row">
             <div class="col-80" style="color:green; text-align: left;">Coupon Discount</div>
-            <div class="col-20" style="color:green; text-align: right;">-33.00</div>
+            <div class="col-20" style="color:green; text-align: right;" id="showHistoryCouponDiscount">-33.00</div>
           </div>
           <div class="row">
             <div class="col-80" style="text-align: left;">
               <strong>To Pay</strong>
             </div>
             <div class="col-20" style="text-align: right;">
-              <strong>67.00</strong>
+              <strong id="showHistoryTotalAmt">67.00</strong>
             </div>
           </div>
         </div>

@@ -1,0 +1,97 @@
+<template>
+    <div class="page" data-name="checkout_address">
+        <div class="navbar" style="background: #125e97;">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back" id="btnBack">
+                        <i class="icon icon-back color-white"></i>
+                        <span class="ios-only color-white">Back</span>
+                    </a>
+                </div>
+                <div class="title" style="color: #fff;margin: 0px;font-size:16px;">Customized Order</div>
+            </div>
+        </div>
+        <div class="page-content color-red">
+            <div class="block" id="map" style="margin: 0; padding: 0 ;">
+
+            </div>
+            <div class="block">
+                <div class="block-title" style="margin-top: -23px;">
+                    <strong>Sedule Your Order Now</strong>
+                </div>
+            </div>
+            <div class="block" style="margin-top: -15px;">
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input type="text" name="txtName" id="txtName" placeholder="Enter your order name">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input type="date" name="txtDate" id="txtDate" placeholder="Select Daet">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input type="time" name="txtTime" id="txtTime" placeholder="Select Time">
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <a href="" class="col button button-raised button-fill color-red" id="btnConfirm" @click="customize">Customize Now</a>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+
+    return {
+        methods: {
+            customize: function () {
+                let mealName = $('#txtName').val();
+                let mealDate = $('#txtDate').val();
+                let mealTime = $('#txtTime').val();
+
+                
+
+                localStorage.setItem('mealName', mealName);
+                localStorage.setItem('mealDate', mealDate);
+                localStorage.setItem('mealTime', mealTime);
+
+                let customizeSection = 'Delivery Date : '+mealDate+' and Delivery Time : '+ mealTime
+                customizeSection += '<a class="color-blue" onclick="app.resetCustomize()">Reset</a>'
+                // $('#lblDeliveryTime').html(customizeSection);
+
+                localStorage.setItem('lblDeliveryTime' , customizeSection);
+
+                cartView.router.back({ 'url': '/cart/', 'force': true });
+            }
+        },
+        on: {
+            pageBeforeIn: function (e, page) {
+            }
+        }
+    }
+
+
+</script>

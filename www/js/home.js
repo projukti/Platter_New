@@ -528,6 +528,18 @@ var app = {
                 $('#lblCouponSection').show();
                 $('#lblEmptyCartSection').hide();
                 $('#lblDeliveryAddress').html(localStorage.getItem('currentAddress'));
+
+                if (localStorage.getItem('lblDeliveryTime') != null)
+                {
+                    console.log('here');
+                    $('#lblDeliveryTime').html(localStorage.getItem('lblDeliveryTime'));
+                }
+                else if (localStorage.getItem('lblDeliveryTime') == null){
+                    
+                    let CustomizeSection = 'Expected Delivery Time : <span style="color:#ef3837;">40 Min</span>&nbsp;'
+                    CustomizeSection += '<a href="/customize-order/" class="color-blue">Customize Now</a>'
+                    $('#lblDeliveryTime').html(CustomizeSection);
+                }
             }
             else {
                 cartItem += '<div id="lblEmptyCartSection">'
@@ -591,6 +603,17 @@ var app = {
         });
     },
 
+    // Reset Customized Meal
+     resetCustomize : function(){
+         localStorage.setItem('mealName', null);
+         localStorage.setItem('mealDate', null);
+         localStorage.setItem('mealTime', null);
+         localStorage.setItem('lblDeliveryTime', null);
+         let CustomizeSection = 'Expected Delivery Time : <span style="color:#ef3837;">40 Min</span>&nbsp;'
+         CustomizeSection += '<a href="/customize-order/" class="color-blue">Customize Now</a>'
+         $('#lblDeliveryTime').html(CustomizeSection);
+    },
+
     // This Section For Pay Now
     payNow: function (delivery_address, delivery_pincode, delivery_flat, delivery_landmark, payment_method, couponCode, refcode) {
         //user = localStorage.getItem('platuser');
@@ -618,7 +641,10 @@ var app = {
                             payment_method: payment_method,
                             payment_success: 0,
                             couponCode: couponCode,
-                            refcode: refcode
+                            refcode: refcode,
+                            mealName: localStorage.getItem('mealName'),
+                            mealDate: localStorage.getItem('mealDate'),
+                            mealTime: localStorage.getItem('mealTime')
                         }
                     }).done(function (res) {
                         if(res.success < 1){
@@ -710,6 +736,7 @@ var app = {
                     window.plugins.toast.show('Please choose a payment mode', 'long', 'bottom', function (a) { }, function (b) { });
             }
         }
+        app.resetCustomize();
     },
 
     // This Section For Order
@@ -821,11 +848,18 @@ var app = {
             navOrderStatus +=' | Item : '
             navOrderStatus += rply.data.totalQuantity
             navOrderStatus += ', Rs. '
-            navOrderStatus += rply.data.subtotal
+            navOrderStatus += rply.data.total_payable
             $('#lblOrderStatus').html(navOrderStatus);
             $('#lblRestaurentNameDelivery').html(rply.data.restaurant.restaurant_name);
             $('#lblRestaurentAddress').html(rply.data.restaurant.locality);
             $('#lblCustomerAddress').html(rply.data.orderDetail.shipping_address);
+
+            $('#showHistoryTotal').html(rply.data.before_gst_total);
+            $('#showHistoryDelivery').html(rply.data.deliv_charge);
+            $('#showHistoryGST').html(rply.data.tot_gst_amt);
+            $('#showHistoryCouponDiscount').html(rply.data.coupon_discount);
+            $('#showHistoryTotalAmt').html(rply.data.total_payable);
+
            
             for (list in rply.data.menu){
                 menuDetails += '<div class="row">'
