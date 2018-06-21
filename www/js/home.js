@@ -1123,6 +1123,20 @@ var app = {
         $('#filterResult').hide();
     },
 
+    // This function for get lattitude and logitude
+    getCurrentLocation : function(){
+        navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+        function geolocationSuccess(position){
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+        }
+
+        function geolocationError(error){
+            console.log(error.code);
+            console.log(error.message);
+        }
+    },
+
 };
 
 function swipperminus(menu_id, restaurent_id) {
