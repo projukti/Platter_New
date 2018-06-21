@@ -1145,46 +1145,74 @@ var app = {
                 if (status === 'OK') {
                     if (results) {
                         console.log(results[0].formatted_address);
-                        // localStorage.setItem('currentAddress', results[0].formatted_address);
-                        // localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
-                        // $('#delivAddress').val(results[0].formatted_address);
-                        // $.ajax({
-                        //     url: serverUrl + 'manage_api/pin_verify',
-                        //     method: 'post',
-                        //     dataType: 'JSON',
-                        //     data: {
-                        //         pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
-                        //     }
-                        // })
-                        //     .done(function (repl) {
+                        localStorage.setItem('currentAddress', results[0].formatted_address);
+                        localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
 
-                        //         console.log(repl);
-                        //         if (repl.status) {
-
-                        //             localStorage.setItem('area', repl.locality);
-                        //         } else {
-                        //             window.location.href = "no_service.html";
-                        //             localStorage.setItem('area', 'Unidentified');
-                        //         }
-                        //     });
+                        $.ajax({
+                            type: "post",
+                            url: serverUrl + "pin_verify",
+                            data: { pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name) },
+                            dataType: "JSON"
+                        }).done(function(rply){
+                            if (rply.status) {
+                                localStorage.setItem('area', rply.locality);
+                                if (localStorage.getItem('story_done') == 1) {
+                                    window.location.href = "home.html";
+                                }
+                                else {
+                                    window.location.href = "story.html";
+                                }
+                            }
+                            else{
+                                window.plugins.toast.showLongBottom('Currently no availavble in your area');
+                            }
+                        });
                     } else {
-                        console.log('Error ');
-                        // window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+                        window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
 
                     }
                 } else {
-                    // window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
-                    console.log('Error ');
+                    window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
                 }
             });
         }
 
         function geolocationError(error){
-            // console.log(error.code);
-            // console.log(error.message);
             window.plugins.toast.showLongBottom('Platter can\'t detect your location, Trun on location or select address manualy ');
         }
     },
+
+    // This function for get current location manualy
+    manualLocation : function(){
+        let address = $('#txtManualAddress').val();
+        let houseNo = $('#txtManualHouseNo').val();
+        let landMark = $('#txtManualLandMark').val();
+        let pinCode= $('#txtManualPin').val();
+        let currentAddress = address + ', ' + houseNo + ', ' + landMark + ', ' + ', '+ pinCode
+        
+        localStorage.setItem('currentAddress', currentAddress);
+        localStorage.setItem('curr_pin', parseInt(pinCode));
+
+        $.ajax({
+            type: "post",
+            url: serverUrl + "pin_verify",
+            data: { pin: parseInt(pinCode) },
+            dataType: "JSON"
+        }).done(function (rply) {
+            if (rply.status) {
+                localStorage.setItem('area', rply.locality);
+                if (localStorage.getItem('story_done') == 1) {
+                    window.location.href = "home.html";
+                }
+                else {
+                    window.location.href = "story.html";
+                }
+            }
+            else {
+                window.plugins.toast.showLongBottom('Currently no availavble in your area');
+            }
+        });
+    }
 
 };
 
