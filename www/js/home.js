@@ -1144,6 +1144,7 @@ var app = {
             }, function (results, status) {
                 if (status === 'OK') {
                     if (results) {
+                        console.log(results);
                         console.log(results[0].formatted_address);
                         localStorage.setItem('currentAddress', results[0].formatted_address);
                         localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
