@@ -1133,11 +1133,56 @@ var app = {
         function geolocationSuccess(position){
             console.log(position.coords.latitude);
             console.log(position.coords.longitude);
+            localStorage.setItem('lat', position.coords.latitude);
+            localStorage.setItem('lang', position.coords.longitude);
+            let geocoder = new google.maps.Geocoder;
+            geocoder.geocode({
+                'location': {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                }
+            }, function (results, status) {
+                if (status === 'OK') {
+                    if (results) {
+                        console.log(results[0].formatted_address);
+                        // localStorage.setItem('currentAddress', results[0].formatted_address);
+                        // localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
+                        // $('#delivAddress').val(results[0].formatted_address);
+                        // $.ajax({
+                        //     url: serverUrl + 'manage_api/pin_verify',
+                        //     method: 'post',
+                        //     dataType: 'JSON',
+                        //     data: {
+                        //         pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name)
+                        //     }
+                        // })
+                        //     .done(function (repl) {
+
+                        //         console.log(repl);
+                        //         if (repl.status) {
+
+                        //             localStorage.setItem('area', repl.locality);
+                        //         } else {
+                        //             window.location.href = "no_service.html";
+                        //             localStorage.setItem('area', 'Unidentified');
+                        //         }
+                        //     });
+                    } else {
+                        console.log('Error ');
+                        // window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+
+                    }
+                } else {
+                    // window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+                    console.log('Error ');
+                }
+            });
         }
 
         function geolocationError(error){
-            console.log(error.code);
-            console.log(error.message);
+            // console.log(error.code);
+            // console.log(error.message);
+            window.plugins.toast.showLongBottom('Platter can\'t detect your location, Trun on location or select address manualy ');
         }
     },
 
