@@ -1125,7 +1125,11 @@ var app = {
 
     // This function for get lattitude and logitude
     getCurrentLocation : function(){
-        navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+        navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, { 
+            maximumAge: 3000, 
+            timeout: 5000, 
+            enableHighAccuracy: true 
+        });
         function geolocationSuccess(position){
             console.log(position.coords.latitude);
             console.log(position.coords.longitude);
