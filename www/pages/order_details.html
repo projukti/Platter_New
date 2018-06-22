@@ -201,7 +201,7 @@
           $.ajax({
             type: "post",
             url: serverUrl + "get_delivery_status",
-            data: { orderID: parseFloat($('#lblOrderId').val()) },
+            data: { orderID: parseFloat($('#lblOrderId').html()) },
             dataType: "json"
           }).done(function(rply){
             console.log(rply);
