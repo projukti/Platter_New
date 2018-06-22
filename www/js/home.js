@@ -875,10 +875,11 @@ var app = {
 
             $('#lblOrderSummery').html(menuDetails);
         });
-        latlng = new google.maps.LatLng(39.305, -76.617);
-        console.log(latlng)
+        console.log(customerLocation)
+        // latlng = new google.maps.LatLng(39.305, -76.617);
+        // console.log(latlng)
         map = new google.maps.Map(document.getElementById('trackingMap'), {
-            center: latlng,
+            center: customerLocation,
             zoom: 12,
             mapTypeControl: false,
             disableDefaultUI: false,
