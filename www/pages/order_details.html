@@ -204,7 +204,45 @@
             data: { orderID: parseFloat($('#lblOrderId').html()) },
             dataType: "json"
           }).done(function(rply){
-            console.log(rply);
+            if(!rply.isPickedUp) {
+                if ((parseFloat(res.restaurantLocation.lat) !== lastRestaurant.lat) || (parseFloat(res.restaurantLocation.lng) !== lastRestaurant.lng)) {
+                  try {
+                    line.setMap(null);
+                  } catch (e) {
+                    console.log(e);
+                  }
+                  line = new google.maps.Polyline({
+                    path: [{
+                      lat: parseFloat(res.restaurantLocation.lat),
+                      lng: parseFloat(res.restaurantLocation.lng)
+                    }, customerLocation],
+                    strokeOpacity: 0,
+                    icons: [{
+                      icon: {
+                        path: 'M 0,-1 0,1',
+                        strokeOpacity: 1,
+                        scale: 2
+                      },
+                      offset: '0',
+                      repeat: '15px'
+                    }],
+                    map: map
+                  });
+                  lastRestaurant = {
+                    lat: parseFloat(res.restaurantLocation.lat),
+                    lng: parseFloat(res.restaurantLocation.lng)
+                  };
+                  var latlngbounds = new google.maps.LatLngBounds();
+                  latlngbounds.extend(lastRestaurant);
+                  latlngbounds.extend(customerLocation);
+                  map.fitBounds(latlngbounds);
+                }
+
+              } else {
+                line.setMap(null);
+                line = null;
+              }
+              // -----------------
           });
         }, 3000);
       }
