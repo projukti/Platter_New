@@ -806,10 +806,6 @@ var app = {
     // This Section For Order Details 
     orderDetails: function(orderId){
         let menuDetails = ''
-        let customerLocation = {
-            lat: localStorage.getItem('lat'),
-            lng: localStorage.getItem('lang')
-        };
 
         $.ajax({
             type: "post",
@@ -875,107 +871,10 @@ var app = {
 
             $('#lblOrderSummery').html(menuDetails);
         });
-        console.log(customerLocation)
+        // console.log(customerLocation)
         // latlng = new google.maps.LatLng(39.305, -76.617);
         // console.log(latlng)
-        map = new google.maps.Map(document.getElementById('trackingMap'), {
-            center: customerLocation,
-            zoom: 12,
-            mapTypeControl: false,
-            disableDefaultUI: false,
-            styles: [{
-                elementType: 'geometry',
-                stylers: [{ color: '#f5f5f5' }]
-            },
-            {
-                elementType: 'labels.icon',
-                stylers: [{ visibility: 'on' }]
-            },
-            {
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#616161' }]
-            },
-            {
-                elementType: 'labels.text.stroke',
-                stylers: [{ color: '#9a9a9a' }]
-            },
-            {
-                featureType: 'administrative.land_parcel',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#bdbdbd' }]
-            },
-            {
-                featureType: 'poi',
-                elementType: 'geometry',
-                stylers: [{ color: '#9a9a9a' }]
-            },
-            {
-                featureType: 'poi',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#757575' }]
-            },
-            {
-                featureType: 'poi.park',
-                elementType: 'geometry',
-                stylers: [{ color: '#e5e5e5' }]
-            },
-            {
-                featureType: 'poi.park',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#9e9e9e' }]
-            },
-            {
-                featureType: 'road',
-                elementType: 'geometry',
-                stylers: [{ color: '#ffffff' }]
-            },
-            {
-                featureType: 'road.arterial',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#757575' }]
-            },
-            {
-                featureType: 'road.highway',
-                elementType: 'geometry',
-                stylers: [{ color: '#dadada' }]
-            },
-            {
-                featureType: 'road.highway',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#616161' }]
-            },
-            {
-                featureType: 'road.local',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#9e9e9e' }]
-            },
-            {
-                featureType: 'transit.line',
-                elementType: 'geometry',
-                stylers: [{ color: '#e5e5e5' }]
-            },
-            {
-                featureType: 'transit.station',
-                elementType: 'geometry',
-                stylers: [{ color: '#eeeeee' }]
-            },
-            {
-                featureType: 'water',
-                elementType: 'geometry',
-                stylers: [{ color: '#c9c9c9' }]
-            },
-            {
-                featureType: 'water',
-                elementType: 'labels.text.fill',
-                stylers: [{ color: '#9e9e9e' }]
-            }
-            ]
-        });
-        directionsDisplay = new google.maps.DirectionsRenderer({
-            map: map,
-            suppressMarkers: false
-        });
-        directionsService = new google.maps.DirectionsService();
+        
     },
 
     resturentListByType: function () {
