@@ -205,6 +205,11 @@
             dataType: "json"
           }).done(function(rply){
               console.log(rply)
+              if(rply.isRestaurantAccepted){
+                let restaurentIcon = 'img/restaurent.png'
+                marker = new google.maps.Marker({ position: customerLocation, icon: restaurentIcon, map: map });
+                // directionsService = new google.maps.DirectionsService();
+              }
           });
         }, 3000);
       }
