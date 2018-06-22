@@ -806,6 +806,10 @@ var app = {
     // This Section For Order Details 
     orderDetails: function(orderId){
         let menuDetails = ''
+        let customerLocation = {
+            lat: localStorage.getItem('lat'),
+            lng: localStorage.getItem('lng')
+        };
 
         $.ajax({
             type: "post",
