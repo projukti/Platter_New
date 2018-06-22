@@ -95,8 +95,8 @@
     on:{
       pageBeforeIn : function(e,page){
         let customerLocation = {
-          lat: localStorage.getItem('lat'),
-          lng: localStorage.getItem('lang')
+          lat: parseFloat(localStorage.getItem('lat')),
+          lng: parseFloat(localStorage.getItem('lang'))
         };
         map = new google.maps.Map(document.getElementById('trackingMap'), {
           center: customerLocation,
