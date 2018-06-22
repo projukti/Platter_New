@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="page-content">
-      <div class="block" id="trackingMap" style="height: 261px;margin-left: 0;margin-right: 0;width: 100%;position: relative;overflow: hidden;margin-bottom: 7%;"></div>
+      <div id="trackingMap" style="height: 261px;margin-left: 0;margin-right: 0;width: 100%;position: relative;overflow: hidden;margin-bottom: 7%;"></div>
       <div class="block">
         <div class="row">
           <div class="col-10">
@@ -26,7 +26,7 @@
             <small style="font-size: 9px;" id="lblRestaurentAddress"></small>
           </div>
         </div>
-        <div id="lblOrderId">{{$route.params.id}}</div>
+        <div id="lblOrderId" style="display:none;">{{$route.params.id}}</div>
         <div class="row">
           <div class="col-10">
             <img src="img/flag.png">
