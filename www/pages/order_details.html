@@ -26,6 +26,7 @@
             <small style="font-size: 9px;" id="lblRestaurentAddress"></small>
           </div>
         </div>
+        <div id="lblOrderId">{{$route.params.id}}</div>
         <div class="row">
           <div class="col-10">
             <img src="img/flag.png">
@@ -92,6 +93,7 @@
   return {
     on:{
       pageBeforeIn : function(e,page){
+
         let customerLocation = {
           lat: parseFloat(localStorage.getItem('lat')),
           lng: parseFloat(localStorage.getItem('lang'))
@@ -194,6 +196,17 @@
           suppressMarkers: false
         });
         directionsService = new google.maps.DirectionsService();
+
+        setTimeout(function(){
+          $.ajax({
+            type: "post",
+            url: serverUrl + "get_delivery_status",
+            data: { orderID: parseFloat($('#lblOrderId').val()) },
+            dataType: "json"
+          }).done(function(rply){
+            console.log(rply);
+          });
+        }, 3000);
       }
     },
   };
