@@ -100,7 +100,7 @@
         };
         var map = new google.maps.Map(document.getElementById('trackingMap'), {
           center: customerLocation,
-          zoom: 12,
+          zoom: 16,
           mapTypeControl: false,
           disableDefaultUI: false,
           styles: [{
@@ -207,7 +207,11 @@
               console.log(rply)
               if(rply.isRestaurantAccepted){
                 let restaurentIcon = 'img/restaurent.png'
-                marker = new google.maps.Marker({ position: customerLocation, icon: restaurentIcon, map: map });
+                let restaurentLocation = {
+                  lat: parseFloat(rply.restaurantLocation.lat),
+                  lng: parseFloat(rply.restaurantLocation.lng)
+                }
+                marker = new google.maps.Marker({ position: restaurentLocation, icon: restaurentIcon, map: map });
                 // directionsService = new google.maps.DirectionsService();
               }
           });
