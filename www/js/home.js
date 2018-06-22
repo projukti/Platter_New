@@ -808,7 +808,7 @@ var app = {
         let menuDetails = ''
         let customerLocation = {
             lat: localStorage.getItem('lat'),
-            lng: localStorage.getItem('lng')
+            lng: localStorage.getItem('lang')
         };
 
         $.ajax({
