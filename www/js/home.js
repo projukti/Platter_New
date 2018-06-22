@@ -806,10 +806,10 @@ var app = {
     // This Section For Order Details 
     orderDetails: function(orderId){
         let menuDetails = ''
-        // let customerLocation = {
-        //     lat: localStorage.getItem('lat'),
-        //     lng: localStorage.getItem('lng')
-        // };
+        let customerLocation = {
+            lat: localStorage.getItem('lat'),
+            lng: localStorage.getItem('lng')
+        };
 
         $.ajax({
             type: "post",
@@ -876,7 +876,8 @@ var app = {
             $('#lblOrderSummery').html(menuDetails);
         });
         latlng = new google.maps.LatLng(39.305, -76.617);
-        map = new google.maps.Map(document.getElementById('map'), {
+        console.log(latlng)
+        map = new google.maps.Map(document.getElementById('trackingMap'), {
             center: latlng,
             zoom: 12,
             mapTypeControl: false,
