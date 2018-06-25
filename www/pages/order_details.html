@@ -280,6 +280,7 @@
                     });
                     directionsDisplay2.setDirections(response);
                     var leg = response.routes[0].legs[0];
+                    let lastPosi
                     if (!lastPosi) {
                       lastPosi = leg.start_location
                     }
