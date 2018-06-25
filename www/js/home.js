@@ -879,10 +879,10 @@ var app = {
                     lat: parseFloat(localStorage.getItem('lat')),
                     lng: parseFloat(localStorage.getItem('lang'))
                 };
-                let customerLocation = {
-                    lat: parseFloat(localStorage.getItem('lat')),
-                    lng: parseFloat(localStorage.getItem('lang'))
-                };
+                // let customerLocation = {
+                //     lat: parseFloat(localStorage.getItem('lat')),
+                //     lng: parseFloat(localStorage.getItem('lang'))
+                // };
                 var map = new google.maps.Map(document.getElementById('trackingMap'), {
                     center: customerLocation,
                     zoom: 12,
