@@ -206,7 +206,7 @@
           }).done(function(rply){
               console.log(rply)
               if(rply.isRestaurantAccepted){
-                let restaurentIcon = 'img/restaurent.png'
+                // let restaurentIcon = 'img/restaurent.png'
                 let customerIcon = 'img/customer.png'
                 let restaurentLocation = {
                   lat: parseFloat(rply.restaurantLocation.lat),
@@ -348,23 +348,23 @@
                       });
                       startMarker.setPosition(leg.start_location);
                     }
-                    if (!endMarker) {
-                      //new marker
-                      endMarker = new google.maps.Marker({
-                        position: leg.end_location,
-                        map: map,
-                        icon: {
-                          url: 'img/destination.png',
-                          scaledSize: new google.maps.Size(32, 32),
-                          origin: new google.maps.Point(0, 0),
-                          anchor: new google.maps.Point(16, 32)
-                        },
-                        title: 'Destination'
-                      });
-                    } else {
-                      //move marker
-                      endMarker.setPosition(leg.end_location);
-                    }
+                    // if (!endMarker) {
+                    //   //new marker
+                    //   endMarker = new google.maps.Marker({
+                    //     position: leg.end_location,
+                    //     map: map,
+                    //     icon: {
+                    //       url: 'img/destination.png',
+                    //       scaledSize: new google.maps.Size(32, 32),
+                    //       origin: new google.maps.Point(0, 0),
+                    //       anchor: new google.maps.Point(16, 32)
+                    //     },
+                    //     title: 'Destination'
+                    //   });
+                    // } else {
+                    //   //move marker
+                    //   endMarker.setPosition(leg.end_location);
+                    // }
                   }
                 });
               }
