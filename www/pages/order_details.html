@@ -249,6 +249,10 @@
                 latlngbounds.extend(lastRestaurant);
                 latlngbounds.extend(customerLocation);
                 map.fitBounds(latlngbounds);
+                let restaurentIcon = 'img/restaurent.png'
+                let customerIcon = 'img/customer.png'
+                marker = new google.maps.Marker({ position: lastRestaurant, icon: restaurentIcon, map: map });
+                marker = new google.maps.Marker({ position: customerLocation, icon: customerIcon, map: map });
               }
               else {
                 line.setMap(null);
