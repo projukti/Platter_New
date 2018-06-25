@@ -1331,6 +1331,10 @@ var app = {
 
     // this function for Track Order
     trackOrder : function(){
+        let customerLocation = {
+            lat: parseFloat(localStorage.getItem('lat')),
+            lng: parseFloat(localStorage.getItem('lang'))
+        };
         $.ajax({
             type: "post",
             url: serverUrl + "get_delivery_status",
