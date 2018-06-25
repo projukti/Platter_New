@@ -36,6 +36,18 @@
             <small style="font-size: 9px;" id="lblCustomerAddress"></small>
           </div>
         </div>
+        <hr>
+        <div class="row" id="lblDeliveryBoyData">
+          <div class="col-15">
+            <img src="" alt="" id="imgDeliveryBoyImage" width="40">
+          </div>
+          <div class="col-75" id="lblDeliveryBoyInfo">
+
+          </div>
+          <div class="col-15" id="lblDeliveryBoyCall">
+            
+          </div>
+        </div>
       </div>
 
       <div class="block-title">Menu Details</div>
@@ -197,12 +209,13 @@
         });
        var directionsService = new google.maps.DirectionsService();
 
-        setTimeout(function(){
+        // setTimeout(function(){
           $.ajax({
             type: "post",
             url: serverUrl + "get_delivery_status",
             data: { orderID: parseFloat($('#lblOrderId').html()) },
-            dataType: "json"
+            dataType: "json",
+            timeout : 1500
           }).done(function(rply){
               console.log(rply)
               if(rply.isRestaurantAccepted){
@@ -222,6 +235,16 @@
                 var directionsService2 = new google.maps.DirectionsService();
               }
               if(rply.isPickedUp){
+
+                // let deliveryBoyImg= rply.deliveryBoy.image
+                let callDriver = ''
+                callDriver +='<a href="tel:'+ rply.deliveryBoy.mobile+'" class="link external">'
+                callDriver += '<img src="img/call.png" width="20">'
+                callDriver += '</a>'
+
+                $('#imgDeliveryBoyImage').attr('src', rply.deliveryBoy.image)
+                $('#lblDeliveryBoyInfo').html('<strong>' + rply.deliveryBoy.name + '</strong> Has been assign to drop your order')
+                $('#lblDeliveryBoyCall').html(callDriver)
                 try{
                   line.setMap(null);
                 }
@@ -377,8 +400,14 @@
                 } catch (e) {
                 }
               }
+              
+              if(rply.isDelivered){
+                $('#trackingMap').hide();
+                ('#lblDeliveryBoyInfo').html('Order Delivered By - '+rply.deliveryBoy.name )
+                $('#lblDeliveryBoyCall').html('');
+              }
           });
-        }, 3000);
+        // }, 3000);
       }
     },
   };
