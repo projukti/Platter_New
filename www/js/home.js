@@ -1347,6 +1347,7 @@ var app = {
             dataType: "json"
         }).done(function (rply) {
             console.log(rply)
+            var directionsService = new google.maps.DirectionsService();
             if (rply.isRestaurantAccepted) {
                 // let restaurentIcon = 'img/restaurent.png'
                 let customerIcon = 'img/customer.png'
@@ -1356,7 +1357,7 @@ var app = {
                 }
                 marker = new google.maps.Marker({ position: restaurentLocation, icon: restaurentIcon, map: map });
                 marker = new google.maps.Marker({ position: customerLocation, icon: customerIcon, map: map });
-                var directionsService = new google.maps.DirectionsService();
+                
                 var directionsDisplay2 = new google.maps.DirectionsRenderer({
                     map: map,
                     suppressMarkers: true
