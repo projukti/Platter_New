@@ -216,6 +216,44 @@
                 marker = new google.maps.Marker({ position: customerLocation, icon: customerIcon, map: map });
                 // directionsService = new google.maps.DirectionsService();
               }
+              if(rply.isPickedUp){
+                try{
+                  line.setMap(null);
+                }
+                catch (e) {
+                  console.log(e);
+                }
+
+                line= new google.maps.Polyline({
+                  path: [{
+                    lat: parseFloat(rply.restaurantLocation.lat),
+                    lng: parseFloat(rply.restaurantLocation.lng)
+                  }, customerLocation],
+                  strokeOpacity: 0,
+                  icons: [{
+                    icon: {
+                      path: 'M 0,-1 0,1',
+                      strokeOpacity: 1,
+                      scale: 2
+                    },
+                    offset: '0',
+                    repeat: '15px'
+                  }],
+                  map: map
+                });
+                lastRestaurant = {
+                  lat: parseFloat(rply.restaurantLocation.lat),
+                  lng: parseFloat(rply.restaurantLocation.lng)
+                };
+                var latlngbounds = new google.maps.LatLngBounds();
+                latlngbounds.extend(lastRestaurant);
+                latlngbounds.extend(customerLocation);
+                map.fitBounds(latlngbounds);
+              }
+              else {
+                line.setMap(null);
+                line = null;
+              }
           });
         }, 3000);
       }
