@@ -260,7 +260,7 @@
               }
               
               if(rply.deliveryBoy.name && rply.isPickedUp && !rply.isDelivered){
-                deliboylocation = { lat: parseFloat(res.deliveryBoy.lat), lng: parseFloat(res.deliveryBoy.lng) };
+                deliboylocation = { lat: parseFloat(rply.deliveryBoy.lat), lng: parseFloat(rply.deliveryBoy.lng) };
                 let request = {
                   destination: customerLocation,
                   origin: deliboylocation,
