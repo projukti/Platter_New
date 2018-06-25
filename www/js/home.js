@@ -1356,7 +1356,7 @@ var app = {
                 }
                 marker = new google.maps.Marker({ position: restaurentLocation, icon: restaurentIcon, map: map });
                 marker = new google.maps.Marker({ position: customerLocation, icon: customerIcon, map: map });
-                directionsService = new google.maps.DirectionsService();
+                var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay2 = new google.maps.DirectionsRenderer({
                     map: map,
                     suppressMarkers: true
