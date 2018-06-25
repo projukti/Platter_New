@@ -871,7 +871,7 @@ var app = {
 
             $('#lblOrderSummery').html(menuDetails);
 
-            if (rply.orderDetail.delivery_date !=""){
+            if (rply.data.orderDetail.delivery_date !=""){
                 $('#trackingMap').hide();
             }
             else{
@@ -1233,8 +1233,7 @@ var app = {
             type: "post",
             url: serverUrl + "get_delivery_status",
             data: { orderID: parseFloat($('#lblOrderId').html()) },
-            dataType: "json",
-            timeout: 1500
+            dataType: "json"
         }).done(function (rply) {
             console.log(rply)
             if (rply.isRestaurantAccepted) {
