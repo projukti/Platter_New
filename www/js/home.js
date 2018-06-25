@@ -1405,7 +1405,7 @@ var app = {
                 var latlngbounds = new google.maps.LatLngBounds();
                 latlngbounds.extend(lastRestaurant);
                 latlngbounds.extend(customerLocation);
-                map.fitBounds(latlngbounds);
+                //map.fitBounds(latlngbounds);
                 let restaurentIcon = 'img/restaurent.png'
                 let customerIcon = 'img/customer.png'
                 marker = new google.maps.Marker({ position: lastRestaurant, icon: restaurentIcon, map: map });
