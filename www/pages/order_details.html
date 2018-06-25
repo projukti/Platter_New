@@ -282,6 +282,7 @@
                     console.log(response)
                     var leg = response.routes[0].legs[0];
                     let lastPosi
+                    let startMarkerHeading
                     if (!lastPosi) {
                       lastPosi = leg.start_location
                     }
