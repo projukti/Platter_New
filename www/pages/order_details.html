@@ -191,11 +191,11 @@
           }
           ]
         });
-        directionsDisplay = new google.maps.DirectionsRenderer({
+        var directionsDisplay = new google.maps.DirectionsRenderer({
           map: map,
           suppressMarkers: false
         });
-        directionsService = new google.maps.DirectionsService();
+       var directionsService = new google.maps.DirectionsService();
 
         setTimeout(function(){
           $.ajax({
@@ -274,6 +274,10 @@
                 directionsService.route(request, function (response, status) {
                   if (status == 'OK') {
                     // Display the route on the map.
+                    directionsDisplay2 = new google.maps.DirectionsRenderer({
+                      map: map,
+                      suppressMarkers: true
+                    });
                     directionsDisplay2.setDirections(response);
                     var leg = response.routes[0].legs[0];
                     if (!lastPosi) {
