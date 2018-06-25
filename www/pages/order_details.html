@@ -279,6 +279,7 @@
                       suppressMarkers: true
                     });
                     directionsDisplay2.setDirections(response);
+                    console.log(response)
                     var leg = response.routes[0].legs[0];
                     let lastPosi
                     if (!lastPosi) {
