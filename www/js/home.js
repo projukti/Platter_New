@@ -1533,7 +1533,8 @@ var app = {
 
             if (rply.isDelivered) {
                 $('#trackingMap').hide();
-                ('#lblDeliveryBoyInfo').html('Order Delivered By - ' + rply.deliveryBoy.name)
+                $('#imgDeliveryBoyImage').attr('src', rply.deliveryBoy.image)
+                $('#lblDeliveryBoyInfo').html('Order Delivered By - ' + rply.deliveryBoy.name)
                 $('#lblDeliveryBoyCall').html('');
             }
         });
