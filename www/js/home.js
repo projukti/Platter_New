@@ -1382,7 +1382,7 @@ var app = {
                     console.log(e);
                 }
 
-                line = new google.maps.Polyline({
+               var line = new google.maps.Polyline({
                     path: [{
                         lat: parseFloat(rply.restaurantLocation.lat),
                         lng: parseFloat(rply.restaurantLocation.lng)
