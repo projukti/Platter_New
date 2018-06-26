@@ -1413,8 +1413,8 @@ var app = {
                 marker = new google.maps.Marker({ position: customerLocation, icon: customerIcon, map: map });
             }
             else {
-                line.setMap(null);
-                line = null;
+                //line.setMap(null);
+               // line = null;
             }
 
             if (rply.deliveryBoy.name && rply.isPickedUp && !rply.isDelivered) {
