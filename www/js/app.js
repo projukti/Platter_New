@@ -40,7 +40,7 @@ var newApp  = new Framework7({
   // App root methods
   methods: {
     helloWorld: function () {
-      app.dialog.alert('Hello World!');
+      newApp.dialog.alert('Hello World!');
     },
  
   },
@@ -49,25 +49,25 @@ var newApp  = new Framework7({
 });
 
 // Init/Create views
-var homeView = app.views.create('#view-home', {
+var homeView = newApp.views.create('#view-home', {
   url: '/'
 });
-var catalogView = app.views.create('#view-catalog', {
+var catalogView = newApp.views.create('#view-catalog', {
   url: '/catalog/'
 });
-var cartView = app.views.create('#view-cart', {
+var cartView = newApp.views.create('#view-cart', {
   url: '/cart/'
 });
-var accountView = app.views.create('#view-account', {
+var accountView = newApp.views.create('#view-account', {
   url: '/account-user/'
 });
-var chatView = app.views.create('#view-chat',{
+var chatView = newApp.views.create('#view-chat',{
   url: '/chat/'
 });
-var searchView = app.views.create('#view-search', {
+var searchView = newApp.views.create('#view-search', {
   url: '/request-and-load/user/123456/'
 });
-var searchbar = app.searchbar.create({
+var searchbar = newApp.searchbar.create({
   el: '.searchbar',
   searchContainer: '.list',
   searchIn: '.item-title',
@@ -150,7 +150,7 @@ var searchbar = app.searchbar.create({
     }
   }
 });
-var messages = app.messages.create({
+var messages = newApp.messages.create({
   el: '.messages',
 
   // First message rule
