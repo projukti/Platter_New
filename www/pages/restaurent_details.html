@@ -16,6 +16,9 @@
             </div>
         </div>
         <div class="page-content">
+            <div class="block" style="margin: 0; padding: 0 ;">
+                <img id="fileRestaurentImage" style="width:100%">
+            </div>
             <div class="block-title" style="margin-top: 16px;">
                 <strong id="lblRestaurentNameLocation">Loading...</strong>
                 <br>
@@ -95,6 +98,8 @@
                     data: { restid: $('#lblRestaurentID').html() },
                     dataType: "JSON"
                 }).done(function (rply) {
+                    console.log(rply);
+                    $('#fileRestaurentImage').attr('src', 'http://platterexoticfood.com/pladmin/uploads/restaurant/' + rply.restaurant.restaurant_image);
                     $('#lblRestaurentNameLocation').html(rply.restaurant.restaurant_name + ' - ' + rply.restaurant.locality);
                     $('#lblRestaurentCuisine').html(rply.restaurant.cuisine_tags);
                     if(app.isRestaurantOpen(rply.restaurant.opening_time, rply.restaurant.closing_time) == "open"){
