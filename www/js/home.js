@@ -1600,6 +1600,12 @@ var app = {
 
     },
 
+    // This Section For Log out
+    logout: function(){
+        localStorage.clear()
+        window.location.href="index.html"
+    }
+
 };
 
 function swipperminus(menu_id, restaurent_id) {
