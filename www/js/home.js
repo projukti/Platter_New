@@ -861,18 +861,54 @@ var app = {
             $('#showHistoryCouponDiscount').html(rply.data.coupon_discount);
             $('#showHistoryTotalAmt').html(rply.data.total_payable);
 
-           
+           let menuIds = ''
             for (list in rply.data.menu){
                 menuDetails += '<div class="row">'
                 menuDetails += '<div class="col" style="text-align: left;">' + rply.data.menu[list].menuname + ' x ' + rply.data.menu[list].qty +'</div>'
                 menuDetails += '<div class="col" style="text-align: right;">' + rply.data.menu[list].menusubtotal+'</div>'
                 menuDetails += '</div>'
+                menuIds += rply.data.menu[list].menu_id+','
             }
+            menuIds = menuIds.slice(0,-1);
+            $('#menuIds').html(menuIds);
+            $('#restaurentId').html(rply.data.restaurant.restaurant_id);
 
             $('#lblOrderSummery').html(menuDetails);
 
+            // This section for generate rateing
+            let starGenerate = ''
+            for (list in rply.data.menu){
+                
+                starGenerate += '<div class="row" id="ret' + rply.data.menu[list].menu_id + '">'
+                starGenerate += '<div class="col-50">' + rply.data.menu[list].menuname +'</div>'
+                starGenerate += '<div class="col-50">'
+                if (rply.data.menu[list].rating == "") {
+                    starGenerate += '<div class="stars">'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '"  class="star-1" id="star-1" />'
+                    starGenerate += '<label class="star-1" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 1,' + rply.data.orderID + ')" for="star-1">1</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '" class="star-2" id="star-2" />'
+                    starGenerate += '<label class="star-2"  onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 2,' + rply.data.orderID + ')" for="star-2">2</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '" class="star-3" id="star-3" />'
+                    starGenerate += '<label class="star-3" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 3,' + rply.data.orderID + ')" for="star-3">3</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '" class="star-4" id="star-4" />'
+                    starGenerate += '<label class="star-4" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 4,' + rply.data.orderID + ')" for="star-4">4</label>'
+                    starGenerate += '<input type="radio"  name="star' + rply.data.menu[list].menu_id + '" class="star-5" id="star-5" />'
+                    starGenerate += '<label class="star-5" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 5,' + rply.data.orderID + ')" for="star-5">5</label>'
+                    starGenerate += '<span></span>'
+                    starGenerate += '</div>'
+                }
+                else{
+                    starGenerate += '<span>' + rply.data.menu[list].rating +'</span>'
+                }
+                
+                starGenerate += '</div>'
+                starGenerate += '</div>'
+            }
+            $('#ratingsForm').html(starGenerate)
+
             if (rply.data.orderDetail.delivery_date !=""){
                 $('#trackingMap').hide();
+                $('#dvMenuRate').show();
             }
             else{
                 let customerLocation = {
@@ -1536,12 +1572,40 @@ var app = {
                 $('#imgDeliveryBoyImage').attr('src', rply.deliveryBoy.image)
                 $('#lblDeliveryBoyInfo').html('Order Delivered By - ' + rply.deliveryBoy.name)
                 $('#lblDeliveryBoyCall').html('');
+                $('#dvMenuRate').show();
             }
         });
         setTimeout(function () {
             app.trackOrder()
         }, 5000);
-    }
+    },
+
+    // This Function For Rateing And Review
+    rating: function (restaurentId, menuId, rval, orderId){
+        
+        let rateId = '#ret' + menuId
+        
+        
+
+        // $(rateId).hide();
+
+        // 
+        
+        // console.log(rval)
+        // console.log(orderId)
+        $.ajax({
+            type: "post",
+            url: serverUrl + 'menu_rating',
+            data: { user: user, restId: restaurentId, menuId: menuId, rval: rval, orderId: orderId },
+            dataType: "json"
+        }).done(function(rply){
+            if (rply.success){
+                $(rateId).hide();
+                window.plugins.toast.showLongBottom('Rate Successfully');
+            }
+        });
+
+    },
 
 };
 
