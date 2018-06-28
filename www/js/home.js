@@ -879,26 +879,26 @@ var app = {
             let starGenerate = ''
             for (list in rply.data.menu){
                 
-                starGenerate += '<div class="row" id="ret' + rply.data.menu[list].menu_id + '">'
+                starGenerate += '<div class="row" id="ret' + rply.data.menu[list].menu + '">'
                 starGenerate += '<div class="col-50">' + rply.data.menu[list].menuname +'</div>'
                 starGenerate += '<div class="col-50">'
-                if (rply.data.menu[list].rating == "") {
+                if (rply.data.menu[list].rating == null) {
                     starGenerate += '<div class="stars">'
-                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '"  class="star-1" id="star-1" />'
-                    starGenerate += '<label class="star-1" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 1,' + rply.data.orderID + ')" for="star-1">1</label>'
-                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '" class="star-2" id="star-2" />'
-                    starGenerate += '<label class="star-2"  onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 2,' + rply.data.orderID + ')" for="star-2">2</label>'
-                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '" class="star-3" id="star-3" />'
-                    starGenerate += '<label class="star-3" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 3,' + rply.data.orderID + ')" for="star-3">3</label>'
-                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu_id + '" class="star-4" id="star-4" />'
-                    starGenerate += '<label class="star-4" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 4,' + rply.data.orderID + ')" for="star-4">4</label>'
-                    starGenerate += '<input type="radio"  name="star' + rply.data.menu[list].menu_id + '" class="star-5" id="star-5" />'
-                    starGenerate += '<label class="star-5" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu_id + ', 5,' + rply.data.orderID + ')" for="star-5">5</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu + '"  class="star-1" id="star-1" />'
+                    starGenerate += '<label class="star-1" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu + ', 1,' + rply.data.orderID + ')" for="star-1">1</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu + '" class="star-2" id="star-2" />'
+                    starGenerate += '<label class="star-2"  onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu + ', 2,' + rply.data.orderID + ')" for="star-2">2</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu + '" class="star-3" id="star-3" />'
+                    starGenerate += '<label class="star-3" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu + ', 3,' + rply.data.orderID + ')" for="star-3">3</label>'
+                    starGenerate += '<input type="radio" name="star' + rply.data.menu[list].menu + '" class="star-4" id="star-4" />'
+                    starGenerate += '<label class="star-4" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu + ', 4,' + rply.data.orderID + ')" for="star-4">4</label>'
+                    starGenerate += '<input type="radio"  name="star' + rply.data.menu[list].menu + '" class="star-5" id="star-5" />'
+                    starGenerate += '<label class="star-5" onclick="app.rating(' + rply.data.restaurant.restaurant_id + ', ' + rply.data.menu[list].menu + ', 5,' + rply.data.orderID + ')" for="star-5">5</label>'
                     starGenerate += '<span></span>'
                     starGenerate += '</div>'
                 }
                 else{
-                    starGenerate += '<span>' + rply.data.menu[list].rating +'</span>'
+                    starGenerate += '<span class="badge color-blue">' + rply.data.menu[list].rating +'</span>'
                 }
                 
                 starGenerate += '</div>'
@@ -1584,21 +1584,14 @@ var app = {
     rating: function (restaurentId, menuId, rval, orderId){
         
         let rateId = '#ret' + menuId
-        
-        
-
-        // $(rateId).hide();
-
-        // 
-        
-        // console.log(rval)
-        // console.log(orderId)
+        console.log(rateId)
         $.ajax({
             type: "post",
             url: serverUrl + 'menu_rating',
             data: { user: user, restId: restaurentId, menuId: menuId, rval: rval, orderId: orderId },
             dataType: "json"
         }).done(function(rply){
+            console.log(rply)
             if (rply.success){
                 $(rateId).hide();
                 window.plugins.toast.showLongBottom('Rate Successfully');
