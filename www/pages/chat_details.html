@@ -21,7 +21,7 @@
         <div class="messagebar-area">
           <textarea class="resizable" placeholder="Message"></textarea>
         </div>
-        <a class="link send-link" href="#">Send</a>
+        <a class="link send-link" href="#"><img src="img/send-button.png" style="height: 25px;"></a>
       </div>
     </div>
     <div class="page-content messages-content">
@@ -147,8 +147,8 @@
 <script>
   return {
     on: {
-      
       pageInit: function (e, page) {
+        console.log('hello');
         $('#main_toolbar').hide();
       },
       pageBeforeOut: function (e, page) {
