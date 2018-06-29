@@ -150,6 +150,9 @@ var searchbar = newApp.searchbar.create({
     }
   }
 });
+
+
+
 var messages = newApp.messages.create({
   el: '.messages',
 

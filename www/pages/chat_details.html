@@ -7,12 +7,13 @@
             <i class="icon icon-back color-white"></i>
             <span class="ios-only color-white">Back</span>
           </a>
-          <a href="/friends_profile/1/" class="link" style=" margin-left: -16px; ">
-            <img src="img/user.png" style="height: 40px; width: 40px; border-radius: 50%">
+          <a href="" class="link" style=" margin-left: -16px; ">
+            <img src="img/icon.png" style="height: 40px; width: 40px; border-radius: 50%;background: white;">
           </a>
         </div>
+        <div id="chatId" style="display:none;">{{$route.params.id}}</div>
         <div class="title" style="color: #fff;margin: 0px;font-size:16px;">
-          <small>Saikat Bhadury</small>
+          <small>Lobby</small>
         </div>
       </div>
     </div>
@@ -148,8 +149,12 @@
   return {
     on: {
       pageInit: function (e, page) {
-        console.log('hello');
+        // console.log('hello');
         $('#main_toolbar').hide();
+        // $('#chatId').html();
+        let userId = $('#chatId').html();
+        console.log(userId)
+        app.getChat(parseInt(userId));
       },
       pageBeforeOut: function (e, page) {
         $('#main_toolbar').show();

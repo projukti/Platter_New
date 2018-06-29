@@ -1604,7 +1604,28 @@ var app = {
     logout: function(){
         localStorage.clear()
         window.location.href="index.html"
-    }
+    },
+
+    // This Finction for get common chat
+    getChat: function(chatType) {
+        console.log(chatType)
+        let chatMessages =''
+        let url
+        if(chatType=="0"){
+            url = serverUrl +'get_chat_common/'
+        }
+        else{
+            url = serverUrl + 'get_cart/'
+        }
+        $.ajax({
+            type: "post",
+            url: url,
+            data: {user : user},
+            dataType: "json"
+        }).done(function(rply) {
+            console.log(rply)
+        });
+    },
 
 };
 
