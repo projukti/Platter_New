@@ -20,19 +20,18 @@
     <div class="toolbar messagebar">
       <div class="toolbar-inner">
         <div class="messagebar-area">
-          <textarea class="resizable" placeholder="Message"></textarea>
+          <textarea class="resizable" placeholder="Message" id="txtMessage"></textarea>
         </div>
-        <a class="link send-link" href="#"><img src="img/send-button.png" style="height: 25px;"></a>
+        <a class="link send-link" onclick="app.sendMessage({{$route.params.id}})" href="#"><img src="img/send-button.png" style="height: 25px;"></a>
       </div>
     </div>
     <div class="page-content messages-content">
       <div class="messages">
         <!-- Messages title -->
-        <div class="messages-title">
-          <b>Sunday, Feb 9,</b> 12:58</div>
+        <div class="messages-title" id="message">
+          <!-- <b>Sunday, Feb 9,</b> 12:58</div> -->
         <!-- Full layout sent message -->
-        <div class="message message-sent">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/7);"></div>
+        <!-- <div class="message message-sent">
           <div class="message-content">
             <div class="message-name">John Doe</div>
             <div class="message-header">Message header</div>
@@ -43,23 +42,20 @@
             </div>
             <div class="message-footer">Message footer</div>
           </div>
-        </div>
+        </div> -->
         <!-- Full layout received message -->
-        <div class="message message-received">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/7);"></div>
+        <!-- <div class="message message-received">
           <div class="message-content">
             <div class="message-name">John Doe</div>
-            <div class="message-header">Message header</div>
             <div class="message-bubble">
               <div class="message-text-header">Text header</div>
               <div class="message-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
               <div class="message-text-footer">Text footer</div>
             </div>
-            <div class="message-footer">Message footer</div>
           </div>
-        </div>
+        </div> -->
         <!-- Messages -->
-        <div class="message message-sent">
+        <!-- <div class="message message-sent">
           <div class="message-content">
             <div class="message-bubble">
               <div class="message-text">Hi, Kate</div>
@@ -140,7 +136,7 @@
               <div class="message-text">Awesome!</div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -149,14 +145,16 @@
   return {
     on: {
       pageInit: function (e, page) {
+        // $$(".page-content").scrollTop(10000, 400);
         // console.log('hello');
         $('#main_toolbar').hide();
         // $('#chatId').html();
         let userId = $('#chatId').html();
-        console.log(userId)
         app.getChat(parseInt(userId));
+        $$(".page-content").scrollTop(10000, 400);
       },
       pageBeforeOut: function (e, page) {
+        clearTimeout();
         $('#main_toolbar').show();
       },
       

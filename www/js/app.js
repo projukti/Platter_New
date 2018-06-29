@@ -195,9 +195,12 @@ var messages = newApp.messages.create({
 });
 
 // Init Messagebar
-var messagebar = app.messagebar.create({
-  el: '.messagebar'
+var messagebar = newApp.messagebar.create({
+  
+  el: '.messagebar',
+  scrollMessagesOnEdge : false
 });
+
 // Response flag
 var responseInProgress = false;
 

@@ -1608,24 +1608,76 @@ var app = {
 
     // This Finction for get common chat
     getChat: function(chatType) {
-        console.log(chatType)
-        let chatMessages =''
-        let url
-        if(chatType=="0"){
-            url = serverUrl +'get_chat_common/'
-        }
-        else{
-            url = serverUrl + 'get_cart/'
-        }
+        // console.log(chatType)
+        setTimeout(function() {
+            let chatMessages = ''
+            let url
+            if (chatType == "0") {
+                url = serverUrl + 'get_chat_common/'
+            }
+            else {
+                url = serverUrl + 'get_cart/'
+            }
+            $.ajax({
+                type: "post",
+                url: url,
+                data: { user: user },
+                dataType: "json",
+                timeout: 3000
+            }).done(function (rply) {
+                console.log(rply)
+                // chatMessages
+                for (list in rply.chat_contents) {
+                    if (rply.chat_contents[list].customer_mobile != user) {
+                        chatMessages += '<div class="message message-received">'
+                        chatMessages += '<div class="message-content">'
+                        chatMessages += '<div class="message-name">' + rply.chat_contents[list].customer_name + '</div>'
+                        chatMessages += '<div class="message-bubble">'
+                        chatMessages += '<div class="message-text-header">' + rply.chat_contents[list].chat_date_time + '</div>'
+                        chatMessages += '<div class="message-text">' + rply.chat_contents[list].message + '</div>'
+                        chatMessages += '<div class="message-text-footer"></div>'
+                        chatMessages += '</div>'
+                        chatMessages += '</div>'
+                        chatMessages += '</div>'
+                    }
+                    else {
+                        chatMessages += '<div class="message message-sent" style="margin-left: 30%;">'
+                        chatMessages += '<div class="message-content">'
+                        chatMessages += '<div class="message-name">' + rply.chat_contents[list].customer_name + '</div>'
+                        chatMessages += '<div class="message-bubble">'
+                        chatMessages += '<div class="message-text-header">' + rply.chat_contents[list].chat_date_time + '</div>'
+                        chatMessages += '<div class="message-text">' + rply.chat_contents[list].message + '</div>'
+                        chatMessages += '<div class="message-text-footer">sent</div>'
+                        chatMessages += '</div>'
+                        chatMessages += '</div>'
+                        chatMessages += '</div>'
+                    }
+                }
+                $('#message').html(chatMessages);
+            });
+        }, 1000);
+        $$(".page-content").scrollTop(10000, 400);
+        
+        // setTimeout(app.getChat(chatType), 10000);
+        setTimeout(function () {
+            app.getChat(chatType)
+            $$(".page-content").scrollTop(10000, 400);
+        }, 1000);
+    },
+
+    // This function For Send Message
+    sendMessage: function (chatType){
+        let messageContent = $('#txtMessage').val();
         $.ajax({
             type: "post",
-            url: url,
-            data: {user : user},
-            dataType: "json"
-        }).done(function(rply) {
-            console.log(rply)
+            url: serverUrl + "send_chat",
+            data: { user: user, to: chatType, message: messageContent},
+            dataType: "JSON"
+        }).done(function(rply){
+            $('#txtMessage').val('');
+            
         });
-    },
+    }
 
 };
 
