@@ -10,6 +10,7 @@ var app = {
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("backbutton", this.onBackKeyDown, false);
+        document.addEventListener('eventName', didLaunchAppFromLink, false);
     },
 
     onDeviceReady: function () {
@@ -19,8 +20,13 @@ var app = {
         app.topTwelveRestaurants();
         app.generalRestaurants();
         app.getCuisine();
+        universalLinks.subscribe('eventName', app.didLaunchAppFromLink);
     },
 
+
+    didLaunchAppFromLink: function (eventData) {
+        console.log('Did launch application from the link: ' + eventData.url);
+    },
     // Back Button Off 
     onBackKeyDown: function (viewName) {
         //let app =  new Framework7();
