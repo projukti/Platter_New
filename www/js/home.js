@@ -20,7 +20,7 @@ var app = {
         app.topTwelveRestaurants();
         app.generalRestaurants();
         app.getCuisine();
-        universalLinks.subscribe('eventName', app.didLaunchAppFromLink);
+        universalLinks.subscribe('forReferaalDiscount', app.didLaunchAppFromLink);
     },
 
 
