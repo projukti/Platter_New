@@ -11,7 +11,7 @@
             <img src="img/icon.png" style="height: 40px; width: 40px; border-radius: 50%;background: white;">
           </a>
         </div>
-        <div id="chatId" style="display:none;">{{$route.params.id}}</div>
+        <!-- <div id="chatId" style="display:none;">{{$route.params.id}}</div> -->
         <div class="title" style="color: #fff;margin: 0px;font-size:16px;">
           <small>Lobby</small>
         </div>
@@ -145,17 +145,13 @@
   return {
     on: {
       pageInit: function (e, page) {
-        // $$(".page-content").scrollTop(10000, 400);
-        // console.log('hello');
         $('#main_toolbar').hide();
-        // $('#chatId').html();
-        let userId = $('#chatId').html();
-        app.getChat(parseInt(userId));
-        $$(".page-content").scrollTop(10000, 400);
+        // let userId = $('#chatId').html();
       },
       pageBeforeOut: function (e, page) {
-        clearTimeout();
+        clearTimeout(chatTimeOut);
         $('#main_toolbar').show();
+        counter=0
       },
       
     }

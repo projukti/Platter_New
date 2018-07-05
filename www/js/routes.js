@@ -78,7 +78,22 @@ routes = [
   },
   {
     path: '/chat_details/:id/',
-    componentUrl: './pages/chat_details.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      let id = routeTo.params.id;
+      unique.preloader.show();
+      setTimeout(function () {
+        app.getChat(parseInt(id));
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/chat_details.html',
+          }
+        );
+      }, 1000);
+    },
+    
   },
   {
     path: '/order_details/:id/',

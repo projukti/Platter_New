@@ -1,4 +1,6 @@
 var serverUrl = 'http://platterexoticfood.com/pladmin/manage_api/'
+var chatTimeOut
+var counter = 0
 var user = localStorage.getItem('platuser')
 
 var app = {
@@ -1614,6 +1616,7 @@ var app = {
 
     // This Finction for get common chat
     getChat: function(chatType) {
+        
         // console.log(chatType)
         setTimeout(function() {
             let chatMessages = ''
@@ -1630,9 +1633,7 @@ var app = {
                 data: { user: user },
                 dataType: "json",
                 timeout: 3000
-            }).done(function (rply) {
-                console.log(rply)
-                // chatMessages
+            }).done(function (rply) {                
                 for (list in rply.chat_contents) {
                     if (rply.chat_contents[list].customer_mobile != user) {
                         chatMessages += '<div class="message message-received">'
@@ -1661,13 +1662,20 @@ var app = {
                 }
                 $('#message').html(chatMessages);
             });
+           
         }, 1000);
-        $$(".page-content").scrollTop(10000, 400);
+        
+            if (counter==2){
+                $$(".page-content").scrollTop(10000, 400);
+                counter = parseInt(counter) + 1;
+            }
+        
         
         // setTimeout(app.getChat(chatType), 10000);
-        setTimeout(function () {
+        chatTimeOut = setTimeout(function () {
+            counter = parseInt(counter) + 1;
             app.getChat(chatType)
-            $$(".page-content").scrollTop(10000, 400);
+           
         }, 1000);
     },
 
