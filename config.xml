@@ -91,11 +91,10 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-
     <universal-links>
         <host name="platterexoticfood.com">
-            <path url="/referral/*" event="forReferaalDiscount" />
-            <path url="/news/*" event="openNewsDetailedPage" />
+            <path event="forReferaalDiscount" url="/referral/*" />
+            <path event="openNewsDetailedPage" url="/news/*" />
         </host>
     </universal-links>
     <engine name="ios" />
@@ -126,7 +125,10 @@
     <plugin name="cordova-plugin-statusbar" />
     <plugin name="cordova-plugin-fcm" />
     <plugin name="cordova-plugin-code-push" spec="~1.11.2" />
-    <plugin name="cordova-plugin-file" spec="~4.3.1" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.1" />
     <plugin name="cordova-universal-links-plugin" />
+    <plugin name="cordova-plugin-facebook" spec="^0.2.2">
+        <variable name="FACEBOOK_DISPLAY_NAME" value="'Platter'" />
+        <variable name="FACEBOOK_APP_ID" value="'254156158481084'" />
+    </plugin>
 </widget>

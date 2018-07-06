@@ -40,7 +40,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        
+
         // var parentElement = document.getElementById(id);
         // var listeningElement = parentElement.querySelector('.listening');
         // var receivedElement = parentElement.querySelector('.received');
@@ -286,3 +286,19 @@ function checkConnection() {
     }
 
 }
+CordovaFacebook.Fblogin({
+    permissions: ['email', 'user_likes'],
+    onSuccess: function (result) {
+        if (result.declined.length > 0) {
+            console.log("The User declined something!");
+        }
+        /* ... */
+    },
+    onFailure: function (result) {
+        if (result.cancelled) {
+            console.log("The user doesn't like my app");
+        } else if (result.error) {
+            console.log("There was an error:" + result.errorLocalized);
+        }
+    }
+});
