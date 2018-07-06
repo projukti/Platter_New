@@ -16,6 +16,7 @@
     </gap:config-file>
     <preference name="DisallowOverscroll" value="false" />
     <preference name="android-minSdkVersion" value="21" />
+    <preference name="android-targetSdkVersion" value="26" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="Fullscreen" value="false" />
     <preference name="Orientation" value="portrait" />
