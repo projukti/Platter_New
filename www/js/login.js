@@ -286,7 +286,7 @@ function checkConnection() {
     }
 
 }
-CordovaFacebook.Fblogin({
+CordovaFacebook.login({
     permissions: ['email', 'user_likes'],
     onSuccess: function (result) {
         if (result.declined.length > 0) {
