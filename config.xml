@@ -16,7 +16,6 @@
     </gap:config-file>
     <preference name="DisallowOverscroll" value="false" />
     <preference name="android-minSdkVersion" value="21" />
-    <preference name="android-targetSdkVersion" value="26" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="Fullscreen" value="false" />
     <preference name="Orientation" value="portrait" />
@@ -135,6 +134,5 @@
     <plugin name="cordova-plugin-facebook4" spec="^2.2.0">
         <variable name="APP_ID" value="254156158481084" />
         <variable name="APP_NAME" value="Platter" />
-        <variable name="ANDROID_SDK_VERSION" value="4.+" />
     </plugin>
 </widget>
