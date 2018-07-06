@@ -127,4 +127,8 @@
     <plugin name="cordova-plugin-code-push" spec="~1.11.2" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.1" />
     <plugin name="cordova-universal-links-plugin" />
+    <plugin name="cordova-plugin-facebook4" spec="^2.2.0">
+        <variable name="APP_ID" value="254156158481084" />
+        <variable name="APP_NAME" value="Platter" />
+    </plugin>
 </widget>
