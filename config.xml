@@ -131,4 +131,9 @@
         <variable name="FACEBOOK_DISPLAY_NAME" value="'Platter'" />
         <variable name="FACEBOOK_APP_ID" value="'254156158481084'" />
     </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^2.2.0">
+        <variable name="APP_ID" value="254156158481084" />
+        <variable name="APP_NAME" value="Platter" />
+        <variable name="ANDROID_SDK_VERSION" value="4.+" />
+    </plugin>
 </widget>
