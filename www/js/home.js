@@ -1610,6 +1610,9 @@ var app = {
 
     // This Section For Log out
     logout: function(){
+        if (localStorage.getItem('facebookID')!=""){
+            CordovaFacebook.logout();     
+        }
         localStorage.clear()
         window.location.href="index.html"
     },

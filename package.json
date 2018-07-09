@@ -42,6 +42,9 @@
       },
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
+      },
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com"
       }
     }
   },

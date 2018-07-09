@@ -123,7 +123,7 @@
                         <div class="block" style="margin: 12px 0;">
                             <div class="row">
                                 <div class="col-100">
-                                    <button class="button button-fill" style="background-color: #d14836;text-transform: none;" id="login">Login with Google </button>
+                                    <button class="button button-fill" style="background-color: #d14836;text-transform: none;" id="login" onclick="loginWithGoogle()">Login with Google </button>
                                     <p id="loginstatus"></p>
                                 </div>
                             </div>
@@ -388,6 +388,16 @@
                         }
                     }
                 });
+                }
+
+                function loginWithGoogle() {
+                    window.plugins.googleplus.login({
+                        //options if any
+                    }, function (result) {
+                        console.log(JSON.stringify(result));
+                    }, function (error) {
+                        console.log(JSON.stringify(error));
+                    });
                 }
         </script>
 </body>
