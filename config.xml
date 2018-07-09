@@ -134,9 +134,8 @@
     <plugin name="cordova-android-support-gradle-release" spec="^1.4.4">
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
-    <plugin name="cordova-plugin-googleplus" spec="~5.3.0">
+    <plugin name="cordova-plugin-googleplus" spec="^5.3.0">
         <variable name="REVERSED_CLIENT_ID" value="756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com" />
         <variable name="WEB_APPLICATION_CLIENT_ID" value="756483585333-l9jf99f7rfufoqprpgkdc96rf5aiiam8.apps.googleusercontent.com" />
     </plugin>
-    <plugin name="cordova-support-google-services" spec="^1.2.0" />
 </widget>
