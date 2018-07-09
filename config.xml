@@ -127,6 +127,9 @@
     <plugin name="cordova-plugin-code-push" spec="~1.11.2" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.1" />
     <plugin name="cordova-universal-links-plugin" />
+    <plugin spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git">
+        <variable name="REVERSED_CLIENT_ID" value="756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com" />
+    </plugin>
     <plugin name="cordova-plugin-facebook" spec="^0.2.2">
         <variable name="FACEBOOK_DISPLAY_NAME" value="Platter" />
         <variable name="FACEBOOK_APP_ID" value="2434733670086361" />
