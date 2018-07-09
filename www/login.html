@@ -378,7 +378,7 @@
                             console.log("The User declined something!");
                         }
                         localStorage.setItem("facebookID", result.userID);  
-                        $('#btnSignUp').click();
+                        newApp.popup.open('#my-register-screen', true);
                     },
                     onFailure: function (result) {
                         if (result.cancelled) {
