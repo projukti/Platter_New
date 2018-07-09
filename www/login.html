@@ -105,7 +105,7 @@
                             <div class="row">
                                 <div class="col-50">
                                     <!-- <a href="#" class="button button-raised button-fill popup-open" data-login-screen="#my-popup">SIGN UP</a> -->
-                                    <a href="#" class="button button-outline login-screen-open" data-login-screen="#my-register-screen">SIGN UP</a>
+                                    <a href="#" class="button button-outline login-screen-open" id="btnSignUp" data-login-screen="#my-register-screen">SIGN UP</a>
                                 </div>
                                 <div class="col-50">
                                     <a href="#" class="button button-outline login-screen-open" data-login-screen="#my-login-screen"> LOGIN</a>
@@ -377,7 +377,8 @@
                         if (result.declined.length > 0) {
                             console.log("The User declined something!");
                         }
-                        
+                        localStorage.setItem("facebookID", result.userID);  
+                        $('#btnSignUp').click();
                     },
                     onFailure: function (result) {
                         if (result.cancelled) {
