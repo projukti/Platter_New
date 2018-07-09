@@ -371,7 +371,7 @@
             function loginWithFB() {
                 console.log('Here');
                 CordovaFacebook.login({
-                    permissions: ['email', 'user_location'],
+                    permissions: ['email'],
                     onSuccess: function (result) {
                         console.log(result);
                         if (result.declined.length > 0) {
