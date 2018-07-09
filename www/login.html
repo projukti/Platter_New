@@ -371,12 +371,13 @@
             function loginWithFB() {
                 console.log('Here');
                 CordovaFacebook.login({
-                    permissions: ['email', 'user_likes'],
+                    permissions: ['email', 'user_location'],
                     onSuccess: function (result) {
+                        console.log(result);
                         if (result.declined.length > 0) {
                             console.log("The User declined something!");
                         }
-                        console.log(result);
+                        
                     },
                     onFailure: function (result) {
                         if (result.cancelled) {
