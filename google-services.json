@@ -38,5 +38,32 @@
       }
     }
   ],
-  "configuration_version": "1"
+  "configuration_version": "1",
+  "installed": {
+    "client_id": "756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com",
+    "project_id": "platter-1531121008980",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "redirect_uris": [
+      "urn:ietf:wg:oauth:2.0:oob",
+      "http://localhost"
+    ],
+    "web": {
+      "client_id": "756483585333-l9jf99f7rfufoqprpgkdc96rf5aiiam8.apps.googleusercontent.com",
+      "project_id": "platter-1531121008980",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_secret": "FpI_UgG3uaMBRGi5J0gf5N09",
+      "redirect_uris": [
+        "http://localhost"
+      ],
+      "javascript_origins": [
+        "http://localhost"
+      ]
+    }
+  }
+
+  
 }
