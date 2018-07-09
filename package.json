@@ -44,8 +44,10 @@
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com"
-      }
+        "REVERSED_CLIENT_ID": "756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com",
+        "WEB_APPLICATION_CLIENT_ID": "756483585333-l9jf99f7rfufoqprpgkdc96rf5aiiam8.apps.googleusercontent.com"
+      },
+      "cordova-support-google-services": {}
     }
   },
   "dependencies": {
@@ -63,11 +65,11 @@
     "cordova-plugin-file-transfer": "~1.6.1",
     "cordova-plugin-geolocation": "~2.4.3",
     "cordova-plugin-globalization": "~1.0.7",
-    "cordova-plugin-googleplus": "git+https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
     "cordova-plugin-inappbrowser": "~1.7.1",
     "cordova-plugin-media-capture": "~1.4.3",
     "cordova-plugin-network-information": "~1.3.3",
     "cordova-plugin-vibration": "~2.1.5",
-    "cordova-plugin-x-toast": "^2.6.0"
+    "cordova-plugin-x-toast": "^2.6.0",
+    "cordova-support-google-services": "^1.2.0"
   }
 }
