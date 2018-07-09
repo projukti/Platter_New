@@ -43,7 +43,7 @@
         <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
-        <resource-file src="google-services.json" target="app/google-services.json" />
+        <resource-file src="google-services.json" target="google-services.json" />
     </platform>
     <platform name="ios">
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
@@ -138,5 +138,4 @@
         <variable name="REVERSED_CLIENT_ID" value="756483585333-c3630fipi13hv4glv8s6jo1c0suuushk.apps.googleusercontent.com" />
         <variable name="WEB_APPLICATION_CLIENT_ID" value="756483585333-l9jf99f7rfufoqprpgkdc96rf5aiiam8.apps.googleusercontent.com" />
     </plugin>
-    <plugin name="cordova-support-google-services" spec="^1.2.0" />
 </widget>
