@@ -377,6 +377,18 @@
                         if (result.declined.length > 0) {
                             console.log("The User declined something!");
                         }
+                        CordovaFacebook.api("/" + result.userID, ["public_profile", "email", "user_birthday", "user_location"],
+                            function (rply) {
+                                console.log(rply);
+                                this.email = rply.email;
+                                this.firstname = rply.first_name;
+                                this.lastname = rply.last_name;
+                                this.birthdate = rply.birthday;
+                                this.city = rply.location.name;
+                            },
+                            function (error) {
+                                alert("Failed: " + error);
+                            });
                         localStorage.setItem("facebookID", result.userID);  
                         newApp.popup.open('#my-register-screen', true);
                     },
