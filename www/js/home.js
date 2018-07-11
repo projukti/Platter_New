@@ -1678,7 +1678,6 @@ var app = {
         chatTimeOut = setTimeout(function () {
             counter = parseInt(counter) + 1;
             app.getChat(chatType)
-           
         }, 1000);
     },
 
@@ -1694,8 +1693,7 @@ var app = {
             $('#txtMessage').val('');
             
         });
-    }
-
+    },
 };
 
 function swipperminus(menu_id, restaurent_id) {
