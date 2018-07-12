@@ -70,6 +70,11 @@ var app = {
                 window.plugins.toast.showLongBottom('Error!');
             }
         });
+    },
+
+    // This function For facebook login
+    faceBookLogin : function(firstName){
+
     }
 
 };
