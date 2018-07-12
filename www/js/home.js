@@ -1213,7 +1213,17 @@ var app = {
     // This Function For Filter Result
     filter : function(){
         // console.log($('input[name=rdoRestype]:checked').val())
-        // console.log()
+        // console.log($('#lblVegOnly').checked)
+        let filterType = ''
+        if ($('#lblVegOnly').is(':checked'))
+        {
+            // console.log('Checked');
+            filterType = 'Non-vegeterian'
+        }
+        else{
+            // console.log('All');
+            filterType = 'Vegeterian'
+        }
         let str 
         let filterRestaurents = ''
         let checkboxes = document.getElementsByName('chkCuisine');
@@ -1232,7 +1242,7 @@ var app = {
         $.ajax({
             type: "post",
             url: serverUrl + "restaurant_listsearch",
-            data: { resttype: $('input[name=rdoRestype]:checked').val(), cuisine: str.toString(), lat: '22.4724863', lang: '88.3785082'},
+            data: { resttype: filterType, cuisine: str.toString(), lat: parseFloat(localStorage.getItem('lat')), lang: parseFloat(localStorage.getItem('lang'))},
             dataType: "JSON"
         }).done(function(rply){
             $('#normalListing').hide();
