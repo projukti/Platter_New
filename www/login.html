@@ -376,9 +376,14 @@
                         if (result.declined.length > 0) {
                             console.log("The User declined something!");
                         }
-                        CordovaFacebook.profile({
-                            onSuccess: function (rplyProfile) {
-                               console.log(rplyProfile);
+                        CordovaFacebook.graphRequest({
+                            path: '/'+ result.userID +'',
+                            params: { access_token: result.accessToken, fields: 'first_name,last_name' },
+                            onSuccess: function (datas) {
+                                console.log(datas);
+                            },
+                            onFailure: function (datas) {
+                                if (datas.error) { alert('error', 'There was an error in graph request:' + datas.errorLocalized); }
                             }
                         });
                         localStorage.setItem("facebookID", result.userID);  
