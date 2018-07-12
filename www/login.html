@@ -369,7 +369,6 @@
         </script>
         <script>
             function loginWithFB() {
-                console.log('Here');
                 CordovaFacebook.login({
                     permissions: ['email','public_profile'],
                     onSuccess: function (result) {
@@ -377,18 +376,11 @@
                         if (result.declined.length > 0) {
                             console.log("The User declined something!");
                         }
-                        CordovaFacebook.api("/" + result.userID, ["public_profile", "email", "user_birthday", "user_location"],
-                            function (rply) {
-                                console.log(rply);
-                                this.email = rply.email;
-                                this.firstname = rply.first_name;
-                                this.lastname = rply.last_name;
-                                this.birthdate = rply.birthday;
-                                this.city = rply.location.name;
-                            },
-                            function (error) {
-                                alert("Failed: " + error);
-                            });
+                        CordovaFacebook.profile({
+                            onSuccess: function (rplyProfile) {
+                               console.log(rplyProfile);
+                            }
+                        });
                         localStorage.setItem("facebookID", result.userID);  
                         newApp.popup.open('#my-register-screen', true);
                     },
