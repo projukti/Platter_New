@@ -378,7 +378,7 @@
                         }
                         CordovaFacebook.graphRequest({
                             path: '/'+ result.userID +'',
-                            params: { access_token: result.accessToken, fields: 'first_name,last_name' },
+                            params: { access_token: result.accessToken, fields: 'first_name,last_name,email' },
                             onSuccess: function (datas) {
                                 console.log(datas);
                             },
