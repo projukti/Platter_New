@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var serverUrl = 'http://platterexoticfood.com/pladmin/manage_api/'
 function handleOpenURL(url) {
     alert("received url: " + url);
 }
@@ -73,8 +74,15 @@ var app = {
     },
 
     // This function For facebook login
-    faceBookLogin : function(firstName){
-
+    faceBookLogin : function(name,email,facebookId){
+        $.ajax({
+            type: "post",
+            url: serverUrl + "faceboolLogin",
+            data: { name: name, email: email, facebookId: facebookId},
+            dataType: "JSON"
+        }).done(function(rply){
+            console.log(rply);
+        });
     }
 
 };

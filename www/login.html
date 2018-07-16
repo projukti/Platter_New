@@ -381,6 +381,7 @@
                             params: { access_token: result.accessToken, fields: 'first_name,last_name,email,name' },
                             onSuccess: function (datas) {
                                 console.log(datas);
+                                app.faceBookLogin();
                             },
                             onFailure: function (datas) {
                                 if (datas.error) { alert('error', 'There was an error in graph request:' + datas.errorLocalized); }
