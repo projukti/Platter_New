@@ -34,8 +34,8 @@ var app = {
         //let app =  new Framework7();
         // app.views.current();
         //console.log(app.views.current());
-       return false;
-        // viewName.router.back();
+    //    return false;
+        router.back();
     },
 
     // Open Camera Using this section
