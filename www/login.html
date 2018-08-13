@@ -369,6 +369,7 @@
         </script>
         <script>
             function loginWithFB() {
+                CordovaFacebook.logout();
                 CordovaFacebook.login({
                     permissions: ['email','public_profile'],
                     onSuccess: function (result) {
