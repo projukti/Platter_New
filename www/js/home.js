@@ -1704,6 +1704,123 @@ var app = {
             
         });
     },
+    payOnline:function(){
+        
+            var orderId = Date.now();
+            var orderCreationRequest = new XMLHttpRequest();
+            orderCreationRequest.open('POST', 'https://sandbox.juspay.in/order/create', true, 'D97D086A3D9C4E5387F29B812F231CA3', '');
+            orderCreationRequest.withCredentials = true;
+
+            orderCreationRequest.setRequestHeader('Authorization', 'A6CDDF307DDF45F796BD025B605A1A9F');
+            orderCreationRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            var errorCallback = function () {
+                body.classList.remove('active');
+                body.classList.add('error');
+
+                window.setTimeout(function () {
+                    body.classList.remove('error');
+                    body.classList.add('active');
+                }, 2000);
+            };
+
+            var successCallback = function () {
+                body.classList.remove('active');
+                body.classList.add('success');
+
+                window.setTimeout(function () {
+                    body.classList.remove('success');
+                    body.classList.add('active');
+                }, 2000);
+            };
+
+
+            orderCreationRequest.onreadystatechange = function () {
+                if (orderCreationRequest.readyState == 4) {
+                    if (orderCreationRequest.status == 200) {
+                        ExpressCheckout.startCheckoutActivity({
+                            endUrls: ['https://shop.com/juspay-response/.*'],
+                            onEndUrlReached: function () {
+                                successCallback();
+                            },
+                            onTransactionAborted: function () {
+                                errorCallback();
+                            },
+                            environment: 'PRODUCTION',
+                            instruments: [],
+                            parameters: {
+                                orderId: '1464119848',
+                                merchantId: 'platter'
+                            }
+                        });
+                    } else {
+                        errorCallback();
+                    }
+                }
+            };
+            orderCreationRequest.send('order_id=' + orderId + '&amount=1.00');
+    },
+    // receivedEvent: function (id) {
+    //     var body = document.getElementsByTagName('body')[0];
+    //     body.classList.remove('inactive');
+    //     body.classList.add('active');
+
+    //     document.querySelector('#advert').onclick = function () {
+    //         var orderId = Date.now();
+    //         var orderCreationRequest = new XMLHttpRequest();
+    //         orderCreationRequest.open('POST', 'https://sandbox.juspay.in/order/create', true, '9F64B727D4C048C08013EA0935BCBDB5', '');
+    //         orderCreationRequest.withCredentials = true;
+
+    //         orderCreationRequest.setRequestHeader('Authorization', 'OUY2NEI3MjdENEMwNDhDMDgwMTNFQTA5MzVCQ0JEQjU6');
+    //         orderCreationRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //         var errorCallback = function () {
+    //             body.classList.remove('active');
+    //             body.classList.add('error');
+
+    //             window.setTimeout(function () {
+    //                 body.classList.remove('error');
+    //                 body.classList.add('active');
+    //             }, 2000);
+    //         };
+
+    //         var successCallback = function () {
+    //             body.classList.remove('active');
+    //             body.classList.add('success');
+
+    //             window.setTimeout(function () {
+    //                 body.classList.remove('success');
+    //                 body.classList.add('active');
+    //             }, 2000);
+    //         };
+
+
+    //         orderCreationRequest.onreadystatechange = function () {
+    //             if (orderCreationRequest.readyState == 4) {
+    //                 if (orderCreationRequest.status == 200) {
+    //                     ExpressCheckout.startCheckoutActivity({
+    //                         endUrls: ['https:\\/\\/test.com.\\/'],
+    //                         onEndUrlReached: function () {
+    //                             successCallback();
+    //                         },
+    //                         onTransactionAborted: function () {
+    //                             errorCallback();
+    //                         },
+    //                         environment: 'PRODUCTION',
+    //                         instruments: [],
+    //                         parameters: {
+    //                             orderId: '1464119848',
+    //                             merchantId: 'sachin_sharma'
+    //                         }
+    //                     });
+    //                 } else {
+    //                     errorCallback();
+    //                 }
+    //             }
+    //         };
+    //         orderCreationRequest.send('order_id=' + orderId + '&amount=1.00');
+    //     }
+    // }
 };
 
 function swipperminus(menu_id, restaurent_id) {

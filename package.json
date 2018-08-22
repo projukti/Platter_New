@@ -42,10 +42,12 @@
       },
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
-      }
+      },
+      "juspay-ec-sdk-plugin": {}
     }
   },
   "dependencies": {
+    "@juspay/ec-cordova-plugin": "git+https://bitbucket.org/juspay/ec-cordova-plugin.git",
     "com.telerik.plugins.nativepagetransitions": "~0.6.5",
     "cordova-android": "~6.2.3",
     "cordova-android-support-gradle-release": "^1.4.4",
@@ -64,6 +66,7 @@
     "cordova-plugin-media-capture": "~1.4.3",
     "cordova-plugin-network-information": "~1.3.3",
     "cordova-plugin-vibration": "~2.1.5",
-    "cordova-plugin-x-toast": "^2.6.0"
+    "cordova-plugin-x-toast": "^2.6.0",
+    "juspay-ec-sdk-plugin": "https://bitbucket.org/juspay/ec-cordova-plugin"
   }
 }

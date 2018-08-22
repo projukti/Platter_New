@@ -58,13 +58,13 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    
     <universal-links>
         <host name="platterexoticfood.com">
             <path event="forReferaalDiscount" url="/referral/*" />
             <path event="openNewsDetailedPage" url="/news/*" />
         </host>
     </universal-links>
+    <engine name="ios" />
     <engine name="android" spec="~6.2.3" />
     <plugin name="cordova-plugin-battery-status" spec="~1.2.4" />
     <plugin name="cordova-plugin-camera" spec="~2.4.1" />
@@ -101,4 +101,5 @@
     <plugin name="cordova-android-support-gradle-release" spec="^1.4.4">
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
+    <plugin name="juspay-ec-sdk-plugin" spec="https://bitbucket.org/juspay/ec-cordova-plugin" />
 </widget>
