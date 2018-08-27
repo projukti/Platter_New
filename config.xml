@@ -47,6 +47,7 @@
     </platform>
     <access origin="*" />
     <access subdomains="true" uri="*" />
+    <allow-navigation href="*" />
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
     <allow-navigation href="data:*" />
