@@ -46,7 +46,7 @@
         <resource-file src="google-services.json" target="app/google-services.json" />
     </platform>
     <access origin="*" />
-    <access uri="*" subdomains="true" />
+    <access subdomains="true" uri="*" />
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
     <allow-navigation href="data:*" />
