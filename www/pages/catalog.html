@@ -200,8 +200,6 @@
   return {
     methods: {
       payOrder: function(){
-        cordova.InAppBrowser.open('https://www.platterexoticfood.com/paydir.php', '_self', 'location=yes');
-        
 
         // let deliveryAddress = $('#lblDeliveryAddress').html()
         // let splitAddress = deliveryAddress.split(",")
@@ -216,34 +214,34 @@
         // }
 
 
-        // var data = {
-        //   key: 'rinjrna1',
-        //   txnid: '1237upty34',
-        //   hash: '52c16423e7d4888baae9fe7d2cf05ed8d3086c49c666816fcf52b63e041a5b0ba865ce9f4ebf39717c6fa1832769179abbe964c8fff7a1833c3c6ad03a02a90e',
-        //   amount: 1,
-        //   firstname: 'saikat',
-        //   email: 'saikat.projukti@gmail.com',
-        //   phone: '8335887999',
-        //   productinfo: 'testbag',
-        //   surl: 'https://redbusket.com/index.php/Index/testsucc',
-        //   furl: 'https://redbusket.com/index.php/Index/testfail'
-        // }
+        var data = {
+          key: 'rinjrna1',
+          txnid: '1237upty34',
+          hash: '52c16423e7d4888baae9fe7d2cf05ed8d3086c49c666816fcf52b63e041a5b0ba865ce9f4ebf39717c6fa1832769179abbe964c8fff7a1833c3c6ad03a02a90e',
+          amount: 1,
+          firstname: 'saikat',
+          email: 'saikat.projukti@gmail.com',
+          phone: '8335887999',
+          productinfo: 'testbag',
+          surl: 'https://redbusket.com/index.php/Index/testsucc',
+          furl: 'https://redbusket.com/index.php/Index/testfail'
+        }
 
-        // var handler = {
+        var handler = {
 
-        //   responseHandler: function (BOLT) {
+          responseHandler: function (BOLT) {
 
-        //     console.log(BOLT.response.txnStatus);
+            console.log(BOLT.response.txnStatus);
 
-        //   },
-        //   catchException: function (BOLT) {
+          },
+          catchException: function (BOLT) {
 
-        //     alert(BOLT.message);
+            alert(BOLT.message);
 
-        //   }
-        // }
+          }
+        }
 
-        // bolt.launch(data, handler); 
+        bolt.launch(data, handler); 
 
       },
       // payOnline: function(){
