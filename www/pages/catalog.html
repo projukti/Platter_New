@@ -202,7 +202,7 @@
       payOrder: function(){
         let finalAmount = $('#lblFinalAmount').html()
         let deliveryAddress = $('#lblDeliveryAddress').html()
-        let url= 'http://platterexoticfood.com/'+localStorage.getItem('platuser')+'/'+ encodeURIComponent(finalAmount)+'/'+ encodeURIComponent(deliveryAddress)+'/'
+        let url= 'http://platterexoticfood.com/'+localStorage.getItem('platuser')+'/'+ encodeURI(finalAmount)+'/'+ encodeURI(deliveryAddress)+'/'
         var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
         // var myCallback = function (event) { console.log(event.url); }
         ref.addEventListener('loadstart', function (event) {
