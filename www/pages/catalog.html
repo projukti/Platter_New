@@ -200,40 +200,41 @@
   return {
     methods: {
       payOrder: function(){
-        let finalAmount = $('#lblFinalAmount').html()
-        let deliveryAddress = $('#lblDeliveryAddress').html()
-        let url= 'http://platterexoticfood.com/'+localStorage.getItem('platuser')+'/'+ encodeURI(finalAmount)+'/'+ encodeURI(deliveryAddress)+'/'
-        var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
-        // var myCallback = function (event) { console.log(event.url); }
-        ref.addEventListener('loadstart', function (event) {
-          let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
-          let urlErrorPage = "https://www.platterexoticfood.com/fail.php";
-          if (event.url == urlSuccessPage) {
-            cartView.router.navigate('/payment-success/');
-            ref.close();
-          }
-          else if(event.url == urlErrorPage){
-            cartView.router.navigate('/payment-error/');
-            ref.close();
-          }
-        });
+        // let deliveryAddress = $('#lblDeliveryAddress').html()
+        // let splitAddress = deliveryAddress.split(",")
+        // let finalAmount = $('#lblFinalAmount').html()
+        // let url= 'http://platterexoticfood.com/'+localStorage.getItem('platuser')+'/'+ encodeURI(finalAmount)+'/'+ encodeURI(deliveryAddress)+'/'
+        // var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
+        // // var myCallback = function (event) { console.log(event.url); }
+        //    ref.addEventListener('loadstart', function (event) {
+        //    let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
+        //    let urlErrorPage = "https://www.platterexoticfood.com/fail.php";
+        //    if (event.url == urlSuccessPage) {
+        //     cartView.router.navigate('/payment-success/');
+        //     ref.close();
+        //    }
+        //   else if(event.url == urlErrorPage){
+        //     cartView.router.navigate('/payment-error/');
+        //     ref.close();
+        //   }
+        // });
         
         // This For cash On Delivery
 
-        // ref.addEventListener('loadstart', myCallback);
-        // ref.removeEventListener('loadstart', myCallback);
+        ref.addEventListener('loadstart', myCallback);
+        ref.removeEventListener('loadstart', myCallback);
 
-        // let deliveryAddress = $('#lblDeliveryAddress').html()
-        // let splitAddress = deliveryAddress.split(",")
-        // let finalAmount =  $('#lblFinalAmount').html()
-        // console.log(deliveryAddress)
+        let deliveryAddress = $('#lblDeliveryAddress').html()
+        let splitAddress = deliveryAddress.split(",")
+        let finalAmount =  $('#lblFinalAmount').html()
+        console.log(deliveryAddress)
 
-        // if($('#chkCOD').not(':checked').length) {
-        //   window.plugins.toast.showLongBottom('Select Payment Option');
-        // }
-        // else{
-        //   app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '');
-        // }
+        if($('#chkCOD').not(':checked').length) {
+          window.plugins.toast.showLongBottom('Select Payment Option');
+        }
+        else{
+          app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'online', localStorage.getItem('couponCode'), '');
+        }
       },
     },
     on:{

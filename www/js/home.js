@@ -685,6 +685,42 @@ var app = {
                     }).fail();
                     break;
                 case 'online':
+                    $.ajax({
+                        type: "post",
+                        url: serverUrl + 'checkout',
+                        data: {
+                            user: localStorage.getItem('platuser'),
+                            delivery_address: delivery_address,
+                            delivery_pincode: delivery_pincode,
+                            delivery_flat: delivery_flat,
+                            delivery_landmark: delivery_landmark,
+                            payment_method: payment_method,
+                            payment_success: 0,
+                            couponCode: couponCode,
+                            refcode: refcode,
+                            mealName: localStorage.getItem('mealName'),
+                            mealDate: localStorage.getItem('mealDate'),
+                            mealTime: localStorage.getItem('mealTime')
+                        },
+                        dataType: "JSON"
+                    }).done(function (rply) {
+                        let onlinePaymentUrl = 'http://platterexoticfood.com/' + localStorage.getItem('platuser') + '/' + encodeURI(finalAmount) + '/'
+                        var ref = cordova.InAppBrowser.open(onlinePaymentUrl, '_blank', 'location=no');
+                        // var myCallback = function (event) { console.log(event.url); }
+                        ref.addEventListener('loadstart', function (event) {
+                            let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
+                            let urlErrorPage = "https://www.platterexoticfood.com/fail.php";
+                            if (event.url == urlSuccessPage) {
+                                cartView.router.navigate('/payment-success/');
+                                ref.close();
+                            }
+                            else if (event.url == urlErrorPage) {
+                                cartView.router.navigate('/payment-error/');
+                                ref.close();
+                            }
+                        });
+                    });
+                   
                     break;
                 default:
                     // $('#delivAddress').prop('readonly', false);
