@@ -200,12 +200,12 @@
   return {
     methods: {
       payOrder: function(){
-        var ref = cordova.InAppBrowser.open('http://platterexoticfood.com/paydir.php', '_self', 'location=yes');
+        var ref = cordova.InAppBrowser.open('http://platterexoticfood.com/paydir.php', '_blank', 'location=yes');
         // var myCallback = function (event) { console.log(event.url); }
         ref.addEventListener('loadstart', function (event) {
           var urlSuccessPage = "https://www.platterexoticfood.com/success.php";
           if (event.url == urlSuccessPage) {
-              ref.close();
+            ref.close();
           }
         });
         // ref.addEventListener('loadstart', myCallback);
