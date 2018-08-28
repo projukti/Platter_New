@@ -201,6 +201,7 @@
     methods: {
       payOrder: function(){
         let finalAmount = $('#lblFinalAmount').html()
+        let deliveryAddress = $('#lblDeliveryAddress').html()
         let url= 'http://platterexoticfood.com/'+localStorage.getItem('user')+'/'+ finalAmount+'/'+ deliveryAddress+'/'
         var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
         // var myCallback = function (event) { console.log(event.url); }
