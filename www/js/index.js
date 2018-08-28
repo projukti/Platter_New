@@ -186,4 +186,5 @@ function checkConnection() {
 }
 function handleOpenURL(url) {
     console.log("received url: " + url);
+    localStorage.setItem('received url',url);
 }
