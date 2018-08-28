@@ -637,7 +637,7 @@ var app = {
             switch (payment_method) {
                 case 'cod':
                     $.ajax({
-                        url: serverUrl + 'checkout',
+                        url: serverUrl + 'UpdateAddress',
                         method: 'post',
                         dataType: 'JSON',
                         data: {
@@ -704,8 +704,8 @@ var app = {
                         },
                         dataType: "JSON"
                     }).done(function (rply) {
-                        let onlinePaymentUrl = 'http://platterexoticfood.com/' + localStorage.getItem('platuser') + '/' + encodeURI(finalAmount) + '/'
-                        var ref = cordova.InAppBrowser.open(onlinePaymentUrl, '_blank', 'location=no');
+                        //let onlinePaymentUrl = 'http://platterexoticfood.com/' + localStorage.getItem('platuser') + '/' + encodeURI(finalAmount) + '/'
+                        var ref = cordova.InAppBrowser.open(rply.url, '_blank', 'location=no');
                         // var myCallback = function (event) { console.log(event.url); }
                         ref.addEventListener('loadstart', function (event) {
                             let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
