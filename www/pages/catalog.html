@@ -212,7 +212,7 @@
             cartView.router.navigate('/payment-success/');
             ref.close();
           }
-          else{
+          else if(event.url == urlErrorPage){
             cartView.router.navigate('/payment-error/');
             ref.close();
           }
