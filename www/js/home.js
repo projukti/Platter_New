@@ -637,7 +637,7 @@ var app = {
             switch (payment_method) {
                 case 'cod':
                     $.ajax({
-                        url: serverUrl + 'UpdateAddress',
+                        url: serverUrl + 'checkout',
                         method: 'post',
                         dataType: 'JSON',
                         data: {
@@ -687,7 +687,7 @@ var app = {
                 case 'online':
                     $.ajax({
                         type: "post",
-                        url: serverUrl + 'checkout',
+                        url: serverUrl + 'UpdateAddress',
                         data: {
                             user: localStorage.getItem('platuser'),
                             delivery_address: delivery_address,
