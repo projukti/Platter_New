@@ -200,14 +200,25 @@
   return {
     methods: {
       payOrder: function(){
-        var ref = cordova.InAppBrowser.open('http://platterexoticfood.com/paydir.php', '_blank', 'location=no');
+        let finalAmount = $('#lblFinalAmount').html()
+        let url= 'http://platterexoticfood.com/'+localStorage.getItem('user')+'/'+ finalAmount+'/'+ deliveryAddress+'/'
+        var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
         // var myCallback = function (event) { console.log(event.url); }
         ref.addEventListener('loadstart', function (event) {
-          var urlSuccessPage = "https://www.platterexoticfood.com/success.php";
+          let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
+          let urlErrorPage = "https://www.platterexoticfood.com/fail.php";
           if (event.url == urlSuccessPage) {
+            cartView.router.navigate('/payment-success/');
+            ref.close();
+          }
+          else{
+            cartView.router.navigate('/payment-error/');
             ref.close();
           }
         });
+        
+        // This For cash On Delivery
+
         // ref.addEventListener('loadstart', myCallback);
         // ref.removeEventListener('loadstart', myCallback);
 
@@ -222,94 +233,7 @@
         // else{
         //   app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '');
         // }
-
-
-        // var data = {
-        //   key: 'rinjrna1',
-        //   txnid: '1237upty34',
-        //   hash: '52c16423e7d4888baae9fe7d2cf05ed8d3086c49c666816fcf52b63e041a5b0ba865ce9f4ebf39717c6fa1832769179abbe964c8fff7a1833c3c6ad03a02a90e',
-        //   amount: 1,
-        //   firstname: 'saikat',
-        //   email: 'saikat.projukti@gmail.com',
-        //   phone: '8335887999',
-        //   productinfo: 'testbag',
-        //   surl: 'https://redbusket.com/index.php/Index/testsucc',
-        //   furl: 'https://redbusket.com/index.php/Index/testfail'
-        // }
-
-        // var handler = {
-
-        //   responseHandler: function (BOLT) {
-
-        //     console.log(BOLT.response.txnStatus);
-
-        //   },
-        //   catchException: function (BOLT) {
-
-        //     alert(BOLT.message);
-
-        //   }
-        // }
-
-        // bolt.launch(data, handler); 
-
       },
-      // payOnline: function(){
-      //   app.payOnline();
-      // }
-      //   // console.log('I am here');
-      //    var orderId = Date.now();
-      //   var orderCreationRequest = new XMLHttpRequest();
-      //   orderCreationRequest.open('POST', 'https://sandbox.juspay.in/order/create', true, '9F64B727D4C048C08013EA0935BCBDB5', '');
-      //   orderCreationRequest.withCredentials = true;
-
-      //   orderCreationRequest.setRequestHeader('Authorization', 'OUY2NEI3MjdENEMwNDhDMDgwMTNFQTA5MzVCQ0JEQjU6');
-      //   orderCreationRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-      //   var errorCallback = function () {
-      //     body.classList.remove('active');
-      //     body.classList.add('error');
-
-      //     window.setTimeout(function () {
-      //       body.classList.remove('error');
-      //       body.classList.add('active');
-      //     }, 2000);
-      //   };
-
-      //   var successCallback = function () {
-      //     body.classList.remove('active');
-      //     body.classList.add('success');
-
-      //     window.setTimeout(function () {
-      //       body.classList.remove('success');
-      //       body.classList.add('active');
-      //     }, 2000);
-      //   };
-
-
-      //   orderCreationRequest.onreadystatechange = function () {
-      //     if (orderCreationRequest.readyState == 4) {
-      //       if (orderCreationRequest.status == 200) {
-      //         ExpressCheckout.startCheckoutActivity({
-      //           endUrls: ['https:\\/\\/test.com.\\/'],
-      //           onEndUrlReached: function () {
-      //             successCallback();
-      //           },
-      //           onTransactionAborted: function () {
-      //             errorCallback();
-      //           },
-      //           environment: 'PRODUCTION',
-      //           instruments: [],
-      //           parameters: {
-      //             orderId: '1464119848',
-      //             merchantId: 'sachin_sharma'
-      //           }
-      //         });
-      //       } else {
-      //         errorCallback();
-      //       }
-      //     }
-      // }
     },
     on:{
       pageInit: function (e, page) {

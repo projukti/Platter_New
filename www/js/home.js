@@ -682,61 +682,9 @@ var app = {
                             
                             cartView.router.navigate('/payment-success/' + orderID + '/');
                         }
-                        
-                        // if (res.success < 1) {
-                        //     window.plugins.toast.show('Failed because: ' + res.message, 'long', 'middle', function (a) { }, function (b) { });
-                        //     $('#delivAddress').prop('readonly', false);
-                        //     
-                        //     window.plugins.toast.show('Please enter a valid delivery address', 'long', 'bottom', function (a) { }, function (b) { });
-                        // } else {
-                        //     $('.cartItemCount').text(0);
-                        //     var odtxt = res.data;
-
-                        //     localStorage.setItem('lastorders', odtxt);
-
-                        //     $('#delivAddress').prop('readonly', false);
-                        //     $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
-                        //     pageHistory.push('payNow');
-                        //     tkn = localStorage.getItem('newtoken');
-                        //     title = 'Order Placed Successfully';
-                        //     msg = 'Your order ' + odtxt + ' is placed successfully. Now relax and we will handle rest of the things.';
-                        //     $.ajax({
-                        //         url: "http://platterexoticfood.com/pladmin/manage_api/sendGCM",
-                        //         method: "POST",
-                        //         dataType: "JSON",
-                        //         data: { title: title, message: msg, user: user }
-                        //     }).done(function (res) {
-                        //         //app.openPaymentSuccess();
-                        //     });
-                        //     app.openPaymentSuccess();
-                        // }
                     }).fail();
                     break;
                 case 'online':
-                    // $.ajax({
-                    //     url: serverUrl + 'manage_api/checkout',
-                    //     method: 'post',
-                    //     dataType: 'JSON',
-                    //     data: {
-                    //         user: user,
-                    //         delivery_address: delivery_address,
-                    //         delivery_pincode: delivery_pincode,
-                    //         payment_method: payment_method,
-                    //         payment_success: 0,
-                    //         transaction_info: []
-                    //     }
-                    // }).done(function (res) {
-                    //     if (res.success < 1) {
-
-                    //         $('#delivAddress').prop('readonly', false);
-                    //         $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
-                    //         window.plugins.toast.show('Please enter a valid delivery address', 'long', 'middle', function (a) { }, function (b) { });
-                    //     } else {
-                    //         // Online code implementation area
-                    //         $('#delivAddress').prop('readonly', false);
-                    //         $('#btnPayOnDelivery').prop('disabled', false).text('Pay Now');
-                    //     }
-                    // });
                     break;
                 default:
                     // $('#delivAddress').prop('readonly', false);
