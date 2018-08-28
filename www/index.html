@@ -150,17 +150,17 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
+        app.initialize();
         function handleOpenURL(url) {
             // localStorage.setItem('receivedurl', url);
-            if(url=="platter://success"){
-                window.location.href="onlinepaysuccess.html";
-                
+            if (url == "platter://success") {
+                window.location.href = "onlinepaysuccess.html";
+
             }
-            else if(url == "platter://fail"){
-                window.location.href="onlinepayerror.html";
+            else if (url == "platter://error") {
+                window.location.href = "onlinepayerror.html";
             }
         }
-        app.initialize();
     </script>
     <script>
         function clspg() {
