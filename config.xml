@@ -104,4 +104,7 @@
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
     <plugin name="juspay-ec-sdk-plugin" spec="https://bitbucket.org/juspay/ec-cordova-plugin" />
+    <plugin name="cordova-plugin-customurlscheme" spec="git+https://github.com/EddyVerbruggen/LaunchMyApp-PhoneGap-Plugin.git">
+        <variable name="URL_SCHEME" value="platter" />
+    </plugin>
 </widget>
