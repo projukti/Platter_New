@@ -32,7 +32,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("offline", this.checkConnection, false);
-        document.addEventListener("online", this.onDeviceReady, true);
+        // document.addEventListener("deviceready", this.onDeviceReady, true);
     },
     // deviceready Event Handler
     //
