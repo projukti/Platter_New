@@ -200,7 +200,7 @@
   return {
     methods: {
       payOrder: function(){
-        var ref = cordova.InAppBrowser.open('http://platterexoticfood.com/paydir.php', '_blank', 'location=yes');
+        var ref = cordova.InAppBrowser.open('http://platterexoticfood.com/paydir.php', '_blank', 'location=no');
         // var myCallback = function (event) { console.log(event.url); }
         ref.addEventListener('loadstart', function (event) {
           var urlSuccessPage = "https://www.platterexoticfood.com/success.php";
