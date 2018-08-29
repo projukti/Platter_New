@@ -711,7 +711,26 @@ var app = {
                             let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
                             let urlErrorPage = "https://www.platterexoticfood.com/fail.php";
                             if (event.url == urlSuccessPage) {
-                                cartView.router.navigate('/payment-success/');
+
+                                $.ajax({
+                                    type: "post",
+                                    url: serverUrl +"OnlineSuccessPay/",
+                                    data: { ordrId: rply.oid, user: user},
+                                    dataType: "JSON"
+                                });
+
+                                let tkn = localStorage.getItem('newtoken');
+                                let title = 'Order Placed Successfully';
+                                let msg = 'Your order ' + rply.oid + ' is placed successfully. Now relax and we will handle rest of the things.';
+                                $.ajax({
+                                    url: serverUrl + "sendGCM/",
+                                    method: "POST",
+                                    dataType: "JSON",
+                                    data: { title: title, message: msg, user: user }
+                                }).done(function () {
+
+                                });
+                                cartView.router.navigate('/payment-success/' + rply.oid + '/');
                                 ref.close();
                             }
                             else if (event.url == urlErrorPage) {
