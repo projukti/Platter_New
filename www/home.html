@@ -129,11 +129,12 @@
       <div class="toolbar tabbar-labels toolbar-bottom-md" id="main_toolbar" style="background: #125e97;">
         <div class="toolbar-inner">
           <a href="#view-home" class="tab-link tab-link-active color-#676767">
-            <img src="img/iconset/white/shop.png" style="height: 58%;">
+            <!-- <img src="img/iconset/white/shop.png" style="height: 58%;"> -->
+            <i class="icon f7-icons">home_fill</i>
             <span class="tabbar-label" style="color: #fff; font-size: 13px;">Platter</span>
           </a>
           <a href="#view-account" class="tab-link color-#676767">
-            <img src="img/iconset/white/user.png" style="height: 58%;">
+            <i class="icon f7-icons">person_fill</i>
             <span class="tabbar-label" style="color: #fff; font-size: 13px;">Account</span>
           </a>
           <!-- <a href="#view-search" class="tab-link color-#676767">
@@ -141,12 +142,12 @@
             <span class="tabbar-label" style="color: #fff; font-size: 13px;">Explore</span>
           </a> -->
           <a href="#view-chat" class="tab-link color-#676767">
-            <img src="img/iconset/white/chat.png" style="height: 58%;">
+            <i class="icon f7-icons">chats_fill</i>
             <span class="tabbar-label" style="color: #fff; font-size: 13px;">Chat</span>
           </a>
           <a href="#view-cart" class="tab-link color-#676767">
             <!-- <i class="icon material-icons md-only">home             </span></i> -->
-            <img src="img/iconset/white/cart-empty.png" style="height: 62%;">
+            <i class="icon f7-icons">bag_fill<span class="badge color-green">5</span></i>
             <span class="tabbar-label" style="color: #fff; font-size: 13px;">Cart
           </a>
         </div>
@@ -158,7 +159,7 @@
           <!-- Top Navbar -->
           <div class="navbar " style="background: #125e97;">
             <div class="navbar-inner">
-              <div class="title sliding" style="color: #fff;font-size:16px;" id="lblLocality">Garia</div>
+              <div class="title sliding popup-open" style="color: #fff;font-size:16px;" id="lblLocality" data-popup="#location-change-popup">home</div>
               <div class="right">
                 <a href="#" class="link icon-only popup-open" data-panel="right" data-popup="#my-popup">
                   <img src="img/control1.png" style="height: 24px;">
@@ -466,6 +467,66 @@
             <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open " id="btnLogin" data-popup="#">Update Profile</a>
           </div>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- This Popup For Location Change -->
+    <div class="popup" id="location-change-popup">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="block">
+              <a href="#" class="link popup-close icon">
+                <i class="icon material-icons md-only">close</i>
+              </a>
+            </div>
+            <div class="login-screen-title">Location</div>
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" id="txtManualAddress" placeholder="Address">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" id="txtManualHouseNo" placeholder="House No.">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" id="txtManualLandMark" placeholder="Enter Land Mark">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" id="txtManualPin" placeholder="Enter Pin code">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <a href="#" class="col button button-raised button-fill" id="btnConfirm" onclick="app.manualLocation()">Confirm</a>
+                    </div>
+                  </div>
+    
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

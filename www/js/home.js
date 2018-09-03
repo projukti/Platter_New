@@ -31,11 +31,45 @@ var app = {
     // },
     // Back Button Off 
     onBackKeyDown: function (viewName) {
-        //let app =  new Framework7();
-        // app.views.current();
-        //console.log(app.views.current());
-        return false;
-       // router.back();
+        if (mainView.router.url == '/') {
+            app.dialog.confirm('Are you sure you want to exit?', function () {
+                console.log('Exiting');
+                navigator.app.exitApp();
+            });
+        }
+        else {
+            let pageHistoryLength = mainView.history.length
+
+            // Get Previous URL 
+            let previousURL = mainView.history[pageHistoryLength - 2]
+
+            // Get Current URL 
+            let currentURL = mainView.history[pageHistoryLength - 1]
+
+            if (pageHistoryLength == 1) {
+
+                app.dialog.confirm('Are you sure you want to exit?', function () {
+                    console.log('Exiting');
+                    navigator.app.exitApp();
+                });
+            }
+            else {
+                if (pageHistoryLength > 3) {
+                    mainView.history.length = 0
+                    window.location.href = "home.html"
+                }
+                else {
+                    if (previousURL == '/') {
+                        window.location.href = "home.html"
+                    }
+                    else {
+                        app.router.navigate(previousURL)
+                    }
+                }
+
+            }
+
+        }
     },
 
     // Open Camera Using this section

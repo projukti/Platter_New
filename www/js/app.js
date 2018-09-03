@@ -5,7 +5,7 @@ var $$ = Dom7;
 var newApp  = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
-  name: 'Framework7', // App name
+  name: 'Platter', // App name
   theme: 'auto',
   pushStateSeparator: '#/',
   data: function () {
@@ -41,6 +41,10 @@ var newApp  = new Framework7({
   methods: {
     helloWorld: function () {
       newApp.dialog.alert('Hello World!');
+    },
+    dialog: {
+      // set default title for all dialog shortcuts
+      title: 'Platter',
     },
  
   },
