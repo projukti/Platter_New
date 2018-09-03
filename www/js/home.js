@@ -31,13 +31,13 @@ var app = {
     // },
     // Back Button Off 
     onBackKeyDown: function (viewName) {
-        if (mainView.router.url == '/') {
-            newApp.dialog.confirm('Are you sure you want to exit?', function () {
-                console.log('Exiting');
-                navigator.app.exitApp();
-            });
-        }
-        else {
+        // if (mainView.router.url == '/') {
+        //     newApp.dialog.confirm('Are you sure you want to exit?', function () {
+        //         console.log('Exiting');
+        //         navigator.app.exitApp();
+        //     });
+        // }
+        // else {
             let pageHistoryLength = mainView.history.length
 
             // Get Previous URL 
@@ -69,7 +69,7 @@ var app = {
 
             }
 
-        }
+        //}
     },
 
     // Open Camera Using this section
