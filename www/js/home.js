@@ -32,7 +32,7 @@ var app = {
     // Back Button Off 
     onBackKeyDown: function (viewName) {
         if (mainView.router.url == '/') {
-            app.dialog.confirm('Are you sure you want to exit?', function () {
+            newApp.dialog.confirm('Are you sure you want to exit?', function () {
                 console.log('Exiting');
                 navigator.app.exitApp();
             });
