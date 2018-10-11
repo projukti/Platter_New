@@ -6,7 +6,7 @@ var newApp  = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Platter', // App name
-  theme: 'auto',
+  theme: 'md',
   pushStateSeparator: '#/',
   data: function () {
     return {
