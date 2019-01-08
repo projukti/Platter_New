@@ -390,11 +390,7 @@
                 
 
                 facebookConnectPlugin.getLoginStatus((resultSuccessLogin)=>{
-                    let toastBottom = app.toast.create({
-                        text: 'Loading...',
-                        closeTimeout: 2000,
-                    });
-                    toastBottom.open();
+                   indow.plugins.toast.show('Loading... Please Wait..', 'long', 'bottom', function (a) { }, function (b) { });
                     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '', ['email', 'public_profile'], (rply) => {
                         // console.log(rply)
                         // console.log(rply.name)
