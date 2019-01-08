@@ -396,7 +396,7 @@
 
                 // Login Function
                 facebookConnectPlugin.login(['email', 'public_profile'], (resultSuccessLogin)=>{
-                    facebookConnectPlugin.api('/' + result.authResponse.userID + '',['email', 'public_profile'],(rply) => {
+                    facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '',['email', 'public_profile'],(rply) => {
                         console.log(rply)
                     },(err)=>{
                         console.log(err)
