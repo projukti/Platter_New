@@ -387,27 +387,14 @@
         </script>
         <script>
             function loginWithFB() {
-                // First Logout 
-                // facebookConnectPlugin.logout( (rplySuccess)=>{
-                //     console.log(rplySuccess)
-                // }, (rplyError) => {
-                //     console.log(rplyError)
-                // })
-
-                // Login Function
-                // facebookConnectPlugin.login(['email', 'public_profile'], (resultSuccessLogin)=>{
-                //     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '',['email', 'public_profile'],(rply) => {
-                //         console.log(rply)
-                //         console.log(rply.name)
-                //         console.log(rply.id)
-                //     },(err)=>{
-                //         console.log(err)
-                //     })
-                // }, (resultErrorLogin) => {
-                //     console.log(resultErrorLogin)
-                // })
+                
 
                 facebookConnectPlugin.getLoginStatus((resultSuccessLogin)=>{
+                    let toastBottom = app.toast.create({
+                        text: 'Loading...',
+                        closeTimeout: 2000,
+                    });
+                    toastBottom.open();
                     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '', ['email', 'public_profile'], (rply) => {
                         // console.log(rply)
                         // console.log(rply.name)
@@ -446,38 +433,7 @@
                 
 
             }
-            // function loginWithFB() {
-            //     CordovaFacebook.logout();
-            //     CordovaFacebook.login({
-            //         permissions: ['email', 'public_profile'],
-            //         onSuccess: function (result) {
-            //             console.log(result);
-            //             if (result.declined.length > 0) {
-            //                 console.log("The User declined something!");
-            //             }
-            //             CordovaFacebook.graphRequest({
-            //                 path: '/' + result.userID + '',
-            //                 params: { access_token: result.accessToken, fields: 'first_name,last_name,email,name' },
-            //                 onSuccess: function (datas) {
-            //                     console.log(datas);
-            //                     app.faceBookLogin();
-            //                 },
-            //                 onFailure: function (datas) {
-            //                     if (datas.error) { alert('error', 'There was an error in graph request:' + datas.errorLocalized); }
-            //                 }
-            //             });
-            //             localStorage.setItem("facebookID", result.userID);
-            //             newApp.popup.open('#my-register-screen', true);
-            //         },
-            //         onFailure: function (result) {
-            //             if (result.cancelled) {
-            //                 console.log("The user doesn't like my app");
-            //             } else if (result.error) {
-            //                 console.log("There was an error:" + result.errorLocalized);
-            //             }
-            //         }
-            //     });
-            // }
+           
         </script>
 </body>
 
