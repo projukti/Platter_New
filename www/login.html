@@ -388,24 +388,57 @@
         <script>
             function loginWithFB() {
                 // First Logout 
-                facebookConnectPlugin.logout( (rplySuccess)=>{
-                    console.log(rplySuccess)
-                }, (rplyError) => {
-                    console.log(rplyError)
-                })
+                // facebookConnectPlugin.logout( (rplySuccess)=>{
+                //     console.log(rplySuccess)
+                // }, (rplyError) => {
+                //     console.log(rplyError)
+                // })
 
                 // Login Function
-                facebookConnectPlugin.login(['email', 'public_profile'], (resultSuccessLogin)=>{
-                    facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '',['email', 'public_profile'],(rply) => {
+                // facebookConnectPlugin.login(['email', 'public_profile'], (resultSuccessLogin)=>{
+                //     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '',['email', 'public_profile'],(rply) => {
+                //         console.log(rply)
+                //         console.log(rply.name)
+                //         console.log(rply.id)
+                //     },(err)=>{
+                //         console.log(err)
+                //     })
+                // }, (resultErrorLogin) => {
+                //     console.log(resultErrorLogin)
+                // })
+
+                facebookConnectPlugin.getLoginStatus(()=>{
+                    facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '', ['email', 'public_profile'], (rply) => {
                         console.log(rply)
                         console.log(rply.name)
                         console.log(rply.id)
-                    },(err)=>{
+                    }, (err) => {
                         console.log(err)
                     })
-                }, (resultErrorLogin) => {
-                    console.log(resultErrorLogin)
+
+                }, (errlog)=>{
+                    console.log(errlog)
+                    // First Logout
+                    facebookConnectPlugin.logout((rplySuccess) => {
+                        console.log(rplySuccess)
+                    }, (rplyError) => {
+                        console.log(rplyError)
+                    })
+                    // Login Function
+                    facebookConnectPlugin.login(['email', 'public_profile'], (resultSuccessLogin)=>{
+                        facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '',['email', 'public_profile'],(rply) => {
+                            console.log(rply)
+                            console.log(rply.name)
+                            console.log(rply.id)
+                        },(err)=>{
+                            console.log(err)
+                        })
+                    }, (resultErrorLogin) => {
+                        console.log(resultErrorLogin)
+                    })
                 })
+                
+
             }
             // function loginWithFB() {
             //     CordovaFacebook.logout();
