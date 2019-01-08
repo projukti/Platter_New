@@ -407,7 +407,7 @@
                 //     console.log(resultErrorLogin)
                 // })
 
-                facebookConnectPlugin.getLoginStatus(()=>{
+                facebookConnectPlugin.getLoginStatus((resultSuccessLogin)=>{
                     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '', ['email', 'public_profile'], (rply) => {
                         console.log(rply)
                         console.log(rply.name)
