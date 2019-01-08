@@ -398,6 +398,8 @@
                 facebookConnectPlugin.login(['email', 'public_profile'], (resultSuccessLogin)=>{
                     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '',['email', 'public_profile'],(rply) => {
                         console.log(rply)
+                        console.log(rply.name)
+                        console.log(rply.id)
                     },(err)=>{
                         console.log(err)
                     })
