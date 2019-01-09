@@ -387,8 +387,11 @@
         </script>
         <script>
             function loginWithFB() {
-                
-
+                 facebookConnectPlugin.logout((rplySuccess) => {
+                    console.log(rplySuccess)
+                }, (rplyError) => {
+                    console.log(rplyError)
+                })
                 facebookConnectPlugin.getLoginStatus((resultSuccessLogin)=>{
                    window.plugins.toast.show('Loading... Please Wait..', 'long', 'bottom', function (a) { }, function (b) { });
                     facebookConnectPlugin.api('/' + resultSuccessLogin.authResponse.userID + '', ['email', 'public_profile'], (rply) => {
@@ -426,8 +429,6 @@
                         console.log(resultErrorLogin)
                     })
                 })
-                
-
             }
            
         </script>
