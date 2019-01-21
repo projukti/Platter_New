@@ -48,7 +48,7 @@ var app = {
 
             if (pageHistoryLength == 1) {
 
-                app.dialog.confirm('Are you sure you want to exit?', function () {
+                newApp.dialog.confirm('Are you sure you want to exit?', function () {
                     console.log('Exiting');
                     navigator.app.exitApp();
                 });
