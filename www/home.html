@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Platter Home</title>
   <meta http-equiv="Access-Control-Allow-Origin" content="*">
-  
+
 
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
@@ -230,14 +230,16 @@
                               <div class="col-20">
                                 <img src="img/002-motorcycle.png" style="width: 75%;">
                               </div>
-                              <div class="col-80" style="padding-top: 4.5%;text-overflow: inherit;white-space: normal;">20% Off for first time user ! </div>
+                              <div class="col-80" style="padding-top: 4.5%;text-overflow: inherit;white-space: normal;">20%
+                                Off for first time user ! </div>
                             </div>
                           </div>
                         </div>
                       </a>
                       <div class="accordion-item-content">
                         <div class="block" style="padding-bottom: 14px;">
-                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia non deserunt totam, maxime natus
+                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia non deserunt totam, maxime
+                            natus
                             ut
                           </p>
                           <a class="button button-raised button-fill popup-open color-orange">GRAB IT</a>
@@ -275,14 +277,16 @@
                               <div class="col-20">
                                 <img src="img/002-motorcycle.png" style="width: 75%;">
                               </div>
-                              <div class="col-80" style="padding-top: 4.5%;text-overflow: inherit;white-space: normal;">20% Off for first time user ! </div>
+                              <div class="col-80" style="padding-top: 4.5%;text-overflow: inherit;white-space: normal;">20%
+                                Off for first time user ! </div>
                             </div>
                           </div>
                         </div>
                       </a>
                       <div class="accordion-item-content">
                         <div class="block" style="padding-bottom: 14px;">
-                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia non deserunt totam, maxime natus
+                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia non deserunt totam, maxime
+                            natus
                             ut
                           </p>
                           <a class="button button-raised button-fill popup-open color-orange">GRAB IT</a>
@@ -409,10 +413,11 @@
               </div>
             </div> -->
           </div>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <div class="toolbar tabbar-labels toolbar-bottom-md color-white" style="height:6%;">
-            <a href="#" onclick="app.filter();" class="col button button-raised button-fill popup-close" style="background: #125e97;">Apply Filter</a>
+            <a href="#" onclick="app.filter();" class="col button button-raised button-fill popup-close" style="background: #125e97;">Apply
+              Filter</a>
           </div>
 
         </div>
@@ -461,10 +466,11 @@
               </div>
             </div>
           </div>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <div class="toolbar tabbar-labels toolbar-bottom-md color-white" style="height:6%;">
-            <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open " id="btnLogin" data-popup="#">Update Profile</a>
+            <a href="javascript:void(0);" disabled class="col button button-raised button-fill popup-open " id="btnLogin"
+              data-popup="#">Update Profile</a>
           </div>
 
         </div>
@@ -522,7 +528,7 @@
                       <a href="#" class="col button button-raised button-fill" id="btnConfirm" onclick="app.manualLocation()">Confirm</a>
                     </div>
                   </div>
-    
+
                 </li>
               </ul>
             </div>
@@ -547,6 +553,311 @@
       </div>
     </div>
   </div>
+
+
+  <!-- This Section For Restaurent Rating And Review -->
+  <div class="popup" id="restaurant-review">
+    <div class="view">
+      <div class="page">
+        <div class="navbar" style="background: #125e97;">
+          <div class="navbar-inner">
+            <a href="#" class="link popup-close icon">
+              <i class="icon material-icons md-only" style="color: #fff;">close</i>
+            </a>
+            <div class="title" style="color: #fff; margin: 0px;">Restaurant Rating & Review</div>
+          </div>
+        </div>
+
+        <div class="page-content">
+          <form action="">
+            <div class="block">
+              <div class="list">
+                <ul>
+
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-input-wrap">
+                        <div class="stars">
+                          <input type="radio" name="starRestaurantRate" class="star-1" id="star-1" value="1" />
+                          <label class="star-1" for="star-1">1</label>
+                          <input type="radio" name="starRestaurantRate" class="star-2" id="star-2" value="2" />
+                          <label class="star-2" for="star-2">2</label>
+                          <input type="radio" name="starRestaurantRate" class="star-3" id="star-3" value="3" />
+                          <label class="star-3" for="star-3">3</label>
+                          <input type="radio" name="starRestaurantRate" class="star-4" id="star-4" value="4" />
+                          <label class="star-4" for="star-4">4</label>
+                          <input type="radio" name="starRestaurantRate" class="star-5" id="star-5" value="5" />
+                          <label class="star-5" for="star-5">5</label>
+                          <span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-input-wrap">
+                        <textarea placeholder="Enter Your Review" id="txRestaurentReview"></textarea>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-input-wrap">
+                        <button type="button" class="button color-green button-fill-md col" onclick="app.SubmitRestaurantReview()">Review
+                          Restaurent</button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+          <div class="block-title">Reviews</div>
+          <div class="messages-content">
+            <div class="messages" id="reviewListRestaurant">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br />
+      <br />
+
+
+    </div>
+  </div>
+
+  <!-- This Section For About-Us -->
+
+  <div class="popup" id="about-us">
+    <div class="view">
+      <div class="page">
+        <div class="navbar" style="background: #125e97;">
+          <div class="navbar-inner">
+            <a href="#" class="link popup-close icon">
+              <i class="icon material-icons md-only" style="color: #fff;">close</i>
+            </a>
+            <div class="title" style="color: #fff; margin: 0px;">About Us</div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="block">
+            Platter is an android application which is based on the recent Restaurant system application but with features such as
+            coupons, Customized Means, Referrals, and Chat System etc. We have the best review system for individual restaurants
+            which is truly organic as the ratings are formed completely by the users making it a genuine hub for food lovers,
+            critics & Chefs. Along with our unique chat system ‘Platter’ is the ‘Social Network for Foodies’.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- This Section For About-Us -->
+
+
+
+  <!-- This Section For JOIN US -->
+    <div class="popup" id="join-us">
+      <div class="view">
+        <div class="page">
+          <div class="navbar" style="background: #125e97;">
+            <div class="navbar-inner">
+              <a href="#" class="link popup-close icon">
+                <i class="icon material-icons md-only" style="color: #fff;">close</i>
+              </a>
+              <div class="title" style="color: #fff; margin: 0px;">Join Us</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos est. Nobis, suscipit modi eius maiores fuga quam eligendi recusandae minima. Voluptatem quibusdam tenetur adipisci qui, assumenda labore sequi eligendi?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- This Section For JOIN US -->
+
+
+  <!-- This Section For privacy -->
+  <div class="popup" id="privacy">
+    <div class="view">
+      <div class="page">
+        <div class="navbar" style="background: #125e97;">
+          <div class="navbar-inner">
+            <a href="#" class="link popup-close icon">
+              <i class="icon material-icons md-only" style="color: #fff;">close</i>
+            </a>
+            <div class="title" style="color: #fff; margin: 0px;">Privacy Policy</div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="block">
+            Privacy Policy
+            1. Introduction
+            This policy explains how we, Suvra Foods &amp; Beverages Pvt. Ltd. (hereinafter referred to as
+            “platterexoticfood”), use the personal information which you provide to us when using our
+            service, including but not limited to our website and mobile applications (jointly referred as
+            “Website”). Please read this Privacy Policy and understand it before using our services. By
+            visiting and/or ordering services on this Website, you agree and, where required, consent to
+            the collection, use and transfer of your information as set out in this policy.
+            2. What information do we collect about you?
+            We collect personal information from you when you order goods or services from us or use
+            our Website. We also collect information when you complete any customer survey. Website
+            usage information may also be collected using cookies (as defined below). platterexoticfood
+            will collect information that personally identifies you and/or your location, where required
+            (this may include your name, email address, home address, telephone number, geolocation,
+            etc.), but only when you voluntarily give it to us. We collect this information exclusively to
+            carry out the functions offered on the Website and to provide you with offers and information
+            about platterexoticfood and other services we think you may be interested in. We might
+            collect this personal information through: online food ordering; entry into competitions;
+            subscribing to our newsletter; creating a user account; sending &#39;contact us&#39; messages or other
+            correspondence through the Website; or through advertising, research and direct marketing.
+            We do not collect sensitive information about you.
+            3. Cookies
+            Some of the information collected will not personally identify you but will instead track your
+            use of the Website so that we can better understand how the Website is used by customers
+            and in turn enhance and improve your experience in ordering food. We may obtain this
+            information by use of cookies. Cookies are a small data file transferred to your device that
+            recognises and identifies your device and allows your device to &#39;remember&#39; information from
+            the Website for future use. Cookies do not contain any information that personally identifies
+            you and we do not use cookies in order to obtain such information - your personal
+            information can only be obtained by platterexoticfood if you actively provide it to us. We
+            may collect technical information from your mobile device or your use of our services
+            through a mobile device, for example, location data and certain characteristics of, and
+            performance data about your device, carrier/operating system including device and
+            connection type, IP address, mobile payment methods, interaction with other retail
+            technology such as use of NFC Tags, QR Codes or use of mobile vouchers. Your device
+            and/or the web browser should allow you to refuse cookies if you wish by changing the
+            settings. To find out more about cookies, including how to see what cookies have been set
+            and how to manage and delete them, visit www.allaboutcookies.org.
+            4. Storage and security of your personal information
+            platterexoticfood will use all reasonable endeavours to maintain the security of your personal
+            information and to protect your personal information from misuse, interference and loss and
+            against unauthorised access, modification or disclosure. platterexoticfood will destroy any
+            personal information it holds about you which it no longer requires under the terms of this
+            Privacy Policy. Where you have chosen a password to access certain services of the Website,
+            you are responsible for keeping your password confidential. We recommend not sharing your
+            
+            password with anyone. Due to the nature of the internet, platterexoticfood does not provide
+            any guarantee or warranty regarding the security of your personal information during
+            transmission to us or storage by us and you acknowledge that you disclose your personal
+            information to us at your own risk. Please contact us immediately if you become aware or
+            have reason to believe there has been any unauthorised use of your personal information in
+            connection with the Website.
+            5. How will we use the information we collect from you?
+            You consent to platterexoticfood collecting and using your personal information for
+            processing and delivering the order/s placed on the Website and any other service provided
+            through the Website. In particular you expressly consent that platterexoticfood may disclose
+            your personal information, including your name, email address, physical address and
+            telephone number to riders delivering your order, either employed by platterexoticfood or by
+            third parties providing delivery services to platterexoticfood. You consent to
+            platterexoticfood using your personal information for advertising and direct marketing
+            purposes in order to inform you about the Website and the goods and services it provides, or
+            other matters that it believes will be of interest to you. platterexoticfood may disclose your
+            personal information, and you consent to the disclosure of your personal information, to:
+             other entities within the platterexoticfood group of companies; and
+             third parties engaged by platterexoticfood or other members of the platterexoticfood
+            group to perform functions or provide products and services on our behalf such as
+            processing payments, mail outs, debt collection, research, statistical information,
+            marketing and direct or indirect advertising.
+            If you would like to unsubscribe from receiving direct marketing communications from
+            platterexoticfood or do not want us to share your personal information with other parties,
+            please e-mail us at customercare@platterexoticfood.in or follow the steps to unsubscribe
+            which are presented in every communication you receive from us, requesting your personal
+            information be removed from our mailing list. We will use reasonable endeavours to comply
+            with your request within a reasonable period of receipt of your request. Please note that the
+            withdrawal of any authorisations for processing of your personal information by third parties
+            may result in us not being able to provide you with any services.
+            platterexoticfood reserves the right to disclose your personal information if it is required or
+            authorised to do so by law, or, if it is reasonably necessary in its opinion to protect the rights
+            or property of platterexoticfood or any third party, or to avoid injury to any person. If the
+            platterexoticfood business is sold or merges with another entity, then some or all of your
+            personal information may be passed to a third party.
+            6. Access to your information
+            platterexoticfood will use all reasonable endeavours to keep personal information it holds
+            accurate, complete, up-to-date, relevant and not misleading. Please contact us if you would
+            like to access the personal information platterexoticfood holds about you. We will use
+            reasonable endeavours to provide a complete list of your personal information within a
+            reasonable period of receipt of your request. Please email us if you would like to receive a
+            copy of this information – customercare@platterexoticfood.in. Platterexoticfood reserves the
+            right to charge a nominal fee for the processing of this request in accordance with local
+            legislation. You may contact us to correct any of your personal information that is inaccurate,
+            incomplete or out-of-date, or to request that your personal information be deleted. We will
+            use reasonable endeavours to correct or delete your personal information as requested within
+            
+            a reasonable period of receipt of your request. Deletion of your account with
+            platterexoticfood will not automatically delete the personal information held about you. If
+            you would like platterexoticfood to delete all personal information together with the deletion
+            of your account, please follow the steps mentioned-above. Please note that the deletion of
+            your personal information from our database will result in us not being able to provide you
+            with any services. If applicable, any legal requirement on us to maintain certain records of
+            your personal information shall prevail over any of your requests. We may require you to
+            prove your identity before providing you with copies of your personal information.
+            7. Changes to our Privacy Policy
+            Platterexoticfood reserves the right to alter all or any part of this Privacy Policy. Any changes
+            thereto will be notified via the Website and, where appropriate, through e-mail notification.
+            8. Other Websites
+            Our Website may have links to other websites. This privacy policy only applies to the
+            Website. You should therefore read the privacy policies of the other websites when you are
+            using those sites.
+            9. Contact
+            All comments, queries and requests relating to our use of your information are welcomed and
+            should be addressed to: customercare@platterexoticfood.in
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- This Section For privacy -->
+
+
+  <!-- This Section For enquiry -->
+  <div class="popup" id="enquiry">
+    <div class="view">
+      <div class="page">
+        <div class="navbar" style="background: #125e97;">
+          <div class="navbar-inner">
+            <a href="#" class="link popup-close icon">
+              <i class="icon material-icons md-only" style="color: #fff;">close</i>
+            </a>
+            <div class="title" style="color: #fff; margin: 0px;">Enquiry</div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="list block">
+            <ul>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Enter Your Message</div>
+                  <div class="item-input-wrap input-dropdown-wrap">
+                    <textarea class="resizable" id="txtEnquiryMessage"></textarea>
+                  </div>
+                </div>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-input-wrap">
+                    <button type="button" class="button color-green button-fill-md col" onclick="app.dropEnquiry()">Drop Enquiry</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- This Section For privacy -->
+
+
+
+
+
+
+  </div>
   <!-- Cordova -->
   <!--
   <script src="cordova.js"></script>
@@ -567,7 +878,7 @@
     app.initialize();
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL8nIWVqwG_k-r3HbAdfK9sHv03VS6UQ4"></script>
-    <script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js" bolt-color="#f00" bolt-logo="https://www.platterexoticfood.com/images/logo.png"></script>
+  <script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js" bolt-color="#f00" bolt-logo="https://www.platterexoticfood.com/images/logo.png"></script>
 </body>
 
 </html>

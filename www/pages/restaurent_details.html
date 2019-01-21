@@ -11,6 +11,13 @@
                 <div class="title" style="color: #fff;margin: 0px;font-size:16px;" id="lblNavHeading">
                     
                 </div>
+                <div class="right">
+                    <a href="#" class="link" onclick="app.viewRateing()">
+                        <i class="material-icons">
+                            rate_review
+                        </i>
+                    </a>
+                </div>
                 <div id="lblRestaurentID" style="display:none;">{{$route.params.id}}</div>
                 <div id="lblRestaurentName" style="display:none;">{{$route.params.name}}</div>
             </div>
@@ -92,6 +99,7 @@
         on: {
             pageBeforeIn: function (e, page) {
                 // Get Restaurent Details Here 
+                
                 $.ajax({
                     type: "post",
                     url: "http://platterexoticfood.com/pladmin/manage_api/getRestaurantDetails",
@@ -108,7 +116,7 @@
                     else{
                         $('#lblNavHeading').html(rply.restaurant.restaurant_name+'&nbsp;<img src="img/close.png">');
                     }
-                    $('#lblRateingReview').html('<i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; ' + rply.restaurant.avg_rating + '<br> '+ rply.countRestaurantRating +' ratings');
+                    $('#lblRateingReview').html('<i class="icon material-icons md-only" style="font-size: 14px;margin-right: -5px;">star</i> &nbsp; ' + rply.avg_rating + '<br> '+ rply.countRestaurantRating +' ratings');
                     $('#lblTwoCost').html(rply.restaurant.two_person_cost + '<br>for two');
                 });
 

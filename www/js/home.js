@@ -48,10 +48,10 @@ var app = {
 
             if (pageHistoryLength == 1) {
 
-                newApp.dialog.confirm('Are you sure you want to exit?', function () {
-                    console.log('Exiting');
-                    navigator.app.exitApp();
-                });
+                // newApp.dialog.confirm('Are you sure you want to exit?', function () {
+                //     console.log('Exiting');
+                //     navigator.app.exitApp();
+                // });
             }
             else {
                 if (pageHistoryLength > 3) {
@@ -1071,6 +1071,89 @@ var app = {
         // console.log(latlng)
         
     },
+
+
+    // This Section For Restaurant Menu
+    SubmitRestaurantReview : function(){
+        let rate = $("input[name='starRestaurantRate']:checked").val()
+        let review = $('#txRestaurentReview').val()
+        let restaurantId = $('#lblRestaurentID').html()
+
+        if (rate.trim() != "" && review.trim() != ""){
+            $.ajax({
+                type: "post",
+                url: serverUrl + "submitRateReview",
+                data: { rate: rate, review: review, restaurantId: restaurantId, userId: localStorage.getItem('userId')},
+                dataType: "json"
+            }).done((rply) => {
+                if (rply.success){
+                    newApp.popup.close('#restaurant-review')
+                    window.plugins.toast.showLongBottom('Restaurant Rate Successfully.')
+                }
+            })
+        }
+
+        else{
+            newApp.dialog.alert('Rate Or Comment Not Impliment');
+        }
+
+    },
+
+
+    // This Section For Show Rating 
+    viewRateing : function(){
+        newApp.preloader.show()
+        let restaurantId = $('#lblRestaurentID').html()
+        $.ajax({
+            type: "post",
+            url: serverUrl + "restaurantRatingreviewList",
+            data: { restaurantId: restaurantId },
+            dataType: "json"
+        }).done((rply)=>{
+            console.log(rply)
+
+            let review = ''
+            for (list in rply.restaurantReviews){
+                review += `<div class="message message-received">`+
+                    `<div class="message-avatar" style="background-image:url(http://platterexoticfood.com/pladmin/uploads/customer/${rply.restaurantReviews[list].customer_image});opacity: 1;"></div>`+
+                `<div class="message-content">`+
+                    `<div class="message-name">${rply.restaurantReviews[list].customer_name}</div>`+
+                    `<div class="message-header">${rply.restaurantReviews[list].review_datetime}</div>`+
+                `<div class="message-bubble">`+
+                    `<div class="message-text">${rply.restaurantReviews[list].review}</div>`+
+                `</div>`+
+                `</div>`+
+                `</div>`
+
+                $('#reviewListRestaurant').html(review)
+            }
+
+            newApp.popup.open('#restaurant-review')
+            newApp.preloader.hide()
+        })
+    },
+
+
+    // This Section For Send Enquiry
+    dropEnquiry : function(){
+        let message = $('#txtEnquiryMessage').val()
+        if(message.trim() == ""){
+            newApp.dialog.alert('Enter Your Message')
+            return
+        }
+
+        $.ajax({
+            type: "post",
+            url: serverUrl + "dropEnquiry",
+            data: { userId: localStorage.getItem('userId'), message : message},
+            dataType: "json"
+        }).done((rply) => {
+            window.plugins.toast.showLongBottom('Enquiry Send Successfully.')
+            $('#txtEnquiryMessage').val('')
+            newApp.popup.close('#enquiry')
+        })
+    },
+
 
     resturentListByType: function () {
         let generalRestaurents = ''
