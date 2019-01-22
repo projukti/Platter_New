@@ -1418,6 +1418,7 @@ var app = {
 
     // This function for get lattitude and logitude
     getCurrentLocation : function(){
+        newApp.preloader.show()
         navigator.geolocation.getCurrentPosition((position)=>{
             console.log(position)
             localStorage.setItem('lat', position.coords.latitude);
@@ -1468,6 +1469,7 @@ var app = {
                 window.plugins.toast.showLongBottom('Platter can\'t detect your location, Trun on location or select address manualy ');
         }, {maximumAge: 3000,timeout: 5000, 
             enableHighAccuracy: true })
+        newApp.preloader.hide()
     },
 
     // This function for get current location manualy
