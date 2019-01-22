@@ -16,47 +16,7 @@
           <span id="lblOffer">{{$route.params.coupon}}</span>
       </div>
       <div class="block-title">
-        WALLET
-      </div>
-      <div class="list links-list">
-        <ul>
-          <li>
-            <div class="item-content">
-              <div class="item-media">
-                <img src="img/paytm.png" width="33" />
-              </div>
-              <div class="item-inner">
-                <div class="item-title-row">
-                  <div class="item-title">Paytm</div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-media">
-                <img src="img/freecharge.png" width="33" />
-              </div>
-              <div class="item-inner">
-                <div class="item-title-row">
-                  <div class="item-title">Freecharge</div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="item-content">
-              <div class="item-media">
-                <img src="img/phonepe.png" width="33" />
-              </div>
-              <div class="item-inner">
-                <div class="item-title-row">
-                  <div class="item-title">PhonePe</div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        SELECT PAYMENT METHORD
       </div>
 
       <div class="block-title">
@@ -64,42 +24,25 @@
       </div>
       <div class="list">
         <ul>
-          <li @click="payOnline">
+          <li>
             <label class="item-radio item-content">
-              <input type="radio" name="onlinePayment" value="Books" checked />
+              <input type="radio" name="paymentMode" value="online" checked />
               <i class="icon icon-radio"></i>
               <div class="item-inner">
                 <div class="item-title">Online</div>
               </div>
             </label>
           </li>
-          <li @click="payOnline">
+          <li>
             <label class="item-radio item-content">
-              <input type="radio" name="onlinePayment" value="Movies" />
+              <input type="radio" name="paymentMode" value="offline" />
               <i class="icon icon-radio"></i>
               <div class="item-inner">
-                <div class="item-title">Online</div>
+                <div class="item-title">Cash On Delivery</div>
               </div>
             </label>
           </li>
-          <li  @click="payOnline">
-            <label class="item-radio item-content">
-              <input type="radio" name="onlinePayment" value="Food" />
-              <i class="icon icon-radio"></i>
-              <div class="item-inner">
-                <div class="item-title">RezorPay</div>
-              </div>
-            </label>
-          </li>
-          <li @click="payOnline">
-            <label class="item-radio item-content">
-              <input type="radio" name="onlinePayment" value="Drinks" />
-              <i class="icon icon-radio"></i>
-              <div class="item-inner">
-                <div class="item-title">JusPay</div>
-              </div>
-            </label>
-          </li>
+          
         </ul>
       </div>
       <!-- <div class="list links-list">
@@ -167,7 +110,7 @@
         </ul>
       </div> -->
 
-      <div class="block-title">
+      <!-- <div class="block-title">
         PAY ON DELIVERY
       </div>
       <div class="list media-list inset">
@@ -187,10 +130,10 @@
           </li>
           
         </ul>
-      </div>
+      </div> -->
 
       <div class="block">
-        <button class="button button-fill color-green" id="btnPayOnDelivery" @click="payOrder">PAY ON DELIVERY</button>
+        <button class="button button-fill color-green" id="btnPayOnDelivery" @click="payOrder">PLACE YOUR ORDER</button>
       </div>
     </div>
   </div>
@@ -200,41 +143,17 @@
   return {
     methods: {
       payOrder: function(){
-        // let deliveryAddress = $('#lblDeliveryAddress').html()
-        // let splitAddress = deliveryAddress.split(",")
-        // let finalAmount = $('#lblFinalAmount').html()
-        // let url= 'http://platterexoticfood.com/'+localStorage.getItem('platuser')+'/'+ encodeURI(finalAmount)+'/'+ encodeURI(deliveryAddress)+'/'
-        // var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
-        // // var myCallback = function (event) { console.log(event.url); }
-        //    ref.addEventListener('loadstart', function (event) {
-        //    let urlSuccessPage = "https://www.platterexoticfood.com/success.php";
-        //    let urlErrorPage = "https://www.platterexoticfood.com/fail.php";
-        //    if (event.url == urlSuccessPage) {
-        //     cartView.router.navigate('/payment-success/');
-        //     ref.close();
-        //    }
-        //   else if(event.url == urlErrorPage){
-        //     cartView.router.navigate('/payment-error/');
-        //     ref.close();
-        //   }
-        // });
-        
-        // This For cash On Delivery
-
-        // ref.addEventListener('loadstart', myCallback);
-        // ref.removeEventListener('loadstart', myCallback);
-
         let deliveryAddress = $('#lblDeliveryAddress').html()
         let splitAddress = deliveryAddress.split(",")
         let finalAmount =  $('#lblFinalAmount').html()
         console.log(deliveryAddress)
 
-        if($('#chkCOD').not(':checked').length) {
-          window.plugins.toast.showLongBottom('Select Payment Option');
-        }
-        else{
-          app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'online', localStorage.getItem('couponCode'), '');
-        }
+        let paymentMethord = $("input[name='paymentMode']:checked").val()
+        
+        if(paymentMethord === 'offline')
+          app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'cod', localStorage.getItem('couponCode'), '')
+        else
+          app.payNow(deliveryAddress, splitAddress[3].trim(), splitAddress[1].trim(), splitAddress[2].trim(), 'online', localStorage.getItem('couponCode'), '')
       },
     },
     on:{
