@@ -513,7 +513,7 @@ var app = {
         }).done(function (rply) {
             // console.log(rply)
             if (rply.success) {
-                $('#lblCartItemCount').html(rply.item_count);
+                $('#lblCartItemCount').html(rply.item_count)
 
                 for (list in rply.data) {
                     for (listMenu in rply.data[list].menu) {
@@ -599,6 +599,7 @@ var app = {
                 $('#lblAddressSection').hide();
                 $('#lblCartItemSection').hide();
                 $('#lblCouponSection').hide();
+                $('#lblCartItemCount').html(0)
             }
 
             // This Section For Cart Amount 
