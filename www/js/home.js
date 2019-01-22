@@ -1420,7 +1420,53 @@ var app = {
     getCurrentLocation : function(){
         navigator.geolocation.getCurrentPosition((position)=>{
             console.log(position)
-        }, geolocationError, {maximumAge: 3000,timeout: 5000, 
+            localStorage.setItem('lat', position.coords.latitude);
+            localStorage.setItem('lang', position.coords.longitude);
+            let geocoder = new google.maps.Geocoder;
+            geocoder.geocode({
+                'location': {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                }
+            }, function (results, status) {
+                if (status === 'OK') {
+                    if (results) {
+                        console.log(results);
+                        console.log(results[0].formatted_address);
+                        localStorage.setItem('currentAddress', results[0].formatted_address);
+                        localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
+
+                        $.ajax({
+                            type: "post",
+                            url: serverUrl + "pin_verify",
+                            data: { pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name) },
+                            dataType: "JSON"
+                        }).done(function (rply) {
+                            if (rply.status) {
+                                localStorage.setItem('area', rply.locality);
+                                if (localStorage.getItem('story_done') == 1) {
+                                    window.location.href = "home.html";
+                                }
+                                else {
+                                    window.location.href = "story.html";
+                                }
+                            }
+                            else {
+                                window.plugins.toast.showLongBottom('Currently no availavble in your area');
+                            }
+                        });
+                    } else {
+                        window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+
+                    }
+                } else {
+                    window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+                }
+            });
+        }, (err)=>{
+                console.log(err)
+                window.plugins.toast.showLongBottom('Platter can\'t detect your location, Trun on location or select address manualy ');
+        }, {maximumAge: 3000,timeout: 5000, 
             enableHighAccuracy: true })
     },
 
@@ -1988,57 +2034,57 @@ function swipperMinusMenuDetails(menu_id, restaurant_id) {
 }
 
 
-function geolocationSuccess(position) {
-    // console.log(position.coords.latitude);
-    // console.log(position.coords.longitude);
-    // localStorage.setItem('lat', position.coords.latitude);
-    // localStorage.setItem('lang', position.coords.longitude);
-    // let geocoder = new google.maps.Geocoder;
-    // geocoder.geocode({
-    //     'location': {
-    //         lat: position.coords.latitude,
-    //         lng: position.coords.longitude
-    //     }
-    // }, function (results, status) {
-    //     if (status === 'OK') {
-    //         if (results) {
-    //             console.log(results);
-    //             console.log(results[0].formatted_address);
-    //             localStorage.setItem('currentAddress', results[0].formatted_address);
-    //             localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
+// function geolocationSuccess(position) {
+//     console.log(position.coords.latitude);
+//     console.log(position.coords.longitude);
+//     localStorage.setItem('lat', position.coords.latitude);
+//     localStorage.setItem('lang', position.coords.longitude);
+//     let geocoder = new google.maps.Geocoder;
+//     geocoder.geocode({
+//         'location': {
+//             lat: position.coords.latitude,
+//             lng: position.coords.longitude
+//         }
+//     }, function (results, status) {
+//         if (status === 'OK') {
+//             if (results) {
+//                 console.log(results);
+//                 console.log(results[0].formatted_address);
+//                 localStorage.setItem('currentAddress', results[0].formatted_address);
+//                 localStorage.setItem('curr_pin', parseInt(results[0].address_components[results[0].address_components.length - 1].long_name));
 
-    //             $.ajax({
-    //                 type: "post",
-    //                 url: serverUrl + "pin_verify",
-    //                 data: { pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name) },
-    //                 dataType: "JSON"
-    //             }).done(function (rply) {
-    //                 if (rply.status) {
-    //                     localStorage.setItem('area', rply.locality);
-    //                     if (localStorage.getItem('story_done') == 1) {
-    //                         window.location.href = "home.html";
-    //                     }
-    //                     else {
-    //                         window.location.href = "story.html";
-    //                     }
-    //                 }
-    //                 else {
-    //                     window.plugins.toast.showLongBottom('Currently no availavble in your area');
-    //                 }
-    //             });
-    //         } else {
-    //             window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+//                 $.ajax({
+//                     type: "post",
+//                     url: serverUrl + "pin_verify",
+//                     data: { pin: parseInt(results[0].address_components[results[0].address_components.length - 1].long_name) },
+//                     dataType: "JSON"
+//                 }).done(function (rply) {
+//                     if (rply.status) {
+//                         localStorage.setItem('area', rply.locality);
+//                         if (localStorage.getItem('story_done') == 1) {
+//                             window.location.href = "home.html";
+//                         }
+//                         else {
+//                             window.location.href = "story.html";
+//                         }
+//                     }
+//                     else {
+//                         window.plugins.toast.showLongBottom('Currently no availavble in your area');
+//                     }
+//                 });
+//             } else {
+//                 window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
 
-    //         }
-    //     } else {
-    //         window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
-    //     }
-    // });
-}
+//             }
+//         } else {
+//             window.plugins.toast.showLongBottom('Unable to detect location automatically. Please enter your Address manually By Clicking Set Your Location.');
+//         }
+//     });
+// }
 
-function geolocationError(error) {
-    window.plugins.toast.showLongBottom('Platter can\'t detect your location, Trun on location or select address manualy ');
-}
+// function geolocationError(error) {
+    
+// }
 
 
 
