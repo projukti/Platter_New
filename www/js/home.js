@@ -594,11 +594,11 @@ var app = {
                 cartItem += 'Your cart is empty. Add someting from menu'
                 cartItem += '</div>'
                 cartItem += '</div>'
-                $('#cartPage').html(cartItem);
-                $('#lblDeliverySection').hide();
-                $('#lblAddressSection').hide();
-                $('#lblCartItemSection').hide();
-                $('#lblCouponSection').hide();
+                $('#cartPage').html(cartItem)
+                $('#lblDeliverySection').hide()
+                $('#lblAddressSection').hide()
+                $('#lblCartItemSection').hide()
+                $('#lblCouponSection').hide()
                 $('#lblCartItemCount').html(0)
             }
 
