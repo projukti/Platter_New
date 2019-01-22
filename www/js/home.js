@@ -513,6 +513,8 @@ var app = {
         }).done(function (rply) {
             // console.log(rply)
             if (rply.success) {
+                $('#lblCartItemCount').html(rply.item_count);
+
                 for (list in rply.data) {
                     for (listMenu in rply.data[list].menu) {
                         cartItem += '<li>'
