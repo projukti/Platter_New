@@ -36,6 +36,26 @@ routes = [
       }, 1000);
     },
   },
+
+  {
+    path: '/newfirends/',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let router = this;
+      let unique = router.app;
+      unique.preloader.show();
+      setTimeout(function () {
+        app.resturentListByType();
+        unique.preloader.hide();
+        resolve(
+          {
+            componentUrl: './pages/frienrequest.html',
+          }
+        );
+      }, 1000);
+    },
+  },
+
+
   {
     path: '/restaurent-details/:id/:name/',
     componentUrl: './pages/restaurent_details.html',

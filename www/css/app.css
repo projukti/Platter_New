@@ -1518,3 +1518,82 @@
   -moz-font-feature-settings: "liga";
   font-feature-settings: "liga";
 }
+
+
+.demo-facebook-card .card-header {
+  display: block;
+  padding: 10px;
+}
+.demo-facebook-card .demo-facebook-avatar {
+  float: left;
+}
+.demo-facebook-card .demo-facebook-name {
+  margin-left: 44px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.demo-facebook-card .demo-facebook-date {
+  margin-left: 44px;
+  font-size: 13px;
+  color: #8e8e93;
+}
+.demo-facebook-card .card-footer {
+  background: #fafafa;
+}
+.demo-facebook-card .card-footer a {
+  color: #81848b;
+  font-weight: 500;
+}
+.demo-facebook-card .card-content img {
+  display: block;
+}
+.demo-facebook-card .card-content-padding {
+  padding: 15px 10px;
+}
+.demo-facebook-card .card-content-padding .likes {
+  color: #8e8e93;
+}
+
+.md .toolbar {
+    background: #125e97;
+    height: 48px;
+    color: #fff;
+    font-size: 14px;
+    top: 0;
+}
+
+.md .navbar {
+    height: 56px;
+    background: #125e97;
+    color: #fff;
+    font-size: 20px;
+}
+
+.md .list {
+    margin: 0 0;
+    font-size: 16px;
+}
+
+.md .list .item-footer, .md .list .item-header {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: normal;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 1;
+}
+.demo-card-header-pic .card-header {
+  height: 40vw;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+.demo-card-header-pic .card-content-padding .date{
+  color: #8e8e93;
+}
+    
