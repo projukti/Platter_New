@@ -4,8 +4,12 @@
       <div class="navbar-inner">
         <div class="title" style="color: #fff;">Account</div>
         <div class="right">
-          <a href="/edit-profile/" class="link" style="color: #fff; font-size:15px;">
-            <img src="img/edit.png" style="height: 24px;">
+          <a
+            href="/edit-profile/"
+            class="link"
+            style="color: #fff; font-size:15px;"
+          >
+            <img src="img/edit.png" style="height: 24px;" />
           </a>
         </div>
       </div>
@@ -16,15 +20,18 @@
           <strong id="user_name">SAIKAT BHADURY</strong>
           <br>9547763998 . saikat.projukti@gmail.com -->
       </div>
-      
-      
+
       <div class="list accordion-list">
         <ul>
           <li class="accordion-item">
             <a href="#" class="item-content item-link">
               <div class="item-inner">
-                <div class="item-title"><strong>My Account</strong>
-                <br><small style="font-size:12px;">Payments, Favourites, Rederrals.</small></div>
+                <div class="item-title">
+                  <strong>My Account</strong> <br /><small
+                    style="font-size:12px;"
+                    >Payments, Favourites, Rederrals.</small
+                  >
+                </div>
               </div>
             </a>
             <div class="accordion-item-content">
@@ -76,54 +83,35 @@
       <div class="list links-list">
         <ul>
           <li>
-            <a href="#" class="popup-open" data-popup="#about-us" >About Platter</a>
+            <a href="#" class="popup-open" data-popup="#about-us"
+              >About Platter</a
+            >
           </li>
           <li>
             <a href="#" class="popup-open" data-popup="#join-us">Join Us</a>
           </li>
           <li>
-            <a href="#" class="popup-open" data-popup="#privacy">Privacy Policy</a>
+            <a href="#" class="popup-open" data-popup="#privacy"
+              >Privacy Policy</a
+            >
           </li>
           <li>
-            <a href="#" class="popup-open" data-popup="#enquiry">Send Enquiry</a>
+            <a href="#" class="popup-open" data-popup="#enquiry"
+              >Send Enquiry</a
+            >
           </li>
           <li>
-            <a onclick="app.logout();" >Logout</a>
+            <a onclick="app.logout();">Logout</a>
           </li>
         </ul>
       </div>
-     
     </div>
   </div>
 </template>
 <script>
   return {
-    on:{
-      pageBeforeIn: function (e, page) {
-        var user_details='';
-        $.ajax({
-          type: "post",
-          url: "http://platterexoticfood.com/pladmin/manage_api/cust_profile/",
-          data: { user: localStorage.getItem('platuser') },
-          dataType: "JSON"
-        }).done(function (reply) {
-          // console.log(reply);
-          // $('#user_details').html();
-          localStorage.setItem('user_image', reply.custProfile.customer_image);
-          localStorage.setItem('user_name', reply.custProfile.customer_name);
-          localStorage.setItem('user_email', reply.custProfile.profEmail);
-          if(reply.custProfile.customer_image!="")
-          {
-            user_details += '<img src="http://platterexoticfood.com/pladmin/uploads/customer/' + reply.custProfile.customer_image + '" style="border-radius:50%;width: 100px;height:100px;"><br>';
-          }
-          else{
-            user_details += '<img src="http://platterexoticfood.com/pladmin/uploads/customer/noImage.jpg" style="border-radius:50%;width: 100px;height:100px;"><br>';
-          }
-          user_details +='<strong>' + reply.custProfile.customer_name +'</strong>';
-          user_details += '<br>'+ reply.custProfile.customer_mobile +' . ' + reply.custProfile.profEmail +'';
-          $('#user_details').html(user_details);
-        });
-      }
+    on: {
+      pageBeforeIn: function(e, page) {}
     }
   };
 </script>

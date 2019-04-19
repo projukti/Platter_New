@@ -23,6 +23,42 @@ var app = {
     app.generalRestaurants();
     app.getCuisine();
     //universalLinks.subscribe('forReferaalDiscount', app.didLaunchAppFromLink);
+    app.accountDetails();
+  },
+
+  // Account Details
+  accountDetails: function() {
+    var user_details = "";
+    $.ajax({
+      type: "post",
+      url: "http://platterexoticfood.com/pladmin/manage_api/cust_profile/",
+      data: { user: localStorage.getItem("platuser") },
+      dataType: "JSON"
+    }).done(function(reply) {
+      // console.log(reply);
+      // $('#user_details').html();
+      localStorage.setItem("user_image", reply.custProfile.customer_image);
+      localStorage.setItem("user_name", reply.custProfile.customer_name);
+      localStorage.setItem("user_email", reply.custProfile.profEmail);
+      if (reply.custProfile.customer_image != "") {
+        user_details +=
+          '<img src="http://platterexoticfood.com/pladmin/uploads/customer/' +
+          reply.custProfile.customer_image +
+          '" style="border-radius:50%;width: 100px;height:100px;"><br>';
+      } else {
+        user_details +=
+          '<img src="http://platterexoticfood.com/pladmin/uploads/customer/noImage.jpg" style="border-radius:50%;width: 100px;height:100px;"><br>';
+      }
+      user_details +=
+        "<strong>" + reply.custProfile.customer_name + "</strong>";
+      user_details +=
+        "<br>" +
+        reply.custProfile.customer_mobile +
+        " . " +
+        reply.custProfile.profEmail +
+        "";
+      $("#user_details").html(user_details);
+    });
   },
 
   // didLaunchAppFromLink: function (eventData) {
@@ -30,40 +66,52 @@ var app = {
   // },
   // Back Button Off
   onBackKeyDown: function(viewName) {
-    // if (mainView.router.url == '/') {
-    //     newApp.dialog.confirm('Are you sure you want to exit?', function () {
-    //         console.log('Exiting');
-    //         navigator.app.exitApp();
-    //     });
+    // // if (mainView.router.url == '/') {
+    // //     newApp.dialog.confirm('Are you sure you want to exit?', function () {
+    // //         console.log('Exiting');
+    // //         navigator.app.exitApp();
+    // //     });
+    // // }
+    // // else {
+    // let pageHistoryLength = mainView.history.length;
+
+    // // Get Previous URL
+    // let previousURL = mainView.history[pageHistoryLength - 2];
+
+    // // Get Current URL
+    // let currentURL = mainView.history[pageHistoryLength - 1];
+
+    // if (pageHistoryLength == 1) {
+    //   // newApp.dialog.confirm('Are you sure you want to exit?', function () {
+    //   //     console.log('Exiting');
+    //   //     navigator.app.exitApp();
+    //   // });
+    // } else {
+    //   if (pageHistoryLength > 3) {
+    //     mainView.history.length = 0;
+    //     window.location.href = "home.html";
+    //   } else {
+    //     if (previousURL == "/") {
+    //       window.location.href = "home.html";
+    //     } else {
+    //       app.router.navigate(previousURL);
+    //     }
+    //   }
     // }
-    // else {
-    let pageHistoryLength = mainView.history.length;
-
-    // Get Previous URL
-    let previousURL = mainView.history[pageHistoryLength - 2];
-
-    // Get Current URL
-    let currentURL = mainView.history[pageHistoryLength - 1];
-
-    if (pageHistoryLength == 1) {
-      // newApp.dialog.confirm('Are you sure you want to exit?', function () {
-      //     console.log('Exiting');
-      //     navigator.app.exitApp();
-      // });
-    } else {
-      if (pageHistoryLength > 3) {
-        mainView.history.length = 0;
-        window.location.href = "home.html";
-      } else {
-        if (previousURL == "/") {
-          window.location.href = "home.html";
-        } else {
-          app.router.navigate(previousURL);
-        }
-      }
-    }
 
     //}
+    if (
+      app.views["current"].router.history.length == 1 &&
+      app.views["current"].selector != "#view-home"
+    ) {
+      app.tab.show("#view-home");
+    } else if (app.views["current"].router.history.length > 1) {
+      app.views["current"].router.back();
+    } else if (app.views["current"].selector == "#view-home") {
+      app.dialog.confirm("Are you sure you want to exit?", function() {
+        navigator.app.exitApp();
+      });
+    }
   },
 
   // Open Camera Using this section
@@ -2291,6 +2339,75 @@ var app = {
     setTimeout(function() {
       app.trackOrder();
     }, 5000);
+  },
+
+  // This Section For Find Friend
+  findFriend: function() {
+    let searchItem = $("#txtfindFriend").val();
+    // console.log(searchItem);
+    if (searchItem.trim() === "") {
+      $("#firendMessege").html("");
+      return;
+    }
+    $.ajax({
+      type: "post",
+      url: serverUrl + "search_for_friend",
+      data: {
+        searchElement: searchItem,
+        user: localStorage.getItem("platuser")
+      },
+      dataType: "json"
+    }).done(function(rply) {
+      console.log(rply);
+      if (rply.success === 0) {
+        $("#firendMessege").html(rply.message);
+      }
+      $("#firendMessege").html("");
+      let friend = "";
+      for (list in rply.search_friend) {
+        friend += `<div class="card demo-card-header-pic">`;
+        friend += `<div class="card demo-card-header-pic"><div style="background-image:url( https://platterexoticfood.com/pladmin/uploads/customer/${
+          rply.search_friend[list].customer_image
+        })" class="card-header align-items-flex-end">${
+          rply.search_friend[list].customer_name
+        }</div>`;
+        friend += `<div class="card-content card-content-padding">`;
+        friend += `<p>${rply.search_friend[list].profBio}</p>`;
+        friend += `</div>`;
+
+        friend += `<div class="card-footer" id="sendRequest${
+          rply.search_friend[list].customer_mobile
+        }">`;
+        if (rply.search_friend[list].friend_status == 0) {
+          friend += `<a href="javascript:void(0)"  class="link text-color-green">Request Sent Successfully</a>`;
+        } else {
+          friend += `<a href="javascript:void(0)" onclick="app.sendFriendRequest(${
+            rply.search_friend[list].customer_mobile
+          })" class="link text-color-blue">Send Request</a>`;
+        }
+
+        friend += `</div>`;
+        friend += `</div>`;
+        friend += `</div>`;
+      }
+      $("#firendMessege").html(friend);
+    });
+  },
+
+  // This Section For Send Friend Request
+  sendFriendRequest: function(profile) {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "send_friend_request",
+      data: { user: localStorage.getItem("platuser"), profile: profile },
+      dataType: "json"
+    }).done(function(rply) {
+      if (rply.success) {
+        let requestSent = "";
+        requestSent += `<a href="javascript:void(0)" class="link text-color-green">Request Sent Successfully</a>`;
+        $("#sendRequest" + profile).html(requestSent);
+      }
+    });
   },
 
   // This Function For Rateing And Review

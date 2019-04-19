@@ -1,61 +1,85 @@
 <template>
-    <div class="page">
-        <div class="navbar no-shadow">
-            <div class="navbar-inner sliding">
-                <div class="left">
-                    <a href="#" class="link back">
-                        <i class="icon icon-back"></i>
-                        <span class="ios-only">Back</span>
-                    </a>
-                </div>
-                <div class="title">
-                    Add New Friends
-                </div>
-                <div class="subnavbar">
-                    <!-- Searchbar with auto init -->
-                    <form class="searchbar">
-                        <div class="searchbar-inner">
-                            <div class="searchbar-input-wrap">
-                                <input type="search" placeholder="Search">
-                                <i class="searchbar-icon"></i>
-                                <span class="input-clear-button"></span>
-                            </div>
-                            <span class="searchbar-disable-button">Cancel</span>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="page">
+    <div class="navbar no-shadow">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
         </div>
-        <div class="page-content">
-            <div class="searchbar-backdrop"></div>
-            <div class="block searchbar-hide-on-search">
-                <p class="text-align-center"><b>No Friend Request Found</b></p>
-
-                <div class="card demo-card-header-pic">
-                    <div style="background-image:url(http://lorempixel.com/1000/600/nature/3/)" class="card-header align-items-flex-end">Journey
-                        To Mountains</div>
-                    <div class="card-content card-content-padding">
-                        <p class="date">Posted on January 21, 2015</p>
-                        <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus quis
-                            nibh hendrerit...</p>
-                    </div>
-                    <div class="card-footer"><a href="#" class="link text-color-red">Reject Request</a><a href="#" class="link text-color-green">Accept Request</a></div>
-                </div>
-                
-                <div class="card demo-card-header-pic">
-                    <div style="background-image:url(http://lorempixel.com/1000/600/people/6/)" class="card-header align-items-flex-end">Lorem
-                        Ipsum</div>
-                    <div class="card-content card-content-padding">
-                        <p class="date">Posted on January 21, 2015</p>
-                        <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus quis
-                            nibh hendrerit...</p>
-                    </div>
-                    <div class="card-footer"><a href="#" class="link text-color-blue">Send Request</a></div>
-                </div>
-            </div>
+        <div class="title">
+          Add New Friends
         </div>
+        <div class="subnavbar">
+          <!-- Searchbar with auto init -->
+          <form class="searchbar">
+            <div class="searchbar-inner">
+              <div class="searchbar-input-wrap">
+                <input
+                  type="text"
+                  placeholder="Search Friend"
+                  onkeyup="app.findFriend()"
+                  id="txtfindFriend"
+                />
+                <i class="searchbar-icon"></i>
+                <span class="input-clear-button"></span>
+              </div>
+              <span class="searchbar-disable-button">Cancel</span>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+    <div class="page-content">
+      <div class="searchbar-backdrop"></div>
+      <div class="block searchbar-hide-on-search">
+        <div class="text-align-center" id="firendMessege">
+          <b>No Friend Request Found</b>
+        </div>
+
+        <!-- <div class="card demo-card-header-pic">
+          <div
+            style="background-image:url(http://lorempixel.com/1000/600/nature/3/)"
+            class="card-header align-items-flex-end"
+          >
+            Journey To Mountains
+          </div>
+          <div class="card-content card-content-padding">
+            <p class="date">Posted on January 21, 2015</p>
+            <p>
+              Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
+              efficitur vitae non felis. Phasellus quis nibh hendrerit...
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="link text-color-red">Reject Request</a
+            ><a href="#" class="link text-color-green">Accept Request</a>
+          </div>
+        </div>
+
+        <div class="card demo-card-header-pic">
+          <div
+            style="background-image:url(http://lorempixel.com/1000/600/people/6/)"
+            class="card-header align-items-flex-end"
+          >
+            Lorem Ipsum
+          </div>
+          <div class="card-content card-content-padding">
+            <p class="date">Posted on January 21, 2015</p>
+            <p>
+              Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
+              efficitur vitae non felis. Phasellus quis nibh hendrerit...
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="link text-color-blue">Send Request</a>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-    return {}
+  return {};
 </script>
