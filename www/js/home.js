@@ -24,6 +24,7 @@ var app = {
     app.getCuisine();
     //universalLinks.subscribe('forReferaalDiscount', app.didLaunchAppFromLink);
     app.accountDetails();
+    app.friendList();
   },
 
   // Account Details
@@ -2347,6 +2348,7 @@ var app = {
     // console.log(searchItem);
     if (searchItem.trim() === "") {
       $("#firendMessege").html("");
+      app.requestList();
       return;
     }
     $.ajax({
@@ -2394,6 +2396,45 @@ var app = {
     });
   },
 
+  // This function for  Friend Request List
+  requestList: function() {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "requestList",
+      data: { user: localStorage.getItem("platuser") },
+      dataType: "json"
+    }).done(function(rply) {
+      if (rply.success) {
+        let requistList = "";
+        for (list in rply.friend_requests) {
+          requistList += `<div class="card demo-card-header-pic" id="friendRequest${
+            rply.friend_requests[list].customer_mobile
+          }">`;
+          requistList += `<div style="background-image:url( https://platterexoticfood.com/pladmin/uploads/customer/${
+            rply.friend_requests[list].customer_image
+          })" class="card-header align-items-flex-end">${
+            rply.friend_requests[list].customer_name
+          }</div>
+          <div class="card-content card-content-padding">`;
+          requistList += `<p>${rply.friend_requests[list].profBio}</p>`;
+          requistList += `</div>`;
+          requistList += `<div class="card-footer">`;
+          requistList += `<a href="#" class="link text-color-red" onclick="app.friendRequestReject(${
+            rply.friend_requests[list].customer_friend
+          })">Reject Request</a
+            ><a href="#" class="link text-color-green" onclick="app.friendRequestAccept(${
+              rply.friend_requests[list].customer_friend
+            })">Accept Request</a>`;
+          requistList += `</div>`;
+          requistList += `</div>`;
+        }
+        $("#firendMessege").html(requistList);
+      } else {
+        $("#firendMessege").html("<b>No Friend Request Found</b>");
+      }
+    });
+  },
+
   // This Section For Send Friend Request
   sendFriendRequest: function(profile) {
     $.ajax({
@@ -2409,6 +2450,79 @@ var app = {
       }
     });
   },
+
+  // accept request
+  friendRequestAccept: function(phone) {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "accept_friend_request",
+      data: { user: localStorage.getItem("platuser"), profile: phone },
+      dataType: "json"
+    }).done(function(rply) {
+      if (rply.success) {
+        $("#friendRequest" + phone).hide();
+        window.plugins.toast.showLongBottom("Request Accept");
+      }
+    });
+  },
+
+  // accept request
+  friendRequestReject: function(phone) {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "reject_friend_request",
+      data: { user: localStorage.getItem("platuser"), profile: phone },
+      dataType: "json"
+    }).done(function(rply) {
+      if (rply.success) {
+        $("#friendRequest" + phone).hide();
+        window.plugins.toast.showLongBottom("Request Accept");
+      }
+    });
+  },
+
+  // This Function For Friend List
+  friendList: function() {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "friendList",
+      data: { user: localStorage.getItem("platuser") },
+      dataType: "json"
+    }).done(function(rply) {
+      if (rply.friend_requests.length === 0) {
+        $("#friendList").html("<li>No Friend Found</li>");
+      }
+      let friendList = "";
+      for (list in rply.friend_requests) {
+        friendList += `<li>`;
+        friendList += `<a href="/chat_details/${
+          rply.friend_requests[list].customer_id
+        }/">`;
+        friendList += `<div class="item-content">`;
+        friendList += `<div class="item-media">`;
+        friendList += `<img src="https://platterexoticfood.com/pladmin/uploads/customer/${
+          rply.friend_requests[list].customer_image
+        }" width="50" style="border-radius: 50%;">`;
+        friendList += `</div>`;
+        friendList += `<div class="item-inner">`;
+        friendList += `<div class="item-title">`;
+        friendList += `<div class="item-header">${
+          rply.friend_requests[list].customer_name
+        }</div>`;
+        friendList += `<div class="item-footer">${
+          rply.friend_requests[list].profBio
+        }</div>`;
+        friendList += `</div>`;
+        friendList += `</div>`;
+        friendList += `</div>`;
+        friendList += `</a>`;
+        friendList += `</li>`;
+      }
+      $("#friendList").html(friendList);
+    });
+  },
+
+  // This Function For Chant Details
 
   // This Function For Rateing And Review
   rating: function(restaurentId, menuId, rval, orderId) {
