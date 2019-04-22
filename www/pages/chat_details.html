@@ -200,11 +200,7 @@
         $("#main_toolbar").hide();
         // let userId = $('#chatId').html();
         // console.log($route.params.id);
-        console.log("Here");
-        var intervalMessage = setInterval(() => {
-          console.log(userIdForMessage);
-          app.chatDetails(userIdForMessage);
-        }, 10000);
+
         var messagebar = newApp.messagebar.create({
           el: ".messagebar",
           scrollMessagesOnEdge: true,

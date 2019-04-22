@@ -2588,6 +2588,9 @@ var app = {
 
       $("#messages").html(messages);
     });
+    intervalMessage = setInterval(() => {
+      app.chatDetails(userIdForMessage);
+    }, 10000);
   },
 
   // This Function For Chant Details
