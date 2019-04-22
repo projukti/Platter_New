@@ -110,7 +110,7 @@ var app = {
       newApp.views["current"].router.back();
     } else if (newApp.views["current"].selector == "#view-home") {
       newApp.dialog.confirm("Are you sure you want to exit?", function() {
-        navigator.newApp.exitApp();
+        navigator.app.exitApp();
       });
     }
   },
@@ -2512,7 +2512,9 @@ var app = {
         friendList += `<div class="item-footer">${
           rply.friend_requests[list].profBio
         }</div>`;
+
         friendList += `</div>`;
+        friendList += `<div class="item-after"> <span class="badge">5</span></div>`;
         friendList += `</div>`;
         friendList += `</div>`;
         friendList += `</a>`;
@@ -2588,9 +2590,6 @@ var app = {
 
       $("#messages").html(messages);
     });
-    intervalMessage = setInterval(() => {
-      app.chatDetails(userIdForMessage);
-    }, 10000);
   },
 
   // This Function For Chant Details

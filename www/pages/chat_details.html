@@ -198,8 +198,13 @@
     on: {
       pageInit: function(e, page) {
         $("#main_toolbar").hide();
+        //console.log(e);
+        //console.log(page.route.params.id);
         // let userId = $('#chatId').html();
         // console.log($route.params.id);
+        const intervalMessage = setInterval(() => {
+          app.chatDetails(page.route.params.id);
+        }, 10000);
 
         var messagebar = newApp.messagebar.create({
           el: ".messagebar",
@@ -209,8 +214,8 @@
         });
       },
       pageBeforeOut: function(e, page) {
-        clearInterval(intervalMessage);
         $("#main_toolbar").show();
+        clearInterval(intervalMessage);
       }
     }
   };
