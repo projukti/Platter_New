@@ -102,15 +102,15 @@ var app = {
 
     //}
     if (
-      app.views["current"].router.history.length == 1 &&
-      app.views["current"].selector != "#view-home"
+      newApp.views["current"].router.history.length == 1 &&
+      newApp.views["current"].selector != "#view-home"
     ) {
-      app.tab.show("#view-home");
-    } else if (app.views["current"].router.history.length > 1) {
-      app.views["current"].router.back();
-    } else if (app.views["current"].selector == "#view-home") {
-      app.dialog.confirm("Are you sure you want to exit?", function() {
-        navigator.app.exitApp();
+      newApp.tab.show("#view-home");
+    } else if (newApp.views["current"].router.history.length > 1) {
+      newApp.views["current"].router.back();
+    } else if (newApp.views["current"].selector == "#view-home") {
+      newApp.dialog.confirm("Are you sure you want to exit?", function() {
+        navigator.newApp.exitApp();
       });
     }
   },
