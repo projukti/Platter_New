@@ -99,7 +99,8 @@ routes = [
       let id = routeTo.params.id;
       unique.preloader.show();
       setTimeout(function() {
-        app.getChat(parseInt(id));
+        app.chatDetails(id);
+        // app.getChat(parseInt(id));
         unique.preloader.hide();
         resolve({
           componentUrl: "./pages/chat_details.html"

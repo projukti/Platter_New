@@ -2522,6 +2522,70 @@ var app = {
     });
   },
 
+  // This Section For Get Chat Details
+  chatDetails: function(userId) {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "chatDetails",
+      data: { userId: userId, user: localStorage.getItem("platuser") },
+      dataType: "json"
+    }).done(function(rply) {
+      let messages = "";
+      $("#imgChatProfile").attr(
+        "src",
+        `https://platterexoticfood.com/pladmin/uploads/customer/${
+          rply.custDetails.customer_image
+        }`
+      );
+      $("#imgChatProfileName").html(rply.custDetails.customer_name);
+      for (list in rply.chatLists) {
+        if (
+          rply.chatLists[list].customer_mobile ==
+          localStorage.getItem("platuser")
+        ) {
+          messages += `<div class="message message-sent">`;
+          messages += ` <div class="message-content">`;
+          messages += `<div class="message-header">${
+            rply.chatLists[list].chat_date
+          }</div>`;
+          messages += `<div class="message-bubble">`;
+          messages += `<div class="message-text">${
+            rply.chatLists[list].message
+          }</div>`;
+          messages += `<div class="message-text-footer">${
+            rply.chatLists[list].chat_time
+          }</div>`;
+          messages += `</div>`;
+          if (rply.chatLists[list].is_read == 1) {
+            messages += `<div class="message-footer"><i class="icons f7-icons text-color-green">check</i></div>`;
+          } else {
+            messages += `<div class="message-footer"><i class="icons f7-icons text-color-blue">check</i></div>`;
+          }
+          messages += `</div>`;
+          messages += `</div>`;
+        } else {
+          messages += ` <div class="message message-received">`;
+          messages += `<div class="message-content">`;
+          messages += `<div class="message-header">${
+            rply.chatLists[list].chat_date
+          }</div>`;
+          messages += `<div class="message-bubble">`;
+          messages += `<div class="message-text">${
+            rply.chatLists[list].message
+          }</div>`;
+          messages += `<div class="message-text-footer">${
+            rply.chatLists[list].chat_time
+          }</div>`;
+          messages += `</div>`;
+          messages += `</div>`;
+          messages += `</div>`;
+        }
+      }
+
+      $("#messages").html(messages);
+    });
+  },
+
   // This Function For Chant Details
 
   // This Function For Rateing And Review
@@ -2644,6 +2708,7 @@ var app = {
       data: { user: user, to: chatType, message: messageContent },
       dataType: "JSON"
     }).done(function(rply) {
+      app.chatDetails(chatType);
       $("#txtMessage").val("");
     });
   },

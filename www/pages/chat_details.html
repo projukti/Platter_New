@@ -1,51 +1,71 @@
 <template>
   <div class="page" data-name="chat_details">
-    <div class="navbar"  style="background: #125e97;">
+    <div class="navbar" style="background: #125e97;">
       <div class="navbar-inner sliding">
         <div class="left">
           <a href="#" class="link back">
             <i class="icon icon-back color-white"></i>
             <span class="ios-only color-white">Back</span>
           </a>
-          <a href="" class="link popup-open" style=" margin-left: -16px; " data-popup=".popup-profileview">
-            <img src="img/user.png" style="height: 40px; width: 40px; border-radius: 50%;background: white;">
+          <a
+            href=""
+            class="link popup-open"
+            style=" margin-left: -16px; "
+            data-popup=".popup-profileview"
+          >
+            <img
+              id="imgChatProfile"
+              style="height: 40px; width: 40px; border-radius: 50%;background: white;"
+            />
           </a>
         </div>
         <div class="title" style="color: #fff;margin: 0px;font-size:16px;">
-          <small>John Cena</small>
+          <small id="imgChatProfileName">John Cena</small>
         </div>
         <div class="right">
-          <a href="#" class="link popover-open" data-popover=".popover-morechat">
+          <a
+            href="#"
+            class="link popover-open"
+            data-popover=".popover-morechat"
+          >
             <i class="material-icons">
               more_vert
             </i>
           </a>
         </div>
         <!-- <div id="chatId" style="display:none;">{{$route.params.id}}</div> -->
-        
       </div>
     </div>
     <div class="toolbar messagebar" style="background: #fff;">
       <div class="toolbar-inner">
         <div class="messagebar-area">
-          <textarea class="resizable" placeholder="Message" id="txtMessage"></textarea>
+          <textarea
+            class="resizable"
+            placeholder="Message"
+            id="txtMessage"
+          ></textarea>
         </div>
-        <a class="link send-link" onclick="app.sendMessage({{$route.params.id}})" href="#"><i class="material-icons">send</i></a>
+        <a
+          class="link send-link"
+          onclick="app.sendMessage({{ $route.params.id }})"
+          href="#"
+          ><i class="material-icons">send</i></a
+        >
       </div>
     </div>
     <div class="page-content messages-content">
-      <div class="messages">
+      <div class="messages" id="messages">
         <!-- Messages title -->
-        <div class="messages-title" id="message">
-          <!-- <b>Sunday, Feb 9,</b> 12:58</div> -->
+        <!-- <div class="messages-title"><b>Sunday, Feb 9,</b> 12:58</div> -->
         <!-- Full layout sent message -->
         <!-- <div class="message message-sent">
           <div class="message-content">
-            <div class="message-name">John Doe</div>
             <div class="message-header">Message header</div>
             <div class="message-bubble">
               <div class="message-text-header">Text header</div>
-              <div class="message-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+              <div class="message-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              </div>
               <div class="message-text-footer">Text footer</div>
             </div>
             <div class="message-footer">Message footer</div>
@@ -55,11 +75,13 @@
         <!-- <div class="message message-received">
           <div class="message-content">
             <div class="message-name">John Doe</div>
+            <div class="message-header">Message header</div>
             <div class="message-bubble">
               <div class="message-text-header">Text header</div>
               <div class="message-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
               <div class="message-text-footer">Text footer</div>
             </div>
+            <div class="message-footer">Message footer</div>
           </div>
         </div> -->
         <!-- Messages -->
@@ -78,7 +100,10 @@
           </div>
         </div>
         <div class="message message-received">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/9);"></div>
+          <div
+            class="message-avatar"
+            style="background-image:url(https://cdn.framework7.io/placeholder/people-100x100-9.jpg);"
+          ></div>
           <div class="message-content">
             <div class="message-name">Kate</div>
             <div class="message-bubble">
@@ -87,18 +112,25 @@
           </div>
         </div>
         <div class="message message-received">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/7);"></div>
+          <div
+            class="message-avatar"
+            style="background-image:url(https://cdn.framework7.io/placeholder/people-100x100-7.jpg);"
+          ></div>
           <div class="message-content">
             <div class="message-name">Blue Ninja</div>
             <div class="message-bubble">
-              <div class="message-text">Hi there, I am also fine, thanks! And how are you?</div>
+              <div class="message-text">
+                Hi there, I am also fine, thanks! And how are you?
+              </div>
             </div>
           </div>
         </div>
         <div class="message message-sent">
           <div class="message-content">
             <div class="message-bubble">
-              <div class="message-text">Hey, Blue Ninja! Glad to see you ;)</div>
+              <div class="message-text">
+                Hey, Blue Ninja! Glad to see you ;)
+              </div>
             </div>
           </div>
         </div>
@@ -113,13 +145,19 @@
           <div class="message-content">
             <div class="message-bubble">
               <div class="message-image">
-                <img src="http://lorempixel.com/200/260/cats/4/" style="width:200px; height: 260px;">
+                <img
+                  src="https://cdn.framework7.io/placeholder/cats-200x260-4.jpg"
+                  style="width:200px; height: 260px;"
+                />
               </div>
             </div>
           </div>
         </div>
         <div class="message message-received">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/9);"></div>
+          <div
+            class="message-avatar"
+            style="background-image:url(https://cdn.framework7.io/placeholder/people-100x100-9.jpg);"
+          ></div>
           <div class="message-content">
             <div class="message-name">Kate</div>
             <div class="message-bubble">
@@ -128,7 +166,10 @@
           </div>
         </div>
         <div class="message message-received">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/9);"></div>
+          <div
+            class="message-avatar"
+            style="background-image:url(https://cdn.framework7.io/placeholder/people-100x100-9.jpg);"
+          ></div>
           <div class="message-content">
             <div class="message-name">Kate</div>
             <div class="message-bubble">
@@ -137,7 +178,10 @@
           </div>
         </div>
         <div class="message message-received">
-          <div class="message-avatar" style="background-image:url(http://lorempixel.com/100/100/people/7);"></div>
+          <div
+            class="message-avatar"
+            style="background-image:url(https://cdn.framework7.io/placeholder/people-100x100-7.jpg);"
+          ></div>
           <div class="message-content">
             <div class="message-name">Blue Ninja</div>
             <div class="message-bubble">
@@ -152,16 +196,15 @@
 <script>
   return {
     on: {
-      pageInit: function (e, page) {
-        $('#main_toolbar').hide();
+      pageInit: function(e, page) {
+        $("#main_toolbar").hide();
         // let userId = $('#chatId').html();
       },
-      pageBeforeOut: function (e, page) {
+      pageBeforeOut: function(e, page) {
         clearTimeout(chatTimeOut);
-        $('#main_toolbar').show();
-        counter=0
-      },
-      
+        $("#main_toolbar").show();
+        counter = 0;
+      }
     }
   };
 </script>
