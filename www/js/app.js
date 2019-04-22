@@ -224,3 +224,5 @@ $$(".login-screen .login-button").on("click", function() {
 //     page.view.showToolbar();
 //   }
 // });
+
+// Init Messages

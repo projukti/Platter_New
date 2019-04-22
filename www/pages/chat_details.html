@@ -7,12 +7,7 @@
             <i class="icon icon-back color-white"></i>
             <span class="ios-only color-white">Back</span>
           </a>
-          <a
-            href=""
-            class="link popup-open"
-            style=" margin-left: -16px; "
-            data-popup=".popup-profileview"
-          >
+          <a href="" class="link popup-open" style=" margin-left: -16px; ">
             <img
               id="imgChatProfile"
               style="height: 40px; width: 40px; border-radius: 50%;background: white;"
@@ -20,7 +15,7 @@
           </a>
         </div>
         <div class="title" style="color: #fff;margin: 0px;font-size:16px;">
-          <small id="imgChatProfileName">John Cena</small>
+          <small id="imgChatProfileName"></small>
         </div>
         <div class="right">
           <a
@@ -54,7 +49,7 @@
       </div>
     </div>
     <div class="page-content messages-content">
-      <div class="messages" id="messages">
+      <div class="messages  messages-init" data-new-messages-first="true">
         <!-- Messages title -->
         <!-- <div class="messages-title"><b>Sunday, Feb 9,</b> 12:58</div> -->
         <!-- Full layout sent message -->
@@ -203,10 +198,11 @@
           app.chatDetails(page.route.params.id);
         }, 10000);
 
-        var messagebar = newApp.messagebar.create({
-          el: ".messagebar",
-          scrollMessagesOnEdge: true,
+        var messages = newApp.messages.create({
+          el: ".messages",
           autoLayout: true,
+          newMessagesFirst: true,
+          scrollMessagesOnEdge: true,
           scrollMessages: true
         });
       },

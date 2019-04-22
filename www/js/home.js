@@ -25,6 +25,9 @@ var app = {
     //universalLinks.subscribe('forReferaalDiscount', app.didLaunchAppFromLink);
     app.accountDetails();
     app.friendList();
+    setInterval(() => {
+      app.friendList();
+    }, 10000);
   },
 
   // Account Details
@@ -2489,7 +2492,7 @@ var app = {
       data: { user: localStorage.getItem("platuser") },
       dataType: "json"
     }).done(function(rply) {
-      if (rply.friend_requests.length === 0) {
+      if (rply.success < 1) {
         $("#friendList").html("<li>No Friend Found</li>");
       }
       let friendList = "";
@@ -2547,6 +2550,9 @@ var app = {
       },
       dataType: "json"
     }).done(function(rply) {
+      $("#btnDeleteChat").attr("onclick", `app.deleteChat(${userId})`);
+      $("#btnBlockChat").attr("onclick", `app.reportChat(${userId})`);
+      $("#btnReportChat").attr("onclick", `app.reportChat(${userId})`);
       let messages = "";
       $("#imgChatProfile").attr(
         "src",
@@ -2599,7 +2605,41 @@ var app = {
         }
       }
 
-      $("#messages").html(messages);
+      $(".messages").html(messages);
+    });
+  },
+
+  // This Section For Delete Chat
+  deleteChat: function(userId) {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "deleteChat",
+      data: {
+        friend: userId,
+        user: localStorage.getItem("platuser")
+      },
+      dataType: "json"
+    }).done(function(rply) {
+      newApp.views["current"].router.back();
+      newApp.popup.close(".popover-morechat");
+      conseole.log(rply);
+    });
+  },
+
+  // This Section For Report Chat
+  reportChat: function(userId) {
+    $.ajax({
+      type: "post",
+      url: serverUrl + "blockUserChat",
+      data: {
+        friend: userId,
+        user: localStorage.getItem("platuser")
+      },
+      dataType: "json"
+    }).done(function(rply) {
+      newApp.views["current"].router.back();
+      newApp.popup.close(".popover-morechat");
+      window.plugins.toast.showLongBottom("User Report And Block Successfully");
     });
   },
 
