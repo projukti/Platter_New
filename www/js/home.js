@@ -2509,12 +2509,23 @@ var app = {
         friendList += `<div class="item-header">${
           rply.friend_requests[list].customer_name
         }</div>`;
-        friendList += `<div class="item-footer">${
-          rply.friend_requests[list].profBio
-        }</div>`;
+        if (rply.friend_requests[list].last_text == null) {
+          friendList += `<div class="item-footer">${
+            rply.friend_requests[list].profBio
+          }</div>`;
+        } else {
+          friendList += `<div class="item-footer">${
+            rply.friend_requests[list].last_text.message
+          }</div>`;
+        }
 
         friendList += `</div>`;
-        friendList += `<div class="item-after"> <span class="badge">5</span></div>`;
+        if (rply.friend_requests[list].unread_count > 0) {
+          friendList += `<div class="item-after"> <span class="badge color-green">${
+            rply.friend_requests[list].unread_count
+          }</span></div>`;
+        }
+
         friendList += `</div>`;
         friendList += `</div>`;
         friendList += `</a>`;

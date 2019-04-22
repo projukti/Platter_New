@@ -198,11 +198,8 @@
     on: {
       pageInit: function(e, page) {
         $("#main_toolbar").hide();
-        //console.log(e);
-        //console.log(page.route.params.id);
-        // let userId = $('#chatId').html();
-        // console.log($route.params.id);
-        const intervalMessage = setInterval(() => {
+
+        intervalMessage = setInterval(() => {
           app.chatDetails(page.route.params.id);
         }, 10000);
 
