@@ -199,11 +199,22 @@
       pageInit: function(e, page) {
         $("#main_toolbar").hide();
         // let userId = $('#chatId').html();
+        // console.log($route.params.id);
+        console.log("Here");
+        var intervalMessage = setInterval(() => {
+          console.log(userIdForMessage);
+          app.chatDetails(userIdForMessage);
+        }, 10000);
+        var messagebar = newApp.messagebar.create({
+          el: ".messagebar",
+          scrollMessagesOnEdge: true,
+          autoLayout: true,
+          scrollMessages: true
+        });
       },
       pageBeforeOut: function(e, page) {
-        clearTimeout(chatTimeOut);
+        clearInterval(intervalMessage);
         $("#main_toolbar").show();
-        counter = 0;
       }
     }
   };

@@ -100,6 +100,7 @@ routes = [
       unique.preloader.show();
       setTimeout(function() {
         app.chatDetails(id);
+
         // app.getChat(parseInt(id));
         unique.preloader.hide();
         resolve({

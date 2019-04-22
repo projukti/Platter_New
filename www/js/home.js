@@ -2524,10 +2524,14 @@ var app = {
 
   // This Section For Get Chat Details
   chatDetails: function(userId) {
+    const userIdForMessage = userId;
     $.ajax({
       type: "post",
       url: serverUrl + "chatDetails",
-      data: { userId: userId, user: localStorage.getItem("platuser") },
+      data: {
+        userId: userIdForMessage,
+        user: localStorage.getItem("platuser")
+      },
       dataType: "json"
     }).done(function(rply) {
       let messages = "";
